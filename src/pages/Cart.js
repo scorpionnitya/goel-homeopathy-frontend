@@ -1,67 +1,206 @@
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 
-function Cart({ cart, removeFromCart }) {
-  const navigate = useNavigate();
+function Cart({ cart, setCart }) {
+
+  const [showForm, setShowForm] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const API_URL = "http://localhost:5001/api/orders";
+
+  const [userDetails, setUserDetails] = useState({
+    name: "",
+    phone: "",
+    address: ""
+  });
+
+  // 👉 Total calculate
+  const total = cart.reduce((sum, item) => {
+    return sum + parseInt(item.price.replace("₹", ""));
+  }, 0);
+
+  // 👉 Remove item
+  const removeItem = (index) => {
+    const newCart = [...cart];
+    newCart.splice(index, 1);
+    setCart(newCart);
+  };
+
+  // 👉 Order function (FIXED)
+  const handleOrder = async () => {
+
+    if (loading) return;
+
+    if (!userDetails.name || !userDetails.phone || !userDetails.address) {
+      alert("Please fill all details");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const res = await fetch("http://localhost:5001/api/orders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          items: cart,
+          user: userDetails
+        })
+      });
+
+      // 👇 IMPORTANT FIX
+      if (!res.ok) {
+        throw new Error("Server error");
+      }
+
+      const data = await res.json();
+
+      alert(data.message);
+
+      // reset after success
+      setCart([]);
+      setShowForm(false);
+      setUserDetails({
+        name: "",
+        phone: "",
+        address: ""
+      });
+
+    } catch (error) {
+      console.error(error);
+      alert("Server error");
+    }
+
+    setLoading(false);
+  };
 
   return (
-    <div style={{ padding: "20px", maxWidth: "700px", margin: "auto" }}>
-      <h1>🛒 Your Cart</h1>
+    <div style={{ padding: "20px" }}>
+      <h1 style={{ textAlign: "center" }}>🛒 Your Cart</h1>
 
       {cart.length === 0 ? (
-        <p>No medicines in cart.</p>
+        <p style={{ textAlign: "center" }}>Cart is empty</p>
       ) : (
         <>
-          {cart.map((item, index) => (
-            <div
-              key={index}
-              style={{
+          {/* Cart Items */}
+          <div style={{
+            display: "grid",
+            gap: "15px",
+            marginTop: "20px"
+          }}>
+            {cart.map((item, index) => (
+              <div key={index} style={{
                 border: "1px solid #ddd",
-                padding: "12px",
+                padding: "10px",
                 borderRadius: "8px",
-                marginBottom: "10px",
                 display: "flex",
                 justifyContent: "space-between",
+                flexWrap: "wrap",
+gap: "10px",
                 alignItems: "center"
+              }}>
+                <div>
+                  <h3>{item.name}</h3>
+                  <p>{item.price}</p>
+                </div>
+
+                <button
+                  onClick={() => removeItem(index)}
+                  style={{
+                    background: "red",
+                    color: "white",
+                    border: "none",
+                    padding: "6px 10px",
+                    borderRadius: "5px",
+                    cursor: "pointer"
+                  }}
+                >
+                  Remove
+                </button>
+              </div>
+            ))}
+          </div>
+
+          {/* Total */}
+          <h2 style={{ marginTop: "20px" }}>
+            Total: ₹{total}
+          </h2>
+
+          {/* Proceed Button */}
+          {!showForm && (
+            <button
+              onClick={() => setShowForm(true)}
+              style={{
+                marginTop: "20px",
+                padding: "10px 20px",
+                background: "green",
+                color: "white",
+                border: "none",
+                borderRadius: "6px",
+                cursor: "pointer",
+                fontSize: "16px",
+                width: "100%"
               }}
             >
-              <div>
-                <h3>{item.name}</h3>
-                <p>{item.price}</p>
-              </div>
+              Proceed to Buy
+            </button>
+          )}
+
+          {/* Contact Form */}
+          {showForm && (
+            <div style={{
+              marginTop: "20px",
+              border: "1px solid #ddd",
+              padding: "15px",
+              borderRadius: "10px"
+            }}>
+              <h3>Enter Contact Details</h3>
+
+              <input
+                type="text"
+                placeholder="Name"
+                value={userDetails.name}
+                onChange={(e) =>
+                  setUserDetails({ ...userDetails, name: e.target.value })
+                }
+                style={{ width: "100%", padding: "8px", marginBottom: "10px" }}
+              />
+
+              <input
+                type="text"
+                placeholder="Phone"
+                value={userDetails.phone}
+                onChange={(e) =>
+                  setUserDetails({ ...userDetails, phone: e.target.value })
+                }
+                style={{ width: "100%", padding: "8px", marginBottom: "10px" }}
+              />
+
+              <textarea
+                placeholder="Address"
+                value={userDetails.address}
+                onChange={(e) =>
+                  setUserDetails({ ...userDetails, address: e.target.value })
+                }
+                style={{ width: "100%", padding: "8px", marginBottom: "10px" }}
+              />
 
               <button
-                onClick={() => removeFromCart(index)}
+                onClick={handleOrder}
+                disabled={loading}
                 style={{
-                  background: "crimson",
+                  padding: "10px",
+                  background: loading ? "gray" : "green",
                   color: "white",
                   border: "none",
                   borderRadius: "6px",
-                  padding: "6px 10px",
                   cursor: "pointer"
                 }}
               >
-                Remove
+                {loading ? "Placing Order..." : "Confirm Order"}
               </button>
             </div>
-          ))}
-
-          {/* Proceed Button */}
-          <button
-            onClick={() => navigate("/contact")}
-            style={{
-              marginTop: "20px",
-              width: "100%",
-              padding: "12px",
-              background: "#2e7d32",
-              color: "white",
-              border: "none",
-              borderRadius: "8px",
-              fontSize: "16px",
-              cursor: "pointer"
-            }}
-          >
-            Proceed to Order
-          </button>
+          )}
         </>
       )}
     </div>

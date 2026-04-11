@@ -7,16 +7,24 @@ function Appointment() {
   const [time, setTime] = useState("");
   const [problem, setProblem] = useState("");
 
-  function submitAppointment(e) {
-    e.preventDefault();
-    alert("Appointment request submitted. We will contact you soon!");
+ function submitAppointment(e) {
+  e.preventDefault();
 
-    setName("");
-    setPhone("");
-    setDate("");
-    setTime("");
-    setProblem("");
-  }
+  const phoneNumber = "919837100364"; // <-- apna WhatsApp number yahan daalo
+
+  const message = `Hello Doctor,%0A
+I want to book an appointment.%0A%0A
+Name: ${name}%0A
+Phone: ${phone}%0A
+Date: ${date}%0A
+Time: ${time}%0A
+Problem: ${problem}`;
+
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+
+  window.open(whatsappUrl, "_blank");
+}
+
 
   return (
     <div style={{ maxWidth: "500px", margin: "auto", padding: "20px" }}>
