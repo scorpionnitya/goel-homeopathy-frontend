@@ -30,9 +30,6 @@ function App() {
     }
   };
 
-  const removeFromCart = (name) => {
-    setCart(cart.filter((item) => item.name !== name));
-  };
 
   const navLink = {
   color: "white",

@@ -4,7 +4,6 @@ function Cart({ cart, setCart }) {
 
   const [showForm, setShowForm] = useState(false);
   const [loading, setLoading] = useState(false);
-  const API_URL = "http://localhost:5001/api/orders";
 
   const [userDetails, setUserDetails] = useState({
     name: "",
