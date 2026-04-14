@@ -36,7 +36,7 @@ function Cart({ cart, setCart }) {
     setLoading(true);
 
     try {
-      const res = await fetch("https://goel-homeopathy-backend-production.up.railway.app", {
+      const res = await fetch("https://goel-homeopathy-backend-production.up.railway.app/api/orders", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
