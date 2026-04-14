@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 function YourOrders() {
   const [orders, setOrders] = useState([]);
-  const API_URL = "http://localhost:5001/api/orders";
+  const API_URL = "https://goel-homeopathy-backend-production.up.railway.app";
 
   useEffect(() => {
     fetch(`${API_URL}/all`)
