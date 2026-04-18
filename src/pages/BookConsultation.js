@@ -18,19 +18,50 @@ function BookConsultation() {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    if (
-      !formData.name ||
-      !formData.age ||
-      !formData.phone ||
-      !formData.date ||
-      !formData.time
-    ) {
-      alert("Please fill all required fields");
-      return;
-    }
+  if (
+    !formData.name ||
+    !formData.age ||
+    !formData.phone ||
+    !formData.date ||
+    !formData.time
+  ) {
+    alert("Please fill all required fields");
+    return;
+  }
+
+  try {
+    const res = await fetch(
+      "https://goel-homeopathy-backend-production.up.railway.app/api/consultation",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+      }
+    );
+
+    const data = await res.json();
+
+    alert(data.message);
+
+    setFormData({
+      name: "",
+      age: "",
+      gender: "",
+      phone: "",
+      date: "",
+      time: "",
+      problem: "",
+    });
+
+  } catch (error) {
+    alert("Server Error");
+  }
+};
 
     console.log("Consultation Data:", formData);
 
@@ -124,7 +155,7 @@ function BookConsultation() {
       </form>
     </div>
   );
-}
+
 
 // Styles
 const inputStyle = {
