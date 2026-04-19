@@ -5,6 +5,19 @@ function Medicines({ addToCart }) {
   const [search, setSearch] = useState("");
   const [power, setPower] = useState({});
 
+const images = {
+  Dilution:
+    "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=500",
+  Biochemic:
+    "https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=500",
+  BC:
+    "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=500",
+  "R Drops":
+    "https://images.unsplash.com/photo-1603398938378-e54eab446dde?w=500",
+  "Mother Tincture":
+    "https://images.unsplash.com/photo-1576602976047-174e57a47881?w=500"
+};
+
   const dilution = [
 "AALSERUM",
 "ABIES CAN",
@@ -620,6 +633,19 @@ function Medicines({ addToCart }) {
                 boxShadow: "0 4px 8px rgba(0,0,0,0.08)"
               }}
             >
+              
+
+<img
+  src={images[tab]}
+  alt={med}
+  style={{
+    width: "100%",
+    height: "180px",
+    objectFit: "cover",
+    borderRadius: "10px",
+    marginBottom: "12px"
+  }}
+/>
               <h3>{med}</h3>
 
               <select
