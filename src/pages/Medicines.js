@@ -5,60 +5,49 @@ function Medicines({ addToCart }) {
   const [search, setSearch] = useState("");
   const [power, setPower] = useState({});
 
-  
+
 const getMedicineImage = (med, tab) => {
-  const commonStyle = {
+  const container = {
     width: "100%",
-    height: "230px",
-    borderRadius: "14px",
-    background: "#fff",
+    height: "250px",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    position: "relative",
+    background: "#fff",
+    borderRadius: "14px",
     overflow: "hidden",
-    boxShadow: "0 8px 18px rgba(0,0,0,0.12)"
+    boxShadow: "0 8px 18px rgba(0,0,0,0.10)"
   };
 
-  const nameStyle = {
-    position: "absolute",
-    textAlign: "center",
-    fontWeight: "bold",
-    color: "#111",
-    textTransform: "uppercase",
-    lineHeight: "1.2"
-  };
-
-  // BIOCHEMIC BOX
+  // BIOCHEMIC BOX (original style)
   if (tab === "Biochemic") {
     return (
-      <div style={commonStyle}>
+      <div style={container}>
         <div
           style={{
-            width: "120px",
-            height: "190px",
-            borderRadius: "6px",
+            width: "130px",
+            height: "210px",
             background:
-              "linear-gradient(to bottom, #ffffff 0%, #ffffff 45%, #ff7b7b 70%, #e60000 100%)",
+              "linear-gradient(to bottom, #ffffff 0%, #ffffff 45%, #ffb0b0 65%, #ff0000 100%)",
+            borderRadius: "4px",
             position: "relative",
-            boxShadow: "0 6px 14px rgba(0,0,0,0.18)"
+            boxShadow: "0 8px 16px rgba(0,0,0,0.18)"
           }}
         >
           <div
             style={{
               position: "absolute",
-              left: "0",
-              top: "0",
-              bottom: "0",
+              left: 0,
+              top: 0,
+              bottom: 0,
               width: "28px",
               background: "#fff",
               borderRight: "1px solid #ddd",
               writingMode: "vertical-rl",
               transform: "rotate(180deg)",
-              fontSize: "14px",
-              fontWeight: "500",
-              color: "#333",
               textAlign: "center",
+              fontSize: "13px",
+              color: "#444",
               paddingTop: "8px"
             }}
           >
@@ -80,11 +69,15 @@ const getMedicineImage = (med, tab) => {
 
           <div
             style={{
-              ...nameStyle,
-              top: "55px",
+              position: "absolute",
+              top: "58px",
               width: "100%",
-              fontSize: "22px",
-              padding: "0 10px"
+              textAlign: "center",
+              fontSize: "24px",
+              fontWeight: "bold",
+              lineHeight: "1.1",
+              padding: "0 10px",
+              textTransform: "uppercase"
             }}
           >
             {med}
@@ -94,59 +87,73 @@ const getMedicineImage = (med, tab) => {
     );
   }
 
-  // DILUTION + MOTHER TINCTURE BOTTLE
+  // ORIGINAL RECKEWEG BOTTLE STYLE
   return (
-    <div style={commonStyle}>
+    <div style={container}>
       <div
         style={{
-          width: "95px",
-          height: "190px",
+          width: "110px",
+          height: "215px",
           position: "relative"
         }}
       >
-        {/* Cap */}
+        {/* White cap */}
         <div
           style={{
-            width: "55px",
-            height: "52px",
-            background: "#f7f7f7",
+            width: "62px",
+            height: "58px",
+            background:
+              "repeating-linear-gradient(to right,#fafafa,#fafafa 5px,#ececec 5px,#ececec 8px)",
             margin: "0 auto",
-            borderRadius: "18px 18px 8px 8px"
+            borderRadius: "18px 18px 10px 10px"
           }}
         />
 
-        {/* Red Ring */}
+        {/* Red ring */}
         <div
           style={{
-            width: "78px",
+            width: "82px",
             height: "16px",
             background: "#e60000",
             margin: "-4px auto 0",
-            borderRadius: "6px"
+            borderRadius: "5px"
           }}
         />
 
-        {/* Bottle */}
+        {/* Amber bottle */}
         <div
           style={{
-            width: "88px",
-            height: "125px",
+            width: "92px",
+            height: "145px",
             margin: "0 auto",
             borderRadius: "0 0 16px 16px",
             background:
-              "linear-gradient(to bottom, #7b4a1e 0%, #5e3210 50%, #2d1707 100%)",
+              "linear-gradient(to right,#2a1608,#6a3d12,#8b531d,#5c3210,#1f1006)",
             position: "relative",
-            boxShadow: "0 8px 15px rgba(0,0,0,0.22)"
+            boxShadow: "0 12px 18px rgba(0,0,0,0.22)"
           }}
         >
+          {/* Shine */}
+          <div
+            style={{
+              position: "absolute",
+              left: "12px",
+              top: "8px",
+              width: "18px",
+              height: "110px",
+              background: "rgba(255,255,255,0.15)",
+              borderRadius: "10px"
+            }}
+          />
+
           {/* Label */}
           <div
             style={{
               position: "absolute",
-              top: "20px",
-              left: "4px",
-              right: "4px",
-              height: "72px",
+              left: "5px",
+              right: "5px",
+              top: "22px",
+              height: "78px",
               background: "#fff",
               borderRadius: "3px",
               overflow: "hidden"
@@ -155,9 +162,9 @@ const getMedicineImage = (med, tab) => {
             <div
               style={{
                 height: "18px",
-                background: "#ff8d8d",
-                fontSize: "9px",
+                background: "#ff9c9c",
                 textAlign: "center",
+                fontSize: "9px",
                 paddingTop: "2px"
               }}
             >
@@ -166,10 +173,12 @@ const getMedicineImage = (med, tab) => {
 
             <div
               style={{
-                ...nameStyle,
-                top: "26px",
-                width: "100%",
-                fontSize: "14px",
+                marginTop: "8px",
+                textAlign: "center",
+                fontWeight: "bold",
+                fontSize: "15px",
+                lineHeight: "1.15",
+                textTransform: "uppercase",
                 padding: "0 4px"
               }}
             >
@@ -182,8 +191,7 @@ const getMedicineImage = (med, tab) => {
                 bottom: "4px",
                 width: "100%",
                 textAlign: "center",
-                fontSize: "10px",
-                color: "#333"
+                fontSize: "10px"
               }}
             >
               {tab === "Mother Tincture" ? "Ø 20 ml" : "30 ml"}
