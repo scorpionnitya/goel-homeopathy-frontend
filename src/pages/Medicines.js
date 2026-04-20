@@ -4,6 +4,147 @@ function Medicines({ addToCart }) {
   const [tab, setTab] = useState("Dilution");
   const [search, setSearch] = useState("");
   const [power, setPower] = useState({});
+  // ===== Medicines.js ke andar paste karo =====
+
+// TOP me add karo
+const getMedicineImage = (med, tab) => {
+  // Biochemic = tablet box style
+  if (tab === "Biochemic") {
+    return (
+      <div
+        style={{
+          width: "130px",
+          height: "190px",
+          margin: "auto",
+          borderRadius: "10px",
+          background:
+            "linear-gradient(to bottom,#ffffff 0%,#ffffff 45%,#ff4d4d 100%)",
+          boxShadow: "0 8px 18px rgba(0,0,0,0.15)",
+          position: "relative",
+          overflow: "hidden",
+          border: "1px solid #ddd"
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            top: "12px",
+            left: "10px",
+            right: "10px",
+            textAlign: "center",
+            fontSize: "11px",
+            fontWeight: "bold"
+          }}
+        >
+          Biochemic Tablets
+        </div>
+
+        <div
+          style={{
+            position: "absolute",
+            top: "55px",
+            left: "10px",
+            right: "10px",
+            textAlign: "center",
+            fontSize: "22px",
+            fontWeight: "900",
+            color: "#111",
+            lineHeight: "1.1"
+          }}
+        >
+          {med}
+        </div>
+      </div>
+    );
+  }
+
+  // Dilution + Mother Tincture bottle style
+  return (
+    <div
+      style={{
+        width: "130px",
+        height: "210px",
+        margin: "auto",
+        position: "relative"
+      }}
+    >
+      {/* cap white */}
+      <div
+        style={{
+          width: "64px",
+          height: "42px",
+          background: "#fff",
+          borderRadius: "12px 12px 8px 8px",
+          margin: "auto",
+          border: "1px solid #ddd"
+        }}
+      />
+
+      {/* red ring */}
+      <div
+        style={{
+          width: "78px",
+          height: "18px",
+          background: "#e00000",
+          borderRadius: "8px",
+          margin: "auto",
+          marginTop: "-4px"
+        }}
+      />
+
+      {/* bottle */}
+      <div
+        style={{
+          width: "92px",
+          height: "145px",
+          margin: "auto",
+          marginTop: "-2px",
+          background:
+            "linear-gradient(to bottom,#8b5a2b 0%,#5d3412 70%,#2e1708 100%)",
+          borderRadius: "10px 10px 16px 16px",
+          position: "relative",
+          boxShadow: "0 8px 18px rgba(0,0,0,0.18)"
+        }}
+      >
+        {/* label */}
+        <div
+          style={{
+            position: "absolute",
+            top: "28px",
+            left: "7px",
+            right: "7px",
+            background: "#fff",
+            borderRadius: "6px",
+            padding: "6px 4px",
+            textAlign: "center",
+            fontSize: "12px",
+            fontWeight: "900",
+            color: "#111",
+            lineHeight: "1.1",
+            minHeight: "52px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center"
+          }}
+        >
+          {med}
+        </div>
+
+        {/* top strip */}
+        <div
+          style={{
+            position: "absolute",
+            top: "18px",
+            left: "0",
+            right: "0",
+            height: "10px",
+            background: "#ff8fa3"
+          }}
+        />
+      </div>
+    </div>
+  );
+};
 
 
   const dilution = [
@@ -597,6 +738,10 @@ function Medicines({ addToCart }) {
         />
       </div>
 
+      <p style={{textAlign:"center",color:"#666"}}>
+Showing {data.length} medicines
+</p>
+
       {/* Cards */}
       <div
         style={{
@@ -624,64 +769,9 @@ function Medicines({ addToCart }) {
               
 
 
-<div
-  style={{
-    width: "100%",
-    height: "220px",
-    borderRadius: "14px",
-    background: "linear-gradient(145deg,#fff,#f5f5f5)",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    marginBottom: "12px",
-    boxShadow: "inset 0 2px 6px rgba(0,0,0,0.05)"
-  }}
->
-  <div
-    style={{
-      width: "95px",
-      height: "170px",
-      background: "linear-gradient(to bottom,#7a3d00,#5a2d00)",
-      borderRadius: "18px",
-      position: "relative",
-      boxShadow: "0 10px 20px rgba(0,0,0,0.18)"
-    }}
-  >
-    {/* cap */}
-    <div
-      style={{
-        width: "70px",
-        height: "32px",
-        background: "#d32f2f",
-        borderRadius: "10px",
-        position: "absolute",
-        top: "-22px",
-        left: "12px"
-      }}
-    />
 
-    {/* label */}
-    <div
-      style={{
-        position: "absolute",
-        top: "45px",
-        left: "7px",
-        right: "7px",
-        background: "white",
-        borderRadius: "8px",
-        padding: "8px 4px",
-        textAlign: "center",
-        fontSize: "11px",
-        fontWeight: "bold",
-        lineHeight: "1.2",
-        color: "#111"
-      }}
-    >
-      {med}
-    </div>
-  </div>
-</div>
-              <h3>{med}</h3>
+            {getMedicineImage(med, tab)}
+            
 
               <select
                 value={selectedPower}
