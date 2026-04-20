@@ -635,7 +635,6 @@ const images = {
             >
               
 
-// USKI JAGAH YE NAYA PREMIUM BOTTLE BLOCK LAGAO:
 
 <div
   style={{
