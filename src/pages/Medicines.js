@@ -130,7 +130,8 @@ const getMedicineImage = (med, tab) => {
             background:
               "linear-gradient(to right,#2a1608,#6a3d12,#8b531d,#5c3210,#1f1006)",
             position: "relative",
-            boxShadow: "0 12px 18px rgba(0,0,0,0.22)"
+            boxShadow: "0 12px 18px rgba(0,0,0,0.22)",
+            display: "transparent bottle with highlights"
           }}
         >
           {/* Shine */}
