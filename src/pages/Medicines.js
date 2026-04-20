@@ -4,148 +4,196 @@ function Medicines({ addToCart }) {
   const [tab, setTab] = useState("Dilution");
   const [search, setSearch] = useState("");
   const [power, setPower] = useState({});
-  // ===== Medicines.js ke andar paste karo =====
 
-// TOP me add karo
+  
 const getMedicineImage = (med, tab) => {
-  // Biochemic = tablet box style
+  const commonStyle = {
+    width: "100%",
+    height: "230px",
+    borderRadius: "14px",
+    background: "#fff",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    position: "relative",
+    overflow: "hidden",
+    boxShadow: "0 8px 18px rgba(0,0,0,0.12)"
+  };
+
+  const nameStyle = {
+    position: "absolute",
+    textAlign: "center",
+    fontWeight: "bold",
+    color: "#111",
+    textTransform: "uppercase",
+    lineHeight: "1.2"
+  };
+
+  // BIOCHEMIC BOX
   if (tab === "Biochemic") {
     return (
-      <div
-        style={{
-          width: "130px",
-          height: "190px",
-          margin: "auto",
-          borderRadius: "10px",
-          background:
-            "linear-gradient(to bottom,#ffffff 0%,#ffffff 45%,#ff4d4d 100%)",
-          boxShadow: "0 8px 18px rgba(0,0,0,0.15)",
-          position: "relative",
-          overflow: "hidden",
-          border: "1px solid #ddd"
-        }}
-      >
+      <div style={commonStyle}>
         <div
           style={{
-            position: "absolute",
-            top: "12px",
-            left: "10px",
-            right: "10px",
-            textAlign: "center",
-            fontSize: "11px",
-            fontWeight: "bold"
+            width: "120px",
+            height: "190px",
+            borderRadius: "6px",
+            background:
+              "linear-gradient(to bottom, #ffffff 0%, #ffffff 45%, #ff7b7b 70%, #e60000 100%)",
+            position: "relative",
+            boxShadow: "0 6px 14px rgba(0,0,0,0.18)"
           }}
         >
-          Biochemic Tablets
-        </div>
+          <div
+            style={{
+              position: "absolute",
+              left: "0",
+              top: "0",
+              bottom: "0",
+              width: "28px",
+              background: "#fff",
+              borderRight: "1px solid #ddd",
+              writingMode: "vertical-rl",
+              transform: "rotate(180deg)",
+              fontSize: "14px",
+              fontWeight: "500",
+              color: "#333",
+              textAlign: "center",
+              paddingTop: "8px"
+            }}
+          >
+            Dr.Reckeweg
+          </div>
 
-        <div
-          style={{
-            position: "absolute",
-            top: "55px",
-            left: "10px",
-            right: "10px",
-            textAlign: "center",
-            fontSize: "22px",
-            fontWeight: "900",
-            color: "#111",
-            lineHeight: "1.1"
-          }}
-        >
-          {med}
+          <div
+            style={{
+              position: "absolute",
+              top: "8px",
+              width: "100%",
+              textAlign: "center",
+              fontSize: "12px",
+              fontWeight: "600"
+            }}
+          >
+            Biochemic Tablets
+          </div>
+
+          <div
+            style={{
+              ...nameStyle,
+              top: "55px",
+              width: "100%",
+              fontSize: "22px",
+              padding: "0 10px"
+            }}
+          >
+            {med}
+          </div>
         </div>
       </div>
     );
   }
 
-  // Dilution + Mother Tincture bottle style
+  // DILUTION + MOTHER TINCTURE BOTTLE
   return (
-    <div
-      style={{
-        width: "130px",
-        height: "210px",
-        margin: "auto",
-        position: "relative"
-      }}
-    >
-      {/* cap white */}
+    <div style={commonStyle}>
       <div
         style={{
-          width: "64px",
-          height: "42px",
-          background: "#fff",
-          borderRadius: "12px 12px 8px 8px",
-          margin: "auto",
-          border: "1px solid #ddd"
-        }}
-      />
-
-      {/* red ring */}
-      <div
-        style={{
-          width: "78px",
-          height: "18px",
-          background: "#e00000",
-          borderRadius: "8px",
-          margin: "auto",
-          marginTop: "-4px"
-        }}
-      />
-
-      {/* bottle */}
-      <div
-        style={{
-          width: "92px",
-          height: "145px",
-          margin: "auto",
-          marginTop: "-2px",
-          background:
-            "linear-gradient(to bottom,#8b5a2b 0%,#5d3412 70%,#2e1708 100%)",
-          borderRadius: "10px 10px 16px 16px",
-          position: "relative",
-          boxShadow: "0 8px 18px rgba(0,0,0,0.18)"
+          width: "95px",
+          height: "190px",
+          position: "relative"
         }}
       >
-        {/* label */}
+        {/* Cap */}
         <div
           style={{
-            position: "absolute",
-            top: "28px",
-            left: "7px",
-            right: "7px",
-            background: "#fff",
-            borderRadius: "6px",
-            padding: "6px 4px",
-            textAlign: "center",
-            fontSize: "12px",
-            fontWeight: "900",
-            color: "#111",
-            lineHeight: "1.1",
-            minHeight: "52px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center"
-          }}
-        >
-          {med}
-        </div>
-
-        {/* top strip */}
-        <div
-          style={{
-            position: "absolute",
-            top: "18px",
-            left: "0",
-            right: "0",
-            height: "10px",
-            background: "#ff8fa3"
+            width: "55px",
+            height: "52px",
+            background: "#f7f7f7",
+            margin: "0 auto",
+            borderRadius: "18px 18px 8px 8px"
           }}
         />
+
+        {/* Red Ring */}
+        <div
+          style={{
+            width: "78px",
+            height: "16px",
+            background: "#e60000",
+            margin: "-4px auto 0",
+            borderRadius: "6px"
+          }}
+        />
+
+        {/* Bottle */}
+        <div
+          style={{
+            width: "88px",
+            height: "125px",
+            margin: "0 auto",
+            borderRadius: "0 0 16px 16px",
+            background:
+              "linear-gradient(to bottom, #7b4a1e 0%, #5e3210 50%, #2d1707 100%)",
+            position: "relative",
+            boxShadow: "0 8px 15px rgba(0,0,0,0.22)"
+          }}
+        >
+          {/* Label */}
+          <div
+            style={{
+              position: "absolute",
+              top: "20px",
+              left: "4px",
+              right: "4px",
+              height: "72px",
+              background: "#fff",
+              borderRadius: "3px",
+              overflow: "hidden"
+            }}
+          >
+            <div
+              style={{
+                height: "18px",
+                background: "#ff8d8d",
+                fontSize: "9px",
+                textAlign: "center",
+                paddingTop: "2px"
+              }}
+            >
+              Homoeopathic Medicine
+            </div>
+
+            <div
+              style={{
+                ...nameStyle,
+                top: "26px",
+                width: "100%",
+                fontSize: "14px",
+                padding: "0 4px"
+              }}
+            >
+              {med}
+            </div>
+
+            <div
+              style={{
+                position: "absolute",
+                bottom: "4px",
+                width: "100%",
+                textAlign: "center",
+                fontSize: "10px",
+                color: "#333"
+              }}
+            >
+              {tab === "Mother Tincture" ? "Ø 20 ml" : "30 ml"}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
-
 
   const dilution = [
 "AALSERUM",
