@@ -94,127 +94,105 @@ const getMedicineImage = (med, tab) => {
     );
   }
 
-  // DILUTION + MOTHER TINCTURE BOTTLE (2nd image jaisi realistic bottle)
-return (
-  <div style={commonStyle}>
-    <div
-      style={{
-        width: "110px",
-        height: "210px",
-        position: "relative"
-      }}
-    >
-      {/* White Cap */}
+  // DILUTION + MOTHER TINCTURE BOTTLE
+  return (
+    <div style={commonStyle}>
       <div
         style={{
-          width: "52px",
-          height: "62px",
-          margin: "0 auto",
-          background:
-            "repeating-linear-gradient(to right, #fdfdfd 0px, #fdfdfd 4px, #ececec 4px, #ececec 7px)",
-          borderRadius: "12px 12px 8px 8px",
-          boxShadow: "inset 0 0 4px rgba(0,0,0,0.08)"
-        }}
-      />
-
-      {/* Red Ring */}
-      <div
-        style={{
-          width: "66px",
-          height: "14px",
-          background: "linear-gradient(to bottom, #ff2a2a, #c40000)",
-          margin: "-2px auto 0",
-          borderRadius: "4px",
-          boxShadow: "0 1px 3px rgba(0,0,0,0.2)"
-        }}
-      />
-
-      {/* Glass Bottle */}
-      <div
-        style={{
-          width: "78px",
-          height: "128px",
-          margin: "0 auto",
-          borderRadius: "0 0 12px 12px",
-          background:
-            "linear-gradient(to right, #1d1208 0%, #6d431a 18%, #9b6227 50%, #6d431a 82%, #1d1208 100%)",
-          position: "relative",
-          boxShadow: "0 10px 16px rgba(0,0,0,0.22)"
+          width: "95px",
+          height: "190px",
+          position: "relative"
         }}
       >
-        {/* Glass shine */}
+        {/* Cap */}
         <div
           style={{
-            position: "absolute",
-            left: "10px",
-            top: "12px",
-            width: "10px",
-            height: "90px",
-            borderRadius: "8px",
-            background: "rgba(255,255,255,0.10)"
+            width: "55px",
+            height: "52px",
+            background: "#f7f7f7",
+            margin: "0 auto",
+            borderRadius: "18px 18px 8px 8px"
           }}
         />
 
-        {/* Label */}
+        {/* Red Ring */}
         <div
           style={{
-            position: "absolute",
-            top: "24px",
-            left: "3px",
-            right: "3px",
-            height: "70px",
-            background: "#f8f8f8",
-            borderRadius: "2px",
-            overflow: "hidden",
-            boxShadow: "0 0 2px rgba(0,0,0,0.15)"
+            width: "78px",
+            height: "16px",
+            background: "#e60000",
+            margin: "-4px auto 0",
+            borderRadius: "6px"
+          }}
+        />
+
+        {/* Bottle */}
+        <div
+          style={{
+            width: "88px",
+            height: "125px",
+            margin: "0 auto",
+            borderRadius: "0 0 16px 16px",
+            background:
+              "linear-gradient(to bottom, #7b4a1e 0%, #5e3210 50%, #2d1707 100%)",
+            position: "relative",
+            boxShadow: "0 8px 15px rgba(0,0,0,0.22)"
           }}
         >
-          {/* Pink strip */}
-          <div
-            style={{
-              height: "18px",
-              background: "#e98f8f",
-              fontSize: "8px",
-              textAlign: "center",
-              paddingTop: "2px",
-              color: "#111"
-            }}
-          >
-            Homoeopathic Medicine
-          </div>
-
-          {/* Medicine name */}
-          <div
-            style={{
-              ...nameStyle,
-              top: "25px",
-              width: "100%",
-              fontSize: "10px",
-              padding: "0 4px",
-              textTransform: "none",
-              fontWeight: "600"
-            }}
-          >
-            {med}
-          </div>
-
-          {/* Bottom text */}
+          {/* Label */}
           <div
             style={{
               position: "absolute",
-              bottom: "4px",
+              top: "20px",
               left: "4px",
-              fontSize: "8px",
-              color: "#333"
+              right: "4px",
+              height: "72px",
+              background: "#fff",
+              borderRadius: "3px",
+              overflow: "hidden"
             }}
           >
-            {tab === "Mother Tincture" ? "Ø 20 ml" : "20 ml"}
+            <div
+              style={{
+                height: "18px",
+                background: "#ff8d8d",
+                fontSize: "9px",
+                textAlign: "center",
+                paddingTop: "2px"
+              }}
+            >
+              Homoeopathic Medicine
+            </div>
+
+            <div
+              style={{
+                ...nameStyle,
+                top: "26px",
+                width: "100%",
+                fontSize: "14px",
+                padding: "0 4px"
+              }}
+            >
+              {med}
+            </div>
+
+            <div
+              style={{
+                position: "absolute",
+                bottom: "4px",
+                width: "100%",
+                textAlign: "center",
+                fontSize: "10px",
+                color: "#333"
+              }}
+            >
+              {tab === "Mother Tincture" ? "Ø 20 ml" : "30 ml"}
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-);
+  );
 };
 
   const dilution = [
