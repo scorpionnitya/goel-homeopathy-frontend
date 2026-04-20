@@ -635,17 +635,65 @@ const images = {
             >
               
 
-<img
-  src={images[tab]}
-  alt={med}
+// USKI JAGAH YE NAYA PREMIUM BOTTLE BLOCK LAGAO:
+
+<div
   style={{
     width: "100%",
-    height: "180px",
-    objectFit: "cover",
-    borderRadius: "10px",
-    marginBottom: "12px"
+    height: "220px",
+    borderRadius: "14px",
+    background: "linear-gradient(145deg,#fff,#f5f5f5)",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: "12px",
+    boxShadow: "inset 0 2px 6px rgba(0,0,0,0.05)"
   }}
-/>
+>
+  <div
+    style={{
+      width: "95px",
+      height: "170px",
+      background: "linear-gradient(to bottom,#7a3d00,#5a2d00)",
+      borderRadius: "18px",
+      position: "relative",
+      boxShadow: "0 10px 20px rgba(0,0,0,0.18)"
+    }}
+  >
+    {/* cap */}
+    <div
+      style={{
+        width: "70px",
+        height: "32px",
+        background: "#d32f2f",
+        borderRadius: "10px",
+        position: "absolute",
+        top: "-22px",
+        left: "12px"
+      }}
+    />
+
+    {/* label */}
+    <div
+      style={{
+        position: "absolute",
+        top: "45px",
+        left: "7px",
+        right: "7px",
+        background: "white",
+        borderRadius: "8px",
+        padding: "8px 4px",
+        textAlign: "center",
+        fontSize: "11px",
+        fontWeight: "bold",
+        lineHeight: "1.2",
+        color: "#111"
+      }}
+    >
+      {med}
+    </div>
+  </div>
+</div>
               <h3>{med}</h3>
 
               <select
