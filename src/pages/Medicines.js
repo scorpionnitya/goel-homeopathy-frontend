@@ -5,8 +5,8 @@ function Medicines({ addToCart }) {
   const [search, setSearch] = useState("");
   const [power, setPower] = useState({});
 
-  
-const getMedicineImage = (med, tab) => {
+
+   const getMedicineImage = (med, tab) => {
   const commonStyle = {
     width: "100%",
     height: "230px",
