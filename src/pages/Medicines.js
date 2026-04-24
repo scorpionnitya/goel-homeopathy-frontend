@@ -16,7 +16,7 @@ const getLabelStyle = (tab) => {
     return { top: "65%", left: "50%", width: "44%", fontSize: "11px" };
 
   if (tab === "Biochemic")
-    return { top: "60%", left: "35%", width: "34%", fontSize: "15px" };
+    return { top: "60%", left: "30%", width: "39%", fontSize: "15px" };
 
   if (tab === "BC")
     return { top: "67%", left: "56%", width: "32%", fontSize: "15px" };
