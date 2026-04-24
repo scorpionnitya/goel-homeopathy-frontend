@@ -464,9 +464,12 @@ if (tab === "R Drops") image = rdropsImg;
     "Kali Phos",
     "Kali Sulph",
     "Magn Phos",
+    "Natr Mur",
+    "Natr Phos",
     "Natr Sulph",
     "Silicea",
     "Five Phos"
+
   ];
 
   const bc = Array.from({ length: 28 }, (_, i) => `BC ${i + 1}`);
