@@ -73,6 +73,37 @@ if (tab === "R Drops") image = rdropsImg;
   );
 };
 
+// for biochemic
+<div
+  style={{
+    position: "absolute",
+    top: "66%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: "42%",
+    height: "10%",
+    background: "white",
+    borderRadius: "4px",
+    zIndex: 3,
+
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+
+    fontSize: "15px",
+    fontWeight: "700",
+    color: "#111",
+    textAlign: "center",
+    padding: "2px 6px",
+    lineHeight: "1.1",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis"
+  }}
+>
+  {med}
+</div>
+
   const dilution = [
 "AALSERUM",
 "ABIES CAN",
