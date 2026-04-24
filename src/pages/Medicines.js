@@ -1,33 +1,66 @@
 import { useState } from "react";
+import bottle from "../assets/bottle.png";
+import biochemic from "../assets/Biochemic.png";
+import bc from "../assets/BC.png";
+import mother from "../assets/mother.png";
+import rdrops from "../assets/Rdrops.png";
 
 function Medicines({ addToCart }) {
   const [tab, setTab] = useState("Dilution");
   const [search, setSearch] = useState("");
   const [power, setPower] = useState({});
 
+const getMedicineImage = (med, tab) => {
+  let image = bottle;
 
-   const getMedicineImage = (med, tab) => {
-  const commonStyle = {
-    width: "100%",
-    height: "230px",
-    borderRadius: "14px",
-    background: "#fff",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    position: "relative",
-    overflow: "hidden",
-    boxShadow: "0 8px 18px rgba(0,0,0,0.12)"
-  };
+  if (tab === "Biochemic") image = biochemic;
+  if (tab === "BC") image = bc;
+  if (tab === "Mother Tincture") image = mother;
+  if (tab === "R Drops") image = rdrops;
 
-  const nameStyle = {
-    position: "absolute",
-    textAlign: "center",
-    fontWeight: "bold",
-    color: "#111",
-    textTransform: "uppercase",
-    lineHeight: "1.2"
-  };
+  return (
+    <div
+      style={{
+        position: "relative",
+        height: "240px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
+      }}
+    >
+      <img
+        src={image}
+        alt={med}
+        style={{
+          height: "220px",
+          objectFit: "contain"
+        }}
+      />
+
+      {/* Naam label pe */}
+      <div
+        style={{
+          position: "absolute",
+          top:
+            tab === "Biochemic"
+              ? "105px"
+              : tab === "BC"
+              ? "115px"
+              : "118px",
+          width: "95px",
+          textAlign: "center",
+          fontWeight: "bold",
+          fontSize: tab === "Biochemic" ? "15px" : "13px",
+          color: "#111",
+          lineHeight: "1.1",
+          textTransform: "uppercase"
+        }}
+      >
+        {med}
+      </div>
+    </div>
+  );
+};
 
   // BIOCHEMIC BOX
   if (tab === "Biochemic") {
@@ -816,8 +849,6 @@ Showing {data.length} medicines
             >
               
 
-
-
             {getMedicineImage(med, tab)}
             
 
@@ -870,6 +901,6 @@ Showing {data.length} medicines
       </div>
     </div>
   );
-}
+
 
 export default Medicines;
