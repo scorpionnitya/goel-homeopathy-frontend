@@ -1,9 +1,9 @@
 import { useState } from "react";
 import bottle from "../assets/bottle.png";
-import biochemic from "../assets/Biochemic.png";
-import bc from "../assets/BC.png";
-import mother from "../assets/mother.png";
-import rdrops from "../assets/Rdrops.png";
+import biochemicImg from "../assets/Biochemic.png";
+import bcImg from "../assets/BC.png";
+import motherImg from "../assets/mother.png";
+import rdropsImg from "../assets/Rdrops.png";
 
 function Medicines({ addToCart }) {
   const [tab, setTab] = useState("Dilution");
@@ -13,10 +13,10 @@ function Medicines({ addToCart }) {
 const getMedicineImage = (med, tab) => {
   let image = bottle;
 
-  if (tab === "Biochemic") image = biochemic;
-  if (tab === "BC") image = bc;
-  if (tab === "Mother Tincture") image = mother;
-  if (tab === "R Drops") image = rdrops;
+if (tab === "Biochemic") image = biochemicImg;
+if (tab === "BC") image = bcImg;
+if (tab === "Mother Tincture") image = motherImg;
+if (tab === "R Drops") image = rdropsImg;
 
   return (
     <div
