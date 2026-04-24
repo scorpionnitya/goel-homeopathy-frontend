@@ -36,36 +36,39 @@ if (tab === "R Drops") image = rdropsImg;
           objectFit: "contain"
         }}
       />
-      <div
+     {/* White box sticker cover */}
+<div
   style={{
     position: "absolute",
-    top: "54%",
+    top: "58%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: "62%",
-    height: "16%",
+    width: "44%",
+    height: "10%",
     background: "white",
     zIndex: 3,
-    borderRadius: "4px"
+    borderRadius: "3px"
   }}
 ></div>
 
-      {/* Naam label pe */}
-      <div
+{/* Medicine name sticker pe */}
+<div
   style={{
     position: "absolute",
-    top: "54%",
+    top: "58%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: "62%",
-    height: "16%",
-    background: "white",
-    zIndex: 3,
-    borderRadius: "4px"
+    width: "44%",
+    textAlign: "center",
+    fontSize: "11px",
+    fontWeight: "bold",
+    color: "#111",
+    zIndex: 4,
+    lineHeight: "1.1"
   }}
-      >
-        {med}
-      </div>
+>
+  {med}
+</div>
     </div>
   );
 };
