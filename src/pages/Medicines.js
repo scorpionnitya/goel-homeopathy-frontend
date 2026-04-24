@@ -36,22 +36,32 @@ if (tab === "R Drops") image = rdropsImg;
           objectFit: "contain"
         }}
       />
+      <div
+  style={{
+    position: "absolute",
+    top: "54%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: "62%",
+    height: "16%",
+    background: "white",
+    zIndex: 3,
+    borderRadius: "4px"
+  }}
+></div>
 
       {/* Naam label pe */}
       <div
   style={{
     position: "absolute",
-    replaceRohododendon200: "52%",
+    top: "54%",
     left: "50%",
     transform: "translate(-50%, -50%)",
     width: "62%",
-    textAlign: "center",
-    fontWeight: "bold",
-    fontSize: "15px",
-    color: "black",
-    lineHeight: "1.1",
-    textTransform: "uppercase",
-    zIndex: 5
+    height: "16%",
+    background: "white",
+    zIndex: 3,
+    borderRadius: "4px"
   }}
       >
         {med}
