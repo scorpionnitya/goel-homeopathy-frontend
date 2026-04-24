@@ -41,7 +41,7 @@ if (tab === "R Drops") image = rdropsImg;
       <div
   style={{
     position: "absolute",
-    middle: "52%",
+    replaceRohododendon200: "52%",
     left: "50%",
     transform: "translate(-50%, -50%)",
     width: "62%",
