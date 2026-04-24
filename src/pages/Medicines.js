@@ -10,6 +10,27 @@ function Medicines({ addToCart }) {
   const [search, setSearch] = useState("");
   const [power, setPower] = useState({});
 
+
+const getLabelStyle = (tab) => {
+  if (tab === "Dilution")
+    return { top: "65%", left: "50%", width: "44%", fontSize: "11px" };
+
+  if (tab === "Biochemic")
+    return { top: "66%", left: "58%", width: "34%", fontSize: "15px" };
+
+  if (tab === "BC")
+    return { top: "67%", left: "56%", width: "32%", fontSize: "15px" };
+
+  if (tab === "R Drops")
+    return { top: "69%", left: "50%", width: "24%", fontSize: "15px" };
+
+  if (tab === "Mother Tincture")
+    return { top: "60%", left: "50%", width: "44%", fontSize: "12px" };
+
+  return { top: "65%", left: "50%", width: "44%", fontSize: "11px" };
+};
+
+
 const getMedicineImage = (med, tab) => {
   let image = bottle;
 
@@ -36,73 +57,50 @@ if (tab === "R Drops") image = rdropsImg;
           objectFit: "contain"
         }}
       />
-     {/* White box sticker cover */}
-<div
-  style={{
-    position: "absolute",
-    top: "65%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: "44%",
-    height: "10%",
-    background: "white",
-    zIndex: 3,
-    borderRadius: "3px"
-  }}
-></div>
 
-{/* Medicine name sticker pe */}
-<div
-  style={{
-    position: "absolute",
-    top: "65%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: "44%",
-    textAlign: "center",
-    fontSize: "11px",
-    fontWeight: "bold",
-    color: "#111",
-    zIndex: 4,
-    lineHeight: "1.1"
-  }}
->
-  {med}
-</div>
-    </div>
+
+{(() => {
+  const label = getLabelStyle(tab);
+
+  return (
+    <>
+      <div
+        style={{
+          position: "absolute",
+          top: label.top,
+          left: label.left,
+          transform: "translate(-50%, -50%)",
+          width: label.width,
+          height: "10%",
+          background: "white",
+          zIndex: 3,
+          borderRadius: "3px"
+        }}
+      ></div>
+
+      <div
+        style={{
+          position: "absolute",
+          top: label.top,
+          left: label.left,
+          transform: "translate(-50%, -50%)",
+          width: label.width,
+          textAlign: "center",
+          fontSize: label.fontSize,
+          fontWeight: "bold",
+          color: "#111",
+          zIndex: 4,
+          lineHeight: "1.1"
+        }}
+      >
+        {med}
+      </div>
+    </>
   );
-};
+})()}
+    </div>
+  );};
 
-// for biochemic
-<div
-  style={{
-    position: "absolute",
-    top: "66%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: "42%",
-    height: "10%",
-    background: "white",
-    borderRadius: "4px",
-    zIndex: 3,
-
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-
-    fontSize: "15px",
-    fontWeight: "700",
-    color: "#111",
-    textAlign: "center",
-    padding: "2px 6px",
-    lineHeight: "1.1",
-    whiteSpace: "nowrap",
-    overflow: "hidden",
-    textOverflow: "ellipsis"
-  }}
->
-  {med}
-</div>
 
   const dilution = [
 "AALSERUM",
