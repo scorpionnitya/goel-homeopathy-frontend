@@ -39,22 +39,20 @@ if (tab === "R Drops") image = rdropsImg;
 
       {/* Naam label pe */}
       <div
-        style={{
-          position: "absolute",
-          top:
-            tab === "Biochemic"
-              ? "105px"
-              : tab === "BC"
-              ? "115px"
-              : "118px",
-          width: "95px",
-          textAlign: "center",
-          fontWeight: "bold",
-          fontSize: tab === "Biochemic" ? "15px" : "13px",
-          color: "#111",
-          lineHeight: "1.1",
-          textTransform: "uppercase"
-        }}
+  style={{
+    position: "absolute",
+    top: "52%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: "62%",
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: "15px",
+    color: "black",
+    lineHeight: "1.1",
+    textTransform: "uppercase",
+    zIndex: 5
+  }}
       >
         {med}
       </div>
