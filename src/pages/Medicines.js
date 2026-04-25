@@ -71,7 +71,7 @@ if (tab === "R Drops") image = rdropsImg;
           left: label.left,
           transform: "translate(-50%, -50%)",
           width: label.width,
-          height: "10%",
+          height: label.height,
           background: "white",
           zIndex: 3,
           borderRadius: "3px"
