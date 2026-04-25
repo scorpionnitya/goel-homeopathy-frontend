@@ -19,7 +19,7 @@ const getLabelStyle = (tab) => {
     return { top: "60%", left: "50%", width: "45%", fontSize: "20px" };
 
   if (tab === "BC")
-    return { top: "63%", left: "35%", width: "20%", fontSize: "15px" };
+    return { top: "63%", left: "35%", width: "10%", fontSize: "15px" };
 
   if (tab === "R Drops")
     return { top: "45%", left: "50%", width: "15%", fontSize: "15px" };
