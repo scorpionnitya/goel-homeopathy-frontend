@@ -15,7 +15,11 @@ function App() {
   const [cart, setCart] = useState([]);
 
   const addToCart = (medicine) => {
-    const existing = cart.find((item) => item.name === medicine.name);
+    const existing = cart.find(
+  (item) =>
+    item.name === medicine.name &&
+    item.power === medicine.power
+);
 
     if (existing) {
       setCart(
