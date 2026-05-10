@@ -12,9 +12,13 @@ function Cart({ cart, setCart }) {
   });
 
   // 👉 Total calculate
-  const total = cart.reduce((sum, item) => {
-    return sum + parseInt(item.price.replace("₹", ""));
-  }, 0);
+const total = cart.reduce((sum, item) => {
+  return (
+    sum +
+    parseInt(item.price.toString().replace("₹", "")) *
+      item.quantity
+  );
+}, 0);
 
   // 👉 Remove item
   const removeItem = (index) => {
@@ -100,8 +104,59 @@ gap: "10px",
               }}>
                 <div>
                   <h3>{item.name}</h3>
-                  <p>{item.price}</p>
+                  <p>
+                  ₹{item.price} × {item.quantity}
+                  </p>
                 </div>
+                <div
+  style={{
+    display: "flex",
+    alignItems: "center",
+    gap: "10px",
+    marginTop: "10px"
+  }}
+>
+  <button
+    onClick={() => {
+      setCart(
+        cart.map((cartItem) =>
+          cartItem.name === item.name &&
+          cartItem.power === item.power
+            ? {
+                ...cartItem,
+                quantity:
+                  cartItem.quantity > 1
+                    ? cartItem.quantity - 1
+                    : 1
+              }
+            : cartItem
+        )
+      );
+    }}
+  >
+    -
+  </button>
+
+  <span>{item.quantity}</span>
+
+  <button
+    onClick={() => {
+      setCart(
+        cart.map((cartItem) =>
+          cartItem.name === item.name &&
+          cartItem.power === item.power
+            ? {
+                ...cartItem,
+                quantity: cartItem.quantity + 1
+              }
+            : cartItem
+        )
+      );
+    }}
+  >
+    +
+  </button>
+</div>
 
                 <button
                   onClick={() => removeItem(index)}
