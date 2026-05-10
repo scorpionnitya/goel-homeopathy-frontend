@@ -38,7 +38,7 @@ function Chatbot({ addToCart }) {
     setMessages((prev) => [...prev, userMessage]);
 
     try {
-      const res = await fetch("https://goel-homeopathy-backend-production.up.railway.app/api/chat", {
+      const res = await fetch("https://goel-homeopathy-backend-1.onrender.com/api/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
