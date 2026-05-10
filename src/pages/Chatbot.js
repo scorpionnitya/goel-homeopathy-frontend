@@ -139,9 +139,15 @@ padding: "10px",
                         key={i}
                         onClick={() =>
   addToCart({
-    name: med.trim(),
-    price: "₹199"
-  })
+  name: med.trim(),
+  price:
+    med.trim().includes("200")
+      ? 220
+      : med.trim().includes("1M")
+      ? 260
+      : 160,
+  quantity: 1
+})
 }
                         style={{
                           marginRight: "8px",
