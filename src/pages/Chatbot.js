@@ -126,45 +126,6 @@ padding: "10px",
             >
               {msg.text}
             </span>
-
-            {/* 🛒 Add To Cart Buttons */}
-            {msg.sender === "ai" &&
-              msg.text.includes("Suggested Medicines:") && (
-                <div style={{ marginTop: "10px" }}>
-                  {msg.text
-                    .split("Suggested Medicines:")[1]
-                    .split(",")
-                    .map((med, i) => (
-                      <button
-                        key={i}
-                        onClick={() =>
-  addToCart({
-  name: med.trim(),
-  price:
-    med.trim().includes("200")
-      ? 220
-      : med.trim().includes("1M")
-      ? 260
-      : 160,
-  quantity: 1
-})
-}
-                        style={{
-                          marginRight: "8px",
-                          marginTop: "5px",
-                          padding: "8px 12px",
-                          border: "none",
-                          borderRadius: "20px",
-                          background: "#2e7d32",
-                          color: "white",
-                          cursor: "pointer"
-                        }}
-                      >
-                        Add {med.trim()}
-                      </button>
-                    ))}
-                </div>
-              )}
           </div>
         ))}
       </div>
