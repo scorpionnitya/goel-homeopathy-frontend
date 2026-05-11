@@ -693,7 +693,7 @@ if (tab === "R Drops") image = rdropsImg;
     if (tab === "Biochemic") return biochemic;
     if (tab === "BC") return bc;
     if (tab === "R Drops") return rdrops;
-    if (tab === "Mother Tincture") return mother;
+    if (tab === "Mother Tincture") return Object.keys(motherPrices);
   };
 
   const getPowers = () => {
