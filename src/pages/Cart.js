@@ -103,7 +103,7 @@ gap: "10px",
                 alignItems: "center"
               }}>
                 <div>
-                  <h3>{item.name}</h3>
+                  <h3>{item.name} {item.power}</h3>
                   <p>
                   ₹{item.price} × {item.quantity}
                   </p>
