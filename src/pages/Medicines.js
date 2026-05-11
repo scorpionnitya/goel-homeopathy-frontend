@@ -503,91 +503,190 @@ if (tab === "R Drops") image = rdropsImg;
 
   const bc = Array.from({ length: 28 }, (_, i) => `BC ${i + 1}`);
   const rdrops = Array.from({ length: 89 }, (_, i) => `R ${i + 1}`);
-  const mother = [
-    "Aalserum",
-"Abrotanum",
-"Absinthium",
-"Acid Phos",
-"Acid Sulfuric",
-"Aconite Nap",
-"Actea Spicata",
-"Adonis Ver",
-"Aesculus Hip",
-"Agaricus M",
-"Agnus Castus",
-"Aletris Far",
-"Alfalfa",
-"Allium Sativum",
-"Aloe Soc",
-"Ammi Visnaga",
-"Amylum Nitr",
-"Angelica Archang",
-"Apis Mell",
-"Apocynum Can",
-"Aralia Rac",
-"Arnica",
-"Artemisia Vulg",
-"Aspidosperma",
-"Ashwagandha",
-"Avena Sat",
-"Azadirachta Indica",
-"Bacopa",
-"Baptisia",
-"Belladonna",
-"Bellis Per",
-"Berb Aquif",
-"Berb Vulg",
-"Blatta Ori",
-"Borax",
-"Bryonia Alb",
-"Cactus Grand",
-"Caladium Seg",
-"Calendula",
-"Calotropis",
-"Camphora",
-"Cantharis",
-"Carduus Mar",
-"Carica Papaya",
-"Cascara Sag",
-"Caulophyllum",
-"Causticum",
-"Ceanothus Amer",
-"Chelidonium",
-"Chimaphilla Umb",
-"China",
-"Cimicifuga",
-"Cina",
-"Colchicum",
-"Colocynthis",
-"Condurango",
-"Conium",
-"Crataegus Oxy",
-"Curcuma Longa",
-"Damiana",
-"Digitalis Purp",
-"Echinacea",
-"Eupatorium Perf",
-"Euphrasia",
-"Gelsemium",
-"Ginkgo Biloba",
-"Ginseng",
-"Hamamelis Virg",
-"Hydrastis Can",
-"Hypericum",
-"Ignatia",
-"Ipecacuanha",
-"Kalmegh",
-"Lycopodium",
-"Nux Vomica",
-"Phytolacca",
-"Pulsatilla",
-"Rhus Tox",
-"Sepia",
-"Spigelia",
-"Thuja",
-"Urtica Urens",
-"Valeriana Off"
-  ];
+  const motherPrices = {
+  "AALSERUM Q": 295,
+  "ABROTANUM Q": 345,
+  "ABSINTHIUM Q": 345,
+  "ACID PHOS Q": 295,
+  "ACID SULFURIC Q": 295,
+  "ACONITE NAP Q": 295,
+  "ACTEA SPICATA Q": 395,
+  "ADONIS VER Q": 295,
+  "AESCULUS HIP Q": 295,
+  "AGARICUS M Q": 345,
+  "AGNUS CASTUS Q": 295,
+  "ALETRIS FAR Q": 345,
+  "ALFALFA Q": 295,
+  "ALLIUM SATIVUM Q": 345,
+  "ALOE SOC Q": 345,
+  "AMMI VISNAGA Q": 295,
+  "AMYLIUM NITR Q": 295,
+  "ANGELICA ARCHANG Q": 395,
+  "APIS MELL Q": 345,
+  "APOCYNUM CAN Q": 295,
+  "ARALIA RAC Q": 395,
+  "ARNICA Q": 345,
+  "ARTEMISIA VULG Q": 295,
+  "ASPIDOSPERMA Q": 395,
+  "ASWAGANDHA Q": 395,
+  "AVENA SAT Q": 295,
+  "AZADIRACHTA INDICA Q": 295,
+  "BACOPA Q": 295,
+  "BAPTISIA Q": 345,
+  "BELLADONNA Q": 295,
+  "BELLIS PER Q": 295,
+  "BERB AQUIF Q": 345,
+  "BERB VULG Q": 295,
+  "BLATTA ORI Q": 395,
+  "BORAX Q": 295,
+  "BRYONIA ALB Q": 295,
+  "CACTUS GRAND Q": 345,
+  "CALADIUM SEG Q": 430,
+  "CALENDULA Q": 295,
+  "CALOTROPIS Q": 345,
+  "CAMPHORA Q": 295,
+  "CANTHARIS Q": 395,
+  "CARDUUS MAR Q": 295,
+  "CARICA PAPAYA Q": 395,
+  "CASCARA SAG Q": 345,
+  "CAULOPHYLLUM Q": 345,
+  "CAUSTICUM Q": 295,
+  "CEANOTHUS AMER Q": 345,
+  "CHELIDONIUM Q": 295,
+  "CHENOPODIUM Q": 345,
+  "CHIMAPHILLA UMB Q": 345,
+  "CHINA Q": 295,
+  "CHIONANTHUS V Q": 345,
+  "CIMICIFUGA Q": 345,
+  "CINA Q": 395,
+  "COLCHICUM Q": 395,
+  "COLLINSONIA Q": 345,
+  "COLOCYNTHIS Q": 295,
+  "CONDURANGO Q": 295,
+  "CONIUM Q": 345,
+  "CONVALLARIA MAJ Q": 345,
+  "CRATAEGUS OXY Q": 295,
+  "CURCUMA LONGA Q": 295,
+  "DAMIANA Q": 295,
+  "DIGITALIS PURP Q": 295,
+  "DIOSCOREA VILL Q": 345,
+  "ECHINACEA Q": 345,
+  "EPIGAEA Q": 295,
+  "EQUISETUM H Q": 395,
+  "ERIGERON CAN Q": 395,
+  "EUPATORIUM PERF Q": 345,
+  "EUPHRASIA Q": 295,
+  "FILIX MAS Q": 345,
+  "FORMICA RUFA Q": 295,
+  "FRAXINUS AMER Q": 345,
+  "FUCUS VESIC Q": 295,
+  "GALIUM APARINE Q": 395,
+  "GAULTHERIA PRO Q": 345,
+  "GELSEMIUM Q": 345,
+  "GENTIANA LUT Q": 395,
+  "GINKO BILOBA Q": 430,
+  "GINSENG Q": 345,
+  "GLONOIUM Q": 295,
+  "GOSSYPIUM HERB Q": 395,
+  "GRINDELIA RUB Q": 395,
+  "GUAIACUM Q": 395,
+  "GYMNEMA SYLVESTRE Q": 295,
+  "HAMAMELIS VIRG Q": 345,
+  "HEDERA HELIX Q": 395,
+  "HELLEBORUS NIG Q": 345,
+  "HELONIAS DIODICA Q": 345,
+  "HYDRANGEA Q": 395,
+  "HYDRASTIS CAN Q": 395,
+  "HYDROCOTYLE ASIAT Q": 295,
+  "HYOSCYAMUS Q": 345,
+  "HYPERICUM Q": 345,
+  "IBERIS Q": 345,
+  "IGNATIA Q": 345,
+  "IPECACUANHA Q": 345,
+  "IRIS VERS Q": 345,
+  "JABORANDI Q": 295,
+  "JONOSIA ASHOKA Q": 345,
+  "JUSTICEA ADH Q": 295,
+  "KALMEGH Q": 395,
+  "KREOSOTUM Q": 295,
+  "LATHYRUS SAT Q": 345,
+  "LEDUM PAL Q": 295,
+  "LEMNA MINOR Q": 345,
+  "LIATRIS SPICATA Q": 395,
+  "LILLIUM TIG Q": 345,
+  "LOBELIA INFLATA Q": 395,
+  "LODIUM Q": 345,
+  "LYCOPODIUM Q": 295,
+  "LYCOPUS V Q": 345,
+  "MELILOTUS OFF Q": 345,
+  "MILLEFOLIUM Q": 345,
+  "MULLEIN OIL Q": 395,
+  "MYRICA CERIFERA Q": 395,
+  "MYRISTICA SEB Q": 550,
+  "NUPHAR LUT Q": 395,
+  "NUX VOMICA Q": 295,
+  "OCIMUM CAN Q": 295,
+  "OENANTHE CROCATA Q": 345,
+  "ORITHOGALUM UMB Q": 395,
+  "PAREIRA BRAVA Q": 295,
+  "PASSIFLORA INC Q": 345,
+  "PHYTOLACCA BERRY Q": 345,
+  "PHYTOLACCA D Q": 295,
+  "PINUS LAMB Q": 550,
+  "PLANTAGO M Q": 295,
+  "PODOPHYLLUM Q": 395,
+  "PULSATILLA Q": 345,
+  "QUERCUS GLAND S Q": 345,
+  "RATANHIA Q": 345,
+  "RAUWOLFIA SERP Q": 395,
+  "RHUS AROM Q": 550,
+  "RHUS TOX Q": 345,
+  "RICINUS COM Q": 345,
+  "ROBINIA PSEUD Q": 345,
+  "RUBIA TINCT Q": 395,
+  "RUMEX CRISP Q": 345,
+  "RUTA GRAV Q": 295,
+  "SABAL SERR Q": 295,
+  "SABINA Q": 345,
+  "SALIX NIG Q": 430,
+  "SANGUINARIA CAN Q": 395,
+  "SARSAPARILLA Q": 295,
+  "SCROPHULARIA NOD Q": 395,
+  "SECALE COR Q": 295,
+  "SEMPERVIVUM TECT Q": 395,
+  "SENECIO AUR Q": 295,
+  "SENEGA Q": 295,
+  "SEPIA Q": 395,
+  "SOLIDAGO VIRG Q": 295,
+  "SPARTIUM SCOP Q": 395,
+  "SPIGELIA Q": 345,
+  "SPONGIA T Q": 295,
+  "STAPHYSAGRIA Q": 395,
+  "STELLARIA MEDIA Q": 395,
+  "STERCULIA ACUM Q": 345,
+  "STROPHANTHUS Q": 345,
+  "SYMPHYTUM Q": 345,
+  "SYZYGIUM JAMB Q": 295,
+  "TEUCRIUM MAR Q": 395,
+  "THLASPI BP Q": 345,
+  "THUJA Q": 295,
+  "TRIBULUS TERR Q": 345,
+  "TRILLIUM PEND Q": 345,
+  "URANIUM NIT Q": 295,
+  "URTICA URENS Q": 295,
+  "USNEA BARBATA Q": 345,
+  "USTILAGO M Q": 295,
+  "UVA URSI Q": 345,
+  "VALERIANA Q": 295,
+  "VERBASCUM Q": 295,
+  "VIBURNUM OP Q": 295,
+  "VIBURNUM PR Q": 345,
+  "VINCA MINOR Q": 345,
+  "VISCUM ALB Q": 295,
+  "XANTHOXYLLUM Q": 345,
+  "YERBA SANTA Q": 395,
+  "YOHIMBINUM Q": 430
+};
 
   const getData = () => {
     if (tab === "Dilution") return dilution;
@@ -600,35 +699,35 @@ if (tab === "R Drops") image = rdropsImg;
   const getPowers = () => {
     if (tab === "Dilution") return ["30", "200", "1M", "10M", "CM"];
     if (tab === "Biochemic") return ["3X", "6X", "12X", "30X", "200X"];
-    if (tab === "Mother Tincture") return ["Q", "#", "30ml"];
+    if (tab === "Mother Tincture") return ["Q", "20ml"];
     return ["Standard"];
   };
 
-  const getPrice = (p) => {
-    if (tab === "Dilution") {
-      if (p === "30") return "₹160";
-      if (p === "200") return "₹185";
-      if (p === "1M") return "₹230";
-      if (p === "10M") return "₹250";
-      return "₹320";
-    }
+const getPrice = (med, p) => {
 
-    if (tab === "Biochemic") {
-      if (p === "200X") return "₹315";
-      return "₹220";
-    }
+  if (tab === "Mother Tincture") {
+    return `₹${motherPrices[med] || 295}`;
+  }
 
-    if (tab === "BC") return "₹220";
-    if (tab === "R Drops") return "₹295";
+  if (tab === "Dilution") {
+    if (p === "30") return "₹160";
+    if (p === "200") return "₹185";
+    if (p === "1M") return "₹230";
+    if (p === "10M") return "₹250";
+    return "₹320";
+  }
 
-    if (tab === "Mother Tincture") {
-      if (p === "Q") return "₹295";
-      if (p === "#") return "₹345";
-      return "₹395";
-    }
+  if (tab === "Biochemic") {
+    if (p === "200X") return "₹315";
+    return "₹220";
+  }
 
-    return "₹100";
-  };
+  if (tab === "BC") return "₹220";
+
+  if (tab === "R Drops") return "₹295";
+
+  return "₹100";
+};
 
   const data = getData().filter((item) =>
     item.toLowerCase().includes(search.toLowerCase())
@@ -711,7 +810,7 @@ Showing {data.length} medicines
       >
         {data.map((med, index) => {
           const selectedPower = power[med] || getPowers()[0];
-          const price = getPrice(selectedPower);
+          const price = getPrice(med, selectedPower);
 
           return (
             <div
