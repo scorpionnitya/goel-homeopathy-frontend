@@ -13,11 +13,13 @@ function Cart({ cart, setCart }) {
 
   // 👉 Total calculate
 const total = cart.reduce((sum, item) => {
-  return (
-    sum +
-    parseInt(item.price.toString().replace("₹", "")) *
-      item.quantity
-  );
+
+  const price = item.price
+    ? parseInt(item.price.toString().replace("₹", ""))
+    : 0;
+
+  return sum + price * item.quantity;
+
 }, 0);
 
   // 👉 Remove item
