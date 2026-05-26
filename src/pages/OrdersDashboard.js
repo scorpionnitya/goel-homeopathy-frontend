@@ -41,9 +41,9 @@ function OrdersDashboard() {
       // 🔥 DIRECT UPDATE UI
       setOrders((prev) =>
         prev.map((order) =>
-          order._id === id ? { ...order, status } : order
-        )
-      );
+          order._id === id ? data : order
+    )
+);
 
     } catch (error) {
       console.error(error);
