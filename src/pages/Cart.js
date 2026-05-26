@@ -47,7 +47,8 @@ const total = cart.reduce((sum, item) => {
         },
         body: JSON.stringify({
           items: cart,
-          user: userDetails
+          user: userDetails,
+          totalAmount: total
         })
       });
 
@@ -58,16 +59,41 @@ const total = cart.reduce((sum, item) => {
 
       const data = await res.json();
 
-      alert(data.message);
+      const message = `
+🛒 New Homeopathy Order
 
+👤 Name: ${userDetails.name}
+📞 Phone: ${userDetails.phone}
+
+📍 Address:
+${userDetails.address}
+
+💰 Total Amount: ₹${total}
+
+🧾 Products:
+${cart.map(
+(item) =>
+`${item.name} ${item.power || ""} - ₹${item.price} × ${item.quantity}`
+).join("\n")}
+`;
+
+const whatsappURL =
+`https://wa.me/917302512068?text=${encodeURIComponent(message)}`;
+
+window.open(whatsappURL, "_blank");
+
+alert("Order placed successfully");
       // reset after success
-      setCart([]);
-      setShowForm(false);
-      setUserDetails({
-        name: "",
-        phone: "",
-        address: ""
-      });
+      setTimeout(() => {
+  setCart([]);
+  setShowForm(false);
+
+  setUserDetails({
+    name: "",
+    phone: "",
+    address: ""
+  });
+}, 2000);
 
     } catch (error) {
       console.error(error);

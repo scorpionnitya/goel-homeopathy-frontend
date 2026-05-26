@@ -852,10 +852,10 @@ Showing {data.length} medicines
               <button
                 onClick={() => {
                   addToCart({
-                    name: med,
-                    price,
-                    power: selectedPower
-                  });
+  name: med.name,
+  power: selectedPower,
+  price: med.price
+})
                   alert("Added to cart");
                 }}
                 style={{
