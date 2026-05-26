@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 
 function OrdersDashboard() {
   const [orders, setOrders] = useState([]);
-  const API_URL = "https://goel-homeopathy-backend-production.up.railway.app";
+  const API_URL = "https://goel-homeopathy-backend-1.onrender.com";
 
   // ✅ fetch orders
   const fetchOrders = async () => {
     try {
-      const res = await fetch(`${API_URL}/all`)
+      const res = await fetch(`${API_URL}/api/orders/all`)
       const data = await res.json();
 
       console.log("FETCHED:", data);
@@ -25,7 +25,7 @@ function OrdersDashboard() {
   // ✅ update status
   const updateStatus = async (id, status) => {
     try {
-      const res = await fetch(`${API_URL}/update-status/${id}`,
+      const res = await fetch(`${API_URL}/api/orders/update-status/${id}`,
         {
           method: "PUT",
           headers: {
@@ -97,6 +97,11 @@ function OrdersDashboard() {
                 {order.status || "PENDING"}
               </span>
             </p>
+            {order.deliveryOTP && (
+              <p>
+                <b>Delivery OTP:</b> {order.deliveryOTP}
+                </p>
+              )}
 
             {/* BUTTONS */}
             <div style={{ marginTop: "10px" }}>
