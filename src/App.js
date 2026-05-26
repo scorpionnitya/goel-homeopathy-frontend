@@ -65,7 +65,6 @@ function App() {
           <Link style={navLink} to="/medicines">Medicines</Link>
           <Link style={navLink} to="/cart">Cart ({cart.length})</Link>
           <Link style={navLink} to="/orders">Your Orders</Link>
-          <Link style={navLink} to="/dashboard">Orders Dashboard</Link>
           <Link style={navLink} to="/about">About</Link>
           <Link style={navLink} to="/contact">Contact</Link>
           <Link style={navLink} to="/chat">AI Assistant</Link>
@@ -89,7 +88,7 @@ function App() {
 
           <Route path="/orders" element={<YourOrders />} />
 
-          <Route path="/dashboard" element={<OrdersDashboard />} />
+          <Route path="/goel-admin-orders-2026" element={<OrdersDashboard />} />
 
           <Route path="/about" element={<About />} />
 
