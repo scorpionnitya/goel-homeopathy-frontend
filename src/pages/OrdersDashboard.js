@@ -36,14 +36,11 @@ function OrdersDashboard() {
       );
 
       const data = await res.json();
-      console.log("UPDATED:", data);
+      console.log("UPDATED RESPONSE:", data);
+      alert("Status Updated");
 
       // 🔥 DIRECT UPDATE UI
-      setOrders((prev) =>
-        prev.map((order) =>
-          order._id === id ? data : order
-    )
-);
+      fetchOrders();
 
     } catch (error) {
       console.error(error);
