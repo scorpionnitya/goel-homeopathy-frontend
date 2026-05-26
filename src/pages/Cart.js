@@ -57,7 +57,7 @@ const total = cart.reduce((sum, item) => {
         throw new Error("Server error");
       }
 
-      const data = await res.json();
+      await res.json();
 
       const message = `
 🛒 New Homeopathy Order
