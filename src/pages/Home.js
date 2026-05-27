@@ -32,7 +32,7 @@ function Home() {
           fontSize: "16px"
         }}
       >
-        Welcome to Mohan Health & Home. We are a family-run clinic providing
+        Welcome to CureNest. We are a family-run clinic providing
         safe, natural and personalised homeopathic treatment.
       </p>
 
