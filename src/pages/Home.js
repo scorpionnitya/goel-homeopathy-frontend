@@ -7,7 +7,7 @@ function Home() {
     <div style={{ padding: "20px" }}>
 
       <h1 style={{ textAlign: "center", color: "#2e7d32" }}>
-        🌿 Goel Homeopathy
+        🌿 Mohan Health & Home
       </h1>
 
       <p
@@ -18,7 +18,7 @@ function Home() {
           fontSize: "16px"
         }}
       >
-        Welcome to Goel Homeopathy. We are a family-run clinic providing
+        Welcome to Mohan Health & Home. We are a family-run clinic providing
         safe, natural and personalised homeopathic treatment.
       </p>
 
