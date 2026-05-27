@@ -7,9 +7,9 @@ function Home() {
     <div style={{ padding: "20px" }}>
 
       <h1 style={{ textAlign: "center", color: "#2e7d32" }}>
-        🌿 <div>
+        <div>
   <h1 style={{ margin: 0, fontWeight: "bold" }}>
-    CureNest
+    🌿 CureNest
   </h1>
 
   <p

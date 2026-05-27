@@ -4,11 +4,11 @@ import { useState } from "react";
 import Home from "./pages/Home";
 import Medicines from "./pages/Medicines";
 import About from "./pages/About";
-import Contact from "./pages/Contact";
+
 import Cart from "./pages/Cart";
-import YourOrders from "./pages/YourOrders";
+
 import OrdersDashboard from "./pages/OrdersDashboard";
-import BookConsultation from "./pages/BookConsultation";
+
 import Chatbot from "./pages/Chatbot";
 
 function App() {
@@ -64,9 +64,9 @@ function App() {
           <Link style={navLink} to="/">Home</Link>
           <Link style={navLink} to="/medicines">Medicines</Link>
           <Link style={navLink} to="/cart">Cart ({cart.length})</Link>
-          <Link style={navLink} to="/orders">Your Orders</Link>
+          
           <Link style={navLink} to="/about">About</Link>
-          <Link style={navLink} to="/contact">Contact</Link>
+          
           <Link style={navLink} to="/chat">AI Assistant</Link>
         </nav>
 
@@ -86,15 +86,11 @@ function App() {
             element={<Cart cart={cart} setCart={setCart} />}
           />
 
-          <Route path="/orders" element={<YourOrders />} />
+          
 
           <Route path="/goel-admin-orders-2026" element={<OrdersDashboard />} />
 
           <Route path="/about" element={<About />} />
-
-          <Route path="/contact" element={<Contact />} />
-          
-          <Route path="/appointment" element={<BookConsultation />} />
 
           <Route path="/chat" element={<Chatbot addToCart={addToCart} />} />
 

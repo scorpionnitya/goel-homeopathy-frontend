@@ -11,7 +11,7 @@ function About() {
 
       <p>
         CureNest has been serving in the field of
-        homeopathy and wellness for over 50 years.
+        homeopathy and wellness for over 50 yearsin the name of MOHAN HOMEOPATHIC STORE.
 
         We provide trusted natural remedies and
         holistic healthcare solutions for various
