@@ -82,9 +82,12 @@ ${cart.map(
 const whatsappURL =
 `https://wa.me/917302512068?text=${encodeURIComponent(message)}`;
 
-window.open(whatsappURL, "_blank");
+window.location.href = whatsappURL;
 
-alert("Order placed successfully");
+setTimeout(() => {
+  alert("Order placed successfully");
+}, 1000);
+
       // reset after success
       setTimeout(() => {
   setCart([]);
