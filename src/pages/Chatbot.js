@@ -88,7 +88,7 @@ function Chatbot({ addToCart }) {
           textAlign: "center"
         }}
       >
-        AI Health Assistant 🤖
+        CureNest AI Assistant 🤖 
       </div>
 
       {/* CHAT AREA */}

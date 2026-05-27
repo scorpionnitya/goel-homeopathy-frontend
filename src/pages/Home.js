@@ -7,7 +7,21 @@ function Home() {
     <div style={{ padding: "20px" }}>
 
       <h1 style={{ textAlign: "center", color: "#2e7d32" }}>
-        🌿 Mohan Health & Home
+        🌿 <div>
+  <h1 style={{ margin: 0, fontWeight: "bold" }}>
+    CureNest
+  </h1>
+
+  <p
+    style={{
+      margin: 0,
+      fontStyle: "italic",
+      fontSize: "14px"
+    }}
+  >
+    Health & Home
+  </p>
+</div>
       </h1>
 
       <p

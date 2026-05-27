@@ -62,7 +62,7 @@ const total = cart.reduce((sum, item) => {
       await res.json();
 
       const message = `
-🛒 New Homeopathy Order
+🛒 New CureNest Order
 
 👤 Name: ${userDetails.name}
 📞 Phone: ${userDetails.phone}
