@@ -45,19 +45,6 @@ function Home() {
           flexWrap: "wrap"
         }}
       >
-        <button
-          onClick={() => navigate("/appointment")}
-          style={{
-            padding: "12px 20px",
-            background: "#2e7d32",
-            color: "white",
-            border: "none",
-            borderRadius: "6px",
-            cursor: "pointer"
-          }}
-        >
-          Book Consultation
-        </button>
 
         <button
           onClick={() => navigate("/medicines")}
