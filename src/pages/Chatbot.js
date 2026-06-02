@@ -1,191 +1,491 @@
 import { useState } from "react";
 
 function Chatbot({ addToCart }) {
+
   const [input, setInput] = useState("");
+
   const [messages, setMessages] = useState([]);
 
-  // 🎤 Voice Setup
-  const SpeechRecognition =
-    window.SpeechRecognition || window.webkitSpeechRecognition;
+  const isMobile =
+    window.innerWidth <= 768;
 
-  const recognition = new SpeechRecognition();
+  // 🎤 Voice Setup
+
+  const SpeechRecognition =
+    window.SpeechRecognition ||
+    window.webkitSpeechRecognition;
+
+  const recognition =
+    new SpeechRecognition();
+
   recognition.continuous = false;
+
   recognition.lang = "en-IN";
 
   // 🔊 Speak AI Reply
+
   const speak = (text) => {
-    const speech = new SpeechSynthesisUtterance(text);
+
+    const speech =
+      new SpeechSynthesisUtterance(
+        text
+      );
+
     speech.lang = "en-IN";
-    window.speechSynthesis.speak(speech);
+
+    window.speechSynthesis.speak(
+      speech
+    );
   };
 
   // 🎤 Mic Start
+
   const startListening = () => {
+
     recognition.start();
 
-    recognition.onresult = (event) => {
-      const voiceText = event.results[0][0].transcript;
+    recognition.onresult = (
+      event
+    ) => {
+
+      const voiceText =
+        event.results[0][0]
+          .transcript;
+
       setInput(voiceText);
+
     };
   };
 
   // 🤖 AI Function
-  const getSuggestion = async () => {
-    if (!input.trim()) return;
 
-    const userMessage = { sender: "user", text: input };
+  const getSuggestion =
+    async () => {
 
-    setMessages((prev) => [...prev, userMessage]);
+      if (!input.trim()) return;
 
-    try {
-      const res = await fetch("https://goel-homeopathy-backend-1.onrender.com/api/chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ message: input })
-      });
-
-      const data = await res.json();
-
-      const aiMessage = {
-        sender: "ai",
-        text: data.reply
+      const userMessage = {
+        sender: "user",
+        text: input
       };
 
-      setMessages((prev) => [...prev, aiMessage]);
+      setMessages((prev) => [
+        ...prev,
+        userMessage
+      ]);
 
-      speak(data.reply);
+      try {
 
-      setInput("");
+        const res = await fetch(
+          "https://goel-homeopathy-backend-1.onrender.com/api/chat",
+          {
+            method: "POST",
 
-    } catch (error) {
-      console.error(error);
-      alert("AI Error");
-    }
-  };
+            headers: {
+              "Content-Type":
+                "application/json"
+            },
+
+            body: JSON.stringify({
+              message: input
+            })
+          }
+        );
+
+        const data =
+          await res.json();
+
+        const aiMessage = {
+          sender: "ai",
+          text: data.reply
+        };
+
+        setMessages((prev) => [
+          ...prev,
+          aiMessage
+        ]);
+
+        speak(data.reply);
+
+        setInput("");
+
+      } catch (error) {
+
+        console.error(error);
+
+        alert("AI Error");
+
+      }
+    };
 
   return (
-      <div style={{
-       width: "95%",
-        maxWidth: "500px",
-         margin: "15px auto",
-        border: "1px solid #ddd",
-        borderRadius: "15px",
-        overflow: "hidden",
-        boxShadow: "0 4px 15px rgba(0,0,0,0.1)",
-        fontFamily: "Arial"
+
+    <div
+      className="fadeUp"
+      style={{
+        minHeight: "100vh",
+
+        display: "flex",
+
+        justifyContent: "center",
+
+        alignItems: "center",
+
+        padding:
+          isMobile
+            ? "15px"
+            : "40px"
       }}
     >
-      {/* HEADER */}
-      <div
-        style={{
-          background: "#2e7d32",
-          color: "white",
-          padding: "15px",
-          fontSize: "20px",
-          fontWeight: "bold",
-          textAlign: "center"
-        }}
-      >
-        CureNest AI Assistant 🤖 
-      </div>
 
-      {/* CHAT AREA */}
+      {/* MAIN CONTAINER */}
+
       <div
         style={{
-          height: "60vh",
-          minHeight: "350px",
-          overflowY: "auto",
-          padding: "15px",
-          background: "#f5f5f5"
+          width: "100%",
+
+          maxWidth: "900px",
+
+          height:
+            isMobile
+              ? "90vh"
+              : "85vh",
+
+          background:
+            "rgba(255,255,255,0.75)",
+
+          borderRadius: "30px",
+
+          overflow: "hidden",
+
+          border:
+            "1px solid rgba(255,255,255,0.4)",
+
+          boxShadow:
+            "0 20px 50px rgba(0,0,0,0.12)",
+
+          display: "flex",
+
+          flexDirection: "column"
         }}
       >
-        {messages.map((msg, index) => (
-          <div
-            key={index}
-            style={{
-              textAlign: msg.sender === "user" ? "right" : "left",
-              marginBottom: "15px"
-            }}
-          >
-            <span
+
+        {/* HEADER */}
+
+        <div
+          style={{
+            background:
+              "linear-gradient(135deg,#2e7d32,#4caf50)",
+
+            color: "white",
+
+            padding: "22px",
+
+            display: "flex",
+
+            justifyContent:
+              "space-between",
+
+            alignItems: "center",
+
+            flexWrap: "wrap",
+
+            gap: "12px"
+          }}
+        >
+
+          <div>
+
+            <h2
               style={{
-                display: "flex",
-flexWrap: "wrap",
-gap: "8px",
-padding: "10px",
-                borderRadius: "20px",
-                maxWidth: "75%",
-                background:
-                  msg.sender === "user" ? "#2e7d32" : "#ffffff",
-                color:
-                  msg.sender === "user" ? "white" : "black",
-                boxShadow: "0 2px 6px rgba(0,0,0,0.1)"
+                margin: 0,
+
+                fontSize:
+                  isMobile
+                    ? "24px"
+                    : "28px"
               }}
             >
-              {msg.text}
-            </span>
+              CureNest AI
+            </h2>
+
+            <p
+              style={{
+                margin: 0,
+
+                opacity: 0.9,
+
+                marginTop: "4px"
+              }}
+            >
+              Your smart health assistant
+            </p>
+
           </div>
-        ))}
-      </div>
 
-      {/* INPUT AREA */}
-      <div
-        style={{
-          display: "flex",
-          padding: "10px",
-          borderTop: "1px solid #ddd",
-          background: "white"
-        }}
-      >
-        <input
-          type="text"
-          placeholder="Apni problem likho..."
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
+          <div
+            style={{
+              background:
+                "rgba(255,255,255,0.2)",
+
+              padding:
+                "10px 16px",
+
+              borderRadius:
+                "999px",
+
+              fontWeight: "600"
+            }}
+          >
+            AI Powered
+          </div>
+
+        </div>
+
+        {/* CHAT AREA */}
+
+        <div
           style={{
-            flex: "1 1 220px",
-minWidth: "180px",
-            padding: "12px",
-            borderRadius: "25px",
-            border: "1px solid #ccc",
-            outline: "none"
-          }}
-        />
+            flex: 1,
 
-        <button
-  onClick={getSuggestion}
-  style={{
-    marginLeft: "8px",
-    padding: "12px 16px",
-    minWidth: "50px",
-    background: "#2e7d32",
-            color: "white",
-            border: "none",
-            borderRadius: "50%",
-            cursor: "pointer"
+            overflowY: "auto",
+
+            padding:
+              isMobile
+                ? "16px"
+                : "24px",
+
+            background:
+              "linear-gradient(to bottom,#f9fffb,#eef7f0)"
           }}
         >
-          ➤
-        </button>
 
-        <button
-  onClick={startListening}
-  style={{
-    marginLeft: "8px",
-    padding: "12px 15px",
-    minWidth: "50px",
-    background: "#ff9800",
-            color: "white",
-            border: "none",
-            borderRadius: "50%",
-            cursor: "pointer"
+          {messages.length === 0 && (
+
+            <div
+              style={{
+                textAlign: "center",
+
+                marginTop: "80px",
+
+                color: "#6b7280"
+              }}
+            >
+
+              <h2>
+                👋 Welcome to CureNest AI
+              </h2>
+
+              <p>
+                Ask health-related questions,
+                medicine suggestions, or
+                wellness guidance.
+              </p>
+
+            </div>
+
+          )}
+
+          {messages.map(
+            (msg, index) => (
+
+              <div
+                key={index}
+
+                style={{
+                  textAlign:
+                    msg.sender ===
+                    "user"
+
+                      ? "right"
+
+                      : "left",
+
+                  marginBottom:
+                    "18px"
+                }}
+              >
+
+                <div
+                  style={{
+                    display:
+                      "inline-block",
+
+                    padding:
+                      "16px 18px",
+
+                    borderRadius:
+                      "22px",
+
+                    maxWidth:
+                      "78%",
+
+                    lineHeight:
+                      "1.7",
+
+                    fontSize:
+                      "15px",
+
+                    background:
+
+                      msg.sender ===
+                      "user"
+
+                        ? "linear-gradient(135deg,#2e7d32,#4caf50)"
+
+                        : "white",
+
+                    color:
+
+                      msg.sender ===
+                      "user"
+
+                        ? "white"
+
+                        : "#111827",
+
+                    boxShadow:
+                      "0 8px 20px rgba(0,0,0,0.08)"
+                  }}
+                >
+                  {msg.text}
+                </div>
+
+              </div>
+            )
+          )}
+
+        </div>
+
+        {/* INPUT AREA */}
+
+        <div
+          style={{
+            padding: "18px",
+
+            background: "white",
+
+            borderTop:
+              "1px solid rgba(0,0,0,0.05)",
+
+            display: "flex",
+
+            gap: "12px",
+
+            alignItems: "center"
           }}
         >
-          🎤
-        </button>
+
+          {/* INPUT */}
+
+          <input
+            type="text"
+
+            placeholder="Describe your problem..."
+
+            value={input}
+
+            onChange={(e) =>
+              setInput(
+                e.target.value
+              )
+            }
+
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                getSuggestion();
+              }
+            }}
+
+            style={{
+              flex: 1,
+
+              padding:
+                "16px 20px",
+
+              borderRadius:
+                "18px",
+
+              border:
+                "1px solid #ddd",
+
+              outline: "none",
+
+              fontSize:
+                "15px",
+
+              background:
+                "#f9fafb"
+            }}
+          />
+
+          {/* SEND BUTTON */}
+
+          <button
+            onClick={
+              getSuggestion
+            }
+
+            style={{
+              width: "56px",
+
+              height: "56px",
+
+              borderRadius:
+                "18px",
+
+              border: "none",
+
+              background:
+                "linear-gradient(135deg,#2e7d32,#4caf50)",
+
+              color: "white",
+
+              fontSize: "20px",
+
+              cursor: "pointer",
+
+              boxShadow:
+                "0 10px 20px rgba(46,125,50,0.25)"
+            }}
+          >
+            ➤
+          </button>
+
+          {/* MIC BUTTON */}
+
+          <button
+            onClick={
+              startListening
+            }
+
+            style={{
+              width: "56px",
+
+              height: "56px",
+
+              borderRadius:
+                "18px",
+
+              border: "none",
+
+              background:
+                "linear-gradient(135deg,#ff9800,#ffb74d)",
+
+              color: "white",
+
+              fontSize: "20px",
+
+              cursor: "pointer"
+            }}
+          >
+            🎤
+          </button>
+
+        </div>
+
       </div>
+
     </div>
   );
 }
