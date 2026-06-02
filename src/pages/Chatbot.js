@@ -6,6 +6,9 @@ function Chatbot({ addToCart }) {
 
   const [messages, setMessages] = useState([]);
 
+  const [loading, setLoading] =
+    useState(false);
+
   const isMobile =
     window.innerWidth <= 768;
 
@@ -16,22 +19,42 @@ function Chatbot({ addToCart }) {
     window.webkitSpeechRecognition;
 
   const recognition =
-    new SpeechRecognition();
+    SpeechRecognition
+      ? new SpeechRecognition()
+      : null;
 
-  recognition.continuous = false;
+  if (recognition) {
 
-  recognition.lang = "en-IN";
+    recognition.continuous = false;
+
+    recognition.lang = "en-US";
+  }
 
   // 🔊 Speak AI Reply
 
   const speak = (text) => {
 
-    const speech =
-      new SpeechSynthesisUtterance(
-        text
-      );
+    window.speechSynthesis.cancel();
 
-    speech.lang = "en-IN";
+    const speech =
+      new SpeechSynthesisUtterance();
+
+    speech.text = text;
+
+    speech.lang = "en-US";
+
+    speech.rate = 1;
+
+    speech.pitch = 1;
+
+    speech.volume = 1;
+
+    const voices =
+      window.speechSynthesis.getVoices();
+
+    if (voices.length > 0) {
+      speech.voice = voices[0];
+    }
 
     window.speechSynthesis.speak(
       speech
@@ -41,6 +64,15 @@ function Chatbot({ addToCart }) {
   // 🎤 Mic Start
 
   const startListening = () => {
+
+    if (!recognition) {
+
+      alert(
+        "Voice recognition not supported"
+      );
+
+      return;
+    }
 
     recognition.start();
 
@@ -74,6 +106,10 @@ function Chatbot({ addToCart }) {
         userMessage
       ]);
 
+      setInput("");
+
+      setLoading(true);
+
       try {
 
         const res = await fetch(
@@ -105,16 +141,20 @@ function Chatbot({ addToCart }) {
           aiMessage
         ]);
 
-        speak(data.reply);
+        setLoading(false);
 
-        setInput("");
+        // slight delay for mobile speech
+        setTimeout(() => {
+          speak(data.reply);
+        }, 300);
 
       } catch (error) {
 
         console.error(error);
 
-        alert("AI Error");
+        setLoading(false);
 
+        alert("AI Error");
       }
     };
 
@@ -355,6 +395,37 @@ function Chatbot({ addToCart }) {
             )
           )}
 
+          {/* TYPING */}
+
+          {loading && (
+
+            <div
+              style={{
+                marginBottom: "18px"
+              }}
+            >
+
+              <div
+                style={{
+                  display: "inline-block",
+
+                  padding: "16px 18px",
+
+                  borderRadius: "22px",
+
+                  background: "white",
+
+                  boxShadow:
+                    "0 8px 20px rgba(0,0,0,0.08)"
+                }}
+              >
+                Typing...
+              </div>
+
+            </div>
+
+          )}
+
         </div>
 
         {/* INPUT AREA */}
@@ -392,7 +463,9 @@ function Chatbot({ addToCart }) {
             }
 
             onKeyDown={(e) => {
+
               if (e.key === "Enter") {
+
                 getSuggestion();
               }
             }}
@@ -426,6 +499,8 @@ function Chatbot({ addToCart }) {
               getSuggestion
             }
 
+            disabled={loading}
+
             style={{
               width: "56px",
 
@@ -444,6 +519,11 @@ function Chatbot({ addToCart }) {
               fontSize: "20px",
 
               cursor: "pointer",
+
+              opacity:
+                loading
+                  ? 0.7
+                  : 1,
 
               boxShadow:
                 "0 10px 20px rgba(46,125,50,0.25)"
