@@ -1101,4 +1101,3 @@ style={{
 
 export default Medicines;
 
-Stock
