@@ -132,6 +132,127 @@ function Home() {
       </div>
 
     </div>
+    {/* TRUST STATS */}
+
+<div
+  style={{
+    marginTop: "60px",
+    display: "grid",
+    gridTemplateColumns:
+      "repeat(auto-fit,minmax(220px,1fr))",
+    gap: "24px"
+  }}
+>
+
+  {/* CARD 1 */}
+
+  <div
+    style={{
+      background: "white",
+      padding: "30px",
+      borderRadius: "24px",
+      textAlign: "center",
+      boxShadow:
+        "0 8px 25px rgba(0,0,0,0.08)"
+    }}
+  >
+    <h1
+      style={{
+        color: "#2e7d32",
+        fontSize: "42px",
+        margin: 0
+      }}
+    >
+      50+
+    </h1>
+
+    <p style={{ color: "#6b7280" }}>
+      Years Experience
+    </p>
+  </div>
+
+  {/* CARD 2 */}
+
+  <div
+    style={{
+      background: "white",
+      padding: "30px",
+      borderRadius: "24px",
+      textAlign: "center",
+      boxShadow:
+        "0 8px 25px rgba(0,0,0,0.08)"
+    }}
+  >
+    <h1
+      style={{
+        color: "#2e7d32",
+        fontSize: "42px",
+        margin: 0
+      }}
+    >
+      5000+
+    </h1>
+
+    <p style={{ color: "#6b7280" }}>
+      Happy Patients
+    </p>
+  </div>
+
+  {/* CARD 3 */}
+
+  <div
+    style={{
+      background: "white",
+      padding: "30px",
+      borderRadius: "24px",
+      textAlign: "center",
+      boxShadow:
+        "0 8px 25px rgba(0,0,0,0.08)"
+    }}
+  >
+    <h1
+      style={{
+        color: "#2e7d32",
+        fontSize: "42px",
+        margin: 0
+      }}
+    >
+      1000+
+    </h1>
+
+    <p style={{ color: "#6b7280" }}>
+      Genuine Medicines
+    </p>
+  </div>
+
+  {/* CARD 4 */}
+
+  <div
+    style={{
+      background: "white",
+      padding: "30px",
+      borderRadius: "24px",
+      textAlign: "center",
+      boxShadow:
+        "0 8px 25px rgba(0,0,0,0.08)"
+    }}
+  >
+    <h1
+      style={{
+        color: "#2e7d32",
+        fontSize: "42px",
+        margin: 0
+      }}
+    >
+      AI
+    </h1>
+
+    <p style={{ color: "#6b7280" }}>
+      Powered Assistance
+    </p>
+  </div>
+
+</div>
 
   </div>
   );
