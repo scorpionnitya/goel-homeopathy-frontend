@@ -47,36 +47,70 @@ function Chatbot({ addToCart }) {
 
   // 🔊 Speak AI Reply
 
-  const speak = (text) => {
+const speak = (text) => {
 
-    window.speechSynthesis.resume();
+  window.speechSynthesis.cancel();
 
-    window.speechSynthesis.cancel();
+  const speech =
+    new SpeechSynthesisUtterance();
 
-    const speech =
-      new SpeechSynthesisUtterance();
+  speech.text = text;
 
-    speech.text = text;
+  speech.rate = 0.92;
 
-    speech.lang = "en-US";
+  speech.pitch = 1;
 
-    speech.rate = 1;
+  speech.volume = 1;
 
-    speech.pitch = 1;
+  // LOAD VOICES
 
-    speech.volume = 1;
+  const voices =
+    window.speechSynthesis.getVoices();
 
-    const voices =
-      window.speechSynthesis.getVoices();
+  // PREFER PROFESSIONAL VOICES
 
-    if (voices.length > 0) {
-      speech.voice = voices[0];
-    }
+  const preferredVoice =
+
+    voices.find((voice) =>
+      voice.name.includes("Google UK English Female")
+    )
+
+    ||
+
+    voices.find((voice) =>
+      voice.name.includes("Samantha")
+    )
+
+    ||
+
+    voices.find((voice) =>
+      voice.name.includes("Google US English")
+    )
+
+    ||
+
+    voices.find((voice) =>
+      voice.lang.includes("en")
+    );
+
+  if (preferredVoice) {
+
+    speech.voice =
+      preferredVoice;
+  }
+
+  speech.lang = "en-US";
+
+  // SMALL DELAY = smoother
+
+  setTimeout(() => {
 
     window.speechSynthesis.speak(
       speech
     );
-  };
+
+  }, 100);
+};
 
   // 🎤 Mic Start
 
