@@ -747,7 +747,7 @@ const getPrice = (med, p) => {
   className="fadeUp"
   style={{
     padding:
-      window.isMobile
+    isMobile
         ? "20px"
         : "40px"
   }}
