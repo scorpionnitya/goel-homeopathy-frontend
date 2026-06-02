@@ -3,6 +3,7 @@ import React, { useState } from "react";
 function Cart({ cart, setCart }) {
 
   const [showForm, setShowForm] = useState(false);
+
   const [loading, setLoading] = useState(false);
 
   const [userDetails, setUserDetails] = useState({
@@ -11,30 +12,53 @@ function Cart({ cart, setCart }) {
     address: ""
   });
 
-  // 👉 Total calculate
-const total = cart.reduce((sum, item) => {
+  const isMobile =
+    window.innerWidth <= 768;
 
-  const price = item.price
-    ? parseInt(item.price.toString().replace("₹", ""))
-    : 0;
+  // TOTAL
 
-  return sum + price * item.quantity;
+  const total = cart.reduce(
+    (sum, item) => {
 
-}, 0);
+      const price = item.price
+        ? parseInt(
+            item.price
+              .toString()
+              .replace("₹", "")
+          )
+        : 0;
 
-  // 👉 Remove item
+      return (
+        sum +
+        price * item.quantity
+      );
+
+    },
+    0
+  );
+
+  // REMOVE ITEM
+
   const removeItem = (index) => {
+
     const newCart = [...cart];
+
     newCart.splice(index, 1);
+
     setCart(newCart);
   };
 
-  // 👉 Order function (FIXED)
+  // ORDER FUNCTION
+
   const handleOrder = async () => {
 
     if (loading) return;
 
-    if (!userDetails.name || !userDetails.phone || !userDetails.address) {
+    if (
+      !userDetails.name ||
+      !userDetails.phone ||
+      !userDetails.address
+    ) {
       alert("Please fill all details");
       return;
     }
@@ -42,21 +66,29 @@ const total = cart.reduce((sum, item) => {
     setLoading(true);
 
     try {
-      const res = await fetch("https://goel-homeopathy-backend-1.onrender.com/api/orders", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          items: cart,
-          user: userDetails,
-          totalAmount: total
-        })
-      });
 
-      // 👇 IMPORTANT FIX
+      const res = await fetch(
+        "https://goel-homeopathy-backend-1.onrender.com/api/orders",
+        {
+          method: "POST",
+
+          headers: {
+            "Content-Type":
+              "application/json"
+          },
+
+          body: JSON.stringify({
+            items: cart,
+            user: userDetails,
+            totalAmount: total
+          })
+        }
+      );
+
       if (!res.ok) {
-        throw new Error("Server error");
+        throw new Error(
+          "Server error"
+        );
       }
 
       await res.json();
@@ -65,6 +97,7 @@ const total = cart.reduce((sum, item) => {
 🛒 New CureNest Order
 
 👤 Name: ${userDetails.name}
+
 📞 Phone: ${userDetails.phone}
 
 📍 Address:
@@ -73,221 +106,793 @@ ${userDetails.address}
 💰 Total Amount: ₹${total}
 
 🧾 Products:
-${cart.map(
-(item) =>
-`${item.name} ${item.power || ""} - ₹${item.price} × ${item.quantity}`
-).join("\n")}
+${cart
+  .map(
+    (item) =>
+      `${item.name} ${
+        item.power || ""
+      } - ₹${item.price} × ${
+        item.quantity
+      }`
+  )
+  .join("\n")}
 `;
 
-const whatsappURL =
-`https://wa.me/917302512068?text=${encodeURIComponent(message)}`;
+      const whatsappURL =
+        `https://wa.me/917302512068?text=${encodeURIComponent(message)}`;
 
-window.location.href = whatsappURL;
+      window.location.href =
+        whatsappURL;
 
-setTimeout(() => {
-  alert("Order placed successfully");
-}, 1000);
-
-      // reset after success
       setTimeout(() => {
-  setCart([]);
-  setShowForm(false);
 
-  setUserDetails({
-    name: "",
-    phone: "",
-    address: ""
-  });
-}, 2000);
+        alert(
+          "Order placed successfully"
+        );
+
+      }, 1000);
+
+      setTimeout(() => {
+
+        setCart([]);
+
+        setShowForm(false);
+
+        setUserDetails({
+          name: "",
+          phone: "",
+          address: ""
+        });
+
+      }, 2000);
 
     } catch (error) {
+
       console.error(error);
+
       alert("Server error");
+
     }
 
     setLoading(false);
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1 style={{ textAlign: "center" }}>🛒 Your Cart</h1>
+
+    <div
+      className="fadeUp"
+      style={{
+        padding:
+          isMobile
+            ? "20px"
+            : "40px"
+      }}
+    >
+
+      {/* HEADING */}
+
+      <div
+        style={{
+          textAlign: "center"
+        }}
+      >
+
+        <h1
+          style={{
+            fontSize:
+              isMobile
+                ? "42px"
+                : "58px",
+
+            color: "#2e7d32",
+
+            fontWeight: "800"
+          }}
+        >
+          Your Cart
+        </h1>
+
+        <p
+          style={{
+            color: "#6b7280",
+
+            marginTop: "10px",
+
+            fontSize: "18px"
+          }}
+        >
+          Review your selected
+          medicines before placing
+          your order.
+        </p>
+
+      </div>
 
       {cart.length === 0 ? (
-        <p style={{ textAlign: "center" }}>Cart is empty</p>
-      ) : (
-        <>
-          {/* Cart Items */}
-          <div style={{
-            display: "grid",
-            gap: "15px",
-            marginTop: "20px"
-          }}>
-            {cart.map((item, index) => (
-              <div key={index} style={{
-                border: "1px solid #ddd",
-                padding: "10px",
-                borderRadius: "8px",
-                display: "flex",
-                justifyContent: "space-between",
-                flexWrap: "wrap",
-gap: "10px",
-                alignItems: "center"
-              }}>
-                <div>
-                  <h3>{item.name} {item.power}</h3>
-                  <p>
-                  ₹{item.price} × {item.quantity}
-                  </p>
-                </div>
-                <div
-  style={{
-    display: "flex",
-    alignItems: "center",
-    gap: "10px",
-    marginTop: "10px"
-  }}
->
-  <button
-    onClick={() => {
-      setCart(
-        cart.map((cartItem) =>
-          cartItem.name === item.name &&
-          cartItem.power === item.power
-            ? {
-                ...cartItem,
-                quantity:
-                  cartItem.quantity > 1
-                    ? cartItem.quantity - 1
-                    : 1
-              }
-            : cartItem
-        )
-      );
-    }}
-  >
-    -
-  </button>
 
-  <span>{item.quantity}</span>
+        <div
+          style={{
+            textAlign: "center",
+            marginTop: "60px"
+          }}
+        >
 
-  <button
-    onClick={() => {
-      setCart(
-        cart.map((cartItem) =>
-          cartItem.name === item.name &&
-          cartItem.power === item.power
-            ? {
-                ...cartItem,
-                quantity: cartItem.quantity + 1
-              }
-            : cartItem
-        )
-      );
-    }}
-  >
-    +
-  </button>
-</div>
-
-                <button
-                  onClick={() => removeItem(index)}
-                  style={{
-                    background: "red",
-                    color: "white",
-                    border: "none",
-                    padding: "6px 10px",
-                    borderRadius: "5px",
-                    cursor: "pointer"
-                  }}
-                >
-                  Remove
-                </button>
-              </div>
-            ))}
-          </div>
-
-          {/* Total */}
-          <h2 style={{ marginTop: "20px" }}>
-            Total: ₹{total}
+          <h2>
+            Your cart is empty
           </h2>
 
-          {/* Proceed Button */}
-          {!showForm && (
-            <button
-              onClick={() => setShowForm(true)}
+          <p
+            style={{
+              color: "#6b7280"
+            }}
+          >
+            Add medicines to continue.
+          </p>
+
+        </div>
+
+      ) : (
+
+        <div
+          style={{
+            display: "grid",
+
+            gridTemplateColumns:
+              isMobile
+                ? "1fr"
+                : "2fr 1fr",
+
+            gap: "30px",
+
+            marginTop: "40px"
+          }}
+        >
+
+          {/* LEFT SIDE */}
+
+          <div>
+
+            {cart.map(
+              (item, index) => (
+
+                <div
+                  key={index}
+
+                  style={{
+
+                    background:
+                      "white",
+
+                    borderRadius:
+                      "24px",
+
+                    padding: "22px",
+
+                    marginBottom:
+                      "20px",
+
+                    boxShadow:
+                      "0 10px 25px rgba(0,0,0,0.08)",
+
+                    border:
+                      "1px solid rgba(0,0,0,0.04)"
+                  }}
+                >
+
+                  <div
+                    style={{
+                      display: "flex",
+
+                      justifyContent:
+                        "space-between",
+
+                      alignItems:
+                        "center",
+
+                      flexWrap: "wrap",
+
+                      gap: "20px"
+                    }}
+                  >
+
+                    {/* PRODUCT INFO */}
+
+                    <div>
+
+                      <h2
+                        style={{
+                          margin: 0,
+
+                          color:
+                            "#1f2937"
+                        }}
+                      >
+                        {item.name}
+                      </h2>
+
+                      <p
+                        style={{
+                          color:
+                            "#6b7280",
+
+                          marginTop:
+                            "8px"
+                        }}
+                      >
+                        Power:
+                        {" "}
+                        {item.power}
+                      </p>
+
+                      <h3
+                        style={{
+                          color:
+                            "#2e7d32"
+                        }}
+                      >
+                        ₹
+                        {item.price}
+                      </h3>
+
+                    </div>
+
+                    {/* QUANTITY */}
+
+                    <div
+                      style={{
+                        display: "flex",
+
+                        alignItems:
+                          "center",
+
+                        gap: "12px"
+                      }}
+                    >
+
+                      <button
+                        onClick={() => {
+
+                          setCart(
+                            cart.map(
+                              (
+                                cartItem
+                              ) =>
+
+                                cartItem.name ===
+                                  item.name &&
+                                cartItem.power ===
+                                  item.power
+
+                                  ? {
+                                      ...cartItem,
+
+                                      quantity:
+                                        cartItem.quantity >
+                                        1
+
+                                          ? cartItem.quantity -
+                                            1
+
+                                          : 1
+                                    }
+
+                                  : cartItem
+                            )
+                          );
+
+                        }}
+
+                        style={{
+                          width: "40px",
+
+                          height:
+                            "40px",
+
+                          border:
+                            "none",
+
+                          borderRadius:
+                            "12px",
+
+                          background:
+                            "#f3f4f6",
+
+                          cursor:
+                            "pointer",
+
+                          fontSize:
+                            "18px"
+                        }}
+                      >
+                        -
+                      </button>
+
+                      <span
+                        style={{
+                          fontWeight:
+                            "700",
+
+                          fontSize:
+                            "18px"
+                        }}
+                      >
+                        {item.quantity}
+                      </span>
+
+                      <button
+                        onClick={() => {
+
+                          setCart(
+                            cart.map(
+                              (
+                                cartItem
+                              ) =>
+
+                                cartItem.name ===
+                                  item.name &&
+                                cartItem.power ===
+                                  item.power
+
+                                  ? {
+                                      ...cartItem,
+
+                                      quantity:
+                                        cartItem.quantity +
+                                        1
+                                    }
+
+                                  : cartItem
+                            )
+                          );
+
+                        }}
+
+                        style={{
+                          width: "40px",
+
+                          height:
+                            "40px",
+
+                          border:
+                            "none",
+
+                          borderRadius:
+                            "12px",
+
+                          background:
+                            "#2e7d32",
+
+                          color:
+                            "white",
+
+                          cursor:
+                            "pointer",
+
+                          fontSize:
+                            "18px"
+                        }}
+                      >
+                        +
+                      </button>
+
+                    </div>
+
+                  </div>
+
+                  {/* REMOVE */}
+
+                  <button
+                    onClick={() =>
+                      removeItem(index)
+                    }
+
+                    style={{
+                      marginTop: "20px",
+
+                      background:
+                        "#ef4444",
+
+                      color: "white",
+
+                      border: "none",
+
+                      padding:
+                        "10px 18px",
+
+                      borderRadius:
+                        "12px",
+
+                      cursor:
+                        "pointer",
+
+                      fontWeight:
+                        "600"
+                    }}
+                  >
+                    Remove
+                  </button>
+
+                </div>
+              )
+            )}
+
+          </div>
+
+          {/* RIGHT SIDE */}
+
+          <div>
+
+            <div
               style={{
-                marginTop: "20px",
-                padding: "10px 20px",
-                background: "green",
-                color: "white",
-                border: "none",
-                borderRadius: "6px",
-                cursor: "pointer",
-                fontSize: "16px",
-                width: "100%"
+                background: "white",
+
+                borderRadius:
+                  "28px",
+
+                padding: "28px",
+
+                height:
+                  "fit-content",
+
+                position:
+                  "sticky",
+
+                top: "100px",
+
+                boxShadow:
+                  "0 10px 30px rgba(0,0,0,0.08)"
               }}
             >
-              Proceed to Buy
-            </button>
-          )}
 
-          {/* Contact Form */}
-          {showForm && (
-            <div style={{
-              marginTop: "20px",
-              border: "1px solid #ddd",
-              padding: "15px",
-              borderRadius: "10px"
-            }}>
-              <h3>Enter Contact Details</h3>
-
-              <input
-                type="text"
-                placeholder="Name"
-                value={userDetails.name}
-                onChange={(e) =>
-                  setUserDetails({ ...userDetails, name: e.target.value })
-                }
-                style={{ width: "100%", padding: "8px", marginBottom: "10px" }}
-              />
-
-              <input
-                type="text"
-                placeholder="Phone"
-                value={userDetails.phone}
-                onChange={(e) =>
-                  setUserDetails({ ...userDetails, phone: e.target.value })
-                }
-                style={{ width: "100%", padding: "8px", marginBottom: "10px" }}
-              />
-
-              <textarea
-                placeholder="Address"
-                value={userDetails.address}
-                onChange={(e) =>
-                  setUserDetails({ ...userDetails, address: e.target.value })
-                }
-                style={{ width: "100%", padding: "8px", marginBottom: "10px" }}
-              />
-
-              <button
-                onClick={handleOrder}
-                disabled={loading}
+              <h2
                 style={{
-                  padding: "10px",
-                  background: loading ? "gray" : "green",
-                  color: "white",
-                  border: "none",
-                  borderRadius: "6px",
-                  cursor: "pointer"
+                  marginTop: 0
                 }}
               >
-                {loading ? "Placing Order..." : "Confirm Order"}
-              </button>
+                Order Summary
+              </h2>
+
+              <div
+                style={{
+                  display: "flex",
+
+                  justifyContent:
+                    "space-between",
+
+                  marginTop: "20px"
+                }}
+              >
+
+                <span>
+                  Total Items
+                </span>
+
+                <b>
+                  {cart.length}
+                </b>
+
+              </div>
+
+              <div
+                style={{
+                  display: "flex",
+
+                  justifyContent:
+                    "space-between",
+
+                  marginTop: "12px"
+                }}
+              >
+
+                <span>
+                  Delivery
+                </span>
+
+                <b>
+                  Free
+                </b>
+
+              </div>
+
+              <hr
+                style={{
+                  margin:
+                    "20px 0"
+                }}
+              />
+
+              <div
+                style={{
+                  display: "flex",
+
+                  justifyContent:
+                    "space-between",
+
+                  fontSize:
+                    "22px",
+
+                  fontWeight:
+                    "800",
+
+                  color:
+                    "#2e7d32"
+                }}
+              >
+
+                <span>Total</span>
+
+                <span>
+                  ₹{total}
+                </span>
+
+              </div>
+
+              {/* BUTTON */}
+
+              {!showForm && (
+
+                <button
+                  onClick={() =>
+                    setShowForm(true)
+                  }
+
+                  style={{
+                    width: "100%",
+
+                    background:
+                      "linear-gradient(135deg,#2e7d32,#4caf50)",
+
+                    color:
+                      "white",
+
+                    border: "none",
+
+                    padding:
+                      "16px",
+
+                    borderRadius:
+                      "18px",
+
+                    fontWeight:
+                      "700",
+
+                    fontSize:
+                      "16px",
+
+                    cursor:
+                      "pointer",
+
+                    marginTop:
+                      "20px",
+
+                    boxShadow:
+                      "0 10px 25px rgba(46,125,50,0.25)"
+                  }}
+                >
+                  Proceed to Buy
+                </button>
+
+              )}
+
+              {/* TRUST BADGES */}
+
+              <div
+                style={{
+                  marginTop: "20px"
+                }}
+              >
+
+                <p
+                  style={{
+                    color:
+                      "#6b7280"
+                  }}
+                >
+                  ✅ Genuine Medicines
+                </p>
+
+                <p
+                  style={{
+                    color:
+                      "#6b7280"
+                  }}
+                >
+                  🚚 Fast Delivery
+                </p>
+
+                <p
+                  style={{
+                    color:
+                      "#6b7280"
+                  }}
+                >
+                  🔒 Secure Ordering
+                </p>
+
+              </div>
+
+              {/* FORM */}
+
+              {showForm && (
+
+                <div
+                  style={{
+                    marginTop:
+                      "24px"
+                  }}
+                >
+
+                  <input
+                    type="text"
+
+                    placeholder="Full Name"
+
+                    value={
+                      userDetails.name
+                    }
+
+                    onChange={(e) =>
+                      setUserDetails({
+                        ...userDetails,
+
+                        name:
+                          e.target.value
+                      })
+                    }
+
+                    style={{
+                      width: "100%",
+
+                      padding:
+                        "14px",
+
+                      borderRadius:
+                        "14px",
+
+                      border:
+                        "1px solid #ddd",
+
+                      marginBottom:
+                        "14px",
+
+                      outline:
+                        "none"
+                    }}
+                  />
+
+                  <input
+                    type="text"
+
+                    placeholder="Phone Number"
+
+                    value={
+                      userDetails.phone
+                    }
+
+                    onChange={(e) =>
+                      setUserDetails({
+                        ...userDetails,
+
+                        phone:
+                          e.target.value
+                      })
+                    }
+
+                    style={{
+                      width: "100%",
+
+                      padding:
+                        "14px",
+
+                      borderRadius:
+                        "14px",
+
+                      border:
+                        "1px solid #ddd",
+
+                      marginBottom:
+                        "14px",
+
+                      outline:
+                        "none"
+                    }}
+                  />
+
+                  <textarea
+                    placeholder="Delivery Address"
+
+                    value={
+                      userDetails.address
+                    }
+
+                    onChange={(e) =>
+                      setUserDetails({
+                        ...userDetails,
+
+                        address:
+                          e.target.value
+                      })
+                    }
+
+                    style={{
+                      width: "100%",
+
+                      padding:
+                        "14px",
+
+                      borderRadius:
+                        "14px",
+
+                      border:
+                        "1px solid #ddd",
+
+                      minHeight:
+                        "120px",
+
+                      outline:
+                        "none"
+                    }}
+                  />
+
+                  <button
+                    onClick={
+                      handleOrder
+                    }
+
+                    disabled={
+                      loading
+                    }
+
+                    style={{
+                      width: "100%",
+
+                      background:
+                        loading
+                          ? "#9ca3af"
+                          : "linear-gradient(135deg,#2e7d32,#4caf50)",
+
+                      color:
+                        "white",
+
+                      border:
+                        "none",
+
+                      padding:
+                        "16px",
+
+                      borderRadius:
+                        "18px",
+
+                      fontWeight:
+                        "700",
+
+                      fontSize:
+                        "16px",
+
+                      cursor:
+                        "pointer",
+
+                      marginTop:
+                        "20px"
+                    }}
+                  >
+                    {loading
+                      ? "Placing Order..."
+                      : "Confirm Order"}
+                  </button>
+
+                </div>
+
+              )}
+
             </div>
-          )}
-        </>
+
+          </div>
+
+        </div>
+
       )}
+
     </div>
   );
 }
