@@ -757,7 +757,7 @@ const getPrice = (med, p) => {
   <h1
     style={{
       fontSize:
-        window.isMobile
+        isMobile
           ? "42px"
           : "62px",
 
@@ -805,7 +805,7 @@ const getPrice = (med, p) => {
   padding: "16px 20px",
 
   width:
-    window.isMobile
+    isMobile
       ? "100%"
       : "420px",
 
@@ -848,7 +848,7 @@ const getPrice = (med, p) => {
       padding: "16px 20px",
 
       width:
-        window.isMobile
+      isMobile
           ? "100%"
           : "420px",
 
