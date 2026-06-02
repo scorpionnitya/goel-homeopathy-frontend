@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import heroImage from "../assets/doctor.jpg";
 
 function Home() {
   const navigate = useNavigate();
@@ -30,7 +29,7 @@ function Home() {
 
         <h1
           style={{
-            fontSize: "52px",
+            fontSize: window.innerWidth < 768 ? "52px" : "72px",
             marginBottom: "10px",
             color: "#2e7d32",
             lineHeight: "1.1"
@@ -52,7 +51,7 @@ function Home() {
 
         <p
           style={{
-            fontSize: "18px",
+            fontSize: "20px",
             lineHeight: "1.8",
             maxWidth: "600px",
             color: "#374151"
@@ -112,25 +111,6 @@ function Home() {
 
       </div>
 
-      {/* RIGHT IMAGE */}
-
-      <div style={{ flex: "1", minWidth: "280px" }}>
-
-        <img
-          src={heroImage}
-          alt="Healthcare"
-          style={{
-            width: "100%",
-            maxWidth: "500px",
-            borderRadius: "24px",
-            objectFit: "cover",
-            boxShadow:
-              "0 10px 30px rgba(0,0,0,0.1)"
-          }}
-        />
-
-      </div>
-
     </div>
     {/* TRUST STATS */}
 
@@ -149,7 +129,7 @@ function Home() {
   <div
     style={{
       background: "white",
-      padding: "30px",
+      padding: "22px",
       borderRadius: "24px",
       textAlign: "center",
       boxShadow:
@@ -159,7 +139,7 @@ function Home() {
     <h1
       style={{
         color: "#2e7d32",
-        fontSize: "42px",
+        fontSize: "34px",
         margin: 0
       }}
     >
