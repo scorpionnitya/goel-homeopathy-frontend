@@ -730,9 +730,13 @@ const getPrice = (med, p) => {
   return "₹100";
 };
 
-  const data = getData().filter((item) =>
-    item.toLowerCase().includes(search.toLowerCase())
-  );
+const filteredData = getData().filter((item) =>
+  item.toLowerCase().includes(search.toLowerCase())
+);
+
+const data = isMobile
+  ? filteredData.slice(0, 80)
+  : filteredData;
 
   const tabs = [
     "Dilution",
@@ -861,7 +865,6 @@ const getPrice = (med, p) => {
       background:
         "rgba(255,255,255,0.8)",
 
-      backdropFilter: "blur(10px)",
 
       boxShadow:
         "0 8px 20px rgba(0,0,0,0.06)"
@@ -897,8 +900,6 @@ Showing {data.length} medicines
   borderRadius: "30px",
 
   padding: "22px",
-
-  backdropFilter: "blur(12px)",
 
   border:
     "1px solid rgba(255,255,255,0.4)",
