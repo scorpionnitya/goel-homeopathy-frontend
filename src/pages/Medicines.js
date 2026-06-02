@@ -804,11 +804,8 @@ const getPrice = (med, p) => {
             style={{
   padding: "16px 20px",
 
-  width:
-    isMobile
-      ? "100%"
-      : "420px",
-
+ minWidth: "120px",
+ flex: "1",
   borderRadius: "18px",
 
   border: "1px solid rgba(255,255,255,0.4)",
