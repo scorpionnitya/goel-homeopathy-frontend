@@ -829,32 +829,48 @@ const getPrice = (med, p) => {
         ))}
       </div>
 
-      {/* Search */}
-      <div style={{ textAlign: "center", marginTop: "20px" }}>
-       style={{
-  padding: "16px 20px",
+{/* Search */}
 
-  width:
-    window.innerWidth < 768
-      ? "100%"
-      : "420px",
+<div style={{ textAlign: "center", marginTop: "20px" }}>
 
-  borderRadius: "18px",
+  <input
+    type="text"
+    placeholder="Search medicines..."
 
-  border: "1px solid rgba(255,255,255,0.4)",
+    value={search}
 
-  outline: "none",
+    onChange={(e) =>
+      setSearch(e.target.value)
+    }
 
-  fontSize: "16px",
+    style={{
+      padding: "16px 20px",
 
-  background: "rgba(255,255,255,0.8)",
+      width:
+        window.innerWidth < 768
+          ? "100%"
+          : "420px",
 
-  backdropFilter: "blur(10px)",
+      borderRadius: "18px",
 
-  boxShadow:
-    "0 8px 20px rgba(0,0,0,0.06)"
-}}
-      </div>
+      border:
+        "1px solid rgba(255,255,255,0.4)",
+
+      outline: "none",
+
+      fontSize: "16px",
+
+      background:
+        "rgba(255,255,255,0.8)",
+
+      backdropFilter: "blur(10px)",
+
+      boxShadow:
+        "0 8px 20px rgba(0,0,0,0.06)"
+    }}
+  />
+
+</div>
 
       <p style={{textAlign:"center",color:"#666"}}>
 Showing {data.length} medicines
