@@ -9,6 +9,7 @@ function Medicines({ addToCart }) {
   const [tab, setTab] = useState("Dilution");
   const [search, setSearch] = useState("");
   const [power, setPower] = useState({});
+  const isMobile = window.innerWidth <= 768;
 
 
 const getLabelStyle = (tab) => {
@@ -746,7 +747,7 @@ const getPrice = (med, p) => {
   className="fadeUp"
   style={{
     padding:
-      window.innerWidth < 768
+      window.isMobile
         ? "20px"
         : "40px"
   }}
@@ -756,7 +757,7 @@ const getPrice = (med, p) => {
   <h1
     style={{
       fontSize:
-        window.innerWidth < 768
+        window.isMobile
           ? "42px"
           : "62px",
 
@@ -804,7 +805,7 @@ const getPrice = (med, p) => {
   padding: "16px 20px",
 
   width:
-    window.innerWidth < 768
+    window.isMobile
       ? "100%"
       : "420px",
 
@@ -847,7 +848,7 @@ const getPrice = (med, p) => {
       padding: "16px 20px",
 
       width:
-        window.innerWidth < 768
+        window.isMobile
           ? "100%"
           : "420px",
 
