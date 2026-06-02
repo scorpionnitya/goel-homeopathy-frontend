@@ -1,69 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
 }
 
-body{
-  font-family:'Poppins',sans-serif;
-  background:linear-gradient(
-    to bottom,
-    #f4fff7,
-    #eefbf2
-  );
-
-  overflow-x:hidden;
-  color:#1f2937;
-}
-
-/* SMOOTH SCROLL */
-
 html{
   scroll-behavior:smooth;
 }
 
-/* ANIMATIONS */
+body{
+
+  margin:0;
+
+  font-family:'Inter',sans-serif;
+
+  background:
+  linear-gradient(
+    to bottom,
+    #f5fff7,
+    #eef7f0
+  );
+
+  color:#111827;
+
+  overflow-x:hidden;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+  width:10px;
+}
+
+::-webkit-scrollbar-track{
+  background:#eef7f0;
+}
+
+::-webkit-scrollbar-thumb{
+  background:#4caf50;
+  border-radius:999px;
+}
+
+/* FADE ANIMATION */
 
 .fadeUp{
-  animation:fadeUp 1s ease;
+
+  animation:
+  fadeUp 0.8s ease;
 }
 
 @keyframes fadeUp{
+
   from{
     opacity:0;
-    transform:translateY(40px);
+    transform:
+    translateY(30px);
   }
 
   to{
     opacity:1;
-    transform:translateY(0);
+    transform:
+    translateY(0);
   }
 }
 
 /* FLOATING EFFECT */
 
-.float{
-  animation:float 4s ease-in-out infinite;
+.floatCard{
+
+  transition:
+  transform 0.3s ease,
+  box-shadow 0.3s ease;
 }
 
-@keyframes float{
-  0%{
-    transform:translateY(0px);
-  }
+.floatCard:hover{
 
-  50%{
-    transform:translateY(-10px);
-  }
+  transform:
+  translateY(-8px);
 
-  100%{
-    transform:translateY(0px);
-  }
-}
-
-/* GLOW EFFECT */
-
-.glow{
   box-shadow:
-    0 0 20px rgba(46,125,50,0.2),
-    0 0 40px rgba(46,125,50,0.1);
+  0 20px 40px rgba(0,0,0,0.12);
+}
+
+/* BUTTONS */
+
+button{
+
+  transition:
+  all 0.3s ease;
+}
+
+button:hover{
+
+  transform:
+  translateY(-2px);
+
+  opacity:0.95;
+}
+
+/* INPUTS */
+
+input,
+textarea,
+select{
+
+  font-family:'Inter',sans-serif;
+}
+
+/* GLASS EFFECT */
+
+.glass{
+
+  background:
+  rgba(255,255,255,0.7);
+
+  backdrop-filter:
+  blur(12px);
+
+  border:
+  1px solid rgba(255,255,255,0.3);
+}
+
+/* GRADIENT TEXT */
+
+.gradientText{
+
+  background:
+  linear-gradient(
+    135deg,
+    #2e7d32,
+    #66bb6a
+  );
+
+  background-clip:text;
+
+  -webkit-background-clip:text;
+
+  -webkit-text-fill-color:
+  transparent;
+}
+
+/* PREMIUM SHADOW */
+
+.premiumShadow{
+
+  box-shadow:
+  0 10px 30px rgba(0,0,0,0.08);
 }
