@@ -13,6 +13,7 @@ import About from "./pages/About";
 import Cart from "./pages/Cart";
 import OrdersDashboard from "./pages/OrdersDashboard";
 import Chatbot from "./pages/Chatbot";
+import { Toaster } from "react-hot-toast";
 
 function App() {
 
@@ -88,6 +89,9 @@ function App() {
   return (
 
     <Router>
+      <Toaster
+  position="top-right"
+/>
 
       <div
         style={{

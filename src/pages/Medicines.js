@@ -4,6 +4,7 @@ import biochemicImg from "../assets/Biochemic.png";
 import bcImg from "../assets/BC.png";
 import motherImg from "../assets/mother.png";
 import rdropsImg from "../assets/Rdrops.png";
+import toast from "react-hot-toast";
 
 function Medicines({ addToCart }) {
   const [tab, setTab] = useState("Dilution");
@@ -1056,13 +1057,18 @@ Showing {data.length} medicines
 
               <button
                 onClick={() => {
-                  addToCart({
-                     name: med,
-                     power: selectedPower,
-                     price: price
-                   });
-                  
-                }}
+
+  addToCart({
+    name: med,
+    power: selectedPower,
+    price: price
+  });
+
+  toast.success(
+    "Added to cart"
+  );
+
+}}
 style={{
   width: "100%",
 
