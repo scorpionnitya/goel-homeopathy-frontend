@@ -758,22 +758,22 @@ const data = isMobile
 >
       <div style={{ textAlign: "center" }}>
 
-  <h1
-    style={{
-      fontSize:
-        isMobile
-          ? "42px"
-          : "62px",
+<h1
+  className="gradientText"
 
-      color: "#2e7d32",
+  style={{
+    fontSize:
+      isMobile
+        ? "42px"
+        : "62px",
 
-      fontWeight: "800",
+    fontWeight: "800",
 
-      marginBottom: "10px"
-    }}
-  >
-    Explore Medicines
-  </h1>
+    marginBottom: "10px"
+  }}
+>
+  Explore Medicines
+</h1>
 
   <p
     style={{
@@ -833,7 +833,29 @@ const data = isMobile
 
 {/* Search */}
 
-<div style={{ textAlign: "center", marginTop: "20px" }}>
+<div
+  className="glass premiumShadow"
+  style={{
+    position: "sticky",
+
+    top: "95px",
+
+    zIndex: 100,
+
+    padding:
+      isMobile
+        ? "18px"
+        : "22px",
+
+    borderRadius: "24px",
+
+    marginTop: "25px",
+
+    marginBottom: "30px",
+
+    textAlign: "center"
+  }}
+>
 
   <input
     type="text"
@@ -893,7 +915,8 @@ Showing {data.length} medicines
 
           return (
             <div
-              key={index}
+            key={index}
+            className="floatCard"
               style={{
   background: "rgba(255,255,255,0.75)",
 
@@ -916,7 +939,7 @@ Showing {data.length} medicines
               
 
             {getMedicineImage(med, tab)}
-            <div
+<div
   style={{
     display: "inline-block",
 
@@ -936,6 +959,56 @@ Showing {data.length} medicines
   }}
 >
   In Stock
+</div>
+
+<div
+  style={{
+    display: "flex",
+
+    gap: "8px",
+
+    marginTop: "10px",
+
+    flexWrap: "wrap"
+  }}
+>
+
+  <span
+    style={{
+      background: "#dbeafe",
+
+      color: "#1d4ed8",
+
+      padding: "5px 10px",
+
+      borderRadius: "999px",
+
+      fontSize: "11px",
+
+      fontWeight: "700"
+    }}
+  >
+    Genuine
+  </span>
+
+  <span
+    style={{
+      background: "#fef3c7",
+
+      color: "#b45309",
+
+      padding: "5px 10px",
+
+      borderRadius: "999px",
+
+      fontSize: "11px",
+
+      fontWeight: "700"
+    }}
+  >
+    Trusted
+  </span>
+
 </div>
             
 
@@ -988,12 +1061,10 @@ Showing {data.length} medicines
                      power: selectedPower,
                      price: price
                    });
-                  alert("Added to cart");
+                  
                 }}
-                style={{
+style={{
   width: "100%",
-
-  padding: "14px",
 
   background:
     "linear-gradient(135deg,#2e7d32,#4caf50)",
@@ -1002,20 +1073,20 @@ Showing {data.length} medicines
 
   border: "none",
 
+  padding: "14px",
+
   borderRadius: "16px",
-
-  cursor: "pointer",
-
-  marginTop: "16px",
 
   fontWeight: "700",
 
   fontSize: "15px",
 
-  transition: "0.3s",
+  cursor: "pointer",
+
+  marginTop: "18px",
 
   boxShadow:
-    "0 10px 20px rgba(46,125,50,0.25)"
+    "0 10px 20px rgba(46,125,50,0.2)"
 }}
               >
                 Add to Cart
@@ -1029,3 +1100,5 @@ Showing {data.length} medicines
 }
 
 export default Medicines;
+
+Stock
