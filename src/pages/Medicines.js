@@ -742,10 +742,46 @@ const getPrice = (med, p) => {
   ];
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1 style={{ textAlign: "center", color: "#2e7d32" }}>
-        💊 Homeopathy Medicines
-      </h1>
+    <div
+  className="fadeUp"
+  style={{
+    padding:
+      window.innerWidth < 768
+        ? "20px"
+        : "40px"
+  }}
+>
+      <div style={{ textAlign: "center" }}>
+
+  <h1
+    style={{
+      fontSize:
+        window.innerWidth < 768
+          ? "42px"
+          : "62px",
+
+      color: "#2e7d32",
+
+      fontWeight: "800",
+
+      marginBottom: "10px"
+    }}
+  >
+    Explore Medicines
+  </h1>
+
+  <p
+    style={{
+      color: "#6b7280",
+
+      fontSize: "18px"
+    }}
+  >
+    Genuine homeopathic medicines trusted
+    by families for generations.
+  </p>
+
+</div>
 
       {/* Tabs */}
       <div
@@ -765,14 +801,28 @@ const getPrice = (med, p) => {
               setSearch("");
             }}
             style={{
-              padding: "10px 14px",
-              border: "none",
-              borderRadius: "8px",
-              background: tab === item ? "#2e7d32" : "#ddd",
-              color: tab === item ? "white" : "black",
-              cursor: "pointer",
-              fontWeight: "bold"
-            }}
+  padding: "16px 20px",
+
+  width:
+    window.innerWidth < 768
+      ? "100%"
+      : "420px",
+
+  borderRadius: "18px",
+
+  border: "1px solid rgba(255,255,255,0.4)",
+
+  outline: "none",
+
+  fontSize: "16px",
+
+  background: "rgba(255,255,255,0.8)",
+
+  backdropFilter: "blur(10px)",
+
+  boxShadow:
+    "0 8px 20px rgba(0,0,0,0.06)"
+}}
           >
             {item}
           </button>
@@ -781,18 +831,29 @@ const getPrice = (med, p) => {
 
       {/* Search */}
       <div style={{ textAlign: "center", marginTop: "20px" }}>
-        <input
-          type="text"
-          placeholder="Search medicine..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          style={{
-            padding: "10px",
-            width: "250px",
-            borderRadius: "8px",
-            border: "1px solid #ccc"
-          }}
-        />
+       style={{
+  padding: "16px 20px",
+
+  width:
+    window.innerWidth < 768
+      ? "100%"
+      : "420px",
+
+  borderRadius: "18px",
+
+  border: "1px solid rgba(255,255,255,0.4)",
+
+  outline: "none",
+
+  fontSize: "16px",
+
+  background: "rgba(255,255,255,0.8)",
+
+  backdropFilter: "blur(10px)",
+
+  boxShadow:
+    "0 8px 20px rgba(0,0,0,0.06)"
+}}
       </div>
 
       <p style={{textAlign:"center",color:"#666"}}>
@@ -803,7 +864,8 @@ Showing {data.length} medicines
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit,minmax(230px,1fr))",
+          gridTemplateColumns:
+"repeat(auto-fit,minmax(260px,1fr))",
           gap: "20px",
           marginTop: "30px"
         }}
@@ -816,16 +878,50 @@ Showing {data.length} medicines
             <div
               key={index}
               style={{
-                border: "1px solid #ddd",
-                borderRadius: "12px",
-                padding: "15px",
-                background: "#f9fff9",
-                boxShadow: "0 4px 8px rgba(0,0,0,0.08)"
-              }}
+  background: "rgba(255,255,255,0.75)",
+
+  borderRadius: "30px",
+
+  padding: "22px",
+
+  backdropFilter: "blur(12px)",
+
+  border:
+    "1px solid rgba(255,255,255,0.4)",
+
+  boxShadow:
+    "0 10px 30px rgba(0,0,0,0.08)",
+
+  transition: "0.3s",
+
+  cursor: "pointer"
+}}
             >
+              
               
 
             {getMedicineImage(med, tab)}
+            <div
+  style={{
+    display: "inline-block",
+
+    background: "#dcfce7",
+
+    color: "#15803d",
+
+    padding: "6px 12px",
+
+    borderRadius: "999px",
+
+    fontSize: "12px",
+
+    fontWeight: "700",
+
+    marginTop: "10px"
+  }}
+>
+  In Stock
+</div>
             
 
               <select
@@ -834,18 +930,39 @@ Showing {data.length} medicines
                   setPower({ ...power, [med]: e.target.value })
                 }
                 style={{
-                  padding: "8px",
-                  width: "100%",
-                  marginTop: "10px",
-                  borderRadius: "6px"
-                }}
+  padding: "12px",
+
+  width: "100%",
+
+  marginTop: "16px",
+
+  borderRadius: "14px",
+
+  border: "1px solid #ddd",
+
+  background: "#f9fff9",
+
+  fontWeight: "600",
+
+  outline: "none"
+}}
               >
                 {getPowers().map((p) => (
                   <option key={p}>{p}</option>
                 ))}
               </select>
 
-              <p style={{ marginTop: "10px" }}>
+              <p
+  style={{
+    marginTop: "16px",
+
+    fontSize: "24px",
+
+    fontWeight: "800",
+
+    color: "#2e7d32"
+  }}
+>
                 <b>Price:</b> {price}
               </p>
 
@@ -859,15 +976,32 @@ Showing {data.length} medicines
                   alert("Added to cart");
                 }}
                 style={{
-                  width: "100%",
-                  padding: "10px",
-                  background: "#2e7d32",
-                  color: "white",
-                  border: "none",
-                  borderRadius: "8px",
-                  cursor: "pointer",
-                  marginTop: "10px"
-                }}
+  width: "100%",
+
+  padding: "14px",
+
+  background:
+    "linear-gradient(135deg,#2e7d32,#4caf50)",
+
+  color: "white",
+
+  border: "none",
+
+  borderRadius: "16px",
+
+  cursor: "pointer",
+
+  marginTop: "16px",
+
+  fontWeight: "700",
+
+  fontSize: "15px",
+
+  transition: "0.3s",
+
+  boxShadow:
+    "0 10px 20px rgba(46,125,50,0.25)"
+}}
               >
                 Add to Cart
               </button>
