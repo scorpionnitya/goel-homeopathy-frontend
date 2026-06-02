@@ -36,29 +36,34 @@ function App() {
 
 
   const navLink = {
-  color: "white",
+  color: "#2e7d32",
   textDecoration: "none",
-  fontWeight: "bold",
-  padding: "8px 12px",
-  borderRadius: "6px",
-  background: "rgba(255,255,255,0.15)",
-  fontSize: "14px"
+  fontWeight: "600",
+  padding: "10px 16px",
+  borderRadius: "12px",
+  fontSize: "15px",
+  transition: "0.3s"
 };
 
   return (
     <Router>
       <div style={{ padding: "10px", maxWidth: "100%" }}>
 
-        <nav
+<nav
   style={{
     marginBottom: "20px",
-    padding: "12px",
-    background: "#2e7d32",
-    borderRadius: "10px",
+    background: "white",
+    padding: "16px 24px",
+    borderRadius: "18px",
     display: "flex",
     flexWrap: "wrap",
-    gap: "8px",
-    justifyContent: "center"
+    gap: "12px",
+    justifyContent: "space-between",
+    alignItems: "center",
+    boxShadow: "0 8px 25px rgba(0,0,0,0.08)",
+    position: "sticky",
+    top: "10px",
+    zIndex: "1000"
   }}
 >
           <Link style={navLink} to="/">Home</Link>
