@@ -4,13 +4,28 @@ function Chatbot({ addToCart }) {
 
   const [input, setInput] = useState("");
 
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] =
+    useState([]);
 
   const [loading, setLoading] =
     useState(false);
 
   const isMobile =
     window.innerWidth <= 768;
+
+  // 🔓 Unlock mobile speech
+
+  const unlockSpeech = () => {
+
+    const utterance =
+      new SpeechSynthesisUtterance(
+        " "
+      );
+
+    window.speechSynthesis.speak(
+      utterance
+    );
+  };
 
   // 🎤 Voice Setup
 
@@ -33,6 +48,8 @@ function Chatbot({ addToCart }) {
   // 🔊 Speak AI Reply
 
   const speak = (text) => {
+
+    window.speechSynthesis.resume();
 
     window.speechSynthesis.cancel();
 
@@ -106,6 +123,8 @@ function Chatbot({ addToCart }) {
         userMessage
       ]);
 
+      const currentInput = input;
+
       setInput("");
 
       setLoading(true);
@@ -123,7 +142,8 @@ function Chatbot({ addToCart }) {
             },
 
             body: JSON.stringify({
-              message: input
+              message:
+                currentInput
             })
           }
         );
@@ -143,9 +163,12 @@ function Chatbot({ addToCart }) {
 
         setLoading(false);
 
-        // slight delay for mobile speech
+        // slight delay for mobile
+
         setTimeout(() => {
+
           speak(data.reply);
+
         }, 300);
 
       } catch (error) {
@@ -318,13 +341,15 @@ function Chatbot({ addToCart }) {
 
               <p>
                 Ask health-related questions,
-                medicine suggestions, or
-                wellness guidance.
+                medicine suggestions,
+                or wellness guidance.
               </p>
 
             </div>
 
           )}
+
+          {/* CHAT MESSAGES */}
 
           {messages.map(
             (msg, index) => (
@@ -407,13 +432,17 @@ function Chatbot({ addToCart }) {
 
               <div
                 style={{
-                  display: "inline-block",
+                  display:
+                    "inline-block",
 
-                  padding: "16px 18px",
+                  padding:
+                    "16px 18px",
 
-                  borderRadius: "22px",
+                  borderRadius:
+                    "22px",
 
-                  background: "white",
+                  background:
+                    "white",
 
                   boxShadow:
                     "0 8px 20px rgba(0,0,0,0.08)"
@@ -466,6 +495,8 @@ function Chatbot({ addToCart }) {
 
               if (e.key === "Enter") {
 
+                unlockSpeech();
+
                 getSuggestion();
               }
             }}
@@ -495,9 +526,12 @@ function Chatbot({ addToCart }) {
           {/* SEND BUTTON */}
 
           <button
-            onClick={
-              getSuggestion
-            }
+            onClick={() => {
+
+              unlockSpeech();
+
+              getSuggestion();
+            }}
 
             disabled={loading}
 
@@ -535,9 +569,12 @@ function Chatbot({ addToCart }) {
           {/* MIC BUTTON */}
 
           <button
-            onClick={
-              startListening
-            }
+            onClick={() => {
+
+              unlockSpeech();
+
+              startListening();
+            }}
 
             style={{
               width: "56px",
