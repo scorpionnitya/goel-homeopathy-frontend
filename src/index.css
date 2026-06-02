@@ -1,10 +1,69 @@
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: #f8fff8;
-  color: #1f2937;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-* {
-  box-sizing: border-box;
+body{
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(
+    to bottom,
+    #f4fff7,
+    #eefbf2
+  );
+
+  overflow-x:hidden;
+  color:#1f2937;
+}
+
+/* SMOOTH SCROLL */
+
+html{
+  scroll-behavior:smooth;
+}
+
+/* ANIMATIONS */
+
+.fadeUp{
+  animation:fadeUp 1s ease;
+}
+
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* FLOATING EFFECT */
+
+.float{
+  animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+  0%{
+    transform:translateY(0px);
+  }
+
+  50%{
+    transform:translateY(-10px);
+  }
+
+  100%{
+    transform:translateY(0px);
+  }
+}
+
+/* GLOW EFFECT */
+
+.glow{
+  box-shadow:
+    0 0 20px rgba(46,125,50,0.2),
+    0 0 40px rgba(46,125,50,0.1);
 }
