@@ -1,116 +1,291 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
+
 import { useState } from "react";
 
 import Home from "./pages/Home";
 import Medicines from "./pages/Medicines";
 import About from "./pages/About";
-
 import Cart from "./pages/Cart";
-
 import OrdersDashboard from "./pages/OrdersDashboard";
-
 import Chatbot from "./pages/Chatbot";
 
 function App() {
+
   const [cart, setCart] = useState([]);
 
+  const isMobile = window.innerWidth <= 768;
+
+  // ADD TO CART
+
   const addToCart = (medicine) => {
+
     const existing = cart.find(
-  (item) =>
-    item.name === medicine.name &&
-    item.power === medicine.power
-);
+      (item) =>
+        item.name === medicine.name &&
+        item.power === medicine.power
+    );
 
     if (existing) {
+
       setCart(
         cart.map((item) =>
-          item.name === medicine.name
-            ? { ...item, quantity: item.quantity + 1 }
+          item.name === medicine.name &&
+          item.power === medicine.power
+            ? {
+                ...item,
+                quantity: item.quantity + 1
+              }
             : item
         )
       );
+
     } else {
-      setCart([...cart, { ...medicine, quantity: 1 }]);
+
+      setCart([
+        ...cart,
+        {
+          ...medicine,
+          quantity: 1
+        }
+      ]);
+
     }
   };
 
+  // NAV LINK STYLE
 
-const navLink = {
-  color: "#2e7d32",
-  textDecoration: "none",
-  fontWeight: "600",
-  padding: "10px 16px",
-  borderRadius: "10px",
-  fontSize: "15px",
-  transition: "0.3s"
-};
-  return (
-    <Router>
-      <div
-  style={{
-    padding: "10px",
-    maxWidth: "100%",
+  const navLink = {
+
+    color: "#1f2937",
+
+    textDecoration: "none",
+
+    fontWeight: "700",
+
+    padding:
+      isMobile
+        ? "10px 14px"
+        : "12px 18px",
+
+    borderRadius: "14px",
+
     background:
-      "linear-gradient(to bottom,#f5fff7,#eef7f0)",
-    minHeight: "100vh"
-  }}
->
+      "rgba(255,255,255,0.7)",
 
-<nav
-  style={{
-    position: "sticky",
-    top: "10px",
-    zIndex: 1000,
-    margin: "10px auto 30px auto",
-    padding: "14px 20px",
-    background: "rgba(255,255,255,0.75)",
-    backdropFilter: "blur(12px)",
-    borderRadius: "18px",
-    display: "flex",
-    flexWrap: "wrap",
-    gap: "12px",
-    justifyContent: "center",
-    alignItems: "center",
-    maxWidth: "900px",
-    boxShadow: "0 8px 30px rgba(0,0,0,0.08)"
-  }}
->
-          <Link style={navLink} to="/">Home</Link>
-          <Link style={navLink} to="/medicines">Medicines</Link>
-          <Link style={navLink} to="/cart">Cart ({cart.length})</Link>
-          
-          <Link style={navLink} to="/about">About</Link>
-          
-          <Link style={navLink} to="/chat">AI Assistant</Link>
+    fontSize: "15px",
+
+    transition: "0.3s",
+
+    boxShadow:
+      "0 4px 12px rgba(0,0,0,0.05)"
+  };
+
+  return (
+
+    <Router>
+
+      <div
+        style={{
+          padding: "10px",
+
+          maxWidth: "100%",
+
+          background:
+            "linear-gradient(to bottom,#f5fff7,#eef7f0)",
+
+          minHeight: "100vh"
+        }}
+      >
+
+        {/* NAVBAR */}
+
+        <nav
+          style={{
+
+            position: "sticky",
+
+            top: "12px",
+
+            zIndex: 1000,
+
+            marginBottom: "30px",
+
+            padding:
+              isMobile
+                ? "14px"
+                : "18px",
+
+            background:
+              "rgba(255,255,255,0.75)",
+
+            backdropFilter: "blur(14px)",
+
+            border:
+              "1px solid rgba(255,255,255,0.4)",
+
+            borderRadius: "24px",
+
+            display: "flex",
+
+            flexWrap: "wrap",
+
+            gap: "12px",
+
+            justifyContent: "space-between",
+
+            alignItems: "center",
+
+            boxShadow:
+              "0 10px 30px rgba(0,0,0,0.08)"
+          }}
+        >
+
+          {/* LOGO */}
+
+          <div>
+
+            <h1
+              style={{
+                margin: 0,
+
+                color: "#2e7d32",
+
+                fontWeight: "800",
+
+                fontSize:
+                  isMobile
+                    ? "24px"
+                    : "30px"
+              }}
+            >
+              CureNest
+            </h1>
+
+            <p
+              style={{
+                margin: 0,
+
+                fontSize: "13px",
+
+                color: "#6b7280",
+
+                fontStyle: "italic"
+              }}
+            >
+              Health & Home
+            </p>
+
+          </div>
+
+          {/* NAV LINKS */}
+
+          <div
+            style={{
+              display: "flex",
+
+              gap: "10px",
+
+              flexWrap: "wrap",
+
+              justifyContent: "center"
+            }}
+          >
+
+            <Link
+              style={navLink}
+              to="/"
+            >
+              Home
+            </Link>
+
+            <Link
+              style={navLink}
+              to="/medicines"
+            >
+              Medicines
+            </Link>
+
+            <Link
+              style={navLink}
+              to="/cart"
+            >
+              Cart ({cart.length})
+            </Link>
+
+            <Link
+              style={navLink}
+              to="/about"
+            >
+              About
+            </Link>
+
+            <Link
+              style={navLink}
+              to="/chat"
+            >
+              AI Assistant
+            </Link>
+
+          </div>
+
         </nav>
 
-        {/* VERY IMPORTANT – ALL ROUTES MUST BE INSIDE THIS <Routes> BLOCK */}
+        {/* ROUTES */}
 
         <Routes>
 
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={<Home />}
+          />
 
           <Route
             path="/medicines"
-            element={<Medicines addToCart={addToCart} />}
+            element={
+              <Medicines
+                addToCart={addToCart}
+              />
+            }
           />
 
           <Route
             path="/cart"
-            element={<Cart cart={cart} setCart={setCart} />}
+            element={
+              <Cart
+                cart={cart}
+                setCart={setCart}
+              />
+            }
           />
 
-          
+          <Route
+            path="/goel-admin-orders-2026"
+            element={<OrdersDashboard />}
+          />
 
-          <Route path="/goel-admin-orders-2026" element={<OrdersDashboard />} />
+          <Route
+            path="/about"
+            element={<About />}
+          />
 
-          <Route path="/about" element={<About />} />
-
-          <Route path="/chat" element={<Chatbot addToCart={addToCart} />} />
+          <Route
+            path="/chat"
+            element={
+              <Chatbot
+                addToCart={addToCart}
+              />
+            }
+          />
 
         </Routes>
 
       </div>
+
     </Router>
   );
 }
