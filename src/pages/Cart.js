@@ -184,7 +184,7 @@ setOrderPlaced(true);
           }}
         >
           Review your selected
-          medicines before placing
+          product before placing
           your order.
         </p>
 
@@ -307,31 +307,247 @@ setOrderPlaced(true);
 
   </div>
 
+) : orderPlaced ? (
+
+  <div
+    style={{
+      marginTop: "60px",
+
+      display: "flex",
+
+      justifyContent: "center"
+    }}
+  >
+
+    <div
+      style={{
+        background:
+          "rgba(255,255,255,0.8)",
+
+        backdropFilter:
+          "blur(14px)",
+
+        borderRadius:
+          "30px",
+
+        padding: "50px",
+
+        textAlign: "center",
+
+        maxWidth: "600px",
+
+        width: "100%",
+
+        boxShadow:
+          "0 20px 50px rgba(0,0,0,0.08)"
+      }}
+    >
+
+      <div
+        style={{
+          fontSize: "90px"
+        }}
+      >
+        ✅
+      </div>
+
+      <h1
+        style={{
+          color: "#2e7d32",
+
+          marginTop: "10px"
+        }}
+      >
+        Order Confirmed
+      </h1>
+
+      <p
+        style={{
+          color: "#6b7280",
+
+          marginTop: "16px",
+
+          lineHeight: "1.7"
+        }}
+      >
+        Thank you for choosing
+        CureNest.
+
+        <br /><br />
+
+        Your order has been
+        placed successfully.
+
+        <br /><br />
+
+        🚚 Estimated delivery:
+        2-4 Days
+
+        <br /><br />
+
+        Our team will contact
+        you shortly on WhatsApp.
+      </p>
+
+      <button
+        onClick={() =>
+          window.location.reload()
+        }
+
+        style={{
+          marginTop: "30px",
+
+          background:
+            "linear-gradient(135deg,#2e7d32,#4caf50)",
+
+          color: "white",
+
+          border: "none",
+
+          padding:
+            "16px 28px",
+
+          borderRadius:
+            "18px",
+
+          fontWeight:
+            "700",
+
+          cursor: "pointer",
+
+          fontSize: "16px"
+        }}
+      >
+        Continue Shopping
+      </button>
+
+    </div>
+
+  </div>
+
 ) : cart.length === 0 ? (
 
-        <div
-          style={{
-            textAlign: "center",
-            marginTop: "60px"
-          }}
-        >
+  <div
+    style={{
+      display: "flex",
 
-          <h2>
-            Your cart is empty
-          </h2>
+      justifyContent: "center",
 
-          <p
-            style={{
-              color: "#6b7280"
-            }}
-          >
-            Add medicines to continue.
-          </p>
+      marginTop: "70px"
+    }}
+  >
 
-        </div>
+    <div
+      style={{
+        background:
+          "rgba(255,255,255,0.8)",
 
-      ) : (
+        backdropFilter:
+          "blur(14px)",
 
+        borderRadius:
+          "30px",
+
+        padding:
+          isMobile
+            ? "40px 24px"
+            : "60px",
+
+        textAlign: "center",
+
+        maxWidth: "600px",
+
+        width: "100%",
+
+        boxShadow:
+          "0 20px 50px rgba(0,0,0,0.08)"
+      }}
+    >
+
+      <div
+        style={{
+          fontSize:
+            "100px"
+        }}
+      >
+        🛒
+      </div>
+
+      <h1
+        style={{
+          color:
+            "#1f2937",
+
+          marginTop:
+            "10px"
+        }}
+      >
+        Your Cart is Empty
+      </h1>
+
+      <p
+        style={{
+          color:
+            "#6b7280",
+
+          marginTop:
+            "14px",
+
+          lineHeight:
+            "1.7"
+        }}
+      >
+        Looks like you have not
+        added any product yet.
+
+        <br /><br />
+
+        Explore our collection.
+      </p>
+
+      <button
+        onClick={() =>
+          window.location.href =
+            "/medicines"
+        }
+
+        style={{
+          marginTop:
+            "30px",
+
+          background:
+            "linear-gradient(135deg,#2e7d32,#4caf50)",
+
+          color:
+            "white",
+
+          border:
+            "none",
+
+          padding:
+            "16px 28px",
+
+          borderRadius:
+            "18px",
+
+          fontWeight:
+            "700",
+
+          cursor:
+            "pointer",
+
+          fontSize:
+            "16px"
+        }}
+      >
+        Explore Medicines
+      </button>
+
+    </div>
+
+  </div>
+
+) : (
         <div
           style={{
             display: "grid",
