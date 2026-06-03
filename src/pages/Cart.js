@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 
 function Cart({ cart, setCart }) {
 
@@ -59,7 +60,9 @@ function Cart({ cart, setCart }) {
       !userDetails.phone ||
       !userDetails.address
     ) {
-      alert("Please fill all details");
+      toast.error(
+  "Please fill all details"
+);
       return;
     }
 
@@ -126,9 +129,9 @@ ${cart
 
       setTimeout(() => {
 
-        alert(
-          "Order placed successfully"
-        );
+       toast.success(
+  "Order placed successfully"
+);
 
       }, 1000);
 
@@ -150,7 +153,9 @@ ${cart
 
       console.error(error);
 
-      alert("Server error");
+      toast.error(
+  "Server error"
+);
 
     }
 
@@ -261,7 +266,10 @@ ${cart
                   style={{
 
                     background:
-                      "white",
+                    "rgba(255,255,255,0.75)",
+
+                    backdropFilter:
+                    "blur(14px)",
 
                     borderRadius:
                       "24px",
@@ -550,6 +558,9 @@ ${cart
                 }}
               >
                 Order Summary
+                <p>
+🚚 Delivery in 2-4 days
+</p>
               </h2>
 
               <div
