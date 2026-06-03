@@ -60,7 +60,11 @@ const getLabelStyle = (tab) => {
   };
 };
 
-const getMedicineImage = (med, tab) => {
+const getMedicineImage = (
+  med,
+  tab,
+  small = false
+) => {
 
   let image = bottle;
 
@@ -81,7 +85,10 @@ const getMedicineImage = (med, tab) => {
     <div
       style={{
         position: "relative",
-        height: "240px",
+        height:
+        small
+        ? "120px"
+        : "240px",
         display: "flex",
         justifyContent: "center",
         alignItems: "center"
@@ -92,7 +99,10 @@ const getMedicineImage = (med, tab) => {
         src={image}
         alt={med}
         style={{
-          height: "100px",
+          height:
+          small
+          ? "100px"
+          : "220px",
           objectFit: "contain"
         }}
       />
