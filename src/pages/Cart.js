@@ -7,6 +7,7 @@ function Cart({ cart, setCart }) {
   const [showForm, setShowForm] = useState(false);
 
   const [loading, setLoading] = useState(false);
+  const [orderPlaced, setOrderPlaced] = useState(false);
 
   const [userDetails, setUserDetails] = useState({
     name: "",
@@ -71,32 +72,6 @@ function Cart({ cart, setCart }) {
 
     try {
 
-      const res = await fetch(
-        "https://goel-homeopathy-backend-1.onrender.com/api/orders",
-        {
-          method: "POST",
-
-          headers: {
-            "Content-Type":
-              "application/json"
-          },
-
-          body: JSON.stringify({
-            items: cart,
-            user: userDetails,
-            totalAmount: total
-          })
-        }
-      );
-
-      if (!res.ok) {
-        throw new Error(
-          "Server error"
-        );
-      }
-
-      await res.json();
-
       const message = `
 🛒 New CureNest Order
 
@@ -133,6 +108,7 @@ ${cart
        toast.success(
   "Order placed successfully"
 );
+setOrderPlaced(true);
 
       }, 1000);
 
@@ -213,8 +189,125 @@ ${cart
         </p>
 
       </div>
+      {orderPlaced ? (
 
-      {cart.length === 0 ? (
+  <div
+    style={{
+      marginTop: "60px",
+
+      display: "flex",
+
+      justifyContent: "center"
+    }}
+  >
+
+    <div
+      style={{
+        background:
+          "rgba(255,255,255,0.8)",
+
+        backdropFilter:
+          "blur(14px)",
+
+        borderRadius:
+          "30px",
+
+        padding: "50px",
+
+        textAlign: "center",
+
+        maxWidth: "600px",
+
+        width: "100%",
+
+        boxShadow:
+          "0 20px 50px rgba(0,0,0,0.08)"
+      }}
+    >
+
+      <div
+        style={{
+          fontSize: "90px"
+        }}
+      >
+        ✅
+      </div>
+
+      <h1
+        style={{
+          color: "#2e7d32",
+
+          marginTop: "10px"
+        }}
+      >
+        Order Confirmed
+      </h1>
+
+      <p
+        style={{
+          color: "#6b7280",
+
+          marginTop: "16px",
+
+          lineHeight: "1.7"
+        }}
+      >
+        Thank you for choosing
+        CureNest.
+
+        <br /><br />
+
+        Your order has been
+        placed successfully.
+
+        <br /><br />
+
+        🚚 Estimated delivery:
+        2-4 Days
+
+        <br /><br />
+
+        Our team will contact
+        you shortly on WhatsApp.
+      </p>
+
+      <button
+        onClick={() =>
+          window.location.reload()
+        }
+
+        style={{
+          marginTop: "30px",
+
+          background:
+            "linear-gradient(135deg,#2e7d32,#4caf50)",
+
+          color: "white",
+
+          border: "none",
+
+          padding:
+            "16px 28px",
+
+          borderRadius:
+            "18px",
+
+          fontWeight:
+            "700",
+
+          cursor: "pointer",
+
+          fontSize: "16px"
+        }}
+      >
+        Continue Shopping
+      </button>
+
+    </div>
+
+  </div>
+
+) : cart.length === 0 ? (
 
         <div
           style={{
