@@ -235,6 +235,78 @@ function App() {
               AI Assistant
             </Link>
 
+            <Link
+  to="/cart"
+  style={{
+    position: "fixed",
+
+    bottom: "25px",
+
+    right: "25px",
+
+    width: "70px",
+
+    height: "70px",
+
+    borderRadius: "50%",
+
+    background:
+      "linear-gradient(135deg,#2e7d32,#4caf50)",
+
+    display: "flex",
+
+    alignItems: "center",
+
+    justifyContent: "center",
+
+    color: "white",
+
+    fontSize: "30px",
+
+    textDecoration: "none",
+
+    boxShadow:
+      "0 12px 30px rgba(46,125,50,0.35)",
+
+    zIndex: 9999
+  }}
+>
+  🛒
+
+  <span
+    style={{
+      position: "absolute",
+
+      top: "-5px",
+
+      right: "-5px",
+
+      background: "#ef4444",
+
+      color: "white",
+
+      width: "26px",
+
+      height: "26px",
+
+      borderRadius: "50%",
+
+      display: "flex",
+
+      alignItems: "center",
+
+      justifyContent: "center",
+
+      fontSize: "13px",
+
+      fontWeight: "700"
+    }}
+  >
+    {cart.length}
+  </span>
+
+</Link>
+
           </div>
 
         </nav>
