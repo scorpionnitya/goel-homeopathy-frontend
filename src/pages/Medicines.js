@@ -963,11 +963,15 @@ Showing {data.length} medicines
               <button
                 onClick={() => {
 
-  addToCart({
-    name: med,
-    power: selectedPower,
-    price: price
-  });
+addToCart({
+  name: med,
+
+  power: selectedPower,
+
+  price: price,
+
+  category: tab
+});
 
   toast.success(
     "Added to cart"
@@ -1011,4 +1015,3 @@ style={{
 }
 
 export default Medicines;
-

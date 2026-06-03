@@ -291,16 +291,10 @@ ${cart
                   <div
                     style={{
                       display: "flex",
-
-                      justifyContent:
-                        "space-between",
-
-                      alignItems:
-                        "center",
-
-                      flexWrap: "wrap",
-
-                      gap: "20px"
+                      gap: "16px",
+                      alignItems: "center",
+                      width: "100%",                     
+                      flexWrap: "wrap"
                     }}
                   >
 
@@ -316,20 +310,30 @@ ${cart
 
   {/* IMAGE */}
 
-  <div
-    style={{
-      width: "120px"
-    }}
-  >
-    {getMedicineImage(
-      item.name,
-      "Dilution"
-    )}
+<div
+  style={{
+    width: "90px",
+
+    flexShrink: 0
+  }}
+>
+{getMedicineImage(
+  item.name,
+  item.category,
+  true
+)}
   </div>
+
 
   {/* TEXT */}
 
-  <div>
+<div
+  style={{
+    flex: 1,
+
+    minWidth: 0
+  }}
+>
 
     <h2
       style={{
