@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
+import getMedicineImage from "../utils/getMedicineImage";
 
 function Cart({ cart, setCart }) {
 
@@ -305,44 +306,69 @@ ${cart
 
                     {/* PRODUCT INFO */}
 
-                    <div>
+<div
+  style={{
+    display: "flex",
+    gap: "20px",
+    alignItems: "center"
+  }}
+>
 
-                      <h2
-                        style={{
-                          margin: 0,
+  {/* IMAGE */}
 
-                          color:
-                            "#1f2937"
-                        }}
-                      >
-                        {item.name}
-                      </h2>
+  <div
+    style={{
+      width: "120px"
+    }}
+  >
+    {getMedicineImage(
+      item.name,
+      "Dilution"
+    )}
+  </div>
 
-                      <p
-                        style={{
-                          color:
-                            "#6b7280",
+  {/* TEXT */}
 
-                          marginTop:
-                            "8px"
-                        }}
-                      >
-                        Power:
-                        {" "}
-                        {item.power}
-                      </p>
+  <div>
 
-                      <h3
-                        style={{
-                          color:
-                            "#2e7d32"
-                        }}
-                      >
-                        ₹
-                        {item.price}
-                      </h3>
+    <h2
+      style={{
+        margin: 0,
 
-                    </div>
+        color:
+          "#1f2937"
+      }}
+    >
+      {item.name}
+    </h2>
+
+    <p
+      style={{
+        color:
+          "#6b7280",
+
+        marginTop:
+          "8px"
+      }}
+    >
+      Power:
+      {" "}
+      {item.power}
+    </p>
+
+    <h3
+      style={{
+        color:
+          "#2e7d32"
+      }}
+    >
+      ₹
+      {item.price}
+    </h3>
+
+  </div>
+
+</div>
 
                     {/* QUANTITY */}
 
