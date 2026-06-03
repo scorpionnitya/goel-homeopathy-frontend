@@ -81,7 +81,7 @@ const getMedicineImage = (med, tab) => {
     <div
       style={{
         position: "relative",
-        height: "120px",
+        height: "240px",
         display: "flex",
         justifyContent: "center",
         alignItems: "center"
