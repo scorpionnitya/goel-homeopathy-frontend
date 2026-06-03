@@ -214,19 +214,27 @@ function App() {
               Medicines
             </Link>
 
-            <Link
-              style={navLink}
-              to="/cart"
-            >
-              Cart ({cart.length})
-            </Link>
+{!isMobile && (
 
-            <Link
-              style={navLink}
-              to="/about"
-            >
-              About
-            </Link>
+  <Link
+    style={navLink}
+    to="/cart"
+  >
+    Cart ({cart.length})
+  </Link>
+
+)}
+
+{!isMobile && (
+
+  <Link
+    style={navLink}
+    to="/about"
+  >
+    About
+  </Link>
+
+)}
 
             <Link
               style={navLink}
@@ -359,6 +367,161 @@ function App() {
           />
 
         </Routes>
+        {/* FOOTER */}
+
+<footer
+  style={{
+    marginTop: "80px",
+
+    padding:
+      isMobile
+        ? "30px 20px"
+        : "40px",
+
+    background:
+      "rgba(255,255,255,0.75)",
+
+    backdropFilter:
+      "blur(14px)",
+
+    borderRadius:
+      "30px",
+
+    boxShadow:
+      "0 10px 30px rgba(0,0,0,0.06)"
+  }}
+>
+
+  <div
+    style={{
+      display: "flex",
+
+      flexWrap: "wrap",
+
+      justifyContent:
+        "space-between",
+
+      gap: "30px"
+    }}
+  >
+
+    {/* BRAND */}
+
+    <div>
+
+      <h2
+        style={{
+          color: "#2e7d32",
+
+          marginTop: 0
+        }}
+      >
+        CureNest
+      </h2>
+
+      <p
+        style={{
+          color: "#6b7280",
+
+          maxWidth: "300px",
+
+          lineHeight: "1.7"
+        }}
+      >
+        Premium healthcare platform focused on trusted medicines and better wellness.
+      </p>
+
+    </div>
+
+    {/* LINKS */}
+
+    <div>
+
+      <h3>
+        Quick Links
+      </h3>
+
+      <div
+        style={{
+          display: "flex",
+
+          flexDirection:
+            "column",
+
+          gap: "10px"
+        }}
+      >
+
+        <Link
+          to="/about"
+          style={{
+            textDecoration:
+              "none",
+
+            color: "#374151"
+          }}
+        >
+          About
+        </Link>
+
+      </div>
+
+    </div>
+
+    {/* CONTACT */}
+
+    <div>
+
+      <h3>
+        Contact
+      </h3>
+
+      <p
+        style={{
+          color: "#6b7280"
+        }}
+      >
+        📞 +91 7302512068
+      </p>
+
+      <p
+        style={{
+          color: "#6b7280"
+        }}
+      >
+        📍 Meerut, India, Uttar Pradesh, Mohan Homeopathic Store, 250001
+      </p>
+
+    </div>
+
+  </div>
+
+  <hr
+    style={{
+      margin: "30px 0",
+
+      border:
+        "none",
+
+      borderTop:
+        "1px solid rgba(0,0,0,0.08)"
+    }}
+  />
+
+  <p
+    style={{
+      textAlign: "center",
+
+      color: "#6b7280",
+
+      margin: 0
+    }}
+  >
+    © 2026 CureNest.
+    All rights reserved.
+  </p>
+
+</footer>
 
       </div>
 
