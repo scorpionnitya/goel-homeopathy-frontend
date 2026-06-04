@@ -88,7 +88,11 @@ function OrdersDashboard() {
                       ? "orange"
                       : order.status === "CANCELLED"
                       ? "red"
-                      : "blue"
+                      :order.status === "PENDING"
+                      ?"blue"
+                      :order.status === "PACKING"
+                      ?"purple"
+                      :"black"
                 }}
               >
                 {order.status || "PENDING"}
@@ -100,32 +104,82 @@ function OrdersDashboard() {
                 </p>
               )}
 
-            {/* BUTTONS */}
-            <div style={{ marginTop: "10px" }}>
-              <button onClick={() => updateStatus(order._id, "DELIVERED")}>
-                Deliver
-              </button>
+{/* BUTTONS */}
 
-              <button
-                onClick={() =>
-                  updateStatus(order._id, "OUT FOR DELIVERY")
-                }
-                style={{ marginLeft: "10px" }}
-              >
-                Out for Delivery
-              </button>
+<div
+  style={{
+    marginTop: "14px",
 
-              <button
-                onClick={() => updateStatus(order._id, "CANCELLED")}
-                style={{
-                  marginLeft: "10px",
-                  background: "red",
-                  color: "white"
-                }}
-              >
-                Cancel
-              </button>
-            </div>
+    display: "flex",
+
+    gap: "10px",
+
+    flexWrap: "wrap"
+  }}
+>
+
+  <button
+    onClick={() =>
+      updateStatus(
+        order._id,
+        "PENDING"
+      )
+    }
+  >
+    Pending
+  </button>
+
+  <button
+    onClick={() =>
+      updateStatus(
+        order._id,
+        "PACKING"
+      )
+    }
+  >
+    Packing
+  </button>
+
+  <button
+    onClick={() =>
+      updateStatus(
+        order._id,
+        "OUT FOR DELIVERY"
+      )
+    }
+  >
+    Out for Delivery
+  </button>
+
+  <button
+    onClick={() =>
+      updateStatus(
+        order._id,
+        "DELIVERED"
+      )
+    }
+  >
+    Delivered
+  </button>
+
+  <button
+    onClick={() =>
+      updateStatus(
+        order._id,
+        "CANCELLED"
+      )
+    }
+
+    style={{
+      background: "red",
+
+      color: "white"
+    }}
+  >
+    Cancel
+  </button>
+
+</div>
           </div>
         ))
       )}
