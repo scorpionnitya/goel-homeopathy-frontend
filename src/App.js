@@ -248,13 +248,25 @@ function App() {
   style={{
     position: "fixed",
 
-    bottom: "25px",
+bottom:
+  isMobile
+    ? "18px"
+    : "25px",
 
-    right: "25px",
+right:
+  isMobile
+    ? "18px"
+    : "25px",
 
-    width: "70px",
+width:
+  isMobile
+    ? "60px"
+    : "70px",
 
-    height: "70px",
+height:
+  isMobile
+    ? "60px"
+    : "70px",
 
     borderRadius: "50%",
 
