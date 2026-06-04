@@ -71,6 +71,49 @@ function Cart({ cart, setCart }) {
     setLoading(true);
 
     try {
+      try {
+
+  await fetch(
+    "https://goel-homeopathy-backend-1.onrender.com/api/orders",
+    {
+      method: "POST",
+
+      headers: {
+        "Content-Type":
+          "application/json"
+      },
+
+      body: JSON.stringify({
+
+        items: cart,
+
+        user: {
+
+          name:
+            userDetails.name,
+
+          phone:
+            userDetails.phone,
+
+          address:
+            userDetails.address
+
+        },
+
+        totalAmount: total
+
+      })
+    }
+  );
+
+} catch (err) {
+
+  console.log(
+    "Order save failed",
+    err
+  );
+
+}
 
       const message = `
 🛒 New CureNest Order
