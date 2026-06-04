@@ -149,3 +149,17 @@ select{
   box-shadow:
   0 10px 30px rgba(0,0,0,0.08);
 }
+@keyframes pulse {
+
+  0% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.6;
+  }
+}
