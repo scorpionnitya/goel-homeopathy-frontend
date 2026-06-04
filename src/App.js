@@ -255,7 +255,7 @@ bottom:
 
 right:
   isMobile
-    ? "18px"
+    ? "12px"
     : "25px",
 
 width:
@@ -297,9 +297,8 @@ height:
     style={{
       position: "absolute",
 
-      top: "-5px",
-
-      right: "-5px",
+top: "2px",
+right: "2px",
 
       background: "#ef4444",
 
