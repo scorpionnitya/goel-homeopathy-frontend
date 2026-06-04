@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useState,useEffect} from "react";
 import toast from "react-hot-toast";
 import getMedicineImage from "../utils/getMedicineImage";
 
@@ -6,7 +6,20 @@ function Medicines({ addToCart }) {
   const [tab, setTab] = useState("Dilution");
   const [search, setSearch] = useState("");
   const [power, setPower] = useState({});
+  const [loading, setLoading] = useState(true);
   const isMobile = window.innerWidth <= 768;
+  useEffect(() => {
+
+  const timer = setTimeout(() => {
+
+    setLoading(false);
+
+  }, 1200);
+
+  return () =>
+    clearTimeout(timer);
+
+}, []);
 
 
   const dilution = [
@@ -805,7 +818,95 @@ const data = isMobile
 Showing {data.length} medicines
 </p>
 
-      {/* Cards */}
+{loading ? (
+
+  <div
+    style={{
+      display: "grid",
+
+      gridTemplateColumns:
+        "repeat(auto-fit,minmax(260px,1fr))",
+
+      gap: "20px",
+
+      marginTop: "30px"
+    }}
+  >
+
+    {[1,2,3,4,5,6].map((item) => (
+
+      <div
+        key={item}
+
+        style={{
+          background:
+            "rgba(255,255,255,0.7)",
+
+          borderRadius:
+            "30px",
+
+          padding:
+            "24px",
+
+          height:
+            "420px",
+
+          animation:
+            "pulse 1.5s infinite"
+        }}
+      >
+
+        <div
+          style={{
+            height: "180px",
+
+            borderRadius:
+              "20px",
+
+            background:
+              "#e5e7eb"
+          }}
+        />
+
+        <div
+          style={{
+            height: "24px",
+
+            width: "70%",
+
+            marginTop: "20px",
+
+            borderRadius:
+              "10px",
+
+            background:
+              "#e5e7eb"
+          }}
+        />
+
+        <div
+          style={{
+            height: "18px",
+
+            width: "40%",
+
+            marginTop: "14px",
+
+            borderRadius:
+              "10px",
+
+            background:
+              "#e5e7eb"
+          }}
+        />
+
+      </div>
+
+    ))}
+
+  </div>
+
+ ) : (
       <div
         style={{
           display: "grid",
@@ -1010,6 +1111,7 @@ style={{
           );
         })}
       </div>
+    )}
     </div>
   );
 }
