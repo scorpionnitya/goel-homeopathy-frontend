@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+
 import toast from "react-hot-toast";
 
 function AdminLogin() {
@@ -10,8 +10,7 @@ function AdminLogin() {
   const [password, setPassword] =
     useState("");
 
-  const navigate =
-    useNavigate();
+
 
   const handleLogin = () => {
 
