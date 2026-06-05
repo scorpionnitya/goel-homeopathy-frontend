@@ -73,38 +73,43 @@ function Cart({ cart, setCart }) {
     try {
       try {
 
-  await fetch(
-    "https://goel-homeopathy-backend-1.onrender.com/api/orders",
-    {
-      method: "POST",
+const response = await fetch(
+  "https://goel-homeopathy-backend-1.onrender.com/api/orders",
+  {
+    method: "POST",
 
-      headers: {
-        "Content-Type":
-          "application/json"
+    headers: {
+      "Content-Type":
+        "application/json"
+    },
+
+    body: JSON.stringify({
+
+      items: cart,
+
+      user: {
+
+        name:
+          userDetails.name,
+
+        phone:
+          userDetails.phone,
+
+        address:
+          userDetails.address
+
       },
 
-      body: JSON.stringify({
+      totalAmount: total
 
-        items: cart,
+    })
+  }
+);
 
-        user: {
+const data =
+  await response.json();
 
-          name:
-            userDetails.name,
-
-          phone:
-            userDetails.phone,
-
-          address:
-            userDetails.address
-
-        },
-
-        totalAmount: total
-
-      })
-    }
-  );
+console.log(data);
 
 } catch (err) {
 
@@ -143,8 +148,10 @@ ${cart
       const whatsappURL =
         `https://wa.me/917302512068?text=${encodeURIComponent(message)}`;
 
-      window.location.href =
-        whatsappURL;
+      window.open(
+  whatsappURL,
+  "_blank"
+);
 
       setTimeout(() => {
 
@@ -1020,8 +1027,24 @@ setOrderPlaced(true);
 
               </div>
 
-              {/* BUTTON */}
+<p
+  style={{
+    marginTop: "20px",
 
+    color: "#4b5563",
+
+    fontSize: "14px",
+
+    fontWeight: "600",
+
+    textAlign: "center"
+  }}
+>
+  Payment QR will be shared on WhatsApp
+  after order confirmation.
+</p>
+
+              {/* BUTTON */}
               {!showForm && (
 
                 <button
@@ -1103,6 +1126,7 @@ setOrderPlaced(true);
                 </p>
 
               </div>
+
 
               {/* FORM */}
 
@@ -1271,7 +1295,7 @@ setOrderPlaced(true);
                   >
                     {loading
                       ? "Placing Order..."
-                      : "Confirm Order"}
+                      : "Place Order on WhatsApp"}
                   </button>
 
                 </div>
@@ -1291,3 +1315,4 @@ setOrderPlaced(true);
 }
 
 export default Cart;
+ 
