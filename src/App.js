@@ -14,6 +14,7 @@ import Cart from "./pages/Cart";
 import OrdersDashboard from "./pages/OrdersDashboard";
 import Chatbot from "./pages/Chatbot";
 import { Toaster } from "react-hot-toast";
+import AdminLogin from "./pages/AdminLogin";
 
 function App() {
 
@@ -358,10 +359,24 @@ right: "2px",
             }
           />
 
-          <Route
-            path="/goel-admin-orders-2026"
-            element={<OrdersDashboard />}
-          />
+<Route
+  path="/admin-login"
+  element={<AdminLogin />}
+/>
+
+<Route
+  path="/goel-admin-orders-2026"
+
+  element={
+    localStorage.getItem(
+      "adminAuth"
+    ) === "true"
+
+      ? <OrdersDashboard />
+
+      : <AdminLogin />
+  }
+/>
 
           <Route
             path="/about"

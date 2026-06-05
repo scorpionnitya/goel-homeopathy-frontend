@@ -51,6 +51,38 @@ function OrdersDashboard() {
     <div style={{ padding: "20px" }}>
       <h1>Orders Dashboard</h1>
 
+      <button
+  onClick={() => {
+
+    localStorage.removeItem(
+      "adminAuth"
+    );
+
+    window.location.href =
+      "/admin-login";
+  }}
+
+  style={{
+    background: "#ef4444",
+
+    color: "white",
+
+    border: "none",
+
+    padding: "12px 20px",
+
+    borderRadius: "14px",
+
+    cursor: "pointer",
+
+    fontWeight: "700",
+
+    marginBottom: "20px"
+  }}
+>
+  Logout
+</button>
+
       {orders.length === 0 ? (
         <p>No orders available</p>
       ) : (
