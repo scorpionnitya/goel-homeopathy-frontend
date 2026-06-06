@@ -15,57 +15,84 @@ import OrdersDashboard from "./pages/OrdersDashboard";
 import Chatbot from "./pages/Chatbot";
 import { Toaster } from "react-hot-toast";
 import AdminLogin from "./pages/AdminLogin";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
 
 function App() {
 
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] =
+    useState([]);
 
-  const isMobile = window.innerWidth <= 768;
+  const isMobile =
+    window.innerWidth <= 768;
+
+  // USER
+
+  const user =
+    localStorage.getItem(
+      "user"
+    );
+
+  // HIDE NAVBAR + FOOTER
+
+  const hideNavbar =
+    window.location.pathname === "/login"
+    ||
+    window.location.pathname === "/register";
 
   // ADD TO CART
 
-  const addToCart = (medicine) => {
+  const addToCart =
+    (medicine) => {
 
-    const existing = cart.find(
-      (item) =>
-        item.name === medicine.name &&
-        item.power === medicine.power
-    );
+      const existing =
+        cart.find(
+          (item) =>
+            item.name ===
+              medicine.name &&
+            item.power ===
+              medicine.power
+        );
 
-    if (existing) {
+      if (existing) {
 
-      setCart(
-        cart.map((item) =>
-          item.name === medicine.name &&
-          item.power === medicine.power
-            ? {
-                ...item,
-                quantity: item.quantity + 1
-              }
-            : item
-        )
-      );
+        setCart(
+          cart.map((item) =>
+            item.name ===
+              medicine.name &&
+            item.power ===
+              medicine.power
 
-    } else {
+              ? {
+                  ...item,
+                  quantity:
+                    item.quantity + 1
+                }
 
-      setCart([
-        ...cart,
-        {
-          ...medicine,
-          quantity: 1
-        }
-      ]);
+              : item
+          )
+        );
 
-    }
-  };
+      } else {
 
-  // NAV LINK STYLE
+        setCart([
+          ...cart,
+          {
+            ...medicine,
+            quantity: 1
+          }
+        ]);
+      }
+    };
+
+  // NAV STYLE
 
   const navLink = {
 
     color: "#1f2937",
 
-    textDecoration: "none",
+    textDecoration:
+      "none",
 
     fontWeight: "700",
 
@@ -74,7 +101,8 @@ function App() {
         ? "10px 14px"
         : "12px 18px",
 
-    borderRadius: "14px",
+    borderRadius:
+      "14px",
 
     background:
       "rgba(255,255,255,0.7)",
@@ -90,9 +118,10 @@ function App() {
   return (
 
     <Router>
+
       <Toaster
-  position="top-right"
-/>
+        position="top-right"
+      />
 
       <div
         style={{
@@ -109,227 +138,272 @@ function App() {
 
         {/* NAVBAR */}
 
-        <nav
-          style={{
+        {!hideNavbar && (
 
-            position: "sticky",
+          <>
 
-            top: "12px",
-
-            zIndex: 1000,
-
-            marginBottom: "30px",
-
-            padding:
-              isMobile
-                ? "14px"
-                : "18px",
-
-            background:
-              "rgba(255,255,255,0.75)",
-
-            backdropFilter: "blur(14px)",
-
-            border:
-              "1px solid rgba(255,255,255,0.4)",
-
-            borderRadius: "24px",
-
-            display: "flex",
-
-            flexWrap: "wrap",
-
-            gap: "12px",
-
-            justifyContent: "space-between",
-
-            alignItems: "center",
-
-            boxShadow:
-              "0 10px 30px rgba(0,0,0,0.08)"
-          }}
-        >
-
-          {/* LOGO */}
-
-          <div>
-
-            <h1
+            <nav
               style={{
-                margin: 0,
 
-                color: "#2e7d32",
+                position:
+                  "sticky",
 
-                fontWeight: "800",
+                top: "12px",
 
-                fontSize:
+                zIndex: 1000,
+
+                marginBottom:
+                  "30px",
+
+                padding:
                   isMobile
-                    ? "24px"
-                    : "30px"
+                    ? "14px"
+                    : "18px",
+
+                background:
+                  "rgba(255,255,255,0.75)",
+
+                backdropFilter:
+                  "blur(14px)",
+
+                border:
+                  "1px solid rgba(255,255,255,0.4)",
+
+                borderRadius:
+                  "24px",
+
+                display: "flex",
+
+                flexWrap: "wrap",
+
+                gap: "12px",
+
+                justifyContent:
+                  "space-between",
+
+                alignItems:
+                  "center",
+
+                boxShadow:
+                  "0 10px 30px rgba(0,0,0,0.08)"
               }}
             >
-              CureNest
-            </h1>
 
-            <p
-              style={{
-                margin: 0,
+              {/* LOGO */}
 
-                fontSize: "13px",
+              <div>
 
-                color: "#6b7280",
+                <h1
+                  style={{
+                    margin: 0,
 
-                fontStyle: "italic"
-              }}
-            >
-              Health & Home
-            </p>
+                    color:
+                      "#2e7d32",
 
-          </div>
+                    fontWeight:
+                      "800",
 
-          {/* NAV LINKS */}
+                    fontSize:
+                      isMobile
+                        ? "24px"
+                        : "30px"
+                  }}
+                >
+                  CureNest
+                </h1>
 
-          <div
-            style={{
-              display: "flex",
+                <p
+                  style={{
+                    margin: 0,
 
-              gap: "10px",
+                    fontSize:
+                      "13px",
 
-              flexWrap: "wrap",
+                    color:
+                      "#6b7280",
 
-              justifyContent: "center"
-            }}
-          >
+                    fontStyle:
+                      "italic"
+                  }}
+                >
+                  Health & Home
+                </p>
 
-            <Link
-              style={navLink}
-              to="/"
-            >
-              Home
-            </Link>
+              </div>
 
-            <Link
-              style={navLink}
-              to="/medicines"
-            >
-              Medicines
-            </Link>
+              {/* LINKS */}
 
-{!isMobile && (
+              <div
+                style={{
+                  display: "flex",
 
-  <Link
-    style={navLink}
-    to="/cart"
-  >
-    Cart ({cart.length})
-  </Link>
+                  gap: "10px",
 
-)}
+                  flexWrap:
+                    "wrap",
 
-{!isMobile && (
+                  justifyContent:
+                    "center"
+                }}
+              >
 
-  <Link
-    style={navLink}
-    to="/about"
-  >
-    About
-  </Link>
+                <Link
+                  style={navLink}
+                  to="/"
+                >
+                  Home
+                </Link>
 
-)}
+                <Link
+                  style={navLink}
+                  to="/medicines"
+                >
+                  Medicines
+                </Link>
 
-            <Link
-              style={navLink}
-              to="/chat"
-            >
-              AI Assistant
-            </Link>
+                {!isMobile && (
 
-            <Link
-  to="/cart"
-  style={{
-    position: "fixed",
+                  <Link
+                    style={navLink}
+                    to="/cart"
+                  >
+                    Cart ({cart.length})
+                  </Link>
 
-bottom:
-  isMobile
-    ? "18px"
-    : "25px",
+                )}
 
-right:
-  isMobile
-    ? "12px"
-    : "25px",
+                {!isMobile && (
 
-width:
-  isMobile
-    ? "60px"
-    : "70px",
+                  <Link
+                    style={navLink}
+                    to="/about"
+                  >
+                    About
+                  </Link>
 
-height:
-  isMobile
-    ? "60px"
-    : "70px",
+                )}
 
-    borderRadius: "50%",
+                <Link
+                  style={navLink}
+                  to="/chat"
+                >
+                  AI Assistant
+                </Link>
 
-    background:
-      "linear-gradient(135deg,#2e7d32,#4caf50)",
+                {/* FLOATING CART */}
 
-    display: "flex",
+                <Link
+                  to="/cart"
 
-    alignItems: "center",
+                  style={{
+                    position:
+                      "fixed",
 
-    justifyContent: "center",
+                    bottom:
+                      isMobile
+                        ? "18px"
+                        : "25px",
 
-    color: "white",
+                    right:
+                      isMobile
+                        ? "12px"
+                        : "25px",
 
-    fontSize: "30px",
+                    width:
+                      isMobile
+                        ? "60px"
+                        : "70px",
 
-    textDecoration: "none",
+                    height:
+                      isMobile
+                        ? "60px"
+                        : "70px",
 
-    boxShadow:
-      "0 12px 30px rgba(46,125,50,0.35)",
+                    borderRadius:
+                      "50%",
 
-    zIndex: 9999
-  }}
->
-  🛒
+                    background:
+                      "linear-gradient(135deg,#2e7d32,#4caf50)",
 
-  <span
-    style={{
-      position: "absolute",
+                    display:
+                      "flex",
 
-top: "2px",
-right: "2px",
+                    alignItems:
+                      "center",
 
-      background: "#ef4444",
+                    justifyContent:
+                      "center",
 
-      color: "white",
+                    color:
+                      "white",
 
-      width: "26px",
+                    fontSize:
+                      "30px",
 
-      height: "26px",
+                    textDecoration:
+                      "none",
 
-      borderRadius: "50%",
+                    boxShadow:
+                      "0 12px 30px rgba(46,125,50,0.35)",
 
-      display: "flex",
+                    zIndex: 9999
+                  }}
+                >
 
-      alignItems: "center",
+                  🛒
 
-      justifyContent: "center",
+                  <span
+                    style={{
+                      position:
+                        "absolute",
 
-      fontSize: "13px",
+                      top: "2px",
 
-      fontWeight: "700"
-    }}
-  >
-    {cart.length}
-  </span>
+                      right: "2px",
 
-</Link>
+                      background:
+                        "#ef4444",
 
-          </div>
+                      color:
+                        "white",
 
-        </nav>
+                      width:
+                        "26px",
+
+                      height:
+                        "26px",
+
+                      borderRadius:
+                        "50%",
+
+                      display:
+                        "flex",
+
+                      alignItems:
+                        "center",
+
+                      justifyContent:
+                        "center",
+
+                      fontSize:
+                        "13px",
+
+                      fontWeight:
+                        "700"
+                    }}
+                  >
+                    {cart.length}
+                  </span>
+
+                </Link>
+
+              </div>
+
+            </nav>
+
+          </>
+
+        )}
 
         {/* ROUTES */}
 
@@ -337,20 +411,39 @@ right: "2px",
 
           <Route
             path="/"
-            element={<Home />}
+
+            element={
+              user
+                ? <Home />
+                : <Login />
+            }
+          />
+
+          <Route
+            path="/register"
+            element={<Register />}
+          />
+
+          <Route
+            path="/login"
+            element={<Login />}
           />
 
           <Route
             path="/medicines"
+
             element={
               <Medicines
-                addToCart={addToCart}
+                addToCart={
+                  addToCart
+                }
               />
             }
           />
 
           <Route
             path="/cart"
+
             element={
               <Cart
                 cart={cart}
@@ -359,25 +452,6 @@ right: "2px",
             }
           />
 
-<Route
-  path="/admin-login"
-  element={<AdminLogin />}
-/>
-
-<Route
-  path="/goel-admin-orders-2026"
-
-  element={
-    localStorage.getItem(
-      "adminAuth"
-    ) === "true"
-
-      ? <OrdersDashboard />
-
-      : <AdminLogin />
-  }
-/>
-
           <Route
             path="/about"
             element={<About />}
@@ -385,169 +459,178 @@ right: "2px",
 
           <Route
             path="/chat"
+
             element={
               <Chatbot
-                addToCart={addToCart}
+                addToCart={
+                  addToCart
+                }
               />
             }
           />
 
+          <Route
+            path="/admin-login"
+            element={<AdminLogin />}
+          />
+
+          <Route
+            path="/goel-admin-orders-2026"
+
+            element={
+              localStorage.getItem(
+                "adminAuth"
+              ) === "true"
+
+                ? <OrdersDashboard />
+
+                : <AdminLogin />
+            }
+          />
+
         </Routes>
+
         {/* FOOTER */}
 
-<footer
-  style={{
-    marginTop: "80px",
+        {!hideNavbar && (
 
-    padding:
-      isMobile
-        ? "30px 20px"
-        : "40px",
+          <footer
+            style={{
+              marginTop:
+                "80px",
 
-    background:
-      "rgba(255,255,255,0.75)",
+              padding:
+                isMobile
+                  ? "30px 20px"
+                  : "40px",
 
-    backdropFilter:
-      "blur(14px)",
+              background:
+                "rgba(255,255,255,0.75)",
 
-    borderRadius:
-      "30px",
+              backdropFilter:
+                "blur(14px)",
 
-    boxShadow:
-      "0 10px 30px rgba(0,0,0,0.06)"
-  }}
->
+              borderRadius:
+                "30px",
 
-  <div
-    style={{
-      display: "flex",
+              boxShadow:
+                "0 10px 30px rgba(0,0,0,0.06)"
+            }}
+          >
 
-      flexWrap: "wrap",
+            <div
+              style={{
+                display: "flex",
 
-      justifyContent:
-        "space-between",
+                flexWrap:
+                  "wrap",
 
-      gap: "30px"
-    }}
-  >
+                justifyContent:
+                  "space-between",
 
-    {/* BRAND */}
+                gap: "30px"
+              }}
+            >
 
-    <div>
+              {/* BRAND */}
 
-      <h2
-        style={{
-          color: "#2e7d32",
+              <div>
 
-          marginTop: 0
-        }}
-      >
-        CureNest
-      </h2>
+                <h2
+                  style={{
+                    color:
+                      "#2e7d32",
 
-      <p
-        style={{
-          color: "#6b7280",
+                    marginTop: 0
+                  }}
+                >
+                  CureNest
+                </h2>
 
-          maxWidth: "300px",
+                <p
+                  style={{
+                    color:
+                      "#6b7280",
 
-          lineHeight: "1.7"
-        }}
-      >
-        Premium healthcare platform focused on trusted medicines and better wellness.
-      </p>
+                    maxWidth:
+                      "300px",
 
-    </div>
+                    lineHeight:
+                      "1.7"
+                  }}
+                >
+                  Premium healthcare
+                  platform focused on
+                  trusted medicines
+                  and better wellness.
+                </p>
 
-    {/* LINKS */}
+              </div>
 
-    <div>
+              {/* CONTACT */}
 
-      <h3>
-        Quick Links
-      </h3>
+              <div>
 
-      <div
-        style={{
-          display: "flex",
+                <h3>
+                  Contact
+                </h3>
 
-          flexDirection:
-            "column",
+                <p
+                  style={{
+                    color:
+                      "#6b7280"
+                  }}
+                >
+                  📞 +91 7302512068
+                </p>
 
-          gap: "10px"
-        }}
-      >
+                <p
+                  style={{
+                    color:
+                      "#6b7280"
+                  }}
+                >
+                  📍 Meerut, India,
+                  Uttar Pradesh,
+                  Mohan Homeopathic
+                  Store, 250001
+                </p>
 
-        <Link
-          to="/about"
-          style={{
-            textDecoration:
-              "none",
+              </div>
 
-            color: "#374151"
-          }}
-        >
-          About
-        </Link>
+            </div>
 
-      </div>
+            <hr
+              style={{
+                margin:
+                  "30px 0",
 
-    </div>
+                border:
+                  "none",
 
-    {/* CONTACT */}
+                borderTop:
+                  "1px solid rgba(0,0,0,0.08)"
+              }}
+            />
 
-    <div>
+            <p
+              style={{
+                textAlign:
+                  "center",
 
-      <h3>
-        Contact
-      </h3>
+                color:
+                  "#6b7280",
 
-      <p
-        style={{
-          color: "#6b7280"
-        }}
-      >
-        📞 +91 7302512068
-      </p>
+                margin: 0
+              }}
+            >
+              © 2026 CureNest.
+              All rights reserved.
+            </p>
 
-      <p
-        style={{
-          color: "#6b7280"
-        }}
-      >
-        📍 Meerut, India, Uttar Pradesh, Mohan Homeopathic Store, 250001
-      </p>
+          </footer>
 
-    </div>
-
-  </div>
-
-  <hr
-    style={{
-      margin: "30px 0",
-
-      border:
-        "none",
-
-      borderTop:
-        "1px solid rgba(0,0,0,0.08)"
-    }}
-  />
-
-  <p
-    style={{
-      textAlign: "center",
-
-      color: "#6b7280",
-
-      margin: 0
-    }}
-  >
-    © 2026 CureNest.
-    All rights reserved.
-  </p>
-
-</footer>
+        )}
 
       </div>
 
