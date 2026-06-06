@@ -36,9 +36,7 @@ function App() {
   // HIDE NAVBAR + FOOTER
 
   const hideNavbar =
-    window.location.pathname === "/login"
-    ||
-    window.location.pathname === "/register";
+  !user;
 
   // ADD TO CART
 
