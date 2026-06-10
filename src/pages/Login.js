@@ -4,9 +4,8 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import { FiMail, FiLock } from "react-icons/fi";
 
-
 const Login = () => {
-  const navigate = useNavigate();
+ 
 
   const [formData, setFormData] = useState({
     email: "",
