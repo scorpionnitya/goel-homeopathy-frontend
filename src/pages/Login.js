@@ -6,7 +6,7 @@ import { FiMail, FiLock } from "react-icons/fi";
 
 const Login = () => {
  
-
+const [errorMessage, setErrorMessage] = useState("");
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -23,6 +23,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
+      setErrorMessage("");
       const res = await axios.post(
         "https://goel-homeopathy-backend-1.onrender.com/api/auth/login",
         formData
@@ -33,7 +34,13 @@ const Login = () => {
 
       window.location.href = "/";
     } catch (error) {
-      alert(error.response?.data?.message || "Login failed");
+      if (error.response?.status === 404) {
+  setErrorMessage("You are not registered yet. Please sign up first.");
+} else if (error.response?.status === 401) {
+  setErrorMessage("Incorrect email or password.");
+} else {
+  setErrorMessage("Login failed. Please try again.");
+}
     }
   };
 
@@ -109,6 +116,11 @@ const Login = () => {
                 />
               </div>
             </div>
+            {errorMessage && (
+  <div className="bg-red-500/10 border border-red-500/30 text-red-300 text-sm rounded-xl p-3">
+    {errorMessage}
+  </div>
+)}
 
             {/* Button */}
             <button
