@@ -34,15 +34,30 @@ const [errorMessage, setErrorMessage] = useState("");
 
       window.location.href = "/";
     } catch (error) {
-      if (error.response?.status === 404) {
-  setErrorMessage("You are not registered yet. Please sign up first.");
-} else if (error.response?.status === 401) {
-  setErrorMessage("Incorrect email or password.");
-} else {
-  setErrorMessage("Login failed. Please try again.");
-}
-    }
-  };
+  console.log(error.response);
+
+  const message =
+    error.response?.data?.message || "";
+
+  if (
+    message.toLowerCase().includes("user")
+  ) {
+    setErrorMessage(
+      "You are not registered yet. Please sign up first."
+    );
+  } else if (
+    message.toLowerCase().includes("password") ||
+    message.toLowerCase().includes("invalid")
+  ) {
+    setErrorMessage(
+      "Incorrect email or password."
+    );
+  } else {
+    setErrorMessage(
+      "Server is waking up. Please wait a few seconds and try again."
+    );
+  }
+} }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#02140f] via-[#052e2b] to-[#041b18] flex items-center justify-center px-4 overflow-hidden relative">
