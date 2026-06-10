@@ -3,8 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { motion } from "framer-motion";
 import { FiMail, FiLock } from "react-icons/fi";
-import ReactParticles from "react-particles";
-import { tsParticles } from "tsparticles-engine";
+
 
 const Login = () => {
   const navigate = useNavigate();
@@ -38,49 +37,10 @@ const Login = () => {
       alert(error.response?.data?.message || "Login failed");
     }
   };
-const particlesInit = async () => {
-  await tsParticles.load();
-};
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#02140f] via-[#052e2b] to-[#041b18] flex items-center justify-center px-4 overflow-hidden relative">
-<ReactParticles
-  config={{
-    particles: {
-      number: {
-        value: 60,
-        density: {
-          enable: true,
-          value_area: 800,
-        },
-      },
-      color: {
-        value: "#22d3ee",
-      },
-      shape: {
-        type: "circle",
-      },
-      opacity: {
-        value: 0.3,
-      },
-      size: {
-        value: 3,
-        random: true,
-      },
-      line_linked: {
-        enable: true,
-        distance: 150,
-        color: "#22d3ee",
-        opacity: 0.15,
-        width: 1,
-      },
-      move: {
-        enable: true,
-        speed: 1.5,
-      },
-    },
-  }}
-  className="absolute inset-0"
-/>
+
       
 {/* Glow Effects */}
 <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-emerald-500/20 blur-[140px] rounded-full animate-pulse"></div>
