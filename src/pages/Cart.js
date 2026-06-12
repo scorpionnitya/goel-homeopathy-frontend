@@ -22,8 +22,7 @@ function Cart({ cart, setCart }) {
 
   const total = cart.reduce(
     (sum, item) => {
-
-      const price = item.price
+const price = item.price
         ? parseInt(
             item.price
               .toString()
@@ -39,6 +38,18 @@ function Cart({ cart, setCart }) {
     },
     0
   );
+  const discount = Math.round(total * 0.3);
+
+const discountedTotal = total - discount;
+
+const packingCharge = 19;
+
+const deliveryCharge = 29;
+
+const finalTotal =
+  discountedTotal +
+  packingCharge +
+  deliveryCharge;
 
   // REMOVE ITEM
 
@@ -100,7 +111,7 @@ const response = await fetch(
 
       },
 
-      totalAmount: total
+      totalAmount: finalTotal
 
     })
   }
@@ -130,7 +141,15 @@ console.log(data);
 📍 Address:
 ${userDetails.address}
 
-💰 Total Amount: ₹${total}
+💰 MRP Total: ₹${total}
+
+🏷️ Discount (30%): ₹${discount}
+
+📦 Packing Charge: ₹19
+
+🚚 Delivery Charge: ₹29
+
+💳 Final Amount: ₹${finalTotal}
 
 🧾 Products:
 ${cart
@@ -973,24 +992,50 @@ setOrderPlaced(true);
 
               </div>
 
-              <div
-                style={{
-                  display: "flex",
+<div
+  style={{
+    display: "flex",
+    justifyContent: "space-between",
+    marginTop: "12px"
+  }}
+>
+  <span>MRP Total</span>
+  <b>₹{total}</b>
+</div>
 
-                  justifyContent:
-                    "space-between",
+<div
+  style={{
+    display: "flex",
+    justifyContent: "space-between",
+    marginTop: "12px",
+    color: "#16a34a"
+  }}
+>
+  <span>Discount (30%)</span>
+  <b>-₹{discount}</b>
+</div>
 
-                  marginTop: "12px"
-                }}
-              >
+<div
+  style={{
+    display: "flex",
+    justifyContent: "space-between",
+    marginTop: "12px"
+  }}
+>
+  <span>Packing Charge</span>
+  <b>₹19</b>
+</div>
 
-                <span>
-                  Delivery
-                </span>
-
-                <b>
-                  Free
-                </b>
+<div
+  style={{
+    display: "flex",
+    justifyContent: "space-between",
+    marginTop: "12px"
+  }}
+>
+  <span>Delivery Charge</span>
+  <b>₹29</b>
+</div>
 
               </div>
 
@@ -1022,7 +1067,7 @@ setOrderPlaced(true);
                 <span>Total</span>
 
                 <span>
-                  ₹{total}
+                  ₹{finalTotal}
                 </span>
 
               </div>
@@ -1030,18 +1075,26 @@ setOrderPlaced(true);
 <p
   style={{
     marginTop: "20px",
-
     color: "#4b5563",
-
     fontSize: "14px",
-
     fontWeight: "600",
-
     textAlign: "center"
   }}
 >
   Payment QR will be shared on WhatsApp
   after order confirmation.
+</p>
+
+<p
+  style={{
+    marginTop: "10px",
+    color: "#2e7d32",
+    fontSize: "14px",
+    fontWeight: "600",
+    textAlign: "center"
+  }}
+>
+  📍 Currently delivering only in Meerut
 </p>
 
               {/* BUTTON */}
@@ -1306,8 +1359,6 @@ setOrderPlaced(true);
 
           </div>
 
-        </div>
-
       )}
 
     </div>
@@ -1315,4 +1366,3 @@ setOrderPlaced(true);
 }
 
 export default Cart;
- 
