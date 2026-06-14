@@ -1045,18 +1045,6 @@ setOrderPlaced(true);
 </div>
 
 
-<div
-  style={{
-    display: "flex",
-    justifyContent: "space-between",
-    marginTop: "12px",
-    fontWeight: "600"
-  }}
->
-  <span>Total Amount</span>
-  <b>₹{totalAmount.toFixed(2)}</b>
-</div>
-
               </div>
 
               <hr
