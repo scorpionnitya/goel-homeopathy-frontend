@@ -38,7 +38,7 @@ const price = item.price
     },
     0
   );
-  const discount = Math.round(total * 0.3);
+const discount = Math.round(total * 0.3);
 
 const discountedTotal = total - discount;
 
@@ -46,10 +46,17 @@ const packingCharge = 19;
 
 const deliveryCharge = 29;
 
-const finalTotal =
+const totalAmount =
   discountedTotal +
   packingCharge +
   deliveryCharge;
+
+const roundOff =
+  Math.round(totalAmount) -
+  totalAmount;
+
+const finalTotal =
+  Math.round(totalAmount);
 
   // REMOVE ITEM
 
@@ -1037,40 +1044,75 @@ setOrderPlaced(true);
   <b>₹29</b>
 </div>
 
+
+<div
+  style={{
+    display: "flex",
+    justifyContent: "space-between",
+    marginTop: "12px",
+    fontWeight: "600"
+  }}
+>
+  <span>Total Amount</span>
+  <b>₹{totalAmount.toFixed(2)}</b>
+</div>
+
               </div>
 
               <hr
-                style={{
-                  margin:
-                    "20px 0"
-                }}
-              />
+  style={{
+    margin: "20px 0"
+  }}
+/>
 
-              <div
-                style={{
-                  display: "flex",
+<div
+  style={{
+    display: "flex",
+    justifyContent: "space-between",
+    marginTop: "12px",
+    fontWeight: "600"
+  }}
+>
+  <span>Total Amount</span>
+  <b>₹{totalAmount.toFixed(2)}</b>
+</div>
 
-                  justifyContent:
-                    "space-between",
+<div
+  style={{
+    display: "flex",
+    justifyContent: "space-between",
+    marginTop: "12px",
+    color: "#666"
+  }}
+>
+  <span>Round Off</span>
+  <b>
+    {roundOff >= 0 ? "+" : ""}
+    ₹{roundOff.toFixed(2)}
+  </b>
+</div>
 
-                  fontSize:
-                    "22px",
+<hr
+  style={{
+    margin: "20px 0"
+  }}
+/>
 
-                  fontWeight:
-                    "800",
+<div
+  style={{
+    display: "flex",
+    justifyContent: "space-between",
+    fontSize: "22px",
+    fontWeight: "800",
+    color: "#2e7d32"
+  }}
+>
+  <span>Final Amount</span>
 
-                  color:
-                    "#2e7d32"
-                }}
-              >
-
-                <span>Total</span>
-
-                <span>
-                  ₹{finalTotal}
-                </span>
-
-              </div>
+  <span>
+    ₹{finalTotal}
+  </span>
+</div>
 
 <p
   style={{
