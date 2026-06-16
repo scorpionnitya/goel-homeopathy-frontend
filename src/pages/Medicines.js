@@ -668,13 +668,7 @@ const data = isMobile
   ? filteredData.slice(0, 80)
   : filteredData;
 
-  const tabs = [
-    "Dilution",
-    "Biochemic",
-    "BC",
-    "R Drops",
-    "Mother Tincture"
-  ];
+
 
   return (
     <div
