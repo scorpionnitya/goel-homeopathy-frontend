@@ -145,7 +145,7 @@ function Home() {
                   "0 10px 25px rgba(46,125,50,0.25)"
               }}
             >
-              Shop Medicines
+              Shop HOMEOPATHY Medicines
             </button>
 
             {/* AI BUTTON */}

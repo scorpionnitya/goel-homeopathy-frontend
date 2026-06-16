@@ -691,7 +691,7 @@ const data = isMobile
     marginBottom: "10px"
   }}
 >
-  Explore Medicines
+  Explore HOMEOPTHY Medicines
 </h1>
 
   <p

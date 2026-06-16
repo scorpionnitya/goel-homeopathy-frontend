@@ -254,9 +254,8 @@ function App() {
 
                 <Link
                   style={navLink}
-                  to="/medicines"
-                >
-                  Medicines
+                  to="/medicines">
+                  HOMEOPATHY Medicines
                 </Link>
 
                 {!isMobile && (
