@@ -23,6 +23,8 @@ function App() {
   const [cart, setCart] =
     useState([]);
 
+    const [showMenu, setShowMenu] = useState(false);
+
   const isMobile =
     window.innerWidth <= 768;
 
@@ -252,11 +254,60 @@ function App() {
                   Home
                 </Link>
 
-                <Link
-                  style={navLink}
-                  to="/medicines">
-                  HOMEOPATHY Medicines
-                </Link>
+                <div
+  style={{
+    ...navLink,
+    position: "relative",
+    cursor: "pointer"
+  }}
+  onMouseEnter={() => setShowMenu(true)}
+  onMouseLeave={() => setShowMenu(false)}
+>
+  HOMEOPATHY Medicines ▼
+
+  {showMenu && (
+    <div
+      style={{
+        position: "absolute",
+        top: "calc(100% + 4px)",
+        left: "0",
+        width: "240px",
+        background: "#fff",
+        borderRadius: "20px",
+        padding: "12px",
+        boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
+        display: "flex",
+        flexDirection: "column",
+        gap: "10px",
+        zIndex: 9999
+      }}
+    >
+      {[
+        "Dilution",
+        "Biochemic",
+        "BC",
+        "R Drops",
+        "Mother Tincture"
+      ].map((item) => (
+        <Link
+          key={item}
+          to={`/medicines?category=${encodeURIComponent(item)}`}
+          style={{
+            textDecoration: "none",
+            padding: "14px",
+            borderRadius: "14px",
+            background: "#f5f5f5",
+            color: "#111827",
+            fontWeight: "600"
+          }}
+          onClick={() => setShowMenu(false)}
+        >
+          {item}
+        </Link>
+      ))}
+    </div>
+  )}
+</div>
 
                 {!isMobile && (
 

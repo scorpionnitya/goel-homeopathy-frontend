@@ -1,12 +1,21 @@
-import {useState,useEffect} from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import getMedicineImage from "../utils/getMedicineImage";
 
 function Medicines({ addToCart }) {
-  const [tab, setTab] = useState("Dilution");
+  const [searchParams] = useSearchParams();
+
+const category =
+  searchParams.get("category") || "Dilution";
+  const [tab, setTab] = useState(category);
   const [search, setSearch] = useState("");
   const [power, setPower] = useState({});
   const [loading, setLoading] = useState(true);
+  useEffect(() => {
+  setTab(category);
+}, [category]);
+
   const isMobile = window.innerWidth <= 768;
   useEffect(() => {
 
@@ -15,6 +24,8 @@ function Medicines({ addToCart }) {
     setLoading(false);
 
   }, 1200);
+
+  
 
   return () =>
     clearTimeout(timer);
@@ -691,7 +702,7 @@ const data = isMobile
     marginBottom: "10px"
   }}
 >
-  Explore HOMEOPTHY Medicines
+  Explore HOMEOPATHY Medicines
 </h1>
 
   <p
@@ -707,48 +718,6 @@ const data = isMobile
 
 </div>
 
-      {/* Tabs */}
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: "10px",
-          justifyContent: "center",
-          marginTop: "20px"
-        }}
-      >
-        {tabs.map((item) => (
-          <button
-            key={item}
-            onClick={() => {
-              setTab(item);
-              setSearch("");
-            }}
-            style={{
-  padding: "16px 20px",
-
- minWidth: "120px",
- flex: "1",
-  borderRadius: "18px",
-
-  border: "1px solid rgba(255,255,255,0.4)",
-
-  outline: "none",
-
-  fontSize: "16px",
-
-  background: "rgba(255,255,255,0.8)",
-
-  backdropFilter: "blur(10px)",
-
-  boxShadow:
-    "0 8px 20px rgba(0,0,0,0.06)"
-}}
-          >
-            {item}
-          </button>
-        ))}
-      </div>
 
 {/* Search */}
 
