@@ -14,9 +14,6 @@ import Cart from "./pages/Cart";
 import OrdersDashboard from "./pages/OrdersDashboard";
 import Chatbot from "./pages/Chatbot";
 import { Toaster } from "react-hot-toast";
-import AdminLogin from "./pages/AdminLogin";
-import Register from "./pages/Register";
-import Login from "./pages/Login";
 
 function App() {
 
@@ -28,17 +25,7 @@ function App() {
   const isMobile =
     window.innerWidth <= 768;
 
-  // USER
-
-  const user =
-    localStorage.getItem(
-      "user"
-    );
-
-  // HIDE NAVBAR + FOOTER
-
-  const hideNavbar =
-  !user;
+const hideNavbar = false;
 
   // ADD TO CART
 
@@ -457,25 +444,8 @@ function App() {
 
         <Routes>
 
-          <Route
-            path="/"
-
-            element={
-              user
-                ? <Home />
-                : <Login />
-            }
-          />
-
-          <Route
-            path="/register"
-            element={<Register />}
-          />
-
-          <Route
-            path="/login"
-            element={<Login />}
-          />
+        <Route path="/" element={<Home />} />
+      
 
           <Route
             path="/medicines"
@@ -516,25 +486,10 @@ function App() {
               />
             }
           />
-
-          <Route
-            path="/admin-login"
-            element={<AdminLogin />}
-          />
-
-          <Route
-            path="/goel-admin-orders-2026"
-
-            element={
-              localStorage.getItem(
-                "adminAuth"
-              ) === "true"
-
-                ? <OrdersDashboard />
-
-                : <AdminLogin />
-            }
-          />
+<Route
+  path="/goel-admin-orders-2026"
+  element={<OrdersDashboard />}
+/>
 
         </Routes>
 
