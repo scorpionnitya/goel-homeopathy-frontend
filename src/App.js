@@ -1,4 +1,3 @@
-import Navbar from "./components/layout/Navbar";
 import {
   BrowserRouter as Router,
   Routes,
@@ -8,7 +7,6 @@ import {
 
 import { useState, useEffect } from "react";
 
-import Home from "./pages/Home";
 import Medicines from "./pages/Medicines";
 import About from "./pages/About";
 import Cart from "./pages/Cart";
@@ -16,6 +14,7 @@ import OrdersDashboard from "./pages/OrdersDashboard";
 import Chatbot from "./pages/Chatbot";
 import { Toaster } from "react-hot-toast";
 import HomeV2 from "./pages/HomeV2";
+import Navbar from "./components/layout/Navbar";
 
 function App() {
 

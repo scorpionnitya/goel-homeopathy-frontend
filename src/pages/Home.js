@@ -246,8 +246,6 @@ minWidth: "320px",
 display: "flex",
 justifyContent: "center",
 marginTop: "30px",
-    display: "flex",
-    justifyContent: "center",
     alignItems: "center"
   }}
 >
