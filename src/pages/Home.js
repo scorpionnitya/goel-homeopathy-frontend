@@ -55,55 +55,51 @@ function Home() {
 
           {/* LOGO */}
 
-          <h1
-            style={{
-              fontSize:
-                window.innerWidth < 768
-                  ? "52px"
-                  : "72px",
+<h1
+  style={{
+    fontSize:
+      window.innerWidth < 768
+        ? "46px"
+        : "68px",
 
-              marginBottom: "10px",
-              color: "#2e7d32",
-              lineHeight: "1.1",
-              fontWeight: "800"
-            }}
-          >
-            CureNest
-          </h1>
+    lineHeight: "1.1",
 
-          {/* SUBTITLE */}
+    fontWeight: "800",
 
-          <h2
-            style={{
-              fontStyle: "italic",
-              fontWeight: "600",
-              color: "#4caf50",
-              marginBottom: "25px",
-              fontSize: "28px"
-            }}
-          >
-            Health & Home
-          </h2>
+    color: "#111827",
 
-          {/* DESCRIPTION */}
+    marginBottom: "20px"
+  }}
+>
+  Delivering Trusted
+  <br />
 
-          <p
-            style={{
-              fontSize:
-                window.innerWidth < 768
-                  ? "17px"
-                  : "20px",
+  <span style={{ color: "#16A34A" }}>
+    Homeopathy
+  </span>
 
-              lineHeight: "1.8",
-              maxWidth: "650px",
-              color: "#374151"
-            }}
-          >
-            Trusted Homeopathy Care for the Whole Family.
-            Experience natural healing with premium
-            medicines, AI-powered assistance, and
-            50+ years of trusted care.
-          </p>
+  <br />
+
+  to Your Doorstep.
+</h1>
+
+<p
+  style={{
+    fontSize: "20px",
+
+    lineHeight: "1.8",
+
+    color: "#4B5563",
+
+    maxWidth: "620px"
+  }}
+>
+  Order genuine homeopathic medicines
+  with 30% OFF, AI-powered assistance,
+  and quick local delivery across Meerut.
+  Trusted healthcare, delivered with a
+  modern shopping experience.
+</p>
 
           {/* BUTTONS */}
 
@@ -145,7 +141,7 @@ function Home() {
                   "0 10px 25px rgba(46,125,50,0.25)"
               }}
             >
-              Shop HOMEOPATHY Medicines
+              🛒 Start Shopping
             </button>
 
             {/* AI BUTTON */}
@@ -175,7 +171,7 @@ function Home() {
                   "0 8px 20px rgba(0,0,0,0.06)"
               }}
             >
-              AI Assistant
+              🤖 Ask AI
             </button>
 
           </div>
@@ -183,6 +179,33 @@ function Home() {
         </div>
 
       </div>
+
+      <div
+  style={{
+    display: "flex",
+    gap: "12px",
+    flexWrap: "wrap",
+    marginTop: "28px"
+  }}
+>
+
+<div className="trust-pill">
+✔ 30% OFF
+</div>
+
+<div className="trust-pill">
+✔ Genuine Medicines
+</div>
+
+<div className="trust-pill">
+✔ Fast Delivery
+</div>
+
+<div className="trust-pill">
+✔ AI Powered
+</div>
+
+</div>
 
       {/* TRUST SECTION */}
 
