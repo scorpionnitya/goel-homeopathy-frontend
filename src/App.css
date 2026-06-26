@@ -61,3 +61,71 @@ transform:translateY(-4px);
 box-shadow:0 12px 25px rgba(0,0,0,.08);
 
 }
+
+.hero-card{
+
+background:white;
+
+padding:30px;
+
+border-radius:24px;
+
+text-align:center;
+
+box-shadow:0 18px 40px rgba(0,0,0,.08);
+
+transition:.35s;
+
+cursor:pointer;
+
+animation:floatCard 4s ease-in-out infinite;
+
+}
+
+.hero-card:hover{
+
+transform:translateY(-10px);
+
+box-shadow:0 25px 60px rgba(22,163,74,.18);
+
+}
+
+.hero-card h3{
+
+margin-top:18px;
+
+font-size:24px;
+
+color:#111827;
+
+}
+
+.hero-card p{
+
+margin-top:8px;
+
+color:#6B7280;
+
+}
+
+@keyframes floatCard{
+
+0%{
+
+transform:translateY(0px);
+
+}
+
+50%{
+
+transform:translateY(-8px);
+
+}
+
+100%{
+
+transform:translateY(0px);
+
+}
+
+}

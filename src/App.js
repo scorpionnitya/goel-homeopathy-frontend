@@ -1,3 +1,4 @@
+import Navbar from "./components/layout/Navbar";
 import {
   BrowserRouter as Router,
   Routes,
@@ -5,7 +6,7 @@ import {
   Link
 } from "react-router-dom";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Home from "./pages/Home";
 import Medicines from "./pages/Medicines";
@@ -14,6 +15,7 @@ import Cart from "./pages/Cart";
 import OrdersDashboard from "./pages/OrdersDashboard";
 import Chatbot from "./pages/Chatbot";
 import { Toaster } from "react-hot-toast";
+import HomeV2 from "./pages/HomeV2";
 
 function App() {
 
@@ -72,6 +74,10 @@ const hideNavbar = false;
       }
     };
 
+useEffect(() => {
+  console.log("Cart updated:", cart);
+}, [cart]);
+
   // NAV STYLE
 
   const navLink = {
@@ -125,10 +131,10 @@ const hideNavbar = false;
 
         {/* NAVBAR */}
 
-        {!hideNavbar && (
+        {false && (
 
           <>
-
+            
             <nav
               style={{
 
@@ -444,7 +450,14 @@ const hideNavbar = false;
 
         <Routes>
 
-        <Route path="/" element={<Home />} />
+        <Route
+  path="/"
+  element={
+    <HomeV2
+      cart={cart}
+    />
+  }
+/>
       
 
           <Route

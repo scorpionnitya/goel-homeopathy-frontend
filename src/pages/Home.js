@@ -32,9 +32,13 @@ function Home() {
         }}
       >
 
+        
+
         {/* LEFT SECTION */}
 
-        <div style={{ flex: "1", minWidth: "280px" }}>
+        <div style={{ flex: "1",
+minWidth: "320px",
+maxWidth: "650px", }}>
 
           {/* BADGE */}
 
@@ -50,8 +54,10 @@ function Home() {
               marginBottom: "20px"
             }}
           >
-            🌿 Trusted Homeopathy Since 1970
+            🚚 Delivering Across Meerut • 30% OFF Everyday
+            
           </div>
+          
 
           {/* LOGO */}
 
@@ -101,12 +107,65 @@ function Home() {
   modern shopping experience.
 </p>
 
+<div
+  style={{
+    marginTop: "35px",
+    marginBottom: "35px",
+    display: "flex",
+    alignItems: "center",
+    background: "#ffffff",
+    borderRadius: "18px",
+    padding: "8px",
+    boxShadow: "0 12px 35px rgba(0,0,0,0.08)",
+    width: "100%",
+maxWidth: "620px",
+    border: "2px solid #ecfdf5"
+  }}
+>
+  <span
+    style={{
+      fontSize: "22px",
+      marginLeft: "15px"
+    }}
+  >
+    🔍
+  </span>
+
+  <input
+    type="text"
+    placeholder="Search 200+ Homeopathy Medicines..."
+    style={{
+      flex: 1,
+      border: "none",
+      outline: "none",
+      padding: "16px",
+      fontSize: "17px",
+      background: "transparent"
+    }}
+  />
+
+  <button
+    onClick={() => navigate("/medicines")}
+    style={{
+      background: "#16A34A",
+      color: "white",
+      border: "none",
+      borderRadius: "14px",
+      padding: "14px 24px",
+      fontWeight: "700",
+      cursor: "pointer"
+    }}
+  >
+    Search
+  </button>
+</div>
+
           {/* BUTTONS */}
 
           <div
             style={{
               display: "flex",
-              gap: "16px",
+              gap: "12px",
               marginTop: "35px",
               flexWrap: "wrap"
             }}
@@ -127,7 +186,7 @@ function Home() {
 
                 border: "none",
 
-                borderRadius: "16px",
+                borderRadius: "12px",
 
                 fontSize: "16px",
 
@@ -177,6 +236,83 @@ function Home() {
           </div>
 
         </div>
+
+{/* RIGHT SECTION */}
+
+<div
+  style={{
+    flex: "1",
+minWidth: "320px",
+display: "flex",
+justifyContent: "center",
+marginTop: "30px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+  }}
+>
+
+  <div
+    style={{
+      display: "grid",
+      gridTemplateColumns: "repeat(2,1fr)",
+      gap: "20px",
+      width: "100%",
+      maxWidth: "420px"
+    }}
+  >
+
+    {[
+      {
+        icon: "⭐",
+        title: "4.9 Rating",
+        sub: "Trusted Families"
+      },
+
+      {
+        icon: "🚚",
+        title: "30-45 Min",
+        sub: "Fast Delivery"
+      },
+
+      {
+        icon: "💊",
+        title: "200+",
+        sub: "Medicines"
+      },
+
+      {
+        icon: "👨‍👩‍👧‍👦",
+        title: "5000+",
+        sub: "Happy Families"
+      }
+
+    ].map((card, index) => (
+
+      <div
+        key={index}
+        className="hero-card"
+      >
+
+        <div
+          style={{
+            fontSize: "42px"
+          }}
+        >
+          {card.icon}
+        </div>
+
+        <h3>{card.title}</h3>
+
+        <p>{card.sub}</p>
+
+      </div>
+
+    ))}
+
+  </div>
+
+</div>
 
       </div>
 

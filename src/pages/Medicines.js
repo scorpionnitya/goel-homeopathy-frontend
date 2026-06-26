@@ -619,13 +619,15 @@ const category =
   "YOHIMBINUM Q": 430
 };
 
-  const getData = () => {
-    if (tab === "Dilution") return dilution;
-    if (tab === "Biochemic") return biochemic;
-    if (tab === "BC") return bc;
-    if (tab === "R Drops") return rdrops;
-    if (tab === "Mother Tincture") return Object.keys(motherPrices);
-  };
+ const getData = () => {
+  if (tab === "Dilution") return dilution;
+  if (tab === "Biochemic") return biochemic;
+  if (tab === "BC") return bc;
+  if (tab === "R Drops") return rdrops;
+  if (tab === "Mother Tincture") return Object.keys(motherPrices);
+
+  return []; // Default if no category matches
+};
 
   const getPowers = () => {
     if (tab === "Dilution") return ["30", "200", "1M", "10M", "CM"];
@@ -909,27 +911,6 @@ Showing {data.length} medicines
               
 
             {getMedicineImage(med, tab)}
-<div
-  style={{
-    display: "inline-block",
-
-    background: "#dcfce7",
-
-    color: "#15803d",
-
-    padding: "6px 12px",
-
-    borderRadius: "999px",
-
-    fontSize: "12px",
-
-    fontWeight: "700",
-
-    marginTop: "10px"
-  }}
->
-  In Stock
-</div>
 
 <div
   style={{
