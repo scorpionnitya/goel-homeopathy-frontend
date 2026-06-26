@@ -14,7 +14,6 @@ import OrdersDashboard from "./pages/OrdersDashboard";
 import Chatbot from "./pages/Chatbot";
 import { Toaster } from "react-hot-toast";
 import HomeV2 from "./pages/HomeV2";
-import Navbar from "./components/layout/Navbar";
 
 function App() {
 
