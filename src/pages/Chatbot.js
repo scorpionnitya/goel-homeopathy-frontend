@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+
 function Chatbot({ addToCart }) {
 
   const [input, setInput] = useState("");
@@ -42,7 +43,7 @@ function Chatbot({ addToCart }) {
 
     recognition.continuous = false;
 
-    recognition.lang = "en-US";
+    recognition.lang = "en-IN";
   }
 
   // 🔊 Speak AI Reply
@@ -114,31 +115,37 @@ const speak = (text) => {
 
   // 🎤 Mic Start
 
-  const startListening = () => {
+const startListening = () => {
 
-    if (!recognition) {
+  if (!recognition) {
+    alert("Voice recognition not supported");
+    return;
+  }
 
-      alert(
-        "Voice recognition not supported"
-      );
+  console.log("🎤 Recognition started");
 
-      return;
-    }
+  recognition.start();
 
-    recognition.start();
-
-    recognition.onresult = (
-      event
-    ) => {
-
-      const voiceText =
-        event.results[0][0]
-          .transcript;
-
-      setInput(voiceText);
-
-    };
+  recognition.onstart = () => {
+    console.log("🎤 Mic is listening...");
   };
+
+recognition.onresult = (event) => {
+  console.log(event.results[0][0].transcript);
+
+  const voiceText = event.results[0][0].transcript;
+
+  setInput(voiceText);
+};
+
+  recognition.onerror = (event) => {
+    console.log("Speech Error:", event.error);
+  };
+
+  recognition.onend = () => {
+    console.log("🎤 Recognition ended");
+  };
+};
 
   // 🤖 AI Function
 
@@ -199,11 +206,15 @@ const speak = (text) => {
 
         // slight delay for mobile
 
-        setTimeout(() => {
+setTimeout(() => {
 
-          speak(data.reply);
+  if (recognition) {
+    recognition.stop();
+  }
 
-        }, 300);
+  speak(data.reply);
+
+}, 300);
 
       } catch (error) {
 
