@@ -5,13 +5,136 @@ import {
   FiShoppingCart,
 } from "react-icons/fi";
 import { Link } from "react-router-dom";
-
+import { FiMenu, FiMic, FiChevronDown } from "react-icons/fi";
 
 function Navbar({ cart }) {
+
+  const isMobile = window.innerWidth < 768;
+
+  const cartCount = cart.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
   console.log("Navbar cart:", cart);
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-sm border-b">
+  <>
+    {isMobile ? (
+
+<div className="bg-white border-b shadow-sm">
+
+  {/* TOP ROW */}
+
+  <div className="flex items-center justify-between px-4 pt-3">
+
+    {/* MENU */}
+
+    <button>
+
+      <FiMenu size={24} />
+
+    </button>
+
+    {/* LOGO */}
+
+    <div className="text-center">
+
+      <h1 className="text-2xl font-bold text-green-600">
+        Homiscare
+      </h1>
+
+      <p className="text-[10px] italic text-gray-500">
+        Healthcare Delivered Faster
+      </p>
+
+    </div>
+
+    {/* RIGHT */}
+
+    <div className="flex items-center gap-4">
+
+      <button>
+
+        <FiUser size={23} />
+
+      </button>
+
+      <Link
+        to="/cart"
+        className="relative"
+      >
+
+        <FiShoppingCart size={24} />
+
+        <span className="absolute -top-2 -right-2 bg-green-600 text-white w-5 h-5 rounded-full text-[10px] flex items-center justify-center">
+
+          {cartCount}
+
+        </span>
+
+      </Link>
+
+    </div>
+
+  </div>
+
+  {/* SEARCH */}
+
+  <div className="px-4 mt-4">
+
+    <div className="flex items-center bg-white border rounded-full overflow-hidden shadow-sm">
+
+      <input
+        type="text"
+        placeholder="Search medicines..."
+        className="flex-1 px-5 py-2 outline-none text-sm"
+      />
+
+      <button className="px-2 text-gray-500">
+
+        <FiMic size={20} />
+
+      </button>
+
+      <button className="bg-green-600 text-white w-12 h-12 rounded-r-full flex items-center justify-center">
+
+        <FiSearch size={22} />
+
+      </button>
+
+    </div>
+
+  </div>
+
+  {/* LOCATION */}
+
+  <div className="px-4 py-4 flex items-center gap-2">
+
+    <FiMapPin
+      className="text-green-600"
+      size={18}
+    />
+
+    <span className="text-sm">
+
+      Deliver to
+
+      <strong className="ml-1">
+
+        Meerut
+
+      </strong>
+
+    </span>
+
+    <FiChevronDown size={16} />
+
+  </div>
+
+</div>
+
+) : (
+<header className="sticky top-0 z-50 bg-white shadow-sm border-b">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-6">
 
         {/* LOGO */}
@@ -103,6 +226,8 @@ function Navbar({ cart }) {
 
       </div>
     </header>
+    )}
+</>
   );
 }
 

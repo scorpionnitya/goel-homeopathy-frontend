@@ -43,9 +43,9 @@ const categories = [
 
 function Categories() {
   return (
-    <section className="max-w-7xl mx-auto px-6 py-12">
+   <section className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12">
       <div className="flex justify-between items-center mb-8">
-        <h2 className="text-3xl font-bold">
+        <h2 className="text-2xl md:text-3xl font-bold">
           Shop by Category
         </h2>
 
@@ -54,23 +54,37 @@ function Categories() {
         </button>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5">
-       {categories.map((category) => (
-  <Link
-    key={category.name}
-    to={`/medicines?category=${encodeURIComponent(category.category)}`}
-    className="block"
-  >
-    <div className="bg-white rounded-3xl shadow-sm hover:shadow-lg transition p-8 flex flex-col items-center justify-center cursor-pointer">
-      {category.icon}
+<div className="flex md:grid md:grid-cols-3 lg:grid-cols-6 gap-4 overflow-x-auto md:overflow-visible pb-2 no-scrollbar">
 
-      <p className="mt-5 text-center font-medium">
-        {category.name}
-      </p>
-    </div>
-  </Link>
-))}
+  {categories.map((category) => (
+
+    <Link
+      key={category.name}
+      to={`/medicines?category=${encodeURIComponent(category.category)}`}
+      className="flex-shrink-0 md:block"
+    >
+
+      <div className="w-24 md:w-auto bg-white rounded-3xl shadow-sm hover:shadow-lg transition p-4 md:p-8 flex flex-col items-center justify-center cursor-pointer">
+
+        <div className="w-16 h-16 rounded-full bg-green-50 flex items-center justify-center">
+
+          {category.icon}
+
+        </div>
+
+        <p className="mt-3 text-center text-sm md:text-base font-medium leading-5">
+
+          {category.name}
+
+        </p>
+
       </div>
+
+    </Link>
+
+  ))}
+
+</div>
     </section>
   );
 }

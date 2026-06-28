@@ -1,11 +1,24 @@
+import { motion } from "framer-motion";
+
 import sbl from "../../assets/home/brands/sbl.png";
 import reckeweg from "../../assets/home/brands/reckeweg.png";
 import schwabe from "../../assets/home/brands/schwabe.png";
+import soundarya from "../../assets/home/brands/soundarya.png";
+import bakson from "../../assets/home/brands/bakson.png";
+import hapdco from "../../assets/home/brands/hapdco.png";
+import wheezal from "../../assets/home/brands/wheezal.png";
+import adel from "../../assets/home/brands/adel.png";
+
 
 const brands = [
-  { name: "SBL", logo: sbl },
-  { name: "Dr. Reckeweg", logo: reckeweg },
+  { name: "SBL", logo: sbl, large:true},
+  { name: "Dr. Reckeweg", logo: reckeweg, large:true },
   { name: "Schwabe", logo: schwabe },
+  { name: "Soundarya", logo: soundarya },
+  { name: "BAKSON", logo: bakson, large:true },
+  { name: "HAPDCO", logo: hapdco },
+  { name: "Wheezal", logo: wheezal },
+  { name: "Adel", logo: adel, large:true },
 ];
 
 function Brands() {
@@ -21,20 +34,46 @@ function Brands() {
         </button>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-        {brands.map((brand) => (
-          <div
-            key={brand.name}
-            className="bg-white rounded-3xl shadow-sm hover:shadow-lg transition p-8 flex items-center justify-center h-40"
-          >
-            <img
-              src={brand.logo}
-              alt={brand.name}
-              className="max-h-20 object-contain"
-            />
-          </div>
-        ))}
+<div className="relative overflow-hidden py-4">
+  <div className="absolute left-0 top-0 h-full w-16 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+
+  <motion.div
+    className="flex gap-6"
+    animate={{
+      x: ["0%", "-50%"],
+    }}
+    transition={{
+      duration: 8,
+      ease: "linear",
+      repeat: Infinity,
+    }}
+  >
+
+    {[...brands, ...brands].map((brand, index) => (
+
+      <div
+        key={index}
+        className="min-w-[170px] h-28 bg-white rounded-2xl shadow-sm flex items-center justify-center"
+      >
+
+        <img
+          src={brand.logo}
+          alt={brand.name}
+          className={`object-contain ${
+            brand.large
+              ? "max-h-20 md:max-h-24"
+              : "max-h-12 md:max-h-16"
+          }`}
+        />
+
       </div>
+
+    ))}
+
+  </motion.div>
+  <div className="absolute right-0 top-0 h-full w-16 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+
+</div>
     </section>
   );
 }

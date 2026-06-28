@@ -13,8 +13,8 @@ function HomeV2({ cart }) {
       <Hero />
       <Categories />
       <Brands />
-      <WhyChoose />
       <HomiscareAI />
+      <WhyChoose />
     </>
   );
 }
