@@ -6,6 +6,7 @@ import {
   FaTags,
   FaAward,
 } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const features = [
   {
@@ -56,30 +57,60 @@ function WhyChoose() {
         </p>
 
       </div>
+<div className="relative overflow-hidden py-4">
 
-      <div className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 overflow-x-auto md:overflow-visible pb-2 no-scrollbar">
+  {/* Left Fade */}
 
-        {features.map((item) => (
-         <div
-  key={item.title}
-  className="flex-shrink-0 md:flex-shrink w-26 md:w-auto bg-white rounded-3xl p-5 md:p-8 shadow-sm hover:shadow-xl transition-all duration-300 text-center"
->
+  <div className="absolute left-0 top-0 h-full w-16 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
 
-<div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-green-100 flex items-center justify-center text-green-600 mx-auto mb-4">              {item.icon}
-            </div>
+  <motion.div
+    className="flex gap-5"
+    animate={{
+      x: ["0%", "-50%"],
+    }}
+    transition={{
+      duration: 20,
+      ease: "linear",
+      repeat: Infinity,
+    }}
+  >
 
-            <h3 className="text-sm md:text-2xl font-semibold md:font-bold mb-2 md:mb-4 text-gray-900 leading-5">
-              {item.title}
-            </h3>
+    {[...features, ...features].map((item, index) => (
 
-            <p className="hidden md:block text-gray-600 leading-8">
-              {item.desc}
-            </p>
+      <div
+        key={index}
+        className="min-w-[220px] md:min-w-[260px] bg-white rounded-2xl shadow-sm p-6 flex flex-col items-center text-center"
+      >
 
-          </div>
-        ))}
+        <div className="w-14 h-14 rounded-full bg-green-50 flex items-center justify-center text-green-600 mb-4">
+
+          {item.icon}
+
+        </div>
+
+        <h3 className="font-bold text-lg leading-6">
+
+          {item.title}
+
+        </h3>
+
+        <p className="text-sm text-gray-500 mt-3">
+
+          {item.desc}
+
+        </p>
 
       </div>
+
+    ))}
+
+  </motion.div>
+
+  {/* Right Fade */}
+
+  <div className="absolute right-0 top-0 h-full w-16 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+
+</div>
 
     </section>
   );

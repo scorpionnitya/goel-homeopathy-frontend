@@ -7,6 +7,8 @@ import {
   FaHeartbeat,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { useRef } from "react";
 
 const categories = [
   {
@@ -42,49 +44,96 @@ const categories = [
 ];
 
 function Categories() {
+  const sliderRef = useRef(null);
+
+  const scrollLeft = () => {
+    sliderRef.current?.scrollBy({
+      left: -300,
+      behavior: "smooth",
+    });
+  };
+
+  const scrollRight = () => {
+    sliderRef.current?.scrollBy({
+      left: 300,
+      behavior: "smooth",
+    });
+  };
+
   return (
-   <section className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12">
+    <section className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12">
+
+      {/* Heading */}
+
       <div className="flex justify-between items-center mb-8">
+
         <h2 className="text-2xl md:text-3xl font-bold">
           Shop by Category
         </h2>
 
-        <button className="text-green-600 font-semibold">
-          View All
-        </button>
       </div>
 
-<div className="flex md:grid md:grid-cols-3 lg:grid-cols-6 gap-4 overflow-x-auto md:overflow-visible pb-2 no-scrollbar">
+      {/* Slider */}
 
-  {categories.map((category) => (
+      <div className="relative">
 
-    <Link
-      key={category.name}
-      to={`/medicines?category=${encodeURIComponent(category.category)}`}
-      className="flex-shrink-0 md:block"
-    >
+        {/* Left Arrow */}
 
-      <div className="w-24 md:w-auto bg-white rounded-3xl shadow-sm hover:shadow-lg transition p-4 md:p-8 flex flex-col items-center justify-center cursor-pointer">
+        <button
+          onClick={scrollLeft}
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white shadow-lg hover:bg-green-600 hover:text-white transition flex items-center justify-center"
+        >
+          <FiChevronLeft size={24} />
+        </button>
 
-        <div className="w-16 h-16 rounded-full bg-green-50 flex items-center justify-center">
+        {/* Categories */}
 
-          {category.icon}
+        <div
+          ref={sliderRef}
+          className="flex gap-4 overflow-x-auto no-scrollbar px-16 scroll-smooth"
+        >
+
+          {categories.map((category) => (
+
+            <Link
+              key={category.name}
+              to={`/medicines?category=${encodeURIComponent(category.category)}`}
+              className="flex-shrink-0"
+            >
+
+              <div className="w-52 bg-white rounded-3xl shadow-sm hover:shadow-lg transition p-8 flex flex-col items-center justify-center cursor-pointer">
+
+                <div className="w-20 h-20 rounded-full bg-green-50 flex items-center justify-center">
+
+                  {category.icon}
+
+                </div>
+
+                <p className="mt-5 text-center text-lg font-medium leading-7">
+
+                  {category.name}
+
+                </p>
+
+              </div>
+
+            </Link>
+
+          ))}
 
         </div>
 
-        <p className="mt-3 text-center text-sm md:text-base font-medium leading-5">
+        {/* Right Arrow */}
 
-          {category.name}
-
-        </p>
+        <button
+          onClick={scrollRight}
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white shadow-lg hover:bg-green-600 hover:text-white transition flex items-center justify-center"
+        >
+          <FiChevronRight size={24} />
+        </button>
 
       </div>
 
-    </Link>
-
-  ))}
-
-</div>
     </section>
   );
 }

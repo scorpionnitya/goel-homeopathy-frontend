@@ -4,12 +4,58 @@ import {
   FiUser,
   FiShoppingCart,
 } from "react-icons/fi";
+
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FiMenu, FiMic, FiChevronDown } from "react-icons/fi";
+import {
+  dilution,
+  biochemic,
+  bc,
+  rdrops,
+  motherPrices,
+} from "../../data/medicinesData";
+import { useNavigate } from "react-router-dom";
+
 
 function Navbar({ cart }) {
 
-  const isMobile = window.innerWidth < 768;
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+useEffect(() => {
+  const handleResize = () => {
+    setIsMobile(window.innerWidth < 768);
+  };
+
+  window.addEventListener("resize", handleResize);
+
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
+  const [search, setSearch] = useState("");
+  const navigate = useNavigate();
+  const allMedicines = [
+  ...dilution,
+  ...biochemic,
+  ...bc,
+  ...rdrops,
+  ...Object.keys(motherPrices),
+];
+
+
+const filteredMedicines =
+  search.trim() === ""
+    ? []
+    : allMedicines
+        .filter((medicine) => {
+          return String(medicine)
+            .toLowerCase()
+            .includes(search.toLowerCase());
+        })
+        .slice(0, 8);
+
+console.log("Search:", search);
+console.log("Total:", allMedicines.length);
+console.log("Matches:", filteredMedicines);
 
   const cartCount = cart.reduce(
     (total, item) => total + item.quantity,
@@ -80,15 +126,20 @@ function Navbar({ cart }) {
 
   {/* SEARCH */}
 
-  <div className="px-4 mt-4">
+  <div className="px-4 mt-4 relative">
 
     <div className="flex items-center bg-white border rounded-full overflow-hidden shadow-sm">
 
-      <input
-        type="text"
-        placeholder="Search medicines..."
-        className="flex-1 px-5 py-2 outline-none text-sm"
-      />
+<input
+  type="text"
+  value={search}
+  onChange={(e) => {
+    console.log("Typing:", e.target.value);
+    setSearch(e.target.value);
+  }}
+  placeholder="Search medicines..."
+  className="bg-transparent outline-none w-full ml-3 text-gray-700"
+/>
 
       <button className="px-2 text-gray-500">
 
@@ -103,6 +154,22 @@ function Navbar({ cart }) {
       </button>
 
     </div>
+    {filteredMedicines.length > 0 && (
+  <div className="mt-2 bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
+
+{filteredMedicines.map((medicine) => (
+  <div
+    key={medicine}
+    onClick={() => navigate(`/medicines?search=${encodeURIComponent(medicine)}`)}
+    className="px-5 py-3 hover:bg-green-50 cursor-pointer flex items-center gap-3 border-b last:border-b-0"
+  >
+    <FiSearch className="text-green-600" />
+    <span>{medicine}</span>
+  </div>
+))}
+
+  </div>
+)}
 
   </div>
 
@@ -150,10 +217,9 @@ function Navbar({ cart }) {
         </div>
 
         {/* SEARCH */}
+<div className="hidden md:flex flex-1 max-w-2xl relative">
 
-        <div className="hidden md:flex flex-1 max-w-2xl">
-
-          <div className="w-full flex items-center bg-gray-100 rounded-full px-5 py-3">
+  <div className="w-full flex items-center bg-gray-100 rounded-full px-5 py-3">
 
             <FiSearch
               className="text-gray-400"
@@ -161,12 +227,29 @@ function Navbar({ cart }) {
             />
 
             <input
-              type="text"
-              placeholder="Search medicines, categories, brands..."
-              className="bg-transparent outline-none w-full ml-3 text-gray-700"
-            />
+  type="text"
+  placeholder="Search medicines, categories, brands..."
+  value={search}
+  onChange={(e) => setSearch(e.target.value)}
+  className="bg-transparent outline-none w-full ml-3 text-gray-700"
+/>
 
           </div>
+  {filteredMedicines.length > 0 && (
+  <div className="absolute left-0 right-0 top-[110%] bg-white rounded-xl shadow-xl border border-gray-200 z-[9999] overflow-hidden">
+
+    {filteredMedicines.map((medicine) => (
+      <div
+        key={medicine}
+        className="px-5 py-3 hover:bg-green-50 cursor-pointer flex items-center gap-3 border-b last:border-b-0"
+      >
+        <FiSearch className="text-green-600" />
+        <span>{medicine}</span>
+      </div>
+    ))}
+
+  </div>
+)}
 
         </div>
 
