@@ -1,10 +1,28 @@
 import { FaRobot, FaBrain, FaSearch, FaComments, FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { FiArrowLeft } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 
 function HomiscareAI() {
-  return (
-    <section className="bg-gradient-to-r from-green-50 via-white to-green-50 py-24 px-6">
+  const navigate = useNavigate();
 
+  return (
+    
+<section className="bg-gradient-to-r from-green-50 via-white to-green-50 py-24 px-6 relative">
+  <FiArrowLeft
+    size={30}
+    onClick={() => navigate(-1)}
+    style={{
+      position: "absolute",
+      top: "20px",
+      left: "20px",
+      cursor: "pointer",
+      color: "#111827",
+      zIndex: 1000,
+    }}
+  />
+
+  <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center"></div>
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
 
         {/* LEFT */}

@@ -1,35 +1,67 @@
-import hero from "../assets/home/banner/hero.png";
+import bottle from "../assets/bottle.png";
+import mother from "../assets/mother.png";
+import biochemicImg from "../assets/Biochemic.png";
+import bcImg from "../assets/BC.png";
+import rdropsImg from "../assets/Rdrops.png";
+
+import {
+  dilution,
+  biochemic,
+  bc,
+  rdrops,
+  motherPrices,
+} from "./medicinesData";
+
+let id = 1;
 
 const products = [
-  {
-    id: 1,
-    name: "SBL Arnica 30 CH",
-    image: hero,
-    price: 120,
-    oldPrice: 172,
-    rating: 4.8,
-    reviews: 128,
-    badge: "30% OFF",
-  },
-  {
-    id: 2,
-    name: "Dr. Reckeweg R82",
-    image: hero,
-    price: 150,
-    oldPrice: 215,
-    rating: 4.7,
-    reviews: 96,
-    badge: "Bestseller",
-  },
-  {
-    id: 3,
-    name: "Schwabe Bio Combination",
-    image: hero,
-    price: 140,
-    oldPrice: 200,
-    rating: 4.9,
-    reviews: 78,
-    badge: "New",
-  },
+  // Dilutions
+  ...dilution.map((name) => ({
+    id: id++,
+    name,
+    category: "Dilution",
+    image: bottle,
+    price: 160,
+    powers: ["30", "200", "1M", "10M", "CM"],
+  })),
+
+  // Mother Tinctures
+  ...Object.keys(motherPrices).map((name) => ({
+    id: id++,
+    name,
+    category: "Mother Tincture",
+    image: mother,
+    price: motherPrices[name],
+    powers: ["Q"],
+  })),
+
+  // Biochemic Salts
+  ...biochemic.map((name) => ({
+    id: id++,
+    name,
+    category: "Biochemic",
+    image: biochemicImg,
+    price: 220,
+    powers: ["3X", "6X", "12X", "30X", "200X"],
+  })),
+
+  // Bio Combinations
+  ...bc.map((name) => ({
+    id: id++,
+    name,
+    category: "BC",
+    image: bcImg,
+    price: 220,
+  })),
+
+  // R Drops
+  ...rdrops.map((name) => ({
+    id: id++,
+    name,
+    category: "R Drops",
+    image: rdropsImg,
+    price: 295,
+  })),
 ];
+
 export default products;

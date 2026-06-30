@@ -8,13 +8,7 @@ import {
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FiMenu, FiMic, FiChevronDown } from "react-icons/fi";
-import {
-  dilution,
-  biochemic,
-  bc,
-  rdrops,
-  motherPrices,
-} from "../../data/medicinesData";
+import products from "../../data/products";
 import { useNavigate } from "react-router-dom";
 
 
@@ -33,14 +27,7 @@ useEffect(() => {
 }, []);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
-  const allMedicines = [
-  ...dilution,
-  ...biochemic,
-  ...bc,
-  ...rdrops,
-  ...Object.keys(motherPrices),
-];
-
+const allMedicines = products.map((product) => product.name);
 
 const filteredMedicines =
   search.trim() === ""
@@ -158,14 +145,17 @@ console.log("Matches:", filteredMedicines);
   <div className="mt-2 bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
 
 {filteredMedicines.map((medicine) => (
-  <div
-    key={medicine}
-    onClick={() => navigate(`/medicines?search=${encodeURIComponent(medicine)}`)}
-    className="px-5 py-3 hover:bg-green-50 cursor-pointer flex items-center gap-3 border-b last:border-b-0"
-  >
-    <FiSearch className="text-green-600" />
-    <span>{medicine}</span>
-  </div>
+<div
+  key={medicine}
+  onClick={() => {
+  setSearch("");
+  navigate(`/medicines?search=${encodeURIComponent(medicine)}`);
+}}
+  className="px-5 py-3 hover:bg-green-50 cursor-pointer flex items-center gap-3 border-b last:border-b-0"
+>
+  <FiSearch className="text-green-600" />
+  <span>{medicine}</span>
+</div>
 ))}
 
   </div>
@@ -220,38 +210,38 @@ console.log("Matches:", filteredMedicines);
 <div className="hidden md:flex flex-1 max-w-2xl relative">
 
   <div className="w-full flex items-center bg-gray-100 rounded-full px-5 py-3">
+    <FiSearch className="text-gray-400" size={22} />
 
-            <FiSearch
-              className="text-gray-400"
-              size={22}
-            />
-
-            <input
-  type="text"
-  placeholder="Search medicines, categories, brands..."
-  value={search}
-  onChange={(e) => setSearch(e.target.value)}
-  className="bg-transparent outline-none w-full ml-3 text-gray-700"
-/>
-
-          </div>
-  {filteredMedicines.length > 0 && (
-  <div className="absolute left-0 right-0 top-[110%] bg-white rounded-xl shadow-xl border border-gray-200 z-[9999] overflow-hidden">
-
-    {filteredMedicines.map((medicine) => (
-      <div
-        key={medicine}
-        className="px-5 py-3 hover:bg-green-50 cursor-pointer flex items-center gap-3 border-b last:border-b-0"
-      >
-        <FiSearch className="text-green-600" />
-        <span>{medicine}</span>
-      </div>
-    ))}
-
+    <input
+      type="text"
+      placeholder="Search medicines, categories, brands..."
+      value={search}
+      onChange={(e) => setSearch(e.target.value)}
+      className="bg-transparent outline-none w-full ml-3 text-gray-700"
+    />
   </div>
-)}
 
+  {filteredMedicines.length > 0 && (
+    <div className="absolute left-0 top-full mt-2 w-full bg-white rounded-2xl shadow-xl border border-gray-200 z-50 overflow-hidden">
+
+      {filteredMedicines.map((medicine) => (
+        <div
+          key={medicine}
+          onClick={() => {
+            setSearch("");
+            navigate(`/medicines?search=${encodeURIComponent(medicine)}`);
+          }}
+          className="px-5 py-3 hover:bg-green-50 cursor-pointer flex items-center gap-3 border-b last:border-b-0"
+        >
+          <FiSearch className="text-green-600" />
+          <span>{medicine}</span>
         </div>
+      ))}
+
+    </div>
+  )}
+
+</div>
 
         {/* RIGHT */}
 

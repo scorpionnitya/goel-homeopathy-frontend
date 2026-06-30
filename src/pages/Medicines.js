@@ -10,9 +10,13 @@ import {
   motherPrices,
 } from "../data/medicinesData";
 
+import { FiArrowLeft } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
+
 function Medicines({ addToCart }) {
   const [searchParams] = useSearchParams();
   const searchQuery = searchParams.get("search") || "";
+  const navigate = useNavigate();
 
 const category =
   searchParams.get("category") || "Dilution";
@@ -24,7 +28,17 @@ const category =
   setTab(category);
 }, [category]);
 
-  const isMobile = window.innerWidth <= 768;
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+useEffect(() => {
+  const handleResize = () => {
+    setIsMobile(window.innerWidth <= 768);
+  };
+
+  window.addEventListener("resize", handleResize);
+
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
   useEffect(() => {
 
   const timer = setTimeout(() => {
@@ -33,6 +47,8 @@ const category =
 
   }, 1200);
 
+  console.log("Screen width:", window.innerWidth);
+console.log("isMobile:", isMobile);
   
 
   return () =>
@@ -82,11 +98,8 @@ const getPrice = (med, p) => {
 
   return "₹100";
 };
-
-const finalSearch = searchQuery || search;
-
 const filteredData = getData().filter((item) =>
-  item.toLowerCase().includes(finalSearch.toLowerCase())
+  item.toLowerCase().includes(search.toLowerCase())
 );
 
 const data = isMobile
@@ -105,6 +118,17 @@ const data = isMobile
         : "40px"
   }}
 >
+  {isMobile && (
+  <FiArrowLeft
+    size={28}
+    onClick={() => navigate("/")}
+    style={{
+      cursor: "pointer",
+      marginBottom: "15px",
+      color: "#111827",
+    }}
+  />
+)}
       <div style={{ textAlign: "center" }}>
 
 <h1
@@ -116,7 +140,7 @@ const data = isMobile
         ? "42px"
         : "62px",
 
-    fontWeight: "800",
+    fontWeight: "600",
 
     marginBottom: "10px"
   }}
@@ -139,67 +163,39 @@ const data = isMobile
 
 
 {/* Search */}
-
 <div
-  className="glass premiumShadow"
   style={{
     position: "sticky",
-
-    top: "95px",
-
+    top: "80px",
     zIndex: 100,
-
-    padding:
-      isMobile
-        ? "18px"
-        : "22px",
-
-    borderRadius: "24px",
-
-    marginTop: "25px",
-
-    marginBottom: "30px",
-
-    textAlign: "center"
+    background: "#f7fff6",
+    padding: "15px 0",
+    marginBottom: "25px",
   }}
 >
-
-  <input
-    type="text"
-    placeholder="Search medicines..."
-
-    value={search}
-
-    onChange={(e) =>
-      setSearch(e.target.value)
-    }
-
+  <div
     style={{
-      padding: "16px 20px",
-
-      width:
-      isMobile
-          ? "100%"
-          : "420px",
-
-      borderRadius: "18px",
-
-      border:
-        "1px solid rgba(255,255,255,0.4)",
-
-      outline: "none",
-
-      fontSize: "16px",
-
-      background:
-        "rgba(255,255,255,0.8)",
-
-
-      boxShadow:
-        "0 8px 20px rgba(0,0,0,0.06)"
+      display: "flex",
+      justifyContent: "center",
     }}
-  />
-
+  >
+    <input
+      type="text"
+      placeholder="Search medicines..."
+      value={search}
+      onChange={(e) => setSearch(e.target.value)}
+      style={{
+        padding: "16px 20px",
+        width: isMobile ? "100%" : "420px",
+        borderRadius: "18px",
+        border: "1px solid rgba(255,255,255,0.4)",
+        outline: "none",
+        fontSize: "16px",
+        background: "rgba(255,255,255,0.9)",
+        boxShadow: "0 8px 20px rgba(0,0,0,0.06)",
+      }}
+    />
+  </div>
 </div>
 
       <p style={{textAlign:"center",color:"#666"}}>
@@ -305,8 +301,9 @@ Showing {data.length} medicines
         }}
       >
         {data.map((med, index) => {
-          const selectedPower = power[med] || getPowers()[0];
-          const price = getPrice(med, selectedPower);
+const selectedPower = power[med] || getPowers()[0];
+
+const price = getPrice(med, selectedPower);
 
           return (
             <div
@@ -333,33 +330,34 @@ Showing {data.length} medicines
               
               
 
-            {getMedicineImage(med, tab)}
+{getMedicineImage(med, tab)}
+
+<h3
+  style={{
+    marginTop: "15px",
+    fontSize: "20px",
+    fontWeight: "700",
+  }}
+>
+  {med}
+</h3>
 
 <div
   style={{
     display: "flex",
-
     gap: "8px",
-
-    marginTop: "10px",
-
-    flexWrap: "wrap"
+    marginTop: "8px",
+    flexWrap: "wrap",
   }}
 >
-
   <span
     style={{
       background: "#dbeafe",
-
       color: "#1d4ed8",
-
       padding: "5px 10px",
-
       borderRadius: "999px",
-
       fontSize: "11px",
-
-      fontWeight: "700"
+      fontWeight: "700",
     }}
   >
     Genuine
@@ -368,28 +366,24 @@ Showing {data.length} medicines
   <span
     style={{
       background: "#fef3c7",
-
       color: "#b45309",
-
       padding: "5px 10px",
-
       borderRadius: "999px",
-
       fontSize: "11px",
-
-      fontWeight: "700"
+      fontWeight: "700",
     }}
   >
     Trusted
   </span>
-
 </div>
-            
 
               <select
                 value={selectedPower}
                 onChange={(e) =>
-                  setPower({ ...power, [med]: e.target.value })
+                  setPower({
+  ...power,
+  [med]: e.target.value,
+})
                 }
                 style={{
   padding: "12px",
@@ -433,14 +427,10 @@ Showing {data.length} medicines
 
 addToCart({
   name: med,
-
   power: selectedPower,
-
   price: price,
-
-  category: tab
+  category: tab,
 });
-
   toast.success(
     "Added to cart"
   );

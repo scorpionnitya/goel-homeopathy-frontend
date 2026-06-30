@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import getMedicineImage from "../utils/getMedicineImage";
+import MobileBackButton from "../components/common/MobileBackButton";
 
 function Cart({ cart, setCart }) {
 
@@ -226,6 +227,7 @@ setOrderPlaced(true);
             : "40px"
       }}
     >
+      <MobileBackButton />
 
       {/* HEADING */}
 
