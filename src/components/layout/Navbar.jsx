@@ -1,15 +1,15 @@
 import {
   FiSearch,
   FiMapPin,
-  FiUser,
   FiShoppingCart,
 } from "react-icons/fi";
 
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { FiMenu, FiMic, FiChevronDown } from "react-icons/fi";
+import { FiMenu, FiMic } from "react-icons/fi";
 import products from "../../data/products";
 import { useNavigate } from "react-router-dom";
+import { HiOutlineChatBubbleOvalLeftEllipsis } from "react-icons/hi2";
 
 
 function Navbar({ cart }) {
@@ -88,8 +88,13 @@ console.log("Matches:", filteredMedicines);
 
       <button>
 
-        <FiUser size={23} />
-
+<a
+  href="https://wa.me/917302512068"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <HiOutlineChatBubbleOvalLeftEllipsis size={23} />
+</a>
       </button>
 
       <Link
@@ -174,7 +179,7 @@ console.log("Matches:", filteredMedicines);
 
     <span className="text-sm">
 
-      Deliver to
+      Delivering across
 
       <strong className="ml-1">
 
@@ -183,8 +188,6 @@ console.log("Matches:", filteredMedicines);
       </strong>
 
     </span>
-
-    <FiChevronDown size={16} />
 
   </div>
 
@@ -258,8 +261,8 @@ console.log("Matches:", filteredMedicines);
 
             <div>
 
-              <p className="text-xs text-gray-400">
-                Deliver to
+              <p className="text-xs text-black">
+                Delivering across 
               </p>
 
               <p className="font-semibold">
@@ -272,11 +275,14 @@ console.log("Matches:", filteredMedicines);
 
           {/* USER */}
 
-          <button className="hover:text-green-600 transition">
-
-            <FiUser size={25} />
-
-          </button>
+<a
+  href="https://wa.me/917302512068"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="hover:text-green-600 transition"
+>
+  <HiOutlineChatBubbleOvalLeftEllipsis size={28} />
+</a>
 
           {/* CART */}
 

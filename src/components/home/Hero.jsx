@@ -34,11 +34,21 @@ function Hero() {
             Meerut.
 
           </p>
+<div className="mt-10">
+  <div className="inline-block flex-col bg-green-600 text-white px-8 py-4 rounded-xl shadow-lg">
+    <h3 className="text-2xl font-extrabold leading-tight">
+      MOHAN HOMEO STORE
+    </h3>
 
-<button className="mt-6 md:mt-8 w-full md:w-auto bg-green-600 hover:bg-green-700 transition text-white px-8 py-4 rounded-2xl text-lg font-semibold shadow-lg">
-            Explore Medicines
-
-          </button>
+    <p className="text-xl font-medium mt-1">
+      is now online.
+    </p>
+  </div>
+</div>
+<br/>
+<p>
+  For <strong>50+ years</strong>, MOHAN HOMEO STORE has been trusted by families for genuine homeopathic medicines. Now, the same trusted care is available online through <strong>Homiscare</strong>.
+</p>
 
         </div>
 
