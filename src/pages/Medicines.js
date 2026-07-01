@@ -46,11 +46,6 @@ useEffect(() => {
     setLoading(false);
 
   }, 1200);
-
-  console.log("Screen width:", window.innerWidth);
-console.log("isMobile:", isMobile);
-  
-
   return () =>
     clearTimeout(timer);
 
