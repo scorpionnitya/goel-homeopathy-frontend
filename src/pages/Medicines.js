@@ -9,8 +9,7 @@ import {
   rdrops,
   motherPrices,
 } from "../data/medicinesData";
-
-import { FiArrowLeft } from "react-icons/fi";
+import MobileBackButton from "../components//common/MobileBackButton";
 import { useNavigate } from "react-router-dom";
 
 function Medicines({ addToCart }) {
@@ -113,17 +112,7 @@ const data = isMobile
         : "40px"
   }}
 >
-  {isMobile && (
-  <FiArrowLeft
-    size={28}
-    onClick={() => navigate("/")}
-    style={{
-      cursor: "pointer",
-      marginBottom: "15px",
-      color: "#111827",
-    }}
-  />
-)}
+  <MobileBackButton />
       <div style={{ textAlign: "center" }}>
 
 <h1

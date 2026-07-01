@@ -4,7 +4,6 @@ import Categories from "../components/home/Categories";
 import Brands from "../components/home/Brands";
 import WhyChoose from "../components/home/WhyChoose";
 import HomiscareAI from "../components/home/HomiscareAI";
-import MobileBackButton from "../components/common/MobileBackButton";
 
 
 function HomeV2({ cart }) {
@@ -16,7 +15,6 @@ function HomeV2({ cart }) {
       <Brands />
       <HomiscareAI />
       <WhyChoose />
-      <MobileBackButton />
     </>
   );
 }

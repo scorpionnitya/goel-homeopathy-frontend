@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import MobileBackButton from "../components//common/MobileBackButton";
 
 
 function Chatbot({ addToCart }) {
-
+  const navigate = useNavigate();
   const [input, setInput] = useState("");
 
   const [messages, setMessages] =
@@ -13,6 +15,7 @@ function Chatbot({ addToCart }) {
 
   const isMobile =
     window.innerWidth <= 768;
+    
 
   // 🔓 Unlock mobile speech
 
@@ -226,12 +229,13 @@ setTimeout(() => {
       }
     };
 
-  return (
+return (
 
-    <div
-      className="fadeUp"
-      style={{
-        minHeight: "100vh",
+  <div
+    className="fadeUp"
+    style={{
+      position: "relative",
+      minHeight: "100vh",
 
         display: "flex",
 
@@ -245,6 +249,8 @@ setTimeout(() => {
             : "40px"
       }}
     >
+      <MobileBackButton />
+
 
       {/* MAIN CONTAINER */}
 
