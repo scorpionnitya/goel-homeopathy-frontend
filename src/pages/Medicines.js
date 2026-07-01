@@ -10,12 +10,10 @@ import {
   motherPrices,
 } from "../data/medicinesData";
 import MobileBackButton from "../components//common/MobileBackButton";
-import { useNavigate } from "react-router-dom";
 
 function Medicines({ addToCart }) {
   const [searchParams] = useSearchParams();
   const searchQuery = searchParams.get("search") || "";
-  const navigate = useNavigate();
 
 const category =
   searchParams.get("category") || "Dilution";

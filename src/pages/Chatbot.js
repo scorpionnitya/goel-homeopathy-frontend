@@ -1,10 +1,8 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import MobileBackButton from "../components//common/MobileBackButton";
 
 
 function Chatbot({ addToCart }) {
-  const navigate = useNavigate();
   const [input, setInput] = useState("");
 
   const [messages, setMessages] =

@@ -1,10 +1,8 @@
 import { FaRobot, FaBrain, FaSearch, FaComments, FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 
 
 function HomiscareAI() {
-  const navigate = useNavigate();
 
   return (
     
