@@ -577,49 +577,7 @@ setOrderPlaced(true);
       >
         Looks like you have not
         added any product yet.
-
-        <br /><br />
-
-        Explore our collection.
       </p>
-
-      <button
-        onClick={() =>
-          window.location.href =
-            "/medicines"
-        }
-
-        style={{
-          marginTop:
-            "30px",
-
-          background:
-            "linear-gradient(135deg,#2e7d32,#4caf50)",
-
-          color:
-            "white",
-
-          border:
-            "none",
-
-          padding:
-            "16px 28px",
-
-          borderRadius:
-            "18px",
-
-          fontWeight:
-            "700",
-
-          cursor:
-            "pointer",
-
-          fontSize:
-            "16px"
-        }}
-      >
-        Explore Medicines
-      </button>
 
     </div>
 
@@ -675,16 +633,14 @@ setOrderPlaced(true);
                   }}
                 >
 
-                  <div
-                    style={{
-                      display: "flex",
-                      gap: "16px",
-                      alignItems: "center",
-                      width: "100%",                     
-                      flexWrap: "wrap"
-                    }}
-                  >
-
+                 <div
+  style={{
+    display: "flex",
+    alignItems: "center",
+    gap: "12px",
+    flexShrink: 0,
+  }}
+>
                     {/* PRODUCT INFO */}
 
 <div
@@ -969,25 +925,14 @@ setOrderPlaced(true);
               }}
             >
 
-              <h2
-                style={{
-                  marginTop: 0
-                }}
-              >
-                Order Summary
-                <p>
-🚚 Delivery in 2-4 days
-</p>
-              </h2>
-
-              <div
-                style={{
-                  display: "flex",
-
-                  justifyContent:
-                    "space-between",
-
-                  marginTop: "20px"
+<h2 style={{ marginTop: 0 }}>
+  Order Summary
+</h2>
+<div
+style={{
+  display: "flex",
+justifyContent: "space-between",
+marginTop: "20px"
                 }}
               >
 
@@ -1045,10 +990,6 @@ setOrderPlaced(true);
   <span>Delivery Charge</span>
   <b>₹29</b>
 </div>
-
-
-              </div>
-
               <hr
   style={{
     margin: "20px 0"
@@ -1198,16 +1139,16 @@ setOrderPlaced(true);
                       "#6b7280"
                   }}
                 >
-                  🚚 Fast Delivery
+                  🔒 Secure Ordering
                 </p>
 
-                <p
+                 <p
                   style={{
                     color:
                       "#6b7280"
                   }}
                 >
-                  🔒 Secure Ordering
+                Note:- NO RETURN NO EXCHANGE.
                 </p>
 
               </div>
@@ -1389,6 +1330,7 @@ setOrderPlaced(true);
 
             </div>
 
+          </div>
           </div>
 
       )}

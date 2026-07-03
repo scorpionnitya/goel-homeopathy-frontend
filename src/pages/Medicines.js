@@ -359,36 +359,40 @@ const price = getPrice(med, selectedPower);
   </span>
 </div>
 
-              <select
-                value={selectedPower}
-                onChange={(e) =>
-                  setPower({
-  ...power,
-  [med]: e.target.value,
-})
-                }
-                style={{
-  padding: "12px",
-
-  width: "100%",
-
-  marginTop: "16px",
-
-  borderRadius: "14px",
-
-  border: "1px solid #ddd",
-
-  background: "#f9fff9",
-
-  fontWeight: "600",
-
-  outline: "none"
-}}
-              >
-                {getPowers().map((p) => (
-                  <option key={p}>{p}</option>
-                ))}
-              </select>
+<div
+  style={{
+    display: "flex",
+    gap: "8px",
+    flexWrap: "wrap",
+    marginTop: "16px",
+  }}
+>
+  {getPowers().map((p) => (
+    <button
+      key={p}
+      onClick={() =>
+        setPower({
+          ...power,
+          [med]: p,
+        })
+      }
+      style={{
+        padding: "6px 14px",
+        borderRadius: "999px",
+        border: selectedPower === p ? "2px solid #16a34a" : "1px solid #ddd",
+        background:
+          selectedPower === p ? "#16a34a" : "#fff",
+        color:
+          selectedPower === p ? "#fff" : "#333",
+        fontWeight: "700",
+        cursor: "pointer",
+        transition: "0.25s",
+      }}
+    >
+      {p}
+    </button>
+  ))}
+</div>
 
               <p
   style={{

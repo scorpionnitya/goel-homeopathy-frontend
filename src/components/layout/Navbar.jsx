@@ -10,7 +10,7 @@ import { FiMenu, FiMic } from "react-icons/fi";
 import products from "../../data/products";
 import { useNavigate } from "react-router-dom";
 import { HiOutlineChatBubbleOvalLeftEllipsis } from "react-icons/hi2";
-
+import AnnouncementBar from "./AnnouncementBar";
 
 function Navbar({ cart }) {
 
@@ -53,40 +53,38 @@ console.log("Matches:", filteredMedicines);
   return (
   <>
     {isMobile ? (
+      <>
+        <div className="bg-white border-b shadow-sm">
 
-<div className="bg-white border-b shadow-sm">
+          {/* TOP ROW */}
 
-  {/* TOP ROW */}
+          <div className="flex items-center justify-between px-4 pt-3">
 
-  <div className="flex items-center justify-between px-4 pt-3">
+            {/* MENU */}
 
-    {/* MENU */}
+            <button>
 
-    <button>
+              <FiMenu size={24} />
 
-      <FiMenu size={24} />
+            </button>
 
-    </button>
+            {/* LOGO */}
 
-    {/* LOGO */}
+            <div className="text-center">
 
-    <div className="text-center">
+              <h1 className="text-2xl font-bold text-green-600">
+                Homiscare
+              </h1>
 
-      <h1 className="text-2xl font-bold text-green-600">
-        Homiscare
-      </h1>
+              <p className="text-[10px] italic text-gray-500">
+                Healthcare Delivered Faster
+              </p>
 
-      <p className="text-[10px] italic text-gray-500">
-        Healthcare Delivered Faster
-      </p>
+            </div>
 
-    </div>
+            {/* RIGHT */}
 
-    {/* RIGHT */}
-
-    <div className="flex items-center gap-4">
-
-      <button>
+            <div className="flex items-center gap-4">
 
 <a
   href="https://wa.me/917302512068"
@@ -95,28 +93,28 @@ console.log("Matches:", filteredMedicines);
 >
   <HiOutlineChatBubbleOvalLeftEllipsis size={23} />
 </a>
-      </button>
+            
 
-      <Link
-        to="/cart"
-        className="relative"
-      >
+              <Link
+                to="/cart"
+                className="relative"
+              >
 
-        <FiShoppingCart size={24} />
+                <FiShoppingCart size={24} />
 
-        <span className="absolute -top-2 -right-2 bg-green-600 text-white w-5 h-5 rounded-full text-[10px] flex items-center justify-center">
+                <span className="absolute -top-2 -right-2 bg-green-600 text-white w-5 h-5 rounded-full text-[10px] flex items-center justify-center">
 
-          {cartCount}
+                  {cartCount}
 
-        </span>
+                </span>
 
-      </Link>
+              </Link>
 
-    </div>
+            </div>
 
-  </div>
+          </div>
 
-  {/* SEARCH */}
+          {/* SEARCH */}
 
   <div className="px-4 mt-4 relative">
 
@@ -192,8 +190,11 @@ console.log("Matches:", filteredMedicines);
   </div>
 
 </div>
+<AnnouncementBar />
+</>
 
 ) : (
+<>
 <header className="sticky top-0 z-50 bg-white shadow-sm border-b">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-6">
 
@@ -305,7 +306,10 @@ console.log("Matches:", filteredMedicines);
 
       </div>
     </header>
-    )}
+    <AnnouncementBar />
+
+</>
+)}
 </>
   );
 }
