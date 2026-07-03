@@ -462,11 +462,10 @@ useEffect(() => {
             path="/medicines"
 
             element={
-              <Medicines
-                addToCart={
-                  addToCart
-                }
-              />
+             <Medicines
+  addToCart={addToCart}
+  cart={cart}
+/>
             }
           />
 

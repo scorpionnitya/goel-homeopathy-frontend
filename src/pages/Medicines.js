@@ -10,9 +10,13 @@ import {
   motherPrices,
 } from "../data/medicinesData";
 import MobileBackButton from "../components//common/MobileBackButton";
+import { Link } from "react-router-dom";
+import { FiShoppingCart } from "react-icons/fi";
 
-function Medicines({ addToCart }) {
-  const [searchParams] = useSearchParams();
+
+
+function Medicines({ addToCart, cart }) {
+    const [searchParams] = useSearchParams();
   const searchQuery = searchParams.get("search") || "";
 
 const category =
@@ -111,6 +115,47 @@ const data = isMobile
   }}
 >
   <MobileBackButton />
+  <Link
+  to="/cart"
+  style={{
+    position: "fixed",
+    top: "22px",
+    right: "22px",
+    zIndex: 999,
+    background: "#fff",
+    width: "58px",
+    height: "58px",
+    borderRadius: "50%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    boxShadow: "0 8px 20px rgba(0,0,0,.15)",
+    textDecoration: "none",
+    color: "#111"
+  }}
+>
+  <FiShoppingCart size={28} />
+
+  <span
+    style={{
+      position: "absolute",
+      top: "-5px",
+      right: "-3px",
+      background: "#16a34a",
+      color: "#fff",
+      width: "24px",
+      height: "24px",
+      borderRadius: "50%",
+      fontSize: "12px",
+      fontWeight: "700",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center"
+    }}
+  >
+    {cart.reduce((t, item) => t + item.quantity, 0)}
+  </span>
+</Link>
       <div style={{ textAlign: "center" }}>
 
 <h1
