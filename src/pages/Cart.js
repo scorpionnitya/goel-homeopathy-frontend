@@ -514,7 +514,6 @@ setOrderPlaced(true);
       marginTop: "70px"
     }}
   >
-
     <div
       style={{
         background:
@@ -633,12 +632,13 @@ setOrderPlaced(true);
                   }}
                 >
 
-                 <div
+<div
   style={{
     display: "flex",
-    alignItems: "center",
-    gap: "12px",
-    flexShrink: 0,
+    flexDirection: isMobile ? "column" : "row",
+    alignItems: isMobile ? "flex-start" : "center",
+    gap: "18px",
+    width: "100%",
   }}
 >
                     {/* PRODUCT INFO */}
@@ -646,8 +646,10 @@ setOrderPlaced(true);
 <div
   style={{
     display: "flex",
-    gap: "20px",
-    alignItems: "center"
+    flexDirection: isMobile ? "column" : "row",
+    alignItems: isMobile ? "center" : "center",
+    gap: "16px",
+    width: "100%",
   }}
 >
 
@@ -673,8 +675,9 @@ setOrderPlaced(true);
 <div
   style={{
     flex: 1,
-
-    minWidth: 0
+    minWidth: 0,
+    textAlign: isMobile ? "center" : "left",
+    width: "100%",
   }}
 >
 
@@ -720,15 +723,15 @@ setOrderPlaced(true);
                     {/* QUANTITY */}
 
                     <div
-                      style={{
-                        display: "flex",
-
-                        alignItems:
-                          "center",
-
-                        gap: "12px"
-                      }}
-                    >
+  style={{
+    display: "flex",
+    justifyContent: isMobile ? "center" : "flex-end",
+    alignItems: "center",
+    gap: "12px",
+    width: isMobile ? "100%" : "auto",
+    marginTop: isMobile ? "12px" : 0,
+  }}
+>
 
                       <button
                         onClick={() => {
@@ -950,7 +953,7 @@ marginTop: "20px"
   style={{
     display: "flex",
     justifyContent: "space-between",
-    marginTop: "12px"
+    marginTop: "10px"
   }}
 >
   <span>MRP Total</span>
