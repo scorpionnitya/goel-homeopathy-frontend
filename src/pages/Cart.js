@@ -252,20 +252,6 @@ setOrderPlaced(true);
           Your Cart
         </h1>
 
-        <p
-          style={{
-            color: "#6b7280",
-
-            marginTop: "10px",
-
-            fontSize: "18px"
-          }}
-        >
-          Review your selected
-          product before placing
-          your order.
-        </p>
-
       </div>
       {orderPlaced ? (
 
@@ -331,17 +317,12 @@ setOrderPlaced(true);
         }}
       >
         Thank you for choosing
-        CureNest.
+        Homiscare.
 
         <br /><br />
 
         Your order has been
         placed successfully.
-
-        <br /><br />
-
-        🚚 Estimated delivery:
-        2-4 Days
 
         <br /><br />
 
@@ -420,88 +401,8 @@ setOrderPlaced(true);
           "0 20px 50px rgba(0,0,0,0.08)"
       }}
     >
-
-      <div
-        style={{
-          fontSize: "90px"
-        }}
-      >
-        ✅
       </div>
-
-      <h1
-        style={{
-          color: "#2e7d32",
-
-          marginTop: "10px"
-        }}
-      >
-        Order Confirmed
-      </h1>
-
-      <p
-        style={{
-          color: "#6b7280",
-
-          marginTop: "16px",
-
-          lineHeight: "1.7"
-        }}
-      >
-        Thank you for choosing
-        CureNest.
-
-        <br /><br />
-
-        Your order has been
-        placed successfully.
-
-        <br /><br />
-
-        🚚 Estimated delivery:
-        2-4 Days
-
-        <br /><br />
-
-        Our team will contact
-        you shortly on WhatsApp.
-      </p>
-
-      <button
-        onClick={() =>
-          window.location.reload()
-        }
-
-        style={{
-          marginTop: "30px",
-
-          background:
-            "linear-gradient(135deg,#2e7d32,#4caf50)",
-
-          color: "white",
-
-          border: "none",
-
-          padding:
-            "16px 28px",
-
-          borderRadius:
-            "18px",
-
-          fontWeight:
-            "700",
-
-          cursor: "pointer",
-
-          fontSize: "16px"
-        }}
-      >
-        Continue Shopping
-      </button>
-
-    </div>
-
-  </div>
+      </div>
 
 ) : cart.length === 0 ? (
 
