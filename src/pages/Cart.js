@@ -175,10 +175,7 @@ ${cart
       const whatsappURL =
         `https://wa.me/917302512068?text=${encodeURIComponent(message)}`;
 
-      window.open(
-  whatsappURL,
-  "_blank"
-);
+window.location.href = whatsappURL;
 
       setTimeout(() => {
 
