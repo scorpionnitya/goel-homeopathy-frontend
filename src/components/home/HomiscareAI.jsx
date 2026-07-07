@@ -25,7 +25,7 @@ function HomiscareAI() {
 
           <h2 className="text-4xl font-extrabold leading-tight text-gray-900">
 
-            Meet Homiscare AI{" "}
+            Meet HomisCare AI{" "}
 
             <span className="text-green-600 font-serif">
 
@@ -107,7 +107,7 @@ function HomiscareAI() {
 
                 <h3 className="font-bold text-2xl">
 
-                  Homiscare AI
+                  HomisCare AI
 
                 </h3>
 
@@ -137,7 +137,7 @@ function HomiscareAI() {
 
               <div className="bg-gray-100 rounded-2xl p-4">
 
-               Based on your symptoms,I found medicines available on Homiscare.
+               Based on your symptoms,I found medicines available on HomisCare.
 
               </div>
 

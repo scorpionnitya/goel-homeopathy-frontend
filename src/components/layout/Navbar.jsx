@@ -73,7 +73,7 @@ console.log("Matches:", filteredMedicines);
             <div className="text-center">
 
               <h1 className="text-2xl font-bold text-green-600">
-                Homiscare
+                HomisCare
               </h1>
 
               <p className="text-[10px] italic text-gray-500">
@@ -202,7 +202,7 @@ console.log("Matches:", filteredMedicines);
 
         <div className="flex flex-col cursor-pointer">
           <h1 className="text-4xl font-bold text-green-600">
-            Homiscare
+            HomisCare
           </h1>
 
           <span className="text-gray-500 text-sm italic">

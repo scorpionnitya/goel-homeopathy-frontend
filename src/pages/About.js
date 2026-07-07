@@ -4,13 +4,13 @@ function About() {
       <h1>About Us</h1>
 
       <p>
-        <b>CureNest</b>
+        <b>HomisCare</b>
         <br />
         <i>Health & Home</i>
       </p>
 
       <p>
-        CureNest has been serving in the field of
+        HomisCare has been serving in the field of
         homeopathy and wellness for over 50 yearsin the name of MOHAN HOMEOPATHIC STORE.
 
         We provide trusted natural remedies and

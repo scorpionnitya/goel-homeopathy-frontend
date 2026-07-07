@@ -318,7 +318,7 @@ return (
                     : "28px"
               }}
             >
-              CureNest AI
+              HomisCare AI
             </h2>
 
             <p
@@ -385,7 +385,7 @@ return (
             >
 
               <h2>
-                👋 Welcome to CureNest AI
+                👋 Welcome to HomisCare AI
               </h2>
 
               <p>

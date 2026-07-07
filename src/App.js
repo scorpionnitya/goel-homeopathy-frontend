@@ -200,7 +200,7 @@ useEffect(() => {
                         : "30px"
                   }}
                 >
-                  CureNest
+                  HomisCare
                 </h1>
 
                 <p
@@ -557,7 +557,7 @@ useEffect(() => {
                     marginTop: 0
                   }}
                 >
-                  CureNest
+                  HomisCare
                 </h2>
 
                 <p
@@ -637,7 +637,7 @@ useEffect(() => {
                 margin: 0
               }}
             >
-              © 2026 CureNest.
+              © 2026 HomisCare.
               All rights reserved.
             </p>
 

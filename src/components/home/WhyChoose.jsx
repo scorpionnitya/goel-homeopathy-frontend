@@ -49,7 +49,7 @@ function WhyChoose() {
       <div className="flex items-center justify-between mb-8 md:mb-14">
 
 <h2 className="text-2xl md:text-5xl font-extrabold text-gray-900">
-  Why Choose <span className="text-green-600">Homiscare</span>
+  Why Choose <span className="text-green-600">HomisCare</span>
 </h2>
 
        <p className="hidden md:block text-gray-500 mt-4 max-w-2xl">

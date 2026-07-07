@@ -47,7 +47,7 @@ function Hero() {
 </div>
 <br/>
 <p>
-  For <strong>50+ years</strong>, MOHAN HOMEO STORE has been trusted by families for genuine homeopathic medicines. Now, the same trusted care is available online through <strong>Homiscare</strong>.
+  For <strong>50+ years</strong>, MOHAN HOMEO STORE has been trusted by families for genuine homeopathic medicines. Now, the same trusted care is available online through <strong>HomisCare</strong>.
 </p>
 
         </div>

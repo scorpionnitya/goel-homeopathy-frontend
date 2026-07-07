@@ -140,7 +140,7 @@ console.log(data);
 }
 
       const message = `
-🛒 New CureNest Order
+🛒 New HomisCare Order
 
 👤 Name: ${userDetails.name}
 
