@@ -14,6 +14,7 @@ import OrdersDashboard from "./pages/OrdersDashboard";
 import Chatbot from "./pages/Chatbot";
 import { Toaster } from "react-hot-toast";
 import HomeV2 from "./pages/HomeV2";
+import SplashScreen from "./components/SplashScreen";
 
 function App() {
 
@@ -21,6 +22,23 @@ function App() {
     useState([]);
 
     const [showMenu, setShowMenu] = useState(false);
+    const [loading, setLoading] = useState(true);
+
+useEffect(() => {
+  const timer = setTimeout(() => {
+    setLoading(false);
+  }, 2000); // 2 seconds
+
+  return () => clearTimeout(timer);
+}, []);
+
+useEffect(() => {
+  console.log("Cart updated:", cart);
+}, [cart]);
+
+  if (loading) {
+    return <SplashScreen />;
+  }
 
   const isMobile =
     window.innerWidth <= 768;
@@ -72,9 +90,7 @@ const hideNavbar = false;
       }
     };
 
-useEffect(() => {
-  console.log("Cart updated:", cart);
-}, [cart]);
+
 
   // NAV STYLE
 

@@ -87,131 +87,105 @@ const finalTotal =
       return;
     }
 
-    setLoading(true);
+setLoading(true);
 
-    try {
-      try {
+try {
 
-const response = await fetch(
-  "https://goel-homeopathy-backend-1.onrender.com/api/orders",
-  {
-    method: "POST",
+  // Create WhatsApp message
+  const message = `
+HomisCare - New Order
 
-    headers: {
-      "Content-Type":
-        "application/json"
-    },
+--------------------------------
 
-    body: JSON.stringify({
+Customer Details
 
-      items: cart,
-
-      user: {
-
-        name:
-          userDetails.name,
-
-        phone:
-          userDetails.phone,
-
-        address:
-          userDetails.address
-
-      },
-
-      totalAmount: finalTotal
-
-    })
-  }
-);
-
-const data =
-  await response.json();
-
-console.log(data);
-
-} catch (err) {
-
-  console.log(
-    "Order save failed",
-    err
-  );
-
-}
-
-      const message = `
-🛒 New HomisCare Order
-
-👤 Name: ${userDetails.name}
-
-📞 Phone: ${userDetails.phone}
-
-📍 Address:
+Name: ${userDetails.name}
+Phone: ${userDetails.phone}
+Address:
 ${userDetails.address}
 
-💰 MRP Total: ₹${total}
+--------------------------------
 
-🏷️ Discount (30%): ₹${discount}
+Order Summary
 
-📦 Packing Charge: ₹19
+MRP Total       : ₹${total}
+Discount (30%)  : -₹${discount}
+Packing Charge  : ₹19
+Delivery Charge : ₹29
 
-🚚 Delivery Charge: ₹29
+--------------------------------
 
-💳 Final Amount: ₹${finalTotal}
+Final Amount
 
-🧾 Products:
-${cart
-  .map(
-    (item) =>
-      `${item.name} ${
-        item.power || ""
-      } - ₹${item.price} × ${
-        item.quantity
-      }`
-  )
-  .join("\n")}
+₹${finalTotal}
+
+--------------------------------
+
+Ordered Medicines
+
+${cart.map((item, index) => `
+${index + 1}. ${item.name}
+${item.power ? `Strength: ${item.power}\n` : ""}Qty: ${item.quantity}
+Price: ₹${item.price}
+`).join("\n")}
+
+--------------------------------
+
+Thank you for choosing *HomisCare*.
+Payment QR will be shared shortly.
 `;
 
-      const whatsappURL =
-        `https://wa.me/917302512068?text=${encodeURIComponent(message)}`;
+  const whatsappURL =
+    `https://wa.me/917302512068?text=${encodeURIComponent(message)}`;
 
-window.location.href = whatsappURL;
-
-      setTimeout(() => {
-
-       toast.success(
-  "Order placed successfully"
-);
-setOrderPlaced(true);
-
-      }, 1000);
-
-      setTimeout(() => {
-
-        setCart([]);
-
-        setShowForm(false);
-
-        setUserDetails({
-          name: "",
-          phone: "",
-          address: ""
-        });
-
-      }, 2000);
-
-    } catch (error) {
-
-      console.error(error);
-
-      toast.error(
-  "Server error"
-);
-
+  // Save order first
+  await fetch(
+    "https://goel-homeopathy-backend-1.onrender.com/api/orders",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        items: cart,
+        user: {
+          name: userDetails.name,
+          phone: userDetails.phone,
+          address: userDetails.address,
+        },
+        totalAmount: finalTotal,
+      }),
     }
+  );
 
-    setLoading(false);
-  };
+  // Open WhatsApp
+  window.open(whatsappURL, "_blank");
+
+  toast.success("Order placed successfully");
+
+  setOrderPlaced(true);
+
+  setTimeout(() => {
+    setCart([]);
+    setShowForm(false);
+    setUserDetails({
+      name: "",
+      phone: "",
+      address: "",
+    });
+  }, 1000);
+
+} catch (error) {
+
+  console.error(error);
+
+  toast.error("Server error");
+
+} finally {
+
+  setLoading(false);
+
+}
 
   return (
 
@@ -1238,6 +1212,7 @@ marginTop: "20px"
 
     </div>
   );
+}
 }
 
 export default Cart;
