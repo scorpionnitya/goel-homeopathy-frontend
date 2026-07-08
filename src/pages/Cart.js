@@ -186,6 +186,7 @@ Payment QR will be shared shortly.
   setLoading(false);
 
 }
+  };
 
   return (
 
@@ -1213,6 +1214,6 @@ marginTop: "20px"
     </div>
   );
 }
-}
+
 
 export default Cart;
