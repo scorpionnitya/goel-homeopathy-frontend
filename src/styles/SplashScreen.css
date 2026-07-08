@@ -1,0 +1,93 @@
+.splash{
+    width:100%;
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:linear-gradient(
+        to bottom,
+        #f9fff8,
+        #eef8ef
+    );
+
+    overflow:hidden;
+    position:relative;
+}
+
+/* Leaves Background */
+
+.overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background-image:
+    url("https://www.transparenttextures.com/patterns/clean-gray-paper.png");
+
+    opacity:.15;
+}
+
+.content{
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    transform: translateY(-20px);
+}
+
+.logo{
+    width: 250px;
+    max-width: 70%;
+    height: auto;
+}
+
+.tagline{
+    margin-top: 12px;
+    font-size: 16px;
+    color:#6b7280;
+    letter-spacing:1px;
+}
+
+.title{
+    margin-top:18px;
+    font-size:20px;
+    font-weight:700;
+    color:#173d2c;
+    text-align:center;
+}
+
+.subtitle{
+    margin-top:10px;
+    width:85%;
+    max-width:300px;
+    font-size:13px;
+    line-height:1.6;
+    text-align:center;
+    color:#6b7280;
+}
+
+@keyframes logoAnimation{
+
+0%{
+
+opacity:0;
+
+transform:scale(.8);
+
+}
+
+100%{
+
+opacity:1;
+
+transform:scale(1);
+
+}
+
+}
