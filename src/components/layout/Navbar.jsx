@@ -3,6 +3,7 @@ import {
   FiMapPin,
   FiShoppingCart,
 } from "react-icons/fi";
+import { RiRobot2Line } from "react-icons/ri";
 
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -276,14 +277,13 @@ console.log("Matches:", filteredMedicines);
 
           {/* USER */}
 
-<a
-  href="https://wa.me/917302512068"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="hover:text-green-600 transition"
+<button
+  onClick={() => navigate("/chat")}
+  className="ai-btn"
 >
-  <HiOutlineChatBubbleOvalLeftEllipsis size={28} />
-</a>
+  <RiRobot2Line size={22} />
+  <span>AI</span>
+</button>
 
           {/* CART */}
 
