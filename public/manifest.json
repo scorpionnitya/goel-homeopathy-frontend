@@ -1,10 +1,11 @@
-{"short_name": "HomisCare",
+{
+  "short_name": "HomisCare",
 "name": "HomisCare - Homeopathy & Healthcare",
   "icons": [
-    {
-  "src": "favicon.png",
-  "sizes": "64x64",
-  "type": "image/png"
+{
+  "src": "favicon.ico",
+  "sizes": "16x16 32x32 48x48",
+  "type": "image/x-icon"
 },
     {
       "src": "logo192.png",
