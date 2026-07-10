@@ -149,7 +149,40 @@ Trusted Homeopathy Store
 
 https://homiscare.in
 `;
+// Save order to backend
 
+const response = await fetch(
+  "https://goel-homeopathy-backend-1.onrender.com/api/orders",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      items: cart,
+      user: {
+        name: userDetails.name,
+        phone: userDetails.phone,
+        address: userDetails.address,
+      },
+      totalAmount: finalTotal,
+    }),
+  }
+);
+
+const data = await response.json();
+
+// Replace "Generating..." with actual Order ID
+
+const finalMessage = message.replace(
+  "Generating...",
+  data.orderId
+);
+
+// Create WhatsApp URL
+
+const whatsappURL =
+  `https://wa.me/917302512068?text=${encodeURIComponent(finalMessage)}`;
   // Open WhatsApp
   window.open(whatsappURL, "_blank");
 
