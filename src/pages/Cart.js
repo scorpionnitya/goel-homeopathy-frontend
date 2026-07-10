@@ -92,71 +92,63 @@ setLoading(true);
 try {
 
   // Create WhatsApp message
-  const message = `
-HomisCare - New Order
+const message = `
+🟢 *NEW HOMISCARE ORDER*
 
---------------------------------
+━━━━━━━━━━━━━━━━━━━━
 
-Customer Details
+🆔 *Order ID*
+Generating...
+
+👤 *CUSTOMER*
 
 Name: ${userDetails.name}
 Phone: ${userDetails.phone}
-Address:
+
+📍 *Address*
 ${userDetails.address}
 
---------------------------------
+━━━━━━━━━━━━━━━━━━━━
 
-Order Summary
+🛒 *ORDER ITEMS*
+
+${cart.map((item, index) => `
+${index + 1}. ${item.name}
+${item.power ? `Strength: ${item.power}` : ""}
+Qty: ${item.quantity}
+Price: ₹${item.price}
+`).join("\n")}
+
+━━━━━━━━━━━━━━━━━━━━
+
+💳 *BILL SUMMARY*
 
 MRP Total       : ₹${total}
 Discount (30%)  : -₹${discount}
 Packing Charge  : ₹19
 Delivery Charge : ₹29
 
---------------------------------
+━━━━━━━━━━━━━━━━━━━━
 
-Final Amount
+💰 *TOTAL PAYABLE*
 
 ₹${finalTotal}
 
---------------------------------
+━━━━━━━━━━━━━━━━━━━━
 
-Ordered Medicines
+Payment Status
+🟠 Pending
 
-${cart.map((item, index) => `
-${index + 1}. ${item.name}
-${item.power ? `Strength: ${item.power}\n` : ""}Qty: ${item.quantity}
-Price: ₹${item.price}
-`).join("\n")}
+Order Status
+🟠 Pending
 
---------------------------------
+━━━━━━━━━━━━━━━━━━━━
 
-Thank you for choosing *HomisCare*.
-Payment QR will be shared shortly.
+🌿 HomisCare
+Trusted Homeopathy Store
+
+https://homiscare.in
 `;
-
-  const whatsappURL =
-    `https://wa.me/917302512068?text=${encodeURIComponent(message)}`;
-
-  // Save order first
-  await fetch(
-    "https://goel-homeopathy-backend-1.onrender.com/api/orders",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        items: cart,
-        user: {
-          name: userDetails.name,
-          phone: userDetails.phone,
-          address: userDetails.address,
-        },
-        totalAmount: finalTotal,
-      }),
-    }
-  );
 
   // Open WhatsApp
   window.open(whatsappURL, "_blank");
