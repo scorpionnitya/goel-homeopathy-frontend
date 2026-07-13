@@ -116,7 +116,7 @@ ${cart.map((item, index) => `
 ${index + 1}. ${item.name}
 ${item.power ? `Strength: ${item.power}` : ""}
 Qty: ${item.quantity}
-Price: ₹${item.price}
+Price: ${item.price}
 `).join("\n")}
 
 ━━━━━━━━━━━━━━━━━━━━

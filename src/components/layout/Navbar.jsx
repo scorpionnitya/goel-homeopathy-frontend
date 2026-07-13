@@ -7,8 +7,9 @@ import { RiRobot2Line } from "react-icons/ri";
 
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { FiMenu, FiMic } from "react-icons/fi";
+import { FiMic } from "react-icons/fi";
 import products from "../../data/products";
+
 import { useNavigate } from "react-router-dom";
 import { HiOutlineChatBubbleOvalLeftEllipsis } from "react-icons/hi2";
 import AnnouncementBar from "./AnnouncementBar";
@@ -61,13 +62,9 @@ console.log("Matches:", filteredMedicines);
 
           <div className="flex items-center justify-between px-4 pt-3">
 
-            {/* MENU */}
-
-            <button>
-
-              <FiMenu size={24} />
-
-            </button>
+<button>
+  <FiMenu size={24} />
+</button>
 
             {/* LOGO */}
 
