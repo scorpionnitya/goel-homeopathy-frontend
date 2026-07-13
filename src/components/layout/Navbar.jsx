@@ -62,10 +62,6 @@ console.log("Matches:", filteredMedicines);
 
           <div className="flex items-center justify-between px-4 pt-3">
 
-<button>
-  <FiMenu size={24} />
-</button>
-
             {/* LOGO */}
 
             <div className="text-center">
