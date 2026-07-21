@@ -500,7 +500,7 @@ const hideNavbar = false;
             path="/about"
             element={<About />}
           />
-
+          
           <Route
             path="/chat"
 

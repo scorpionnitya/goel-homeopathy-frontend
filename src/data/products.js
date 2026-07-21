@@ -1,8 +1,7 @@
 import bottle from "../assets/bottle.png";
 import mother from "../assets/mother.png";
 import biochemicImg from "../assets/Biochemic.png";
-import bcImg from "../assets/BC.png";
-import rdropsImg from "../assets/Rdrops.png";
+
 
 import {
   dilution,
@@ -45,23 +44,23 @@ const products = [
     powers: ["3X", "6X", "12X", "30X", "200X"],
   })),
 
-  // Bio Combinations
-  ...bc.map((name) => ({
-    id: id++,
-    name,
-    category: "BC",
-    image: bcImg,
-    price: 220,
-  })),
+// Bio Combinations
+...bc.map((name) => ({
+  id: id++,
+  name,
+  category: "BC",
+  image: `/images/BC/Dr_Reckeweg_${name.replace(" ", "_")}.jpeg`,
+  price: 220,
+})),
 
-  // R Drops
-  ...rdrops.map((name) => ({
-    id: id++,
-    name,
-    category: "R Drops",
-    image: rdropsImg,
-    price: 295,
-  })),
+// R Drops
+...rdrops.map((name) => ({
+  id: id++,
+  name,
+  category: "R Drops",
+  image: `/images/rdrops/${name.replace(/\s/g, "")}.jpeg`,
+  price: 295,
+})),
 ];
 
 export default products;

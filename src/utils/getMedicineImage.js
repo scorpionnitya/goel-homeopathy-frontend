@@ -1,8 +1,8 @@
+
 import bottle from "../assets/bottle.png";
 import biochemicImg from "../assets/Biochemic.png";
-import bcImg from "../assets/BC.png";
 import motherImg from "../assets/mother.png";
-import rdropsImg from "../assets/Rdrops.png";
+
 
 const getLabelStyle = (tab) => {
 
@@ -71,14 +71,52 @@ const getMedicineImage = (
   if (tab === "Biochemic")
     image = biochemicImg;
 
-  if (tab === "BC")
-    image = bcImg;
+if (tab === "BC") {
+  return (
+    <div
+      style={{
+        height: small ? "120px" : "240px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <img
+        src={`/images/BC/Dr_Reckeweg_${med.replace(" ", "_")}.jpeg`}
+        alt={med}
+        style={{
+          height: small ? "100px" : "220px",
+          objectFit: "contain",
+        }}
+      />
+    </div>
+  );
+}
 
   if (tab === "Mother Tincture")
     image = motherImg;
 
-  if (tab === "R Drops")
-    image = rdropsImg;
+if (tab === "R Drops") {
+  return (
+    <div
+      style={{
+        height: small ? "120px" : "240px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <img
+        src={`/images/rdrops/${med.replace(/\s/g, "")}.jpeg`}
+        alt={med}
+        style={{
+          height: small ? "100px" : "220px",
+          objectFit: "contain",
+        }}
+      />
+    </div>
+  );
+}
 
   return (
 

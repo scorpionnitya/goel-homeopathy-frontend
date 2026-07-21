@@ -398,7 +398,17 @@ export const dilution = [
   ];
 
  export const bc = Array.from({ length: 28 }, (_, i) => `BC ${i + 1}`);
- export const rdrops = Array.from({ length: 89 }, (_, i) => `R ${i + 1}`);
+export const rdrops = [
+  ...Array.from({ length: 89 }, (_, i) => `R ${i + 1}`),
+  "R 95",
+  "R 96",
+  "R 109",
+  "R 131",
+  "R 184",
+  "R 188",
+  "R 191",
+  "R 193",
+];
  export const motherPrices = {
   "AALSERUM Q": 295,
   "ABROTANUM Q": 345,
