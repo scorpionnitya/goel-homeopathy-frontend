@@ -596,7 +596,7 @@ return (
 
   setSelectedOption("symptoms");
 
-  setConsultationStep(0);
+ setCurrentStep(0);
 
   setMessages([
     {
@@ -704,7 +704,7 @@ return (
               </div>
             
           ))}
-                          {showOptions && consultationStep === 1 && (
+                          {showButtons && currentStep === 1 && (
                   <div
                     style={{
                       display: "flex",
@@ -795,11 +795,11 @@ return (
 
           {/* INPUT */}
 
-          {!showOptions && (
+          {!showButtons && (
             <input
             type="text"
 
-            placeholder="Enter your age..."
+            placeholder={placeholder || "Type your message..."}
 
             value={input}
 
