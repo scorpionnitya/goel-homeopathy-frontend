@@ -13,14 +13,13 @@ const [selectedOption, setSelectedOption] = useState(null);
 
 const [currentStep, setCurrentStep] = useState(0);
 
-const [consultationData, setConsultationData] = useState({});
+const [, setConsultationData] = useState({});
 
 const [showButtons, setShowButtons] = useState(false);
 
 const [placeholder, setPlaceholder] = useState("");
 
-const [consultationFinished, setConsultationFinished] = useState(false);
-
+const [, setConsultationFinished] = useState(false);
 const isMobile = window.innerWidth <= 768;
 
 useEffect(() => {
@@ -142,40 +141,6 @@ const speak = (text) => {
     );
 
   }, 100);
-};
-
-  // 🎤 Mic Start
-
-const startListening = () => {
-
-  if (!recognition) {
-    alert("Voice recognition not supported");
-    return;
-  }
-
-  console.log("🎤 Recognition started");
-
-  recognition.start();
-
-  recognition.onstart = () => {
-    console.log("🎤 Mic is listening...");
-  };
-
-recognition.onresult = (event) => {
-  console.log(event.results[0][0].transcript);
-
-  const voiceText = event.results[0][0].transcript;
-
-  setInput(voiceText);
-};
-
-  recognition.onerror = (event) => {
-    console.log("Speech Error:", event.error);
-  };
-
-  recognition.onend = () => {
-    console.log("🎤 Recognition ended");
-  };
 };
 
   // 🤖 AI Function
