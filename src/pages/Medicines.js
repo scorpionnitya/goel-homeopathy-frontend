@@ -112,9 +112,7 @@ const filteredData = getData().filter((item) =>
   item.toLowerCase().includes(search.toLowerCase())
 );
 
-const data = isMobile
-  ? filteredData.slice(0, 80)
-  : filteredData;
+const data = filteredData;
 
 
 
