@@ -1,5 +1,3 @@
-import bottle from "../assets/bottle.png";
-import mother from "../assets/mother.png";
 import biochemicImg from "../assets/Biochemic.png";
 
 
@@ -19,21 +17,19 @@ const products = [
     id: id++,
     name,
     category: "Dilution",
-    image: bottle,
+    image: `/images/Dilution/Dr_Reckeweg_${name.replace(/\s/g, "")}.jpeg`,
     price: 160,
     powers: ["30", "200", "1M", "10M", "CM"],
   })),
 
-  // Mother Tinctures
-  ...Object.keys(motherPrices).map((name) => ({
-    id: id++,
-    name,
-    category: "Mother Tincture",
-    image: mother,
-    price: motherPrices[name],
-    powers: ["Q"],
-  })),
-
+// Mother Tinctures
+...Object.entries(motherPrices).map(([name, price]) => ({
+  id: id++,
+  name,
+  category: "Mother Tincture",
+  image: `/images/MotherTincture/${name}.jpeg`,
+  price,
+})),
   // Biochemic Salts
   ...biochemic.map((name) => ({
     id: id++,

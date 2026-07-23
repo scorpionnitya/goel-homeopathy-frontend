@@ -19,8 +19,22 @@ function Medicines({ addToCart, cart }) {
     const [searchParams] = useSearchParams();
   const searchQuery = searchParams.get("search") || "";
 
+const categoryFromUrl = searchParams.get("category");
+
+const findCategory = (query) => {
+  const q = query.toLowerCase();
+
+  if (bc.some((m) => m.toLowerCase() === q)) return "BC";
+  if (rdrops.some((m) => m.toLowerCase() === q)) return "R Drops";
+  if (biochemic.some((m) => m.toLowerCase() === q)) return "Biochemic";
+  if (Object.keys(motherPrices).some((m) => m.toLowerCase() === q))
+    return "Mother Tincture";
+
+  return "Dilution";
+};
+
 const category =
-  searchParams.get("category") || "Dilution";
+  categoryFromUrl || (searchQuery ? findCategory(searchQuery) : "Dilution");
   const [tab, setTab] = useState(category);
   const [search, setSearch] = useState(searchQuery);
   const [power, setPower] = useState({});
