@@ -2,10 +2,12 @@ import {
   FiSearch,
   FiMapPin,
   FiShoppingCart,
+  FiChevronLeft,
+  FiChevronRight,
 } from "react-icons/fi";
 import { RiRobot2Line } from "react-icons/ri";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { FiMic } from "react-icons/fi";
 import products from "../../data/products";
@@ -13,8 +15,23 @@ import products from "../../data/products";
 import { useNavigate } from "react-router-dom";
 import { HiOutlineChatBubbleOvalLeftEllipsis } from "react-icons/hi2";
 import AnnouncementBar from "./AnnouncementBar";
+import {
+  FaPrescriptionBottle,
+  FaLeaf,
+  FaCapsules,
+  FaTint,
+  FaFlask,
+} from "react-icons/fa";
 
 function Navbar({ cart }) {
+  const categoryScrollRef = useRef(null);
+
+const scrollCategories = (direction) => {
+  categoryScrollRef.current?.scrollBy({
+    left: direction === "left" ? -180 : 180,
+    behavior: "smooth",
+  });
+};
 
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
@@ -108,6 +125,81 @@ console.log("Matches:", filteredMedicines);
 
           </div>
 
+{/* MOBILE CATEGORY SHORTCUTS */}
+
+<div className="relative mt-4">
+
+  <button
+    onClick={() => scrollCategories("left")}
+    className="absolute left-2 top-7 -translate-y-1/2 z-20 w-7 h-7 bg-white rounded-full shadow-lg flex items-center justify-center"
+  >
+    <FiChevronLeft size={18} />
+  </button>
+
+  <div
+    ref={categoryScrollRef}
+    className="flex gap-3 overflow-x-auto px-14 pb-1 scrollbar-hide"
+  >
+
+  <div
+    onClick={() => navigate("/medicines?category=Dilution")}
+    className="min-w-[78px] text-center cursor-pointer"
+  >
+    <div className="h-16 rounded-2xl bg-green-50 flex items-center justify-center">
+      <FaPrescriptionBottle size={28} className="text-green-600" />
+    </div>
+    <p className="text-xs font-semibold mt-1">Dilutions</p>
+  </div>
+
+  <div
+    onClick={() => navigate("/medicines?category=Mother%20Tincture")}
+    className="min-w-[78px] text-center cursor-pointer"
+  >
+    <div className="h-16 rounded-2xl bg-green-50 flex items-center justify-center">
+      <FaLeaf size={28} className="text-green-600" />
+    </div>
+    <p className="text-xs font-semibold mt-1">Mother</p>
+  </div>
+
+  <div
+    onClick={() => navigate("/medicines?category=Biochemic")}
+    className="min-w-[78px] text-center cursor-pointer"
+  >
+    <div className="h-16 rounded-2xl bg-green-50 flex items-center justify-center">
+      <FaCapsules size={28} className="text-green-600" />
+    </div>
+    <p className="text-xs font-semibold mt-1">Biochemic</p>
+  </div>
+
+  <div
+    onClick={() => navigate("/medicines?category=R%20Drops")}
+    className="min-w-[78px] text-center cursor-pointer"
+  >
+    <div className="h-16 rounded-2xl bg-green-50 flex items-center justify-center">
+      <FaTint size={28} className="text-green-600" />
+    </div>
+    <p className="text-xs font-semibold mt-1">R Drops</p>
+  </div>
+
+  <div
+    onClick={() => navigate("/medicines?category=BC")}
+    className="min-w-[78px] text-center cursor-pointer"
+  >
+    <div className="h-16 rounded-2xl bg-green-50 flex items-center justify-center">
+      <FaFlask size={28} className="text-green-600" />
+    </div>
+    <p className="text-xs font-semibold mt-1">BC</p>
+  </div>
+    </div>
+
+  <button
+    onClick={() => scrollCategories("right")}
+    className="absolute right-2 top-7 -translate-y-1/2 z-20 w-7 h-7 bg-white rounded-full shadow-lg flex items-center justify-center"
+  >
+    <FiChevronRight size={18} />
+  </button>
+
+</div>  
           {/* SEARCH */}
 
   <div className="px-4 mt-4 relative">
@@ -299,6 +391,54 @@ console.log("Matches:", filteredMedicines);
 
       </div>
     </header>
+
+    {/* DESKTOP CATEGORY SHORTCUTS */}
+    <div className="hidden md:block bg-white border-b">
+      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-center gap-8">
+
+        <div
+          onClick={() => navigate("/medicines?category=Dilution")}
+          className="flex items-center gap-2 cursor-pointer hover:text-green-600 transition"
+        >
+          <FaPrescriptionBottle size={22} className="text-green-600" />
+          <span className="font-semibold">Dilutions</span>
+        </div>
+
+        <div
+          onClick={() => navigate("/medicines?category=Mother%20Tincture")}
+          className="flex items-center gap-2 cursor-pointer hover:text-green-600 transition"
+        >
+          <FaLeaf size={22} className="text-green-600" />
+          <span className="font-semibold">Mother Tinctures</span>
+        </div>
+
+        <div
+          onClick={() => navigate("/medicines?category=Biochemic")}
+          className="flex items-center gap-2 cursor-pointer hover:text-green-600 transition"
+        >
+          <FaCapsules size={22} className="text-green-600" />
+          <span className="font-semibold">Biochemic Salts</span>
+        </div>
+
+        <div
+          onClick={() => navigate("/medicines?category=R%20Drops")}
+          className="flex items-center gap-2 cursor-pointer hover:text-green-600 transition"
+        >
+          <FaTint size={22} className="text-green-600" />
+          <span className="font-semibold">R Drops</span>
+        </div>
+
+        <div
+          onClick={() => navigate("/medicines?category=BC")}
+          className="flex items-center gap-2 cursor-pointer hover:text-green-600 transition"
+        >
+          <FaFlask size={22} className="text-green-600" />
+          <span className="font-semibold">Bio Combinations</span>
+        </div>
+
+      </div>
+    </div>
+
     <AnnouncementBar />
 
 </>

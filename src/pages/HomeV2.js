@@ -9,12 +9,12 @@ import HomiscareAI from "../components/home/HomiscareAI";
 function HomeV2({ cart }) {
   return (
     <>
-      <Navbar cart={cart} />
-      <Hero />
-      <Categories />
-      <Brands />
-      <HomiscareAI />
-      <WhyChoose />
+<Navbar cart={cart} />
+<Hero />
+<Categories />
+<Brands />
+<HomiscareAI />
+<WhyChoose />
     </>
   );
 }
