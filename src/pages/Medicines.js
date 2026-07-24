@@ -121,9 +121,9 @@ const data = filteredData;
   className="fadeUp"
   style={{
     padding:
-    isMobile
-        ? "20px"
-        : "40px"
+isMobile
+    ? "8px"
+    : "40px"
   }}
 >
   <MobileBackButton />
@@ -246,11 +246,11 @@ Showing {data.length} medicines
   <div
     style={{
       display: "grid",
+gridTemplateColumns: isMobile
+  ? "repeat(2, minmax(0, 1fr))"
+  : "repeat(auto-fit, minmax(260px, 1fr))",
 
-      gridTemplateColumns:
-        "repeat(auto-fit,minmax(260px,1fr))",
-
-      gap: "20px",
+      gap: isMobile ? "10px" : "20px",
 
       marginTop: "30px"
     }}
@@ -333,9 +333,10 @@ Showing {data.length} medicines
       <div
         style={{
           display: "grid",
-          gridTemplateColumns:
-"repeat(auto-fit,minmax(260px,1fr))",
-          gap: "20px",
+ gridTemplateColumns: isMobile
+  ? "repeat(2, minmax(0, 1fr))"
+  : "repeat(auto-fit, minmax(260px, 1fr))",
+         gap: isMobile ? "10px" : "20px",
           marginTop: "30px"
         }}
       >
@@ -351,9 +352,8 @@ const price = getPrice(med, selectedPower);
               style={{
   background: "rgba(255,255,255,0.75)",
 
-  borderRadius: "30px",
-
-  padding: "22px",
+borderRadius: isMobile ? "18px" : "30px",
+padding: isMobile ? "10px" : "22px",
 
   border:
     "1px solid rgba(255,255,255,0.4)",
@@ -369,12 +369,11 @@ const price = getPrice(med, selectedPower);
               
               
 
-{getMedicineImage(med, tab)}
-
+{getMedicineImage(med, tab, isMobile)}
 <h3
   style={{
-    marginTop: "15px",
-    fontSize: "20px",
+    marginTop: isMobile ? "8px" : "15px",
+    fontSize: isMobile ? "14px" : "20px",
     fontWeight: "700",
   }}
 >
@@ -384,7 +383,7 @@ const price = getPrice(med, selectedPower);
 <div
   style={{
     display: "flex",
-    gap: "8px",
+    gap: isMobile ? "4px" : "8px",
     marginTop: "8px",
     flexWrap: "wrap",
   }}
@@ -393,9 +392,9 @@ const price = getPrice(med, selectedPower);
     style={{
       background: "#dbeafe",
       color: "#1d4ed8",
-      padding: "5px 10px",
+      padding: isMobile ? "4px 7px" : "5px 10px",
+fontSize: isMobile ? "9px" : "11px",
       borderRadius: "999px",
-      fontSize: "11px",
       fontWeight: "700",
     }}
   >
@@ -419,9 +418,9 @@ const price = getPrice(med, selectedPower);
 <div
   style={{
     display: "flex",
-    gap: "8px",
+    gap: isMobile ? "5px" : "8px",
     flexWrap: "wrap",
-    marginTop: "16px",
+    marginTop: isMobile ? "10px" : "16px",
   }}
 >
   {getPowers().map((p) => (
@@ -434,7 +433,8 @@ const price = getPrice(med, selectedPower);
         })
       }
       style={{
-        padding: "6px 14px",
+        padding: isMobile ? "5px 8px" : "6px 14px",
+fontSize: isMobile ? "11px" : "14px",
         borderRadius: "999px",
         border: selectedPower === p ? "2px solid #16a34a" : "1px solid #ddd",
         background:
@@ -453,9 +453,8 @@ const price = getPrice(med, selectedPower);
 
               <p
   style={{
-    marginTop: "16px",
-
-    fontSize: "24px",
+marginTop: isMobile ? "10px" : "16px",
+fontSize: isMobile ? "17px" : "24px",
 
     fontWeight: "800",
 
@@ -489,17 +488,14 @@ style={{
 
   border: "none",
 
-  padding: "14px",
-
-  borderRadius: "16px",
+ padding: isMobile ? "10px 4px" : "14px",
+borderRadius: isMobile ? "12px" : "16px",
+fontSize: isMobile ? "12px" : "15px",
+marginTop: isMobile ? "10px" : "18px",
 
   fontWeight: "700",
-
-  fontSize: "15px",
-
   cursor: "pointer",
 
-  marginTop: "18px",
 
   boxShadow:
     "0 10px 20px rgba(46,125,50,0.2)"
