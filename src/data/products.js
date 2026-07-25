@@ -7,6 +7,10 @@ import {
   bc,
   rdrops,
   motherPrices,
+  dilutionPrices,
+  biochemicPrices,
+  bcPrices,
+  rdropPrices,
 } from "./medicinesData";
 
 let id = 1;
@@ -18,7 +22,7 @@ const products = [
     name,
     category: "Dilution",
     image: `/images/Dilution/Dr_Reckeweg_${name.replace(/\s/g, "")}.jpeg`,
-    price: 160,
+price: dilutionPrices["30"],
     powers: ["30", "200", "1M", "10M", "CM"],
   })),
 
@@ -36,7 +40,7 @@ const products = [
     name,
     category: "Biochemic",
     image: biochemicImg,
-    price: 220,
+price: biochemicPrices["3X"],
     powers: ["3X", "6X", "12X", "30X", "200X"],
   })),
 
@@ -46,7 +50,7 @@ const products = [
   name,
   category: "BC",
   image: `/images/BC/Dr_Reckeweg_${name.replace(" ", "_")}.jpeg`,
-  price: 220,
+price: bcPrices[name],
 })),
 
 // R Drops
@@ -55,7 +59,7 @@ const products = [
   name,
   category: "R Drops",
   image: `/images/rdrops/${name.replace(/\s/g, "")}.jpeg`,
-  price: 295,
+price: rdropPrices[name],
 })),
 ];
 

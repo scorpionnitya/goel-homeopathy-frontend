@@ -497,6 +497,47 @@ export const rdrops = [
   "R 193"
 ];
 
+// ==========================================
+// DR. RECKEWEG PRICES
+// ==========================================
+
+// DILUTIONS - 11 ml
+export const dilutionPrices = {
+  "30": 180,
+  "200": 205,
+  "1M": 255,
+  "10M": 275,
+  "CM": 355,
+};
+
+// BIOCHEMIC TABLETS - 20 g
+export const biochemicPrices = {
+  "3X": 245,
+  "6X": 245,
+  "12X": 245,
+  "30X": 245,
+  "200X": 350,
+};
+
+// BIOCOMBINATIONS - 20 g
+export const bcPrices = Object.fromEntries(
+  bc.map(name => [name, 245])
+);
+
+// R-SERIES
+export const rdropPrices = Object.fromEntries(
+  rdrops.map(name => [name, 325])
+);
+
+// R-Series products with different MRP
+Object.assign(rdropPrices, {
+  "R 8": 600,
+  "R 30": 795,
+  "R 96": 805,
+  "R 109": 400,
+  "R 131": 675,
+});
+
 export const motherPrices = {
   "AALSERUM 7X": 325,
   "ABROTANUM Q": 380,

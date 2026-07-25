@@ -8,6 +8,10 @@ import {
   bc,
   rdrops,
   motherPrices,
+  dilutionPrices,
+  biochemicPrices,
+  bcPrices,
+  rdropPrices,
 } from "../data/medicinesData";
 import MobileBackButton from "../components//common/MobileBackButton";
 import { Link } from "react-router-dom";
@@ -84,29 +88,27 @@ useEffect(() => {
   };
 
 const getPrice = (med, p) => {
-
   if (tab === "Mother Tincture") {
-    return `₹${motherPrices[med] || 295}`;
+    return `₹${motherPrices[med]}`;
   }
 
   if (tab === "Dilution") {
-    if (p === "30") return "₹160";
-    if (p === "200") return "₹185";
-    if (p === "1M") return "₹230";
-    if (p === "10M") return "₹250";
-    return "₹320";
+    return `₹${dilutionPrices[p]}`;
   }
 
   if (tab === "Biochemic") {
-    if (p === "200X") return "₹315";
-    return "₹220";
+    return `₹${biochemicPrices[p]}`;
   }
 
-  if (tab === "BC") return "₹220";
+  if (tab === "BC") {
+    return `₹${bcPrices[med]}`;
+  }
 
-  if (tab === "R Drops") return "₹295";
+  if (tab === "R Drops") {
+    return `₹${rdropPrices[med]}`;
+  }
 
-  return "₹100";
+  return "₹0";
 };
 const filteredData = getData().filter((item) =>
   item.toLowerCase().includes(search.toLowerCase())
