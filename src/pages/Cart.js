@@ -43,8 +43,12 @@ const discount = Math.round(total * 0.3);
 
 const discountedTotal = total - discount;
 
-const packingCharge = 19;
+const totalBottles = cart.reduce(
+  (sum, item) => sum + item.quantity,
+  0
+);
 
+const packingCharge = totalBottles * 10;
 const deliveryCharge = 29;
 
 const totalAmount =
@@ -125,8 +129,8 @@ Price: ${item.price}
 
 MRP Total       : ₹${total}
 Discount (30%)  : -₹${discount}
-Packing Charge  : ₹19
-Delivery Charge : ₹29
+Packaging Charge (₹10 × ${totalBottles}) : ₹${packingCharge}
+Delivery Charge : ₹${deliveryCharge}
 
 ━━━━━━━━━━━━━━━━━━━━
 
@@ -842,7 +846,7 @@ marginTop: "20px"
                 </span>
 
                 <b>
-                  {cart.length}
+                  {totalBottles}
                 </b>
 
               </div>
@@ -858,29 +862,59 @@ marginTop: "20px"
   <b>₹{total}</b>
 </div>
 
+{/* Discount */}
 <div
   style={{
     display: "flex",
     justifyContent: "space-between",
-    marginTop: "12px",
-    color: "#16a34a"
+    alignItems: "center",
+    color: "#16a34a",
   }}
 >
   <span>Discount (30%)</span>
-  <b>-₹{discount}</b>
+  <strong>-₹{discount.toFixed(0)}</strong>
 </div>
 
+{/* Line after discount */}
+<div
+  style={{
+    borderTop: "1px solid #e5e7eb",
+    margin: "18px 0",
+  }}
+/>
+
+{/* Discounted Subtotal */}
 <div
   style={{
     display: "flex",
     justifyContent: "space-between",
-    marginTop: "12px"
+    alignItems: "center",
+    color: "#168f3e",
   }}
 >
-  <span>Packing Charge</span>
-  <b>₹19</b>
+  <strong>Discounted Subtotal</strong>
+  <strong>₹{discountedTotal.toFixed(2)}</strong>
 </div>
 
+{/* Line after discounted subtotal */}
+<div
+  style={{
+    borderTop: "1px solid #e5e7eb",
+    margin: "18px 0",
+  }}
+/>
+
+{/* Packing & Handling */}
+<div
+  style={{
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+  }}
+>
+  <span>Packaging Charge</span>
+  <strong>₹{packingCharge}</strong>
+</div>
 <div
   style={{
     display: "flex",
