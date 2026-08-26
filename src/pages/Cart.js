@@ -915,16 +915,6 @@ marginTop: "20px"
   <span>Packaging Charge</span>
   <strong>₹{packingCharge}</strong>
 </div>
-<div
-  style={{
-    display: "flex",
-    justifyContent: "space-between",
-    marginTop: "12px"
-  }}
->
-  <span>Delivery Charge</span>
-  <b>₹29</b>
-</div>
               <hr
   style={{
     margin: "20px 0"
