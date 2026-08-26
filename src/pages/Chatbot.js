@@ -166,7 +166,7 @@ const speak = (text) => {
       try {
 
         const res = await fetch(
-          "http://localhost:5001/api/chat",
+          "https://goel-homeopathy-backend-1.onrender.com/api/chat",
           {
             method: "POST",
 
