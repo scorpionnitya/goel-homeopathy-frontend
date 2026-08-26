@@ -223,16 +223,6 @@ setTimeout(() => {
         alert("AI Error");
       }
     };
-const cardStyle = {
-  background: "white",
-  border: "none",
-  borderRadius: "22px",
-  padding: "30px",
-  cursor: "pointer",
-  boxShadow: "0 10px 25px rgba(0,0,0,0.08)",
-  transition: "0.3s",
-  textAlign: "center"
-};
 const optionStyle = {
 
 background: "#2e7d32",
