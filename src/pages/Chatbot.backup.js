@@ -148,10 +148,26 @@ const speak = (text) => {
   const getSuggestion =
     async () => {
 
+      if (!input.trim()) return;
+if (selectedOption === "symptoms") {
+
+  const value = input.trim();
+
+  if (!value) return;
+
+  askNextQuestion(value);
+
+  setInput("");
+
+  return;
+
+}
+
       const userMessage = {
-  sender: "user",
-  text: input
-};
+        sender: "user",
+        text: input
+      };
+
       setMessages((prev) => [
         ...prev,
         userMessage
@@ -175,15 +191,10 @@ const speak = (text) => {
                 "application/json"
             },
 
-body: JSON.stringify({
-  message: currentInput,
-  history: messages
-    .filter((msg) => msg.text)
-    .map((msg) => ({
-      role: msg.sender === "user" ? "user" : "model",
-      text: msg.text
-    }))
-})
+            body: JSON.stringify({
+              message:
+                currentInput
+            })
           }
         );
 
@@ -512,113 +523,78 @@ return (
       </p>
     </div>
   ) : (
- <div
-  style={{
-    textAlign: "center",
-    marginTop: isMobile ? "16px" : "40px",
-    padding: isMobile ? "0 18px" : "0"
-  }}
->
-  <h2
-    style={{
-      color: "#2e7d32",
-      fontSize: isMobile ? "22px" : "38px",
-      fontWeight: "800",
-      lineHeight: "1.25",
-      marginBottom: "8px"
-    }}
-  >
-    👋 Welcome to HomisCare AI
-  </h2>
+    <div
+      style={{
+        textAlign: "center",
+        marginTop: isMobile ? "20px" : "40px"
+      }}
+    >
+      <h2
+        style={{
+          color: "#2e7d32",
+          fontSize: isMobile ? "30px" : "38px",
+          fontWeight: "800"
+        }}
+      >
+        👋 Welcome to HomisCare AI
+      </h2>
 
-  <p
-    style={{
-      color: "#6b7280",
-      marginTop: "6px",
-      marginBottom: isMobile ? "24px" : "40px",
-      fontSize: isMobile ? "10px" : "16px",
-      lineHeight: "1.5"
-    }}
-  >
-    Your Personal Homeopathy Assistant
-  </p>
-
-  <p
-    style={{
-      color: "#374151",
-      marginTop: "10px",
-      marginBottom: "18px",
-      fontSize: isMobile ? "15px" : "17px",
-      fontWeight: "500"
-    }}
-  >
-    How can I help you today?
-  </p>
+      <p
+        style={{
+          color: "#6b7280",
+          marginTop: "10px",
+          marginBottom: "40px",
+          fontSize: "16px"
+        }}
+      >
+        Your Personal Homeopathy Assistant
+      </p>
 
       <div
         style={{
-          display: "flex",
-          justifyContent: "center",
-          gap: "10px",
-          flexWrap: "wrap",
-          maxWidth: "700px",
-          margin: "0 auto"
+          display: "grid",
+          gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+          gap: "20px"
         }}
       >
-        <button
-          onClick={() => setInput("I have some symptoms")}
-          style={{
-            background: "white",
-            border: "1px solid #d7ead9",
-            color: "#2e7d32",
-            padding: "11px 18px",
-            borderRadius: "999px",
-            cursor: "pointer",
-            fontSize: "14px",
-            fontWeight: "600",
-            boxShadow: "0 4px 12px rgba(0,0,0,0.05)"
-          }}
-        >
-          🤒 I have symptoms
+        <button onClick={() => {
+
+  setSelectedOption("symptoms");
+
+ setCurrentStep(0);
+
+  setMessages([
+    {
+      sender: "ai",
+      text:
+        "👋 Welcome to HomisCare AI.\n\nLet's begin your consultation.\n\nWhat is your age?"
+    }
+  ]);
+
+}} style={cardStyle}>
+          🤒
+          <h3>Symptom Checker</h3>
+          <p>Consult AI about your symptoms</p>
         </button>
 
-        <button
-          onClick={() =>
-            setInput("Tell me about a homeopathic medicine")
-          }
-          style={{
-            background: "white",
-            border: "1px solid #d7ead9",
-            color: "#2e7d32",
-            padding: "11px 18px",
-            borderRadius: "999px",
-            cursor: "pointer",
-            fontSize: "14px",
-            fontWeight: "600",
-            boxShadow: "0 4px 12px rgba(0,0,0,0.05)"
-          }}
-        >
-          💊 Medicine information
+        <button onClick={() => setSelectedOption("medicine")} style={cardStyle}>
+          💊
+          <h3>Search Medicine</h3>
+          <p>Find any homeopathic medicine</p>
         </button>
 
-        <button
-          onClick={() => setInput("I have a health question")}
-          style={{
-            background: "white",
-            border: "1px solid #d7ead9",
-            color: "#2e7d32",
-            padding: "11px 18px",
-            borderRadius: "999px",
-            cursor: "pointer",
-            fontSize: "14px",
-            fontWeight: "600",
-            boxShadow: "0 4px 12px rgba(0,0,0,0.05)"
-          }}
-        >
-          ❓ Health question
+        <button onClick={() => setSelectedOption("information")} style={cardStyle}>
+          📖
+          <h3>Medicine Information</h3>
+          <p>Know uses, dosage & precautions</p>
+        </button>
+
+        <button onClick={() => setSelectedOption("products")} style={cardStyle}>
+          🛒
+          <h3>Browse Products</h3>
+          <p>Discover HomisCare products</p>
         </button>
       </div>
-      
     </div>
   )
 ) : null}
@@ -687,9 +663,7 @@ return (
                       "0 8px 20px rgba(0,0,0,0.08)"
                   }}
                 >
-                  <div style={{ whiteSpace: "pre-line" }}>
-  {msg.text}
-</div>
+                  {msg.text}
                 </div>
 
               </div>
