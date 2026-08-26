@@ -49,12 +49,9 @@ const totalBottles = cart.reduce(
 );
 
 const packingCharge = totalBottles * 10;
-const deliveryCharge = 29;
-
 const totalAmount =
   discountedTotal +
-  packingCharge +
-  deliveryCharge;
+  packingCharge;
 
 const roundOff =
   Math.round(totalAmount) -
