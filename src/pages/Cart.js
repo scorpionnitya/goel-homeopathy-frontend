@@ -127,7 +127,6 @@ Price: ${item.price}
 MRP Total       : ₹${total}
 Discount (30%)  : -₹${discount}
 Packaging Charge (₹10 × ${totalBottles}) : ₹${packingCharge}
-Delivery Charge : ₹${deliveryCharge}
 
 ━━━━━━━━━━━━━━━━━━━━
 
