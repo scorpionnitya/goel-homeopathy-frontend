@@ -49,9 +49,8 @@ const totalBottles = cart.reduce(
 );
 
 const packingCharge = totalBottles * 10;
-const totalAmount =
-  discountedTotal +
-  packingCharge;
+
+const totalAmount = discountedTotal;
 
 const roundOff =
   Math.round(totalAmount) -
@@ -59,6 +58,9 @@ const roundOff =
 
 const finalTotal =
   Math.round(totalAmount);
+
+const whatsappTotal =
+  Math.round(discountedTotal + packingCharge);
 
   // REMOVE ITEM
 
@@ -95,22 +97,16 @@ try {
   // Create WhatsApp message
 const message = `
 🟢 *NEW HOMISCARE ORDER*
-
 ━━━━━━━━━━━━━━━━━━━━
-
 🆔 *Order ID*
 Generating...
-
 👤 *CUSTOMER*
-
 Name: ${userDetails.name}
 Phone: ${userDetails.phone}
 
 📍 *Address*
 ${userDetails.address}
-
 ━━━━━━━━━━━━━━━━━━━━
-
 🛒 *ORDER ITEMS*
 
 ${cart.map((item, index) => `
@@ -119,34 +115,23 @@ ${item.power ? `Strength: ${item.power}` : ""}
 Qty: ${item.quantity}
 Price: ${item.price}
 `).join("\n")}
-
 ━━━━━━━━━━━━━━━━━━━━
-
 💳 *BILL SUMMARY*
 
 MRP Total       : ₹${total}
 Discount (30%)  : -₹${discount}
-Packaging Charge (₹10 × ${totalBottles}) : ₹${packingCharge}
-
+Miscellaneous Charges : ₹${packingCharge}
 ━━━━━━━━━━━━━━━━━━━━
-
 💰 *TOTAL PAYABLE*
-
-₹${finalTotal}
-
+₹${whatsappTotal}
 ━━━━━━━━━━━━━━━━━━━━
-
 Payment Status
 🟠 Pending
-
 Order Status
 🟠 Pending
-
 ━━━━━━━━━━━━━━━━━━━━
-
 🌿 HomisCare
 Trusted Homeopathy Store
-
 https://homiscare.in
 `;
 // Save order to backend
@@ -900,17 +885,6 @@ marginTop: "20px"
   }}
 />
 
-{/* Packing & Handling */}
-<div
-  style={{
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-  }}
->
-  <span>Packaging Charge</span>
-  <strong>₹{packingCharge}</strong>
-</div>
               <hr
   style={{
     margin: "20px 0"
