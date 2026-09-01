@@ -97,13 +97,6 @@ console.log("Matches:", filteredMedicines);
 
             <div className="flex items-center gap-4">
 
-<a
-  href="https://wa.me/917302512068"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  <HiOutlineChatBubbleOvalLeftEllipsis size={23} />
-</a>
             
 
               <Link
@@ -267,7 +260,7 @@ console.log("Matches:", filteredMedicines);
 
       <strong className="ml-1">
 
-        Meerut
+        India
 
       </strong>
 
@@ -353,7 +346,7 @@ console.log("Matches:", filteredMedicines);
               </p>
 
               <p className="font-semibold">
-                Meerut
+                India
               </p>
 
             </div>
@@ -362,13 +355,6 @@ console.log("Matches:", filteredMedicines);
 
           {/* USER */}
 
-<button
-  onClick={() => navigate("/chat")}
-  className="ai-btn"
->
-  <RiRobot2Line size={22} />
-  <span>AI</span>
-</button>
 
           {/* CART */}
 
