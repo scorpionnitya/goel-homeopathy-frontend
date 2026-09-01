@@ -21,28 +21,10 @@ const [placeholder, setPlaceholder] = useState("");
 
 const [, setConsultationFinished] = useState(false);
 const isMobile = window.innerWidth <= 768;
-
 useEffect(() => {
-
-    if(selectedOption!=="symptoms") return;
-
-    const current =
-        consultationQuestions[currentStep];
-
-    if(!current) return;
-
-    setPlaceholder(
-        current.placeholder || ""
-    );
-
-    setShowButtons(
-        current.type==="buttons"
-    );
-
-},[
-currentStep,
-selectedOption
-]);
+  setPlaceholder("Tell me what you're experiencing...");
+  setShowButtons(false);
+}, []);
 
   // 🔓 Unlock mobile speech
 
