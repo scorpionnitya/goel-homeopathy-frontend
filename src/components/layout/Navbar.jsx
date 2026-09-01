@@ -5,7 +5,6 @@ import {
   FiChevronLeft,
   FiChevronRight,
 } from "react-icons/fi";
-import { RiRobot2Line } from "react-icons/ri";
 
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
@@ -13,7 +12,6 @@ import { FiMic } from "react-icons/fi";
 import products from "../../data/products";
 
 import { useNavigate } from "react-router-dom";
-import { HiOutlineChatBubbleOvalLeftEllipsis } from "react-icons/hi2";
 import AnnouncementBar from "./AnnouncementBar";
 import {
   FaPrescriptionBottle,
