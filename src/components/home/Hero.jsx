@@ -31,7 +31,7 @@ function Hero() {
             Authentic Homeopathy medicines,
             wellness products and healthcare
             essentials delivered quickly across
-            Meerut.
+            India.
 
           </p>
 <div className="mt-10">

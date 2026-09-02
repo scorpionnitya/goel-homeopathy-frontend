@@ -6,7 +6,7 @@ function AnnouncementBar() {
       <Marquee speed={45} gradient={false} pauseOnHover>
 
         <div className="mx-6 bg-white rounded-full px-8 py-2 font-semibold text-green-700 shadow-md whitespace-nowrap">
-          📢 MOHAN HOMEO STORE IS NOW ONLINE • 💚 50+ YEARS OF TRUST • 🚚 FAST DELIVERY • 📍 DELIVERING ACROSS MEERUT
+          📢 MOHAN HOMEO STORE IS NOW ONLINE • 💚 50+ YEARS OF TRUST • 🚚 FAST DELIVERY • 📍 DELIVERING ACROSS INDIA
         </div>
 
       </Marquee>

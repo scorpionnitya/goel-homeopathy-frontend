@@ -962,7 +962,7 @@ marginTop: "20px"
     textAlign: "center"
   }}
 >
-  📍 Currently delivering only in Meerut
+  📍 Currently delivering only in India
 </p>
 
               {/* BUTTON */}

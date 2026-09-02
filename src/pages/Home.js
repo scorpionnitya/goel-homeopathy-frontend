@@ -54,7 +54,7 @@ maxWidth: "650px", }}>
               marginBottom: "20px"
             }}
           >
-            🚚 Delivering Across Meerut • 30% OFF Everyday
+            🚚 Delivering Across India • 30% OFF Everyday
             
           </div>
           
@@ -102,7 +102,7 @@ maxWidth: "650px", }}>
 >
   Order genuine homeopathic medicines
   with 30% OFF, AI-powered assistance,
-  and quick local delivery across Meerut.
+  and quick local delivery across India.
   Trusted healthcare, delivered with a
   modern shopping experience.
 </p>

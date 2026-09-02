@@ -621,7 +621,7 @@ const hideNavbar = false;
                       "#6b7280"
                   }}
                 >
-                  📍 Meerut, India,
+                  📍 India, India,
                   Uttar Pradesh,
                   Mohan Homeopathic
                   Store, 250001

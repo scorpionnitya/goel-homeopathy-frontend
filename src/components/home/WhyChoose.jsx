@@ -17,7 +17,7 @@ const features = [
   {
     icon: <FaTruck size={40} />,
     title: "Fast Delivery",
-    desc: "Quick and reliable delivery across Meerut.",
+    desc: "Quick and reliable delivery across India.",
   },
   {
     icon: <FaWhatsapp size={40} />,
