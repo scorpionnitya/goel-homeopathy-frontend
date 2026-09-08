@@ -12,6 +12,12 @@ import {
   biochemicPrices,
   bcPrices,
   rdropPrices,
+  sblLiquidSpecialities,
+  sblLiquidSpecialityPrices,
+  sblHealthWellness,
+  sblHealthWellnessPrices,
+  sblBiochemicPrices,
+  sblBcPrices,
 } from "../data/medicinesData";
 import MobileBackButton from "../components//common/MobileBackButton";
 import { Link } from "react-router-dom";
@@ -31,6 +37,13 @@ const findCategory = (query) => {
   if (bc.some((m) => m.toLowerCase() === q)) return "BC";
   if (rdrops.some((m) => m.toLowerCase() === q)) return "R Drops";
   if (biochemic.some((m) => m.toLowerCase() === q)) return "Biochemic";
+  if (
+  sblLiquidSpecialities.some(
+    (m) => m.toLowerCase() === q
+  )
+) {
+  return "SBL Liquid Specialities";
+}
   if (Object.keys(motherPrices).some((m) => m.toLowerCase() === q))
     return "Mother Tincture";
 
@@ -70,23 +83,47 @@ useEffect(() => {
 
 }, []);
 
- const getData = () => {
+const getData = () => {
   if (tab === "Dilution") return dilution;
   if (tab === "Biochemic") return biochemic;
   if (tab === "BC") return bc;
   if (tab === "R Drops") return rdrops;
   if (tab === "Mother Tincture") return Object.keys(motherPrices);
+  if (tab === "SBL Liquid Specialities") return sblLiquidSpecialities;
+  if (tab === "Health") return sblHealthWellness;
 
-  return []; // Default if no category matches
+  return [];
 };
 
-  const getPowers = () => {
-    if (tab === "Dilution") return ["30", "200", "1M", "10M", "CM"];
-    if (tab === "Biochemic") return ["3X", "6X", "12X", "30X", "200X"];
-    if (tab === "Mother Tincture") return ["Q", "20ml"];
-    return ["Standard"];
-  };
+const getPowers = (med) => {
+  if (tab === "Dilution") {
+    return ["30", "200", "1M", "10M", "CM"];
+  }
 
+  if (tab === "Biochemic") {
+    if (med.startsWith("SBL ")) {
+      return ["3X", "6X", "12X", "30X"];
+    }
+
+    return ["3X", "6X", "12X", "30X", "200X"];
+  }
+
+  if (tab === "Mother Tincture") {
+    return ["Q", "20ml"];
+  }
+
+  if (tab === "SBL Liquid Specialities") {
+    const priceData = sblLiquidSpecialityPrices[med];
+
+    if (priceData && typeof priceData === "object") {
+      return Object.keys(priceData);
+    }
+
+    return ["Standard"];
+  }
+
+  return ["Standard"];
+};
 const getPrice = (med, p) => {
   if (tab === "Mother Tincture") {
     return `₹${motherPrices[med]}`;
@@ -96,19 +133,43 @@ const getPrice = (med, p) => {
     return `₹${dilutionPrices[p]}`;
   }
 
-  if (tab === "Biochemic") {
-    return `₹${biochemicPrices[p]}`;
+if (tab === "Biochemic") {
+  if (med.startsWith("SBL ")) {
+    return `₹${sblBiochemicPrices[p]}`;
   }
 
-  if (tab === "BC") {
-    return `₹${bcPrices[med]}`;
+  return `₹${biochemicPrices[p]}`;
+}
+
+if (tab === "BC") {
+  if (med.startsWith("SBL BC ")) {
+    return `₹${sblBcPrices[med]}`;
   }
+
+  return `₹${bcPrices[med]}`;
+}
 
   if (tab === "R Drops") {
     return `₹${rdropPrices[med]}`;
   }
 
-  return "₹0";
+ if (tab === "SBL Liquid Specialities") {
+  const priceData = sblLiquidSpecialityPrices[med];
+
+  if (priceData && typeof priceData === "object") {
+    return `₹${priceData[p]}`;
+  }
+
+  return `₹${priceData}`;
+}
+
+if (tab === "Health") {
+  const price = sblHealthWellnessPrices[med];
+
+  return price
+    ? `₹${price}`
+    : "Price unavailable";
+}
 };
 const filteredData = getData().filter((item) =>
   item.toLowerCase().includes(search.toLowerCase())
@@ -343,7 +404,7 @@ gridTemplateColumns: isMobile
         }}
       >
         {data.map((med, index) => {
-const selectedPower = power[med] || getPowers()[0];
+const selectedPower = power[med] || getPowers(med)[0];
 
 const price = getPrice(med, selectedPower);
 
@@ -425,7 +486,7 @@ fontSize: isMobile ? "9px" : "11px",
     marginTop: isMobile ? "10px" : "16px",
   }}
 >
-  {getPowers().map((p) => (
+{getPowers(med).map((p) => (
     <button
       key={p}
       onClick={() =>

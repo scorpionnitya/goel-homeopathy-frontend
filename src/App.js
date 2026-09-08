@@ -291,12 +291,13 @@ const hideNavbar = false;
       }}
     >
       {[
-        "Dilution",
-        "Biochemic",
-        "BC",
-        "R Drops",
-        "Mother Tincture"
-      ].map((item) => (
+  "Dilution",
+  "Biochemic",
+  "BC",
+  "R Drops",
+  "Mother Tincture",
+  "SBL Liquid Specialities"
+].map((item) => (
         <Link
           key={item}
           to={`/medicines?category=${encodeURIComponent(item)}`}

@@ -37,6 +37,11 @@ const categories = [
     icon: <FaFlask size={35} className="text-green-600" />,
   },
   {
+  name: "SBL Liquid Specialities",
+  category: "SBL Liquid Specialities",
+  icon: <FaTint size={35} className="text-green-600" />,
+},
+  {
     name: "Health & Wellness",
     category: "Health",
     icon: <FaHeartbeat size={35} className="text-green-600" />,

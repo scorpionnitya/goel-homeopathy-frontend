@@ -393,6 +393,7 @@ export const dilution = [
 ];
 
 export const biochemic = [
+  // Existing Reckeweg Biochemics
   "Calcarea Fluor",
   "Calcarea Phos",
   "Calcarea Sulf",
@@ -405,10 +406,70 @@ export const biochemic = [
   "Nat Mur",
   "Nat Phos",
   "Nat Sulf",
-  "Silicea"
+  "Silicea",
+
+  // SBL Biochemics
+  "SBL Calcarea Fluorica",
+  "SBL Calcarea Phosphorica",
+  "SBL Calcarea Sulphurica",
+  "SBL Ferrum Phosphoricum",
+  "SBL Five Phos",
+  "SBL Kali Muriaticum",
+  "SBL Kali Phosphoricum",
+  "SBL Kali Sulphuricum",
+  "SBL Magnesia Phosphorica",
+  "SBL Natrum Muriaticum",
+  "SBL Natrum Phosphoricum",
+  "SBL Natrum Sulphuricum",
+  "SBL Silicea"
 ];
 
- export const bc = Array.from({ length: 28 }, (_, i) => `BC ${i + 1}`);
+ export const bc = [
+  // Existing Reckeweg BC
+  ...Array.from({ length: 28 }, (_, i) => `BC ${i + 1}`),
+  
+
+  // SBL BC
+  "SBL BC 1",
+  "SBL BC 2",
+  "SBL BC 3",
+  "SBL BC 4",
+  "SBL BC 5",
+  "SBL BC 6",
+  "SBL BC 7",
+  "SBL BC 8",
+  "SBL BC 9",
+  "SBL BC 10",
+  "SBL BC 11",
+  "SBL BC 12",
+  "SBL BC 13",
+  "SBL BC 14",
+  "SBL BC 15",
+  "SBL BC 16",
+  "SBL BC 17",
+  "SBL BC 18",
+  "SBL BC 19",
+  "SBL BC 20",
+  "SBL BC 21",
+  "SBL BC 22",
+  "SBL BC 23",
+  "SBL BC 24",
+  "SBL BC 25",
+  "SBL BC 26",
+  "SBL BC 27",
+  "SBL BC 28"
+];
+export const sblBiochemicPrices = {
+  "3X": 120,
+  "6X": 120,
+  "12X": 120,
+  "30X": 120,
+};
+export const sblBcPrices = Object.fromEntries(
+  bc
+    .filter(name => name.startsWith("SBL BC "))
+    .map(name => [name, 120])
+);
 export const rdrops = [
   "R 1",
   "R 2",
@@ -496,6 +557,164 @@ export const rdrops = [
   "R 191",
   "R 193"
 ];
+
+export const sblLiquidSpecialities = [
+  "SBL Drops No.1",
+  "SBL Drops No.2",
+  "SBL Drops No.3",
+  "SBL Drops No.4",
+  "SBL Drops No.5",
+  "SBL Drops No.6",
+  "SBL Drops No.7",
+  "SBL Drops No.8",
+  "SBL Drops No.9",
+  "SBL Drops No.10",
+
+  "SBL Drops No.-11-(Sleep Support)",
+  "SBL Drops No.-12-(Tonsils Care)",
+  "SBL Drops No.-13-(Acidity&Indig)",
+  "SBL Drops No.-14-(Leuco Care)",
+  "SBL Drops No.-15-(Acne&Pim.Care)",
+  "SBL Drops No.-16-(Bone Health)",
+  "SBL Drops No.-17-(Piles & F Care)",
+  "SBL Drops No.-18-(Anaemia Suppt)",
+  "SBL Drops No.-19-(Anti-Flu)",
+  "SBL Drops No.-20-(Injury Aid)",
+  "SBL Drops No.-21-(Stress Relief)",
+
+  "SBL Ache-Nil Drops",
+  "SBL Constinil Drops",
+ 
+  "RelaXhed Drops",
+  "Stobal Cough Syrup",
+  "Tonicard Gold Drop",
+  "Utrofyne Syrup",
+  "Vertefine Drops",
+  "Wormorid Drops",
+
+  "Nixocid Syrup",
+
+  "Orthomuv Syrup",
+  "Orthomuv Massage Oil Roll-On",
+
+  "Funginil Drops",
+
+  "LIV T [Sugar Free]",
+  "Rinsout Drops - Mouthwash",
+  "Wipe Clear Acne Lotion"
+];
+
+export const sblLiquidSpecialityPrices = {
+  "Nixocid Syrup": {
+    "115 ml": 122,
+    "500 ml": 314,
+  },
+
+  "Stobal Cough Syrup": {
+    "115 ml": 117,
+    "180 ml": 178,
+    "500 ml": 309,
+  },
+
+  "Tonicard Gold Drop": {
+    "30 ml": 211,
+    "200 ml": 436,
+  },
+  "SBL Drops No.1": 183,
+  "SBL Drops No.2": 183,
+  "SBL Drops No.3": 183,
+  "SBL Drops No.4": 183,
+  "SBL Drops No.5": 183,
+  "SBL Drops No.6": 183,
+  "SBL Drops No.7": 183,
+  "SBL Drops No.8": 183,
+  "SBL Drops No.9": 183,
+  "SBL Drops No.10": 183,
+
+  "SBL Drops No.-11-(Sleep Support)": 183,
+  "SBL Drops No.-12-(Tonsils Care)": 183,
+  "SBL Drops No.-13-(Acidity&Indig)": 183,
+  "SBL Drops No.-14-(Leuco Care)": 183,
+  "SBL Drops No.-15-(Acne&Pim.Care)": 183,
+  "SBL Drops No.-16-(Bone Health)": 183,
+  "SBL Drops No.-17-(Piles & F Care)": 183,
+  "SBL Drops No.-18-(Anaemia Suppt)": 183,
+  "SBL Drops No.-19-(Anti-Flu)": 183,
+  "SBL Drops No.-20-(Injury Aid)": 183,
+  "SBL Drops No.-21-(Stress Relief)": 183,
+
+  "SBL Ache-Nil Drops": 110,
+  "SBL Constinil Drops": 131,
+
+  "RelaXhed Drops": 131,
+  "Utrofyne Syrup": 117,
+  "Vertefine Drops": 155,
+  "Wormorid Drops": 136,
+
+  "Orthomuv Syrup" : 185,
+  "Orthomuv Massage Oil Roll-On": 98,
+
+  "Funginil Drops": 127,
+
+  "LIV T [Sugar Free]": 117,
+  "Rinsout Drops - Mouthwash": 113,
+  "Wipe Clear Acne Lotion": 98
+};
+
+export const sblHealthWellness = [
+  // Eye & Ear Drops
+  "Euphrasia 10% Eye Drops",
+  "Cineraria Maritima 10% Eye Drops",
+  "Mullein Ear Drops",
+  "Cineraria Maritima Euphrasia Eye Drops",
+  
+  "Scalptone Tablets",
+ 
+
+  // Skin Care
+  "Sulphur Ointment",
+  "Babchi Oil",
+  "Sulphur Gel",
+  "Urtica Urens Ointment",
+  "Thuja Ointment",
+  "Cardiospermum Helicacabum Ointment",
+  "Echinacea Ointment",
+  "Petroleum Ointment",
+
+  // Additional Ointments
+  "Funginil Cream",
+  "Hypericum Ointment",
+  "Hamamelis Ointment",
+  "Rhustox Ointment",
+  "Graphites Ointment",
+  "Ruta Ointment",
+];
+
+export const sblHealthWellnessPrices = {
+  "Euphrasia 10% Eye Drops": 122,
+  "Cineraria Maritima 10% Eye Drops": 140,
+  "Mullein Ear Drops": 56,
+  "Cineraria Maritima Euphrasia Eye Drops": 122,
+
+  
+  "Scalptone Tablets": 165,
+
+
+  "Sulphur Ointment": 80,
+  "Babchi Oil": 141,
+  "Urtica Urens Ointment": 80,
+  "Thuja Ointment": 80,
+  "Cardiospermum Helicacabum Ointment": 80, 
+  "Echinacea Ointment": 80, 
+  "Petroleum Ointment": 80,
+  "Funginil Cream": 80,
+  "Hypericum Ointment": 80,
+  "Hamamelis Ointment": 80,
+  "Rhustox Ointment": 80,
+  "Graphites Ointment": 80, 
+  "Ruta Ointment": 80,
+ 
+};
 
 // ==========================================
 // DR. RECKEWEG PRICES

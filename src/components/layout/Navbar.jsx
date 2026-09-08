@@ -19,6 +19,7 @@ import {
   FaCapsules,
   FaTint,
   FaFlask,
+  FaHeartbeat,
 } from "react-icons/fa";
 
 function Navbar({ cart }) {
@@ -172,25 +173,51 @@ console.log("Matches:", filteredMedicines);
     <p className="text-xs font-semibold mt-1">R Drops</p>
   </div>
 
-  <div
-    onClick={() => navigate("/medicines?category=BC")}
-    className="min-w-[78px] text-center cursor-pointer"
-  >
-    <div className="h-16 rounded-2xl bg-green-50 flex items-center justify-center">
-      <FaFlask size={28} className="text-green-600" />
-    </div>
-    <p className="text-xs font-semibold mt-1">BC</p>
+<div
+  onClick={() => navigate("/medicines?category=BC")}
+  className="min-w-[78px] text-center cursor-pointer"
+>
+  <div className="h-16 rounded-2xl bg-green-50 flex items-center justify-center">
+    <FaFlask size={28} className="text-green-600" />
   </div>
-    </div>
 
-  <button
-    onClick={() => scrollCategories("right")}
-    className="absolute right-2 top-7 -translate-y-1/2 z-20 w-7 h-7 bg-white rounded-full shadow-lg flex items-center justify-center"
-  >
-    <FiChevronRight size={18} />
-  </button>
+  <p className="text-xs font-semibold mt-1">BC</p>
+</div>
 
-</div>  
+<div
+  onClick={() =>
+    navigate("/medicines?category=SBL%20Liquid%20Specialities")
+  }
+  className="min-w-[120px] text-center cursor-pointer"
+>
+  <div className="h-16 rounded-2xl bg-green-50 flex items-center justify-center">
+    <FaTint size={28} className="text-green-600" />
+  </div>
+
+  <p className="text-xs font-semibold mt-1">
+    SBL Liquid
+    <br />
+    Specialities
+  </p>
+</div>
+
+<div
+  onClick={() => navigate("/medicines?category=Health")}
+  className="min-w-[120px] text-center cursor-pointer"
+>
+  <div className="h-16 rounded-2xl bg-green-50 flex items-center justify-center">
+    <FaHeartbeat size={28} className="text-green-600" />
+  </div>
+
+  <p className="text-xs font-semibold mt-1">
+    Health &
+    <br />
+    Wellness
+  </p>
+</div>
+
+</div>
+
           {/* SEARCH */}
 
   <div className="px-4 mt-4 relative">
@@ -267,6 +294,7 @@ console.log("Matches:", filteredMedicines);
   </div>
 
 </div>
+  </div>
 <AnnouncementBar />
 </>
 
@@ -412,13 +440,31 @@ console.log("Matches:", filteredMedicines);
           <span className="font-semibold">R Drops</span>
         </div>
 
-        <div
-          onClick={() => navigate("/medicines?category=BC")}
-          className="flex items-center gap-2 cursor-pointer hover:text-green-600 transition"
-        >
-          <FaFlask size={22} className="text-green-600" />
-          <span className="font-semibold">Bio Combinations</span>
-        </div>
+<div
+  onClick={() => navigate("/medicines?category=BC")}
+  className="flex items-center gap-2 cursor-pointer hover:text-green-600 transition"
+>
+  <FaFlask size={22} className="text-green-600" />
+  <span className="font-semibold">Bio Combinations</span>
+</div>
+
+<div
+  onClick={() =>
+    navigate("/medicines?category=SBL%20Liquid%20Specialities")
+  }
+  className="flex items-center gap-2 cursor-pointer hover:text-green-600 transition"
+>
+  <FaTint size={22} className="text-green-600" />
+  <span className="font-semibold">SBL Liquid Specialities</span>
+</div>
+
+<div
+  onClick={() => navigate("/medicines?category=Health")}
+  className="flex items-center gap-2 cursor-pointer hover:text-green-600 transition"
+>
+  <FaHeartbeat size={22} className="text-green-600" />
+  <span className="font-semibold">Health & Wellness</span>
+</div>
 
       </div>
     </div>
