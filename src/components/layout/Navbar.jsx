@@ -3,7 +3,6 @@ import {
   FiMapPin,
   FiShoppingCart,
   FiChevronLeft,
-  FiChevronRight,
 } from "react-icons/fi";
 
 import { useState, useEffect, useRef } from "react";
