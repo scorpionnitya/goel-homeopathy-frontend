@@ -95,12 +95,12 @@ const getData = () => {
   return [];
 };
 
-const getPowers = (med) => {
-  if (tab === "Dilution") {
+const getPowers = (med, medicineCategory = tab) => {
+  if (medicineCategory === "Dilution") {
     return ["30", "200", "1M", "10M", "CM"];
   }
 
-  if (tab === "Biochemic") {
+  if (medicineCategory === "Biochemic") {
     if (med.startsWith("SBL ")) {
       return ["3X", "6X", "12X", "30X"];
     }
@@ -108,11 +108,11 @@ const getPowers = (med) => {
     return ["3X", "6X", "12X", "30X", "200X"];
   }
 
-  if (tab === "Mother Tincture") {
+  if (medicineCategory === "Mother Tincture") {
     return ["Q", "20ml"];
   }
 
-  if (tab === "SBL Liquid Specialities") {
+  if (medicineCategory === "SBL Liquid Specialities") {
     const priceData = sblLiquidSpecialityPrices[med];
 
     if (priceData && typeof priceData === "object") {
@@ -124,16 +124,16 @@ const getPowers = (med) => {
 
   return ["Standard"];
 };
-const getPrice = (med, p) => {
-  if (tab === "Mother Tincture") {
+const getPrice = (med, p, medicineCategory = tab) => {
+  if (medicineCategory === "Mother Tincture") {
     return `₹${motherPrices[med]}`;
   }
 
-  if (tab === "Dilution") {
+  if (medicineCategory === "Dilution") {
     return `₹${dilutionPrices[p]}`;
   }
 
-if (tab === "Biochemic") {
+if (medicineCategory === "Biochemic") {
   if (med.startsWith("SBL ")) {
     return `₹${sblBiochemicPrices[p]}`;
   }
@@ -141,7 +141,7 @@ if (tab === "Biochemic") {
   return `₹${biochemicPrices[p]}`;
 }
 
-if (tab === "BC") {
+if (medicineCategory === "BC") {
   if (med.startsWith("SBL BC ")) {
     return `₹${sblBcPrices[med]}`;
   }
@@ -149,11 +149,11 @@ if (tab === "BC") {
   return `₹${bcPrices[med]}`;
 }
 
-  if (tab === "R Drops") {
+  if (medicineCategory === "R Drops") {
     return `₹${rdropPrices[med]}`;
   }
 
- if (tab === "SBL Liquid Specialities") {
+ if (medicineCategory === "SBL Liquid Specialities") {
   const priceData = sblLiquidSpecialityPrices[med];
 
   if (priceData && typeof priceData === "object") {
@@ -163,7 +163,7 @@ if (tab === "BC") {
   return `₹${priceData}`;
 }
 
-if (tab === "Health") {
+if (medicineCategory === "Health") {
   const price = sblHealthWellnessPrices[med];
 
   return price
@@ -171,9 +171,40 @@ if (tab === "Health") {
     : "Price unavailable";
 }
 };
-const filteredData = getData().filter((item) =>
-  item.toLowerCase().includes(search.toLowerCase())
-);
+const normalizeSearch = (text) =>
+  text
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, "");
+
+const normalizedSearch = normalizeSearch(search);
+
+const allMedicineData = [
+  ...dilution.map((name) => ({ name, category: "Dilution" })),
+  ...biochemic.map((name) => ({ name, category: "Biochemic" })),
+  ...bc.map((name) => ({ name, category: "BC" })),
+  ...rdrops.map((name) => ({ name, category: "R Drops" })),
+  ...Object.keys(motherPrices).map((name) => ({
+    name,
+    category: "Mother Tincture",
+  })),
+  ...sblLiquidSpecialities.map((name) => ({
+    name,
+    category: "SBL Liquid Specialities",
+  })),
+  ...sblHealthWellness.map((name) => ({
+    name,
+    category: "Health",
+  })),
+];
+
+const filteredData = search.trim()
+  ? allMedicineData.filter((item) =>
+      normalizeSearch(item.name).includes(normalizedSearch)
+    )
+  : getData().map((name) => ({
+      name,
+      category: tab,
+    }));
 
 const data = filteredData;
 
@@ -403,10 +434,14 @@ gridTemplateColumns: isMobile
           marginTop: "30px"
         }}
       >
-        {data.map((med, index) => {
-const selectedPower = power[med] || getPowers(med)[0];
+{data.map((item, index) => {
+  const med = item.name;
+  const medicineCategory = item.category;
 
-const price = getPrice(med, selectedPower);
+  const selectedPower =
+    power[med] || getPowers(med, medicineCategory)[0];
+
+  const price = getPrice(med, selectedPower, medicineCategory);
 
           return (
             <div
@@ -432,7 +467,7 @@ padding: isMobile ? "10px" : "22px",
               
               
 
-{getMedicineImage(med, tab, isMobile)}
+{getMedicineImage(med, medicineCategory, isMobile)}
 <h3
   style={{
     marginTop: isMobile ? "8px" : "15px",
@@ -486,7 +521,7 @@ fontSize: isMobile ? "9px" : "11px",
     marginTop: isMobile ? "10px" : "16px",
   }}
 >
-{getPowers(med).map((p) => (
+{getPowers(med, medicineCategory).map((p) => (
     <button
       key={p}
       onClick={() =>
@@ -534,7 +569,7 @@ addToCart({
   name: med,
   power: selectedPower,
   price: price,
-  category: tab,
+  category: medicineCategory,
 });
   toast.success(
     "Added to cart"

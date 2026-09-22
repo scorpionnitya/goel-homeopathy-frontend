@@ -10,6 +10,16 @@ import { Link } from "react-router-dom";
 import { FiMic } from "react-icons/fi";
 import products from "../../data/products";
 
+import {
+  dilution,
+  biochemic,
+  bc,
+  rdrops,
+  motherPrices,
+  sblLiquidSpecialities,
+  sblHealthWellness,
+} from "../../data/medicinesData";
+
 import { useNavigate } from "react-router-dom";
 import AnnouncementBar from "./AnnouncementBar";
 import {
@@ -44,7 +54,16 @@ useEffect(() => {
 }, []);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
-const allMedicines = products.map((product) => product.name);
+const allMedicines = [
+  ...products.map((product) => product.name),
+  ...dilution,
+  ...biochemic,
+  ...bc,
+  ...rdrops,
+  ...Object.keys(motherPrices),
+  ...sblLiquidSpecialities,
+  ...sblHealthWellness,
+];
 
 const filteredMedicines =
   search.trim() === ""
@@ -320,13 +339,18 @@ console.log("Matches:", filteredMedicines);
   <div className="w-full flex items-center bg-gray-100 rounded-full px-5 py-3">
     <FiSearch className="text-gray-400" size={22} />
 
-    <input
-      type="text"
-      placeholder="Search medicines, categories, brands..."
-      value={search}
-      onChange={(e) => setSearch(e.target.value)}
-      className="bg-transparent outline-none w-full ml-3 text-gray-700"
-    />
+<input
+  type="text"
+  placeholder="Search medicines, categories, brands..."
+  value={search}
+  onChange={(e) => setSearch(e.target.value)}
+  onKeyDown={(e) => {
+    if (e.key === "Enter" && search.trim()) {
+      navigate(`/medicines?search=${encodeURIComponent(search.trim())}`);
+    }
+  }}
+  className="bg-transparent outline-none w-full ml-3 text-gray-700"
+/>
   </div>
 
   {filteredMedicines.length > 0 && (
