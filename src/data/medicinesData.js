@@ -688,32 +688,243 @@ export const sblHealthWellness = [
   "Rhustox Ointment",
   "Graphites Ointment",
   "Ruta Ointment",
+  // ==========================================
+  // SCHWABE INDIA PRODUCTS
+  // ==========================================
+
+  // Soaps
+  "B&T Glow & Fairness Soap",
+  "B&T Akne-Sor Soap",
+
+  // Ointments
+  "Heal Plus Cream",
+  "Topi Azadirachta Cream",
+  "Ruck Pain Gel",
+
+  // Eye & Ear Drops
+  "Cineraria Maritima Schwabe Eye Drops",
+
+  // Liquid Specialities
+  "ALPHA-LIV SUGAR FREE",
+  "Lilium tigr. Pentarkan",
+  "Dizester",
+  "Hertone",
+  "Gnaphalium Pentarkan",
+  "Alpha-Liv-Drops",
+  "Zauber Hair Drops",
+  "Good Morning",
+
+  // Skin Care
+  "Facewash Topi Berberis Combo",
+  "B&T Nourish collection Body Lotion",
+  "B&T Nourish Collection Body Wash",
+  "B&T Foot Cream",
+  "B&T NOURISH COLLECTION SPF 50 SUNSCREEN",
+  "B&T Nourish Collection Face Wash",
+  "B&T Aloe Vera Gel 100GM",
+  "B&T NOURISH COLLECTION SKIN RADIANCE CREAM",
+  "B&T Aloe Vera Cream",
+
+  // Tablet Specialities
+  "Guatteria gaumeri 1x",
+  "Baptisia tinctoria 1X MT tabs",
+  "Fucus vesiculosus 1x MT Tabs",
+  "Crataegus oxyacantha 1x MT tabs",
+  "Sabal serrulata 1x MT Tabs",
+  "Ginkgo biloba 1X",
+
+  // Hair Care
+  "B&T 7oL",
+  "B&T Anti-Dandruff Oil",
+  "B&T Arnica Shampoo 2 in 1",
+  "B&T Hair Serum",
+  "B&T Anti-Dandruff Shampoo",
+  "B&T Arnica Shampoo",
+  "Arnica Zauberol Combo",
+  "Anti Dandruff Combo",
+  "B&T Hair Growth Oil",
+  "Zauberöl - Premium Hair Growth Oil",
+  "Shampoo Oil Combo",
+  "B&T Nourish Collection Repair & Shine Shampoo",
 ];
 
 export const sblHealthWellnessPrices = {
+  // Existing Health products
   "Euphrasia 10% Eye Drops": 122,
   "Cineraria Maritima 10% Eye Drops": 140,
   "Mullein Ear Drops": 56,
   "Cineraria Maritima Euphrasia Eye Drops": 122,
-
-  
   "Scalptone Tablets": 165,
-
 
   "Sulphur Ointment": 80,
   "Babchi Oil": 141,
   "Urtica Urens Ointment": 80,
   "Thuja Ointment": 80,
-  "Cardiospermum Helicacabum Ointment": 80, 
-  "Echinacea Ointment": 80, 
+  "Cardiospermum Helicacabum Ointment": 80,
+  "Echinacea Ointment": 80,
   "Petroleum Ointment": 80,
   "Funginil Cream": 80,
   "Hypericum Ointment": 80,
   "Hamamelis Ointment": 80,
   "Rhustox Ointment": 80,
-  "Graphites Ointment": 80, 
+  "Graphites Ointment": 80,
   "Ruta Ointment": 80,
- 
+
+  // ==========================================
+  // SCHWABE INDIA — SOAPS
+  // ==========================================
+
+  "B&T Glow & Fairness Soap": {
+    "75 g": 35,
+  },
+
+  "B&T Akne-Sor Soap": {
+    "75 g": 35,
+  },
+
+  // ==========================================
+  // SCHWABE INDIA — OINTMENTS / GELS
+  // ==========================================
+
+  "Heal Plus Cream": {
+    "25 g": 71,
+  },
+
+  "Topi Azadirachta Cream": {
+    "25 g": 72,
+  },
+
+  "Ruck Pain Gel": {
+    "25 g": 71,
+  },
+
+  // ==========================================
+  // SCHWABE INDIA — EYE & EAR
+  // ==========================================
+
+  "Cineraria Maritima Schwabe Eye Drops": {
+    "10 ml": 245,
+  },
+
+  // ==========================================
+  // SCHWABE INDIA — LIQUID SPECIALITIES
+  // ==========================================
+
+  "ALPHA-LIV SUGAR FREE": 135,
+
+  "Lilium tigr. Pentarkan": {
+    "30 ml": 162,
+  },
+
+  "Dizester": {
+    "100 ml": 102,
+    "200 ml": 165,
+    "500 ml": 322,
+  },
+
+  "Hertone": {
+    "100 ml": 202,
+    "200 ml": 364,
+  },
+
+  "Gnaphalium Pentarkan": {
+    "30 ml": 162,
+  },
+
+  "Alpha-Liv-Drops": {
+    "30 ml": 113,
+  },
+
+  "Zauber Hair Drops": {
+    "Standard": 0,
+  },
+
+  "Good Morning": {
+    "30 ml": 113,
+  },
+
+  // ==========================================
+  // SCHWABE INDIA — SKIN CARE
+  // ==========================================
+
+  "Facewash Topi Berberis Combo": 136,
+
+  "B&T Nourish collection Body Lotion": 559,
+
+  "B&T Nourish Collection Body Wash": 479,
+
+  "B&T Foot Cream": 104,
+
+  "B&T NOURISH COLLECTION SPF 50 SUNSCREEN": 399,
+
+  "B&T Nourish Collection Face Wash": 319,
+
+  "B&T Aloe Vera Gel 100GM": {
+    "100 g": 119,
+  },
+
+  "B&T NOURISH COLLECTION SKIN RADIANCE CREAM": 639,
+
+  "B&T Aloe Vera Cream": 108,
+
+  // ==========================================
+  // SCHWABE INDIA — TABLET SPECIALITIES
+  // ==========================================
+
+  "Guatteria gaumeri 1x": {
+    "20 g": 280,
+  },
+
+  "Baptisia tinctoria 1X MT tabs": {
+    "20 g": 156,
+  },
+
+  "Fucus vesiculosus 1x MT Tabs": {
+    "20 g": 156,
+  },
+
+  "Crataegus oxyacantha 1x MT tabs": {
+    "20 g": 156,
+  },
+
+  "Sabal serrulata 1x MT Tabs": {
+    "20 g": 137,
+  },
+
+  "Ginkgo biloba 1X": {
+    "20 g": 280,
+  },
+
+  // ==========================================
+  // SCHWABE INDIA — HAIR CARE
+  // ==========================================
+
+  "B&T 7oL": 125,
+
+  "B&T Anti-Dandruff Oil": 96,
+
+  "B&T Arnica Shampoo 2 in 1": 208,
+
+  "B&T Hair Serum": 392,
+
+  "B&T Anti-Dandruff Shampoo": 103,
+
+  "B&T Arnica Shampoo": {
+    "Standard": 100,
+    "250 ml": 142,
+  },
+
+  "Arnica Zauberol Combo": 659,
+
+  "Anti Dandruff Combo": 199,
+
+  "B&T Hair Growth Oil": 128,
+
+  "Zauberöl - Premium Hair Growth Oil": 559,
+
+  "Shampoo Oil Combo": 228,
+
+  "B&T Nourish Collection Repair & Shine Shampoo": 569,
 };
 
 // ==========================================

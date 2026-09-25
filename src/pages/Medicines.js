@@ -121,6 +121,15 @@ const getPowers = (med, medicineCategory = tab) => {
 
     return ["Standard"];
   }
+    if (medicineCategory === "Health") {
+    const priceData = sblHealthWellnessPrices[med];
+
+    if (priceData && typeof priceData === "object") {
+      return Object.keys(priceData);
+    }
+
+    return ["Standard"];
+  }
 
   return ["Standard"];
 };
@@ -164,10 +173,18 @@ if (medicineCategory === "BC") {
 }
 
 if (medicineCategory === "Health") {
-  const price = sblHealthWellnessPrices[med];
+  const priceData = sblHealthWellnessPrices[med];
 
-  return price
-    ? `₹${price}`
+  if (priceData && typeof priceData === "object") {
+    const price = priceData[p];
+
+    return price != null
+      ? `₹${price}`
+      : "Price unavailable";
+  }
+
+  return priceData != null
+    ? `₹${priceData}`
     : "Price unavailable";
 }
 };
