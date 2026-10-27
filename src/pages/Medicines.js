@@ -131,19 +131,7 @@ const getPowers = (med, medicineCategory = tab) => {
 
     return ["Standard"];
   }
-  if (medicineCategory === "Adel") return ["Standard"];
-
-  if (medicineCategory === "Health") {
-    const priceData = sblHealthWellnessPrices[med];
-
-    if (priceData && typeof priceData === "object") {
-      return Object.keys(priceData);
-    }
-
-    return ["Standard"];
-  }
-
-  return ["Standard"];
+return ["Standard"];
 };
 
 const getPrice = (med, p, medicineCategory = tab) => {
@@ -154,16 +142,29 @@ const getPrice = (med, p, medicineCategory = tab) => {
 
   let mrp = null;
 
-  if (medicineCategory === "Adel") {
-    const normalize = (value) =>
-      String(value).toLowerCase().replace(/[^a-z0-9]/g, "");
+if (medicineCategory === "Adel" ||String(med).toLowerCase().includes("adel")
+) {
+  const normalize = (value) =>
+    String(value ?? "")
+      .toLowerCase()
+      .replace(/[^a-z0-9]/g, "");
 
-    const key = Object.keys(adelPrices).find(
-      (name) => normalize(name) === normalize(med)
-    );
+ const key = Object.keys(adelPrices).find(
+  (name) => normalize(name) === normalize(med)
+) || Object.keys(adelPrices).find(
+  (name) => normalize(med).includes(normalize(name)) ||
+            normalize(name).includes(normalize(med))
+);
 
-    mrp = mrpValue(adelPrices[key] ?? (key ? 310 : null));
-  } else if (medicineCategory === "Mother Tincture") {
+  const value = key ? adelPrices[key] : null;
+
+  if (value != null && Number.isFinite(Number(value)) && Number(value) > 0) {
+    return `₹${Math.round(Number(value) * 0.7)}`;
+  }
+
+  return "Price unavailable";
+}
+ else if (medicineCategory === "Mother Tincture") {
     mrp = mrpValue(motherPrices[med]);
   } else if (medicineCategory === "Dilution") {
     mrp = mrpValue(dilutionPrices[p]);
@@ -273,20 +274,41 @@ const brandSearchMap = {
 
 const searchedBrand = brandSearchMap[normalizedSearch];
 
-const filteredData = search.trim()
-  ? searchMedicineData.filter((item) => {
-      if (searchedBrand) {
-        return item.category === searchedBrand;
-      }
 
-      return normalizeSearch(item.name).includes(normalizedSearch);
-    })
+const filteredData = search.trim()
+  ? searchMedicineData
+      .filter((item) => {
+        const matchesSearch = normalizeSearch(item.name).includes(
+          normalizedSearch
+        );
+
+        const searchedBrand = {
+          adel: "Adel",
+          bakson: "Bakson",
+          lords: "Lords",
+          lord: "Lords",
+          wheezal: "Wheezal",
+        }[normalizedSearch];
+
+        return (
+          matchesSearch &&
+          (!searchedBrand || item.category === searchedBrand)
+        );
+      })
+      .filter(
+        (item, index, array) =>
+          array.findIndex(
+            (other) =>
+              normalizeSearch(other.name) === normalizeSearch(item.name)
+          ) === index
+      )
   : getData().map((name) => ({
       name,
       category: tab,
     }));
 
 const data = filteredData;
+
 
 
 
@@ -421,7 +443,7 @@ Showing {data.length} medicines
     style={{
       display: "grid",
 gridTemplateColumns: isMobile
-  ? "repeat(2, minmax(0, 1fr))"
+? "1fr"
   : "repeat(auto-fit, minmax(260px, 1fr))",
 
       gap: isMobile ? "10px" : "20px",
