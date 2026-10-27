@@ -1,4 +1,113 @@
-const schwabeImageMap = {
+const adelImageMap = {
+  "ADEL - 10 Respiratory Drops": "ADEL - 10 Respiratory Drops.jpg",
+  "ADEL - 19 MentalPhysical tiredness (General Weakness) Drops":
+    "ADEL - 19 MentalPhysical tiredness (General Weakness) Drops.jpg",
+  "Adel 1- Headache & Migraine Drops":
+    "Adel 1- Headache & Migraine Drops.jpg",
+  "Adel 11 - Constipation Drops":
+    "Adel 11 - Constipation Drops.jpg",
+  "ADEL 12 - Skin Drops": "ADEL 12 - Skin Drops.jpg",
+  "ADEL 13 - Weight Management Drops":
+    "ADEL 13 - Weight Management Drops.jpg",
+  "ADEL 14 - Iron Deficiency Drops":
+    "ADEL 14 - Iron Deficiency Drops.png",
+  "ADEL 15 - Women’s White Discharge Drops":
+    "ADEL 15 - Women’s White Discharge Drops.jpg",
+  "ADEL 16 - Gastrointestinal Drops":
+    "ADEL 16 - Gastrointestinal Drops.jpg",
+  "ADEL 17 - Eye Care Drops":
+    "ADEL 17 - Eye Care Drops.jpg",
+  "ADEL 18 - Diabetes Management Drops":
+    "ADEL 18 - Diabetes Management Drops.jpg",
+  "ADEL 2 - Piles & Hemorrhoids Drops":
+    "ADEL 2 - Piles & Hemorrhoids Drops.jpg",
+  "ADEL 20 - Allergy Drops": "ADEL 20 - Allergy Drops.jpg",
+  "ADEL 21 - Prostate Drops": "ADEL 21 - Prostate Drops.jpg",
+  "ADEL 22 - Kidney Drops": "ADEL 22 - Kidney Drops.jpg",
+  "ADEL 23 - Sinusitis Drops": "ADEL 23 - Sinusitis Drops.jpg",
+  "ADEL 24 - Tonsils Drops": "ADEL 24 - Tonsils Drops.jpg",
+  "ADEL 25 - Sleep Disorder Drops":
+    "ADEL 25 - Sleep Disorder Drops.jpg",
+  "ADEL 26 - Osteoarthritis Drops":
+    "ADEL 26 - Osteoarthritis Drops.jpg",
+  "ADEL 27 - Injury Drops": "ADEL 27 - Injury Drops.jpg",
+  "ADEL 28 - Cholesterol Management Drops":
+    "ADEL 28 - Cholesterol Management Drops.jpg",
+  "ADEL 29 - UTI Drops": "ADEL 29 - UTI Drops.jpg",
+  "ADEL 3 - Jaundice & Liver Drops":
+    "ADEL 3 - Jaundice & Liver Drops.jpg",
+  "ADEL 31 - Periods Regulating (PCOS, PCOD)":
+    "ADEL 31 - Periods Regulating (PCOS, PCOD).png",
+  "ADEL 32 - Inflammation Drops":
+    "ADEL 32 - Inflammation Drops.jpg",
+  "ADEL 33 - Oedema Drops": "ADEL 33 - Oedema Drops.jpg",
+  "ADEL 34 - Spleen Drops": "ADEL 34 - Spleen Drops.jpg",
+  "Adel 36 - Vitality Drops": "Adel 36 - Vitality Drops.jpg",
+  "ADEL 38 - Cramp Pain Drops":
+    "ADEL 38 - Cramp Pain Drops.jpg",
+  "ADEL 39 - Sciatica Drops": "ADEL 39 - Sciatica Drops.jpg",
+  "ADEL 4 - Joint Pain Drops": "ADEL 4 - Joint Pain Drops.jpg",
+  "ADEL 40 - Warts Drops": "ADEL 40 - Warts Drops.png",
+  "ADEL 43 - Heart & Cardiovascular Drops":
+    "ADEL 43 - Heart & Cardiovascular Drops.jpg",
+  "ADEL 44 - Varicose Veins Drops":
+    "ADEL 44 - Varicose Veins Drops.jpg",
+  "ADEL 48 - Lymph & Tumour Drops (adjuvant)":
+    "ADEL 48 - Lymph & Tumour Drops (adjuvant).jpg",
+  "ADEL 49 - Diarrhoea Drops": "ADEL 49 - Diarrhoea Drops.png",
+  "Adel 5 - Acidity, Gas & Stomach Drops":
+    "Adel 5 - Acidity, Gas & Stomach Drops.jpg",
+  "ADEL 50 - Worms Drops": "ADEL 50 - Worms Drops.png",
+  "Adel 51 - Anxiety & Stress Drops":
+    "Adel 51 - Anxiety & Stress Drops.jpg",
+  "ADEL 54 - Heart Care Drops":
+    "ADEL 54 - Heart Care Drops.jpg",
+  "ADEL 55 - Spondylitis Drops":
+    "ADEL 55 - Spondylitis Drops.png",
+  "ADEL 56 - Immune System Drops":
+    "ADEL 56 - Immune System Drops.jpg",
+  "ADEL 57 - Digestion Drops":
+    "ADEL 57 - Digestion Drops.png",
+  "ADEL 6 - Thyroid Management Drops":
+    "ADEL 6 - Thyroid Management Drops.jpg",
+  "ADEL 61 - Adrenal Gland Drops":
+    "ADEL 61 - Adrenal Gland Drops.jpg",
+  "ADEL 64 - Uric Acid Drops":
+    "ADEL 64 - Uric Acid Drops.png",
+  "ADEL 65 - Body Temperature Management Drops":
+    "ADEL 65 - Body Temperature Management Drops.png",
+  "ADEL 66 - Detoxification Drops":
+    "ADEL 66 - Detoxification Drops.jpg",
+  "ADEL 69 - Circulatory Drops":
+    "ADEL 69 - Circulatory Drops.jpg",
+  "ADEL 7 - Cough Drops": "ADEL 7 - Cough Drops.jpg",
+  "ADEL 73 - Anti-fungal Drops":
+    "ADEL 73 - Anti-fungal Drops.jpg",
+  "ADEL 75 - Pain Relief Ointment":
+    "ADEL 75 - Pain Relief Ointment.png",
+  "ADEL 78 - Skin Ointment":
+    "ADEL 78 - Skin Ointment.png",
+  "ADEL 79 - Iron Tonic": "ADEL 79 - Iron Tonic.jpg",
+  "ADEL 8 - Blood Pressure Management Drops":
+    "ADEL 8 - Blood Pressure Management Drops.jpg",
+  "ADEL 82 - Liver Tonic": "ADEL 82 - Liver Tonic.png",
+  "ADEL 83 - Cough Syrup": "ADEL 83 - Cough Syrup.jpg",
+  "ADEL 85 - Energy Drops": "ADEL 85 - Energy Drops.png",
+  "ADEL 85 - Vitality Tonic":
+    "ADEL 85 - Vitality Tonic.jpg",
+  "ADEL 86 - Warts (External)":
+    "ADEL 86 - Warts (External).jpg",
+  "ADEL 87 - Infection Drops":
+    "ADEL 87 - Infection Drops.png",
+  "ADEL 9 - Hair Care Drops":
+    "ADEL 9 - Hair Care Drops.jpg",
+};const schwabe5ImageMap = {
+  "Gastrobin": "Gastrobin.webp",
+  "Essentia Aurea": "Essentia_Aurea.jpg",
+  "Diacard": "Diacard.webp",
+  "Biofungin": "Biofungin.png",
+  "Bryorheum": "Bryorheum.jpg",
+};const schwabeImageMap = {
   // Soaps
   "B&T Glow & Fairness Soap": ["Soaps", "B&T Glow & Fairness Soap.jpg"],
   "B&T Akne-Sor Soap": ["Soaps", "B&T Akne - Sor Soap.jpg"],
@@ -33,34 +142,31 @@ const schwabeImageMap = {
   "Zauber Hair Drops": ["Liquid_Specialities", "Zauber Hair Drops.jpg"],
   "Good Morning": ["Liquid_Specialities", "Good Morning.jpg"],
 
-  // Skin Care
-  "Facewash Topi Berberis Combo": [
-    "Skin_Care",
-    "Facewash Topi Berberis Combo.webp",
-  ],
-  "B&T Nourish collection Body Lotion": [
-    "Skin_Care",
-    "B&T Nourish collection Body Lotion.jpg",
-  ],
-  "B&T Nourish Collection Body Wash": [
-    "Skin_Care",
-    "B&T Nourish Collection Body Wash.jpg",
+ // Skin Care
+
+"B&T Nourish collection Body Lotion": [
+  "Skin_Care",
+  "B&T Nourish collection Body Lotion.jpg",
+],
+ "B&T Nourish Collection Body Wash": [
+   "Skin_Care",
+ "B&T Nourish Collection Body Wash.jpg",
   ],
   "B&T Foot Cream": ["Skin_Care", "B&T Foot Cream.jpg"],
   "B&T NOURISH COLLECTION SPF 50 SUNSCREEN": [
-    "Skin_Care",
-    "B&T NOURISH COLLECTION SPF 50 SUNSCREEN.jpg",
+"Skin_Care",
+ "B&T NOURISH COLLECTION SPF 50 SUNSCREEN.jpg",
   ],
   "B&T Nourish Collection Face Wash": [
-    "Skin_Care",
+"Skin_Care",
     "B&T Nourish Collection Face Wash.jpg",
   ],
   "B&T Aloe Vera Gel 100GM": [
-    "Skin_Care",
+"Skin_Care",
     "B&T Aloe Vera Gel 100GM.jpg",
   ],
   "B&T NOURISH COLLECTION SKIN RADIANCE CREAM": [
-    "Skin_Care",
+"Skin_Care",
     "B&T NOURISH COLLECTION SKIN RADIANCE CREAM.jpg",
   ],
   "B&T Aloe Vera Cream": ["Skin_Care", "B&T Aloe Vera Cream.jpg"],
@@ -110,14 +216,6 @@ const schwabeImageMap = {
     "Hair_Care",
     "Bu0026T Arnica Shampoo.jpg",
   ],
-  "Arnica Zauberol Combo": [
-    "Hair_Care",
-    "Arnica Zauberol Combo.jpg",
-  ],
-  "Anti Dandruff Combo": [
-    "Hair_Care",
-    "Anti Dandruff Combo.jpg",
-  ],
   "B&T Hair Growth Oil": [
     "Hair_Care",
     "Bu0026T Hair Growth Oil.jpg",
@@ -126,11 +224,7 @@ const schwabeImageMap = {
     "Hair_Care",
     "Zauberöl - Premium Hair Growth Oil.jpg",
   ],
-  "Shampoo Oil Combo": [
-    "Hair_Care",
-    "Shampoo Oil Combo.jpg",
-  ],
-  "B&T Nourish Collection Repair & Shine Shampoo": [
+ "B&T Nourish Collection Repair & Shine Shampoo": [
     "Hair_Care",
     "Bu0026T Nourish Collection Repair u0026 Shine Shampoo.jpg",
   ],
@@ -262,6 +356,53 @@ if (tab === "SBL Liquid Specialities") {
 }
 
 if (tab === "Health") {
+  const adelImage = adelImageMap[med];
+
+  if (adelImage) {
+    return (
+      <div
+        style={{
+          height: small ? "120px" : "240px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <img
+          src={`/images/ADEL_Images/${encodeURIComponent(adelImage)}`}
+          alt={med}
+          style={{
+            height: small ? "100px" : "220px",
+            objectFit: "contain",
+          }}
+        />
+      </div>
+    );
+  }
+
+  const schwabe5Image = schwabe5ImageMap[med];
+
+  if (schwabe5Image) {
+    return (
+      <div
+        style={{
+          height: small ? "120px" : "240px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <img
+          src={`/images/Schwabe_5/${encodeURIComponent(schwabe5Image)}`}
+          alt={med}
+          style={{
+            height: small ? "100px" : "220px",
+            objectFit: "contain",
+          }}
+        />
+      </div>
+    );
+  }
   const schwabeImage = schwabeImageMap[med];
 
   if (schwabeImage) {
@@ -304,10 +445,7 @@ if (tab === "Health") {
     "SBL Drops No.1",
     "Arnica Montana Herbal Shampoo with Conditioner Com....",
     "Arnica Montana Fortified Hair Oil (Mineral Oil Fre....",
-    "Arnica Montana Hair Oil Combo (200ML Each)",
-    "Arnica Montana Herbal Shampoo Combo (200 ML Each)",
     "Scalptone Tablets",
-    "Jaborandi Hair Oil Combo (200ML Each)",
     "Jaborandi Anti-Dandruff Shampoo",
   ];
 

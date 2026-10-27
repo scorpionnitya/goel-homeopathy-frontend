@@ -11,7 +11,6 @@ function HomeV2({ cart }) {
     <>
 <Navbar cart={cart} />
 <Hero />
-<Categories />
 <Brands />
 <HomiscareAI />
 <WhyChoose />

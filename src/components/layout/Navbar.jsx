@@ -3,6 +3,7 @@ import {
   FiMapPin,
   FiShoppingCart,
   FiChevronLeft,
+  FiChevronRight,
 } from "react-icons/fi";
 
 import { useState, useEffect, useRef } from "react";
@@ -23,13 +24,18 @@ import {
 import { useNavigate } from "react-router-dom";
 import AnnouncementBar from "./AnnouncementBar";
 import {
-  FaPrescriptionBottle,
-  FaLeaf,
   FaCapsules,
-  FaTint,
-  FaFlask,
-  FaHeartbeat,
 } from "react-icons/fa";
+
+const BRANDS_WITH_PRODUCTS = [
+  "ADEL",
+  "BAKSON",
+  "DR. RECKEWEG",
+  "LORDS",
+  "SBL",
+  "WILLMAR SCHWABE",
+  "WHEEZAL",
+];
 
 function Navbar({ cart }) {
   const categoryScrollRef = useRef(null);
@@ -52,8 +58,9 @@ useEffect(() => {
 
   return () => window.removeEventListener("resize", handleResize);
 }, []);
-  const [search, setSearch] = useState("");
-  const navigate = useNavigate();
+const [search, setSearch] = useState("");
+const [isBrandOpen, setIsBrandOpen] = useState(false);
+const navigate = useNavigate();
 const allMedicines = [
   ...products.map((product) => product.name),
   ...dilution,
@@ -137,103 +144,122 @@ console.log("Matches:", filteredMedicines);
 
 {/* MOBILE CATEGORY SHORTCUTS */}
 
-<div className="relative mt-4">
+<div className="relative mt-5">
 
+  {/* LEFT ARROW */}
   <button
+    type="button"
     onClick={() => scrollCategories("left")}
-    className="absolute left-2 top-7 -translate-y-1/2 z-20 w-7 h-7 bg-white rounded-full shadow-lg flex items-center justify-center"
+    aria-label="Previous categories"
+    className="
+      absolute
+      left-2
+      top-1/2
+      -translate-y-1/2
+      z-30
+      w-11
+      h-11
+      rounded-full
+      bg-white
+      shadow-lg
+      flex
+      items-center
+      justify-center
+      text-gray-800
+    "
   >
-    <FiChevronLeft size={18} />
+    <FiChevronLeft size={24} />
   </button>
 
+  {/* RIGHT ARROW */}
+  <button
+    type="button"
+    onClick={() => scrollCategories("right")}
+    aria-label="Next categories"
+    className="
+      absolute
+      right-2
+      top-1/2
+      -translate-y-1/2
+      z-30
+      w-11
+      h-11
+      rounded-full
+      bg-white
+      shadow-lg
+      flex
+      items-center
+      justify-center
+      text-gray-800
+    "
+  >
+    <FiChevronRight size={24} />
+  </button>
+
+  {/* CATEGORY SCROLL AREA */}
   <div
     ref={categoryScrollRef}
-    className="flex gap-3 overflow-x-auto px-14 pb-1 scrollbar-hide"
+    className="
+      flex
+      gap-4
+      overflow-x-auto
+      px-14
+      pb-2
+      scrollbar-hide
+      scroll-smooth
+    "
+    style={{
+      scrollbarWidth: "none",
+      msOverflowStyle: "none",
+    }}
   >
+{/* MOBILE SHOP BY BRAND */}
 
-  <div
-    onClick={() => navigate("/medicines?category=Dilution")}
-    className="min-w-[78px] text-center cursor-pointer"
+<div className="mt-5 border-t border-gray-100 pt-4 px-4">
+
+  <button
+    type="button"
+    onClick={() => setIsBrandOpen(!isBrandOpen)}
+    className="w-full flex items-center justify-between py-3 text-lg font-bold text-gray-900"
   >
-    <div className="h-16 rounded-2xl bg-green-50 flex items-center justify-center">
-      <FaPrescriptionBottle size={28} className="text-green-600" />
+    <span>Shop by Brand</span>
+
+    <span className="text-green-600 text-xl">
+      {isBrandOpen ? "⌃" : "⌄"}
+    </span>
+  </button>
+
+  {isBrandOpen && (
+    <div className="mt-2 bg-green-50 rounded-2xl border border-green-100 overflow-hidden">
+
+      {BRANDS_WITH_PRODUCTS.map((company) => (
+        <button
+          key={company}
+          type="button"
+onClick={() =>
+  navigate(
+    `/brand/${encodeURIComponent(company)}`
+  )
+}
+          className="w-full flex items-center gap-3 px-4 py-3 text-left border-b border-green-100 last:border-b-0 hover:bg-green-100"
+        >
+          <FaCapsules
+            size={18}
+            className="text-green-600"
+          />
+
+          <span className="font-semibold text-sm">
+            {company}
+          </span>
+        </button>
+      ))}
+
     </div>
-    <p className="text-xs font-semibold mt-1">Dilutions</p>
-  </div>
+  )}
 
-  <div
-    onClick={() => navigate("/medicines?category=Mother%20Tincture")}
-    className="min-w-[78px] text-center cursor-pointer"
-  >
-    <div className="h-16 rounded-2xl bg-green-50 flex items-center justify-center">
-      <FaLeaf size={28} className="text-green-600" />
-    </div>
-    <p className="text-xs font-semibold mt-1">Mother</p>
-  </div>
-
-  <div
-    onClick={() => navigate("/medicines?category=Biochemic")}
-    className="min-w-[78px] text-center cursor-pointer"
-  >
-    <div className="h-16 rounded-2xl bg-green-50 flex items-center justify-center">
-      <FaCapsules size={28} className="text-green-600" />
-    </div>
-    <p className="text-xs font-semibold mt-1">Biochemic</p>
-  </div>
-
-  <div
-    onClick={() => navigate("/medicines?category=R%20Drops")}
-    className="min-w-[78px] text-center cursor-pointer"
-  >
-    <div className="h-16 rounded-2xl bg-green-50 flex items-center justify-center">
-      <FaTint size={28} className="text-green-600" />
-    </div>
-    <p className="text-xs font-semibold mt-1">R Drops</p>
-  </div>
-
-<div
-  onClick={() => navigate("/medicines?category=BC")}
-  className="min-w-[78px] text-center cursor-pointer"
->
-  <div className="h-16 rounded-2xl bg-green-50 flex items-center justify-center">
-    <FaFlask size={28} className="text-green-600" />
-  </div>
-
-  <p className="text-xs font-semibold mt-1">BC</p>
 </div>
 
-<div
-  onClick={() =>
-    navigate("/medicines?category=SBL%20Liquid%20Specialities")
-  }
-  className="min-w-[120px] text-center cursor-pointer"
->
-  <div className="h-16 rounded-2xl bg-green-50 flex items-center justify-center">
-    <FaTint size={28} className="text-green-600" />
   </div>
-
-  <p className="text-xs font-semibold mt-1">
-    SBL Liquid
-    <br />
-    Specialities
-  </p>
-</div>
-
-<div
-  onClick={() => navigate("/medicines?category=Health")}
-  className="min-w-[120px] text-center cursor-pointer"
->
-  <div className="h-16 rounded-2xl bg-green-50 flex items-center justify-center">
-    <FaHeartbeat size={28} className="text-green-600" />
-  </div>
-
-  <p className="text-xs font-semibold mt-1">
-    Health &
-    <br />
-    Wellness
-  </p>
-</div>
-
 </div>
 
           {/* SEARCH */}
@@ -311,7 +337,6 @@ console.log("Matches:", filteredMedicines);
 
   </div>
 
-</div>
   </div>
 <AnnouncementBar />
 </>
@@ -427,76 +452,61 @@ console.log("Matches:", filteredMedicines);
       </div>
     </header>
 
-    {/* DESKTOP CATEGORY SHORTCUTS */}
-    <div className="hidden md:block bg-white border-b">
-      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-center gap-8">
+{/* DESKTOP SHOP BY BRAND */}
 
-        <div
-          onClick={() => navigate("/medicines?category=Dilution")}
-          className="flex items-center gap-2 cursor-pointer hover:text-green-600 transition"
-        >
-          <FaPrescriptionBottle size={22} className="text-green-600" />
-          <span className="font-semibold">Dilutions</span>
-        </div>
+<div className="hidden md:block bg-white border-b">
 
-        <div
-          onClick={() => navigate("/medicines?category=Mother%20Tincture")}
-          className="flex items-center gap-2 cursor-pointer hover:text-green-600 transition"
-        >
-          <FaLeaf size={22} className="text-green-600" />
-          <span className="font-semibold">Mother Tinctures</span>
-        </div>
+  <div className="max-w-7xl mx-auto px-6 py-3 relative">
 
-        <div
-          onClick={() => navigate("/medicines?category=Biochemic")}
-          className="flex items-center gap-2 cursor-pointer hover:text-green-600 transition"
-        >
-          <FaCapsules size={22} className="text-green-600" />
-          <span className="font-semibold">Biochemic Salts</span>
-        </div>
+    <button
+      type="button"
+      onClick={() => setIsBrandOpen(!isBrandOpen)}
+      className="flex items-center gap-2 mx-auto font-semibold text-gray-800 hover:text-green-600 transition"
+    >
+      <span>Shop by Brand</span>
 
-        <div
-          onClick={() => navigate("/medicines?category=R%20Drops")}
-          className="flex items-center gap-2 cursor-pointer hover:text-green-600 transition"
-        >
-          <FaTint size={22} className="text-green-600" />
-          <span className="font-semibold">R Drops</span>
-        </div>
+      <span className="text-green-600 text-lg">
+        {isBrandOpen ? "⌃" : "⌄"}
+      </span>
+    </button>
 
-<div
-  onClick={() => navigate("/medicines?category=BC")}
-  className="flex items-center gap-2 cursor-pointer hover:text-green-600 transition"
->
-  <FaFlask size={22} className="text-green-600" />
-  <span className="font-semibold">Bio Combinations</span>
-</div>
+    {isBrandOpen && (
+      <div className="absolute left-1/2 -translate-x-1/2 top-full mt-1 w-80 bg-white rounded-2xl shadow-xl border border-gray-200 z-50 overflow-hidden">
 
-<div
-  onClick={() =>
-    navigate("/medicines?category=SBL%20Liquid%20Specialities")
-  }
-  className="flex items-center gap-2 cursor-pointer hover:text-green-600 transition"
->
-  <FaTint size={22} className="text-green-600" />
-  <span className="font-semibold">SBL Liquid Specialities</span>
-</div>
+        {BRANDS_WITH_PRODUCTS.map((company) => (
+          <button
+            key={company}
+            type="button"
+onClick={() =>
+  navigate(
+    `/brand/${encodeURIComponent(company)}`
+  )
+}
+            className="w-full flex items-center gap-3 px-5 py-3 text-left border-b border-gray-100 last:border-b-0 hover:bg-green-50 transition"
+          >
 
-<div
-  onClick={() => navigate("/medicines?category=Health")}
-  className="flex items-center gap-2 cursor-pointer hover:text-green-600 transition"
->
-  <FaHeartbeat size={22} className="text-green-600" />
-  <span className="font-semibold">Health & Wellness</span>
-</div>
+            <FaCapsules
+              size={18}
+              className="text-green-600"
+            />
+
+            <span className="font-semibold text-sm">
+              {company}
+            </span>
+
+          </button>
+        ))}
 
       </div>
-    </div>
+    )}
 
+  </div>
+
+</div>
     <AnnouncementBar />
-
-</>
-)}
-</>
+  </>
+    )}
+  </>
   );
 }
 

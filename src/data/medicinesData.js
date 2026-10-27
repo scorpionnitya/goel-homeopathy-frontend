@@ -601,7 +601,83 @@ export const sblLiquidSpecialities = [
 
   "LIV T [Sugar Free]",
   "Rinsout Drops - Mouthwash",
-  "Wipe Clear Acne Lotion"
+  "Wipe Clear Acne Lotion",
+  "LIV T [Sugar Free]",
+  "Rinsout Drops - Mouthwash",
+
+  // ADEL PRODUCTS
+
+  "ADEL - 10 Respiratory Drops",
+  "ADEL - 19 MentalPhysical tiredness (General Weakness) Drops",
+  "Adel 1- Headache & Migraine Drops",
+  "Adel 11 - Constipation Drops",
+  "ADEL 12 - Skin Drops",
+  "ADEL 13 - Weight Management Drops",
+  "ADEL 14 - Iron Deficiency Drops",
+  "ADEL 15 - Women’s White Discharge Drops",
+  "ADEL 16 - Gastrointestinal Drops",
+  "ADEL 17 - Eye Care Drops",
+  "ADEL 18 - Diabetes Management Drops",
+  "ADEL 2 - Piles & Hemorrhoids Drops",
+  "ADEL 20 - Allergy Drops",
+  "ADEL 21 - Prostate Drops",
+  "ADEL 22 - Kidney Drops",
+  "ADEL 23 - Sinusitis Drops",
+  "ADEL 24 - Tonsils Drops",
+  "ADEL 25 - Sleep Disorder Drops",
+  "ADEL 26 - Osteoarthritis Drops",
+  "ADEL 27 - Injury Drops",
+  "ADEL 28 - Cholesterol Management Drops",
+  "ADEL 29 - UTI Drops",
+  "ADEL 3 - Jaundice & Liver Drops",
+  "ADEL 31 - Periods Regulating (PCOS, PCOD)",
+  "ADEL 32 - Inflammation Drops",
+  "ADEL 33 - Oedema Drops",
+  "ADEL 34 - Spleen Drops",
+  "Adel 36 - Vitality Drops",
+  "ADEL 38 - Cramp Pain Drops",
+  "ADEL 39 - Sciatica Drops",
+  "ADEL 4 - Joint Pain Drops",
+  "ADEL 40 - Warts Drops",
+  "ADEL 43 - Heart & Cardiovascular Drops",
+  "ADEL 44 - Varicose Veins Drops",
+  "ADEL 48 - Lymph & Tumour Drops (adjuvant)",
+  "ADEL 49 - Diarrhoea Drops",
+  "Adel 5 - Acidity, Gas & Stomach Drops",
+  "ADEL 50 - Worms Drops",
+  "Adel 51 - Anxiety & Stress Drops",
+  "ADEL 54 - Heart Care Drops",
+  "ADEL 55 - Spondylitis Drops",
+  "ADEL 56 - Immune System Drops",
+  "ADEL 57 - Digestion Drops",
+  "ADEL 6 - Thyroid Management Drops",
+  "ADEL 61 - Adrenal Gland Drops",
+  "ADEL 64 - Uric Acid Drops",
+  "ADEL 65 - Body Temperature Management Drops",
+  "ADEL 66 - Detoxification Drops",
+  "ADEL 69 - Circulatory Drops",
+  "ADEL 7 - Cough Drops",
+  "ADEL 73 - Anti-fungal Drops",
+  "ADEL 75 - Pain Relief Ointment",
+  "ADEL 78 - Skin Ointment",
+  "ADEL 79 - Iron Tonic",
+  "ADEL 8 - Blood Pressure Management Drops",
+  "ADEL 82 - Liver Tonic",
+  "ADEL 83 - Cough Syrup",
+  "ADEL 85 - Energy Drops",
+  "ADEL 85 - Vitality Tonic",
+  "ADEL 86 - Warts (External)",
+  "ADEL 87 - Infection Drops",
+  "ADEL 9 - Hair Care Drops",
+
+  // Additional Schwabe Products
+
+  "Gastrobin",
+  "Essentia Aurea",
+  "Diacard",
+  "Biofungin",
+  "Bryorheum",
+
 ];
 
 export const sblLiquidSpecialityPrices = {
@@ -715,7 +791,6 @@ export const sblHealthWellness = [
   "Good Morning",
 
   // Skin Care
-  "Facewash Topi Berberis Combo",
   "B&T Nourish collection Body Lotion",
   "B&T Nourish Collection Body Wash",
   "B&T Foot Cream",
@@ -740,15 +815,10 @@ export const sblHealthWellness = [
   "B&T Hair Serum",
   "B&T Anti-Dandruff Shampoo",
   "B&T Arnica Shampoo",
-  "Arnica Zauberol Combo",
-  "Anti Dandruff Combo",
   "B&T Hair Growth Oil",
   "Zauberöl - Premium Hair Growth Oil",
-  "Shampoo Oil Combo",
   "B&T Nourish Collection Repair & Shine Shampoo",
-];
-
-export const sblHealthWellnessPrices = {
+  ];export const sblHealthWellnessPrices = {
   // Existing Health products
   "Euphrasia 10% Eye Drops": 122,
   "Cineraria Maritima 10% Eye Drops": 140,
@@ -847,7 +917,6 @@ export const sblHealthWellnessPrices = {
   // SCHWABE INDIA — SKIN CARE
   // ==========================================
 
-  "Facewash Topi Berberis Combo": 136,
 
   "B&T Nourish collection Body Lotion": 559,
 
@@ -914,15 +983,12 @@ export const sblHealthWellnessPrices = {
     "250 ml": 142,
   },
 
-  "Arnica Zauberol Combo": 659,
 
-  "Anti Dandruff Combo": 199,
 
   "B&T Hair Growth Oil": 128,
 
   "Zauberöl - Premium Hair Growth Oil": 559,
 
-  "Shampoo Oil Combo": 228,
 
   "B&T Nourish Collection Repair & Shine Shampoo": 569,
 };
@@ -1154,4 +1220,70 @@ export const motherPrices = {
   "XANTHOZYLUM Q": 380,
   "YERBA SANTA Q": 435,
   "YOHIMBINUM Q": 475
+};
+export const adelPrices = {
+  // Standard ADEL products
+  "ADEL - 10 Respiratory Drops": 310,
+  "ADEL - 19 MentalPhysical tiredness (General Weakness) Drops": 310,
+  "Adel 1- Headache & Migraine Drops": 310,
+  "Adel 11 - Constipation Drops": 310,
+  "ADEL 12 - Skin Drops": 310,
+  "ADEL 13 - Weight Management Drops": 310,
+  "ADEL 14 - Iron Deficiency Drops": 310,
+  "ADEL 15 - Women’s White Discharge Drops": 310,
+  "ADEL 16 - Gastrointestinal Drops": 310,
+  "ADEL 17 - Eye Care Drops": 310,
+  "ADEL 18 - Diabetes Management Drops": 310,
+  "ADEL 2 - Piles & Hemorrhoids Drops": 310,
+  "ADEL 20 - Allergy Drops": 310,
+  "ADEL 21 - Prostate Drops": 310,
+  "ADEL 22 - Kidney Drops": 310,
+  "ADEL 23 - Sinusitis Drops": 310,
+  "ADEL 24 - Tonsils Drops": 310,
+  "ADEL 25 - Sleep Disorder Drops": 310,
+  "ADEL 26 - Osteoarthritis Drops": 310,
+  "ADEL 27 - Injury Drops": 310,
+  "ADEL 28 - Cholesterol Management Drops": 310,
+  "ADEL 29 - UTI Drops": 310,
+  "ADEL 3 - Jaundice & Liver Drops": 310,
+  "ADEL 31 - Periods Regulating (PCOS, PCOD)": 310,
+  "ADEL 32 - Inflammation Drops": 310,
+  "ADEL 33 - Oedema Drops": 310,
+  "ADEL 34 - Spleen Drops": 310,
+  "Adel 36 - Vitality Drops": 310,
+  "ADEL 38 - Cramp Pain Drops": 310,
+  "ADEL 39 - Sciatica Drops": 310,
+  "ADEL 4 - Joint Pain Drops": 310,
+  "ADEL 40 - Warts Drops": 310,
+  "ADEL 43 - Heart & Cardiovascular Drops": 310,
+  "ADEL 44 - Varicose Veins Drops": 310,
+  "ADEL 48 - Lymph & Tumour Drops (adjuvant)": 310,
+  "ADEL 49 - Diarrhoea Drops": 310,
+  "Adel 5 - Acidity, Gas & Stomach Drops": 310,
+  "ADEL 50 - Worms Drops": 310,
+  "Adel 51 - Anxiety & Stress Drops": 310,
+  "ADEL 54 - Heart Care Drops": 310,
+  "ADEL 55 - Spondylitis Drops": 310,
+  "ADEL 56 - Immune System Drops": 310,
+  "ADEL 57 - Digestion Drops": 310,
+  "ADEL 6 - Thyroid Management Drops": 310,
+  "ADEL 61 - Adrenal Gland Drops": 310,
+  "ADEL 64 - Uric Acid Drops": 310,
+  "ADEL 65 - Body Temperature Management Drops": 310,
+  "ADEL 66 - Detoxification Drops": 310,
+  "ADEL 69 - Circulatory Drops": 310,
+  "ADEL 7 - Cough Drops": 310,
+  "ADEL 73 - Anti-fungal Drops": 310,
+  "ADEL 86 - Warts (External)": 310,
+  "ADEL 87 - Infection Drops": 310,
+
+  // Exceptions
+  "ADEL 40+86 Warts Combination": 626,
+  "ADEL 75 - Pain Relief Ointment": 510,
+  "ADEL 78 - Skin Ointment": 510,
+  "ADEL 79 - Iron Tonic": 860,
+  "ADEL 82 - Liver Tonic": 510,
+  "ADEL 83 - Cough Syrup": 510,
+  "ADEL 85 - Vitality Tonic": 750,
+  "ADEL 85 - Energy Drops": 1250,
 };
