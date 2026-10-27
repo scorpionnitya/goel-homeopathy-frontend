@@ -1,7 +1,10 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
   const navigate = useNavigate();
+  const [searchText, setSearchText] = useState("");
 
   return (
     <div style={{ padding: "20px" }}>
@@ -131,10 +134,17 @@ maxWidth: "620px",
     🔍
   </span>
 
-  <input
-    type="text"
-    placeholder="Search 200+ Homeopathy Medicines..."
-    style={{
+<input
+  type="text"
+  placeholder="Search 200+ Homeopathy Medicines..."
+  value={searchText}
+  onChange={(e) => setSearchText(e.target.value)}
+  onKeyDown={(e) => {
+    if (e.key === "Enter") {
+      navigate(`/medicines?search=${encodeURIComponent(searchText.trim())}`);
+    }
+  }}
+  style={{
       flex: 1,
       border: "none",
       outline: "none",
@@ -145,7 +155,9 @@ maxWidth: "620px",
   />
 
   <button
-    onClick={() => navigate("/medicines")}
+    onClick={() => {
+  navigate(`/medicines?search=${encodeURIComponent(searchText.trim())}`);
+}}
     style={{
       background: "#16A34A",
       color: "white",

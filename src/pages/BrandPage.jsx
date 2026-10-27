@@ -237,12 +237,6 @@ const getSchwabeCategory = (name) => {
   return "Liquid Specialities";
 };
 
-const getSblCategory = (name) => {
-  if (SBL_BIOCHEMIC_NAMES.includes(name)) return "Biochemic";
-  if (SBL_BC_NAMES.includes(name)) return "BC";
-  if (SBL_HEALTH_NAMES.includes(name)) return "Health & Wellness";
-  return "Liquid Specialities";
-};
 
 const getImage = (brand, name, category) => {
   // =====================================================
@@ -1679,10 +1673,6 @@ if (currentBrand === "Wheezal") {
                     product.category,
                     selectedPower
                   );
-                   const originalMRP =
-  currentBrand === "Bakson"
-    ? BAKSON_MRP[product.name]
-    : null;
 
                 const quantity =
                   getQuantity(product);
