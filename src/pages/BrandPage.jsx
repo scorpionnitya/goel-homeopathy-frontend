@@ -36,8 +36,8 @@ const WHEEZAL_CATEGORIES = ["All", "Health & Wellness"];
 const DILUTION_POWERS = ["30", "200", "1M", "10M", "CM"];
 const BIOCHEMIC_POWERS = ["3X", "6X", "12X", "30X", "200X"];
 
-const ADEL_PRODUCTS = Object.keys(adelPrices);
-const BAKSON_PRODUCTS = [
+export const ADEL_PRODUCTS = Object.keys(adelPrices);
+export const BAKSON_PRODUCTS = [
   "Bakson Drops",
   "Nail & Hair Aid",
   "Heena Powder",
@@ -74,7 +74,7 @@ const BAKSON_PRODUCTS = [
   "Baksodent",
   "Bakunil"
 ];
-const BAKSON_MRP = {
+export const BAKSON_MRP = {
   "Nail & Hair Aid": 185,
   "Prostate Aid": 190,
   "Kof Aid": 103,
@@ -90,14 +90,14 @@ const BAKSON_MRP = {
   "Nasal Aid Spray": 98,
   "Hair Reviver": 499,
   "S-Cure Cream": 100,
-  "Spondy Aid Drops": 190,
+  "Spondy Aid": 190,
 };
 
-const LORDS_PRODUCTS = ["Ointment", "Glowcare Face Wash", "Eltrim", "Sleepin", "L147 Neuralgia", "Hiteup", "L133 Influenza", "Gastrolin", "Soap", "Elixir Forte", "L109", "Hernil", "Cholestril Drops", "Black K2 Oil", "Vitamin D Alfa", "BP Drops", "L130 Hypochondriacal", "Ylo", "L131 Herpes", "Tumorex", "Alfalfa Tonic", "Livotone", "Lordent Powder", "Koughkure", "L134 Intestinal", "Rheumakoll", "Fungirite", "Cleno Face Wash", "Uricid", "Leuco R", "Glowcare Drops", "Camy Canthaline Shampoo", "Brenex", "L129 Hyperhydrosis", "Camy Powder", "Tone Up Regular", "Special Tablets", "Glowcare Cream", "Ferrum Forte", "Lordent Paste", "Hairmont", "Cardiolin", "L128 Haematinic", "Arnica Oil", "Dengma", "Toxkure", "Mensorite", "Cratin", "Lordent", "L120 Eczema", "Asthamin", "L144 Nerve Sleep", "L132 Inflammation", "Digetone", "L113", "Arnica Shampoo", "Stonego", "Glandin", "Tone Up 5000", "L114"];
-const WHEEZAL_PRODUCTS = ["Arnica Hair Treatment Oil", "Jaborandi Hair Treatment Oil", "Arnica Shampoo", "Baby Bliss", "Leucorin", "R C-Care", "Dysento Drops", "Alo-X HD", "Gautteria", "Kalmegh", "Tooth Powder", "Eye Drop", "Calendula Powder", "Mel-X Tablets", "Gandolex", "Calci-H", "Febral Elixir", "Mel-X Cream", "Gastrolex Drops", "Sarsa Liquid", "Hymusa", "Mel-X Face Wash", "Mixture Cough Syrup", "Renalforte", "Livcol Veterinary Liver Tonic", "Hekla Lava Tooth Powder"];
+export const LORDS_PRODUCTS = ["Ointment", "Glowcare Face Wash", "Eltrim", "Sleepin", "L147 Neuralgia", "Hiteup", "L133 Influenza", "Gastrolin", "Soap", "Elixir Forte", "L109", "Hernil", "Cholestril Drops", "Black K2 Oil", "Vitamin D Alfa", "BP Drops", "L130 Hypochondriacal", "Ylo", "L131 Herpes", "Tumorex", "Alfalfa Tonic", "Livotone", "Lordent Powder", "Koughkure", "L134 Intestinal", "Rheumakoll", "Fungirite", "Cleno Face Wash", "Uricid", "Leuco R", "Glowcare Drops", "Camy Canthaline Shampoo", "Brenex", "L129 Hyperhydrosis", "Camy Powder", "Tone Up Regular", "Special Tablets", "Glowcare Cream", "Ferrum Forte", "Lordent Paste", "Hairmont", "Cardiolin", "L128 Haematinic", "Arnica Oil", "Dengma", "Toxkure", "Mensorite", "Cratin", "Lordent", "L120 Eczema", "Asthamin", "L144 Nerve Sleep", "L132 Inflammation", "Digetone", "L113", "Arnica Shampoo", "Stonego", "Glandin", "Tone Up 5000", "L114"];
+export const WHEEZAL_PRODUCTS = ["Arnica Hair Treatment Oil", "Jaborandi Hair Treatment Oil", "Arnica Shampoo", "Baby Bliss", "Leucorin", "R C-Care", "Dysento Drops", "Alo-X HD", "Gautteria", "Kalmegh", "Tooth Powder", "Eye Drop", "Calendula Powder", "Mel-X Tablets", "Gandolex", "Calci-H", "Febral Elixir", "Mel-X Cream", "Gastrolex Drops", "Sarsa Liquid", "Hymusa", "Mel-X Face Wash", "Mixture Cough Syrup", "Renalforte", "Livcol Veterinary Liver Tonic", "Hekla Lava Tooth Powder"];
 
 // Verified MRP values where available. Selling price is 30% off MRP.
-const LORDS_MRP = {
+export const LORDS_MRP = {
   // Confirmed official MRP and pack sizes supplied by the user.
   // For products with multiple confirmed sizes, the displayed default pack is recorded in LORDS_PACK_SIZE.
   "Eltrim": 188,
@@ -184,7 +184,7 @@ const LORDS_PACK_SIZE = {
   "Tone Up 5000": "30 ml",
   "L114": "30 ml",
 };
-const WHEEZAL_MRP = {
+export const WHEEZAL_MRP = {
   "Jaborandi Hair Treatment Oil": 195,
   "Arnica Hair Treatment Oil": 190,
   "Kalmegh": 180,
@@ -198,7 +198,7 @@ const WHEEZAL_MRP = {
   "Sarsa Liquid": 356,
 };
 
-const SBL_LIQUID_NAMES = sblLiquidSpecialities.filter((name) =>
+export const SBL_LIQUID_NAMES = sblLiquidSpecialities.filter((name) =>
   !name.toLowerCase().startsWith("adel") &&
   !name.toLowerCase().startsWith("gastrobin") &&
   !name.toLowerCase().startsWith("essentia aurea") &&
@@ -207,12 +207,12 @@ const SBL_LIQUID_NAMES = sblLiquidSpecialities.filter((name) =>
   !name.toLowerCase().startsWith("bryorheum")
 );
 
-const SBL_HEALTH_NAMES = sblHealthWellness.slice(0, 19);
-const SBL_BIOCHEMIC_NAMES = biochemic.filter((name) => name.startsWith("SBL "));
-const SBL_BC_NAMES = bc.filter((name) => name.startsWith("SBL BC "));
+export const SBL_HEALTH_NAMES = sblHealthWellness.slice(0, 19);
+export const SBL_BIOCHEMIC_NAMES = biochemic.filter((name) => name.startsWith("SBL "));
+export const SBL_BC_NAMES = bc.filter((name) => name.startsWith("SBL BC "));
 
-const SCHWABE_NAMES = sblHealthWellness.slice(19);
-const SCHWABE_EXTRA_NAMES = ["Gastrobin", "Essentia Aurea", "Diacard", "Biofungin", "Bryorheum"];
+export const SCHWABE_NAMES = sblHealthWellness.slice(19);
+export const SCHWABE_EXTRA_NAMES = ["Gastrobin", "Essentia Aurea", "Diacard", "Biofungin", "Bryorheum"];
 
 const getAdelCategory = (name) => {
   const lower = name.toLowerCase();
@@ -400,181 +400,181 @@ if (adelNumberMatch) {
   const adelNumber = adelNumberMatch[1];
 
   const adelNumberImages = {
-    "2": "/images/ADEL_Images/ADEL 2 - Piles & Hemorrhoids Drops.jpg",
-    "3": "/images/ADEL_Images/ADEL 3 - Jaundice & Liver Drops.jpg",
-    "4": "/images/ADEL_Images/ADEL 4 - Joint Pain Drops.jpg",
-    "5": "/images/ADEL_Images/Adel 5 - Acidity, Gas & Stomach Drops.jpg",
-    "6": "/images/ADEL_Images/ADEL 6 - Thyroid Management Drops.jpg",
-    "7": "/images/ADEL_Images/ADEL 7 - Cough Drops.jpg",
+    "2": "/images/Adel_Products/ADEL 2 - Piles & Hemorrhoids Drops.jpg",
+    "3": "/images/Adel_Products/ADEL 3 - Jaundice & Liver Drops.jpg",
+    "4": "/images/Adel_Products/ADEL 4 - Joint Pain Drops.jpg",
+    "5": "/images/Adel_Products/Adel 5 - Acidity, Gas & Stomach Drops.jpg",
+    "6": "/images/Adel_Products/ADEL 6 - Thyroid Management Drops.jpg",
+    "7": "/images/Adel_Products/ADEL 7 - Cough Drops.jpg",
   };
 
   return adelNumberImages[adelNumber] || "";
 }
   const adelImages = {
     "ADEL - 10 Respiratory Drops":
-      "/images/ADEL_Images/ADEL - 10 Respiratory Drops.jpg",
+      "/images/Adel_Products/ADEL - 10 Respiratory Drops.jpg",
 
     "ADEL - 19 MentalPhysical tiredness (General Weakness) Drops":
-      "/images/ADEL_Images/ADEL - 19 MentalPhysical tiredness (General Weakness) Drops.jpg",
+      "/images/Adel_Products/ADEL - 19 MentalPhysical tiredness (General Weakness) Drops.jpg",
 
     "Adel 1- Headache & Migraine Drops":
-      "/images/ADEL_Images/Adel 1- Headache & Migraine Drops.jpg",
+      "/images/Adel_Products/Adel 1- Headache & Migraine Drops.jpg",
 
     "Adel 11 - Constipation Drops":
-      "/images/ADEL_Images/Adel 11 - Constipation Drops.jpg",
+      "/images/Adel_Products/Adel 11 - Constipation Drops.jpg",
 
     "ADEL 12 - Skin Drops":
-      "/images/ADEL_Images/ADEL 12 - Skin Drops.jpg",
+      "/images/Adel_Products/ADEL 12 - Skin Drops.jpg",
 
     "ADEL 13 - Weight Management Drops":
-      "/images/ADEL_Images/ADEL 13 - Weight Management Drops.jpg",
+      "/images/Adel_Products/ADEL 13 - Weight Management Drops.jpg",
 
     "ADEL 14 - Iron Deficiency Drops":
-      "/images/ADEL_Images/ADEL 14 - Iron Deficiency Drops.png",
+      "/images/Adel_Products/ADEL 14 - Iron Deficiency Drops.png",
 
     "ADEL 15 - Women’s White Discharge Drops":
-      "/images/ADEL_Images/ADEL 15 - Women’s White Discharge Drops.jpg",
+      "/images/Adel_Products/ADEL 15 - Women’s White Discharge Drops.jpg",
 
     "ADEL 16 - Gastrointestinal Drops":
-      "/images/ADEL_Images/ADEL 16 - Gastrointestinal Drops.jpg",
+      "/images/Adel_Products/ADEL 16 - Gastrointestinal Drops.jpg",
 
     "ADEL 17 - Eye Care Drops":
-      "/images/ADEL_Images/ADEL 17 - Eye Care Drops.jpg",
+      "/images/Adel_Products/ADEL 17 - Eye Care Drops.jpg",
 
     "ADEL 18 - Diabetes Management Drops":
-      "/images/ADEL_Images/ADEL 18 - Diabetes Management Drops.jpg",
+      "/images/Adel_Products/ADEL 18 - Diabetes Management Drops.jpg",
 
     "ADEL 20 - Allergy Drops":
-      "/images/ADEL_Images/ADEL 20 - Allergy Drops.jpg",
+      "/images/Adel_Products/ADEL 20 - Allergy Drops.jpg",
 
     "ADEL 21 - Prostate Drops":
-      "/images/ADEL_Images/ADEL 21 - Prostate Drops.jpg",
+      "/images/Adel_Products/ADEL 21 - Prostate Drops.jpg",
 
     "ADEL 22 - Kidney Drops":
-      "/images/ADEL_Images/ADEL 22 - Kidney Drops.jpg",
+      "/images/Adel_Products/ADEL 22 - Kidney Drops.jpg",
 
     "ADEL 23 - Sinusitis Drops":
-      "/images/ADEL_Images/ADEL 23 - Sinusitis Drops.jpg",
+      "/images/Adel_Products/ADEL 23 - Sinusitis Drops.jpg",
 
     "ADEL 24 - Tonsils Drops":
-      "/images/ADEL_Images/ADEL 24 - Tonsils Drops.jpg",
+      "/images/Adel_Products/ADEL 24 - Tonsils Drops.jpg",
 
     "ADEL 25 - Sleep Disorder Drops":
-      "/images/ADEL_Images/ADEL 25 - Sleep Disorder Drops.jpg",
+      "/images/Adel_Products/ADEL 25 - Sleep Disorder Drops.jpg",
 
     "ADEL 26 - Osteoarthritis Drops":
-      "/images/ADEL_Images/ADEL 26 - Osteoarthritis Drops.jpg",
+      "/images/Adel_Products/ADEL 26 - Osteoarthritis Drops.jpg",
 
     "ADEL 27 - Injury Drops":
-      "/images/ADEL_Images/ADEL 27 - Injury Drops.jpg",
+      "/images/Adel_Products/ADEL 27 - Injury Drops.jpg",
 
     "ADEL 28 - Cholesterol Management Drops":
-      "/images/ADEL_Images/ADEL 28 - Cholesterol Management Drops.jpg",
+      "/images/Adel_Products/ADEL 28 - Cholesterol Management Drops.jpg",
 
     "ADEL 29 - UTI Drops":
-      "/images/ADEL_Images/ADEL 29 - UTI Drops.jpg",
+      "/images/Adel_Products/ADEL 29 - UTI Drops.jpg",
 
     "ADEL 31 - Periods Regulating (PCOS, PCOD)":
-      "/images/ADEL_Images/ADEL 31 - Periods Regulating (PCOS, PCOD).png",
+      "/images/Adel_Products/ADEL 31 - Periods Regulating (PCOS, PCOD).png",
 
     "ADEL 32 - Inflammation Drops":
-      "/images/ADEL_Images/ADEL 32 - Inflammation Drops.jpg",
+      "/images/Adel_Products/ADEL 32 - Inflammation Drops.jpg",
 
     "ADEL 33 - Oedema Drops":
-      "/images/ADEL_Images/ADEL 33 - Oedema Drops.jpg",
+      "/images/Adel_Products/ADEL 33 - Oedema Drops.jpg",
 
     "ADEL 34 - Spleen Drops":
-      "/images/ADEL_Images/ADEL 34 - Spleen Drops.jpg",
+      "/images/Adel_Products/ADEL 34 - Spleen Drops.jpg",
 
     "Adel 36 - Vitality Drops":
-      "/images/ADEL_Images/Adel 36 - Vitality Drops.jpg",
+      "/images/Adel_Products/Adel 36 - Vitality Drops.jpg",
 
     "ADEL 38 - Cramp Pain Drops":
-      "/images/ADEL_Images/ADEL 38 - Cramp Pain Drops.jpg",
+      "/images/Adel_Products/ADEL 38 - Cramp Pain Drops.jpg",
 
     "ADEL 39 - Sciatica Drops":
-      "/images/ADEL_Images/ADEL 39 - Sciatica Drops.jpg",
+      "/images/Adel_Products/ADEL 39 - Sciatica Drops.jpg",
 
     "ADEL 40 - Warts Drops":
-      "/images/ADEL_Images/ADEL 40 - Warts Drops.png",
+      "/images/Adel_Products/ADEL 40 - Warts Drops.png",
 
     "ADEL 40+86 Warts Combination":
-      "/images/ADEL_Images/ADEL 40+86 - Warts Combination.png",
+      "/images/Adel_Products/ADEL 40+86 - Warts Combination.png",
 
     "ADEL 43 - Heart & Cardiovascular Drops":
-      "/images/ADEL_Images/ADEL 43 - Heart & Cardiovascular Drops.jpg",
+      "/images/Adel_Products/ADEL 43 - Heart & Cardiovascular Drops.jpg",
 
     "ADEL 44 - Varicose Veins Drops":
-      "/images/ADEL_Images/ADEL 44 - Varicose Veins Drops.jpg",
+      "/images/Adel_Products/ADEL 44 - Varicose Veins Drops.jpg",
 
     "ADEL 48 - Lymph & Tumour Drops (adjuvant)":
-      "/images/ADEL_Images/ADEL 48 - Lymph & Tumour Drops (adjuvant).jpg",
+      "/images/Adel_Products/ADEL 48 - Lymph & Tumour Drops (adjuvant).jpg",
 
     "ADEL 49 - Diarrhoea Drops":
-      "/images/ADEL_Images/ADEL 49 - Diarrhoea Drops.png",
+      "/images/Adel_Products/ADEL 49 - Diarrhoea Drops.png",
 
     "ADEL 50 - Worms Drops":
-      "/images/ADEL_Images/ADEL 50 - Worms Drops.png",
+      "/images/Adel_Products/ADEL 50 - Worms Drops.png",
 
     "Adel 51 - Anxiety & Stress Drops":
-      "/images/ADEL_Images/Adel 51 - Anxiety & Stress Drops.jpg",
+      "/images/Adel_Products/Adel 51 - Anxiety & Stress Drops.jpg",
 
     "ADEL 54 - Heart Care Drops":
-      "/images/ADEL_Images/ADEL 54 - Heart Care Drops.jpg",
+      "/images/Adel_Products/ADEL 54 - Heart Care Drops.jpg",
 
     "ADEL 55 - Spondylitis Drops":
-      "/images/ADEL_Images/ADEL 55 - Spondylitis Drops.png",
+      "/images/Adel_Products/ADEL 55 - Spondylitis Drops.png",
 
     "ADEL 56 - Immune System Drops":
-      "/images/ADEL_Images/ADEL 56 - Immune System Drops.jpg",
+      "/images/Adel_Products/ADEL 56 - Immune System Drops.jpg",
 
     "ADEL 57 - Digestion Drops":
-      "/images/ADEL_Images/ADEL 57 - Digestion Drops.png",
+      "/images/Adel_Products/ADEL 57 - Digestion Drops.png",
 
     "ADEL 61 - Adrenal Gland Drops":
-      "/images/ADEL_Images/ADEL 61 - Adrenal Gland Drops.jpg",
+      "/images/Adel_Products/ADEL 61 - Adrenal Gland Drops.jpg",
 
     "ADEL 64 - Uric Acid Drops":
-      "/images/ADEL_Images/ADEL 64 - Uric Acid Drops.png",
+      "/images/Adel_Products/ADEL 64 - Uric Acid Drops.png",
 
     "ADEL 65 - Body Temperature Management Drops":
-      "/images/ADEL_Images/ADEL 65 - Body Temperature Management Drops.png",
+      "/images/Adel_Products/ADEL 65 - Body Temperature Management Drops.png",
 
     "ADEL 66 - Detoxification Drops":
-      "/images/ADEL_Images/ADEL 66 - Detoxification Drops.jpg",
+      "/images/Adel_Products/ADEL 66 - Detoxification Drops.jpg",
 
     "ADEL 69 - Circulatory Drops":
-      "/images/ADEL_Images/ADEL 69 - Circulatory Drops.jpg",
+      "/images/Adel_Products/ADEL 69 - Circulatory Drops.jpg",
 
     "ADEL 73 - Anti-fungal Drops":
-      "/images/ADEL_Images/ADEL 73 - Anti-fungal Drops.jpg",
+      "/images/Adel_Products/ADEL 73 - Anti-fungal Drops.jpg",
 
     "ADEL 75 - Pain Relief Ointment":
-      "/images/ADEL_Images/ADEL 75 - Pain Relief Ointment.png",
+      "/images/Adel_Products/ADEL 75 - Pain Relief Ointment.png",
 
     "ADEL 78 - Skin Ointment":
-      "/images/ADEL_Images/ADEL 78 - Skin Ointment.png",
+      "/images/Adel_Products/ADEL 78 - Skin Ointment.png",
 
     "ADEL 79 - Iron Tonic":
-      "/images/ADEL_Images/ADEL 79 - Iron Tonic.jpg",
+      "/images/Adel_Products/ADEL 79 - Iron Tonic.jpg",
 
     "ADEL 82 - Liver Tonic":
-      "/images/ADEL_Images/ADEL 82 - Liver Tonic.png",
+      "/images/Adel_Products/ADEL 82 - Liver Tonic.png",
 
     "ADEL 83 - Cough Syrup":
-      "/images/ADEL_Images/ADEL 83 - Cough Syrup.jpg",
+      "/images/Adel_Products/ADEL 83 - Cough Syrup.jpg",
 
     "ADEL 85 - Energy Drops":
-      "/images/ADEL_Images/ADEL 85 - Energy Drops.png",
+      "/images/Adel_Products/ADEL 85 - Energy Drops.png",
 
     "ADEL 85 - Vitality Tonic":
-      "/images/ADEL_Images/ADEL 85 - Vitality Tonic.jpg",
+      "/images/Adel_Products/ADEL 85 - Vitality Tonic.jpg",
 
     "ADEL 86 - Warts (External)":
-      "/images/ADEL_Images/ADEL 86 - Warts (External).jpg",
+      "/images/Adel_Products/ADEL 86 - Warts (External).jpg",
 
     "ADEL 87 - Infection Drops":
-      "/images/ADEL_Images/ADEL 87 - Infection Drops.png",
+      "/images/Adel_Products/ADEL 87 - Infection Drops.png",
   };
 
   return adelImages[name] || "";

@@ -2,14 +2,15 @@ import {
   FiSearch,
   FiMapPin,
   FiShoppingCart,
-  FiChevronLeft,
-  FiChevronRight,
 } from "react-icons/fi";
+
+
 
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { FiMic } from "react-icons/fi";
 import products from "../../data/products";
+
 
 import {
   dilution,
@@ -27,10 +28,23 @@ import {
   FaCapsules,
 } from "react-icons/fa";
 
+import {
+  BAKSON_PRODUCTS,
+  LORDS_PRODUCTS,
+  WHEEZAL_PRODUCTS,
+  ADEL_PRODUCTS,
+  SBL_LIQUID_NAMES,
+  SBL_HEALTH_NAMES,
+  SBL_BIOCHEMIC_NAMES,
+  SBL_BC_NAMES,
+  SCHWABE_NAMES,
+  SCHWABE_EXTRA_NAMES,
+} from "../../pages/BrandPage";
+
 const BRANDS_WITH_PRODUCTS = [
   "ADEL",
   "BAKSON",
-  "DR. RECKEWEG",
+  "RECKEWEG",
   "LORDS",
   "SBL",
   "WILLMAR SCHWABE",
@@ -39,13 +53,6 @@ const BRANDS_WITH_PRODUCTS = [
 
 function Navbar({ cart }) {
   const categoryScrollRef = useRef(null);
-
-const scrollCategories = (direction) => {
-  categoryScrollRef.current?.scrollBy({
-    left: direction === "left" ? -180 : 180,
-    behavior: "smooth",
-  });
-};
 
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
@@ -70,6 +77,16 @@ const allMedicines = [
   ...Object.keys(motherPrices),
   ...sblLiquidSpecialities,
   ...sblHealthWellness,
+  ...BAKSON_PRODUCTS,
+  ...LORDS_PRODUCTS,
+  ...WHEEZAL_PRODUCTS,
+  ...ADEL_PRODUCTS,
+  ...SBL_LIQUID_NAMES,
+  ...SBL_HEALTH_NAMES,
+  ...SBL_BIOCHEMIC_NAMES,
+  ...SBL_BC_NAMES,
+  ...SCHWABE_NAMES,
+  ...SCHWABE_EXTRA_NAMES,
 ];
 
 
@@ -157,56 +174,6 @@ console.log("Matches:", filteredMedicines);
 
 <div className="relative mt-5">
 
-  {/* LEFT ARROW */}
-  <button
-    type="button"
-    onClick={() => scrollCategories("left")}
-    aria-label="Previous categories"
-    className="
-      absolute
-      left-2
-      top-1/2
-      -translate-y-1/2
-      z-30
-      w-11
-      h-11
-      rounded-full
-      bg-white
-      shadow-lg
-      flex
-      items-center
-      justify-center
-      text-gray-800
-    "
-  >
-    <FiChevronLeft size={24} />
-  </button>
-
-  {/* RIGHT ARROW */}
-  <button
-    type="button"
-    onClick={() => scrollCategories("right")}
-    aria-label="Next categories"
-    className="
-      absolute
-      right-2
-      top-1/2
-      -translate-y-1/2
-      z-30
-      w-11
-      h-11
-      rounded-full
-      bg-white
-      shadow-lg
-      flex
-      items-center
-      justify-center
-      text-gray-800
-    "
-  >
-    <FiChevronRight size={24} />
-  </button>
-
   {/* CATEGORY SCROLL AREA */}
   <div
     ref={categoryScrollRef}
@@ -231,13 +198,13 @@ console.log("Matches:", filteredMedicines);
   <button
     type="button"
     onClick={() => setIsBrandOpen(!isBrandOpen)}
-    className="w-full flex items-center justify-between py-3 text-lg font-bold text-gray-900"
+    className="w-full flex items-center justify-between py-5 text-2xl font-bold text-gray-900"
   >
     <span>Shop by Brand</span>
 
-    <span className="text-green-600 text-xl">
-      {isBrandOpen ? "⌃" : "⌄"}
-    </span>
+<span className="text-green-600 text-2xl font-bold">
+  {isBrandOpen ? "⌃" : "⌄"}
+</span>
   </button>
 
   {isBrandOpen && (

@@ -350,10 +350,11 @@ function App() {
           <Route
             path="/medicines"
             element={
-              <Medicines
-                addToCart={addToCart}
-                cart={cart}
-              />
+<Medicines
+  addToCart={addToCart}
+  cart={cart}
+  setCart={setCart}
+/>
             }
           />
 

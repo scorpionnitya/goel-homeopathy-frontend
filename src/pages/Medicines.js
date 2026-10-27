@@ -18,14 +18,24 @@ import {
   sblHealthWellnessPrices,
   sblBiochemicPrices,
   sblBcPrices,
+  adelPrices,
 } from "../data/medicinesData";
+import {
+  BAKSON_PRODUCTS,
+  LORDS_PRODUCTS,
+  WHEEZAL_PRODUCTS,
+  ADEL_PRODUCTS,
+  BAKSON_MRP,
+  LORDS_MRP,
+  WHEEZAL_MRP,
+} from "./BrandPage";
 import MobileBackButton from "../components//common/MobileBackButton";
 import { Link } from "react-router-dom";
 import { FiShoppingCart } from "react-icons/fi";
 
 
 
-function Medicines({ addToCart, cart }) {
+function Medicines({ addToCart, cart, setCart }) {
     const [searchParams] = useSearchParams();
   const searchQuery = searchParams.get("search") || "";
 
@@ -121,7 +131,9 @@ const getPowers = (med, medicineCategory = tab) => {
 
     return ["Standard"];
   }
-    if (medicineCategory === "Health") {
+  if (medicineCategory === "Adel") return ["Standard"];
+
+  if (medicineCategory === "Health") {
     const priceData = sblHealthWellnessPrices[med];
 
     if (priceData && typeof priceData === "object") {
@@ -133,61 +145,69 @@ const getPowers = (med, medicineCategory = tab) => {
 
   return ["Standard"];
 };
+
 const getPrice = (med, p, medicineCategory = tab) => {
-  if (medicineCategory === "Mother Tincture") {
-    return `₹${motherPrices[med]}`;
+  const mrpValue = (value) =>
+    value != null && Number.isFinite(Number(value)) && Number(value) > 0
+      ? Number(value)
+      : null;
+
+  let mrp = null;
+
+  if (medicineCategory === "Adel") {
+    const normalize = (value) =>
+      String(value).toLowerCase().replace(/[^a-z0-9]/g, "");
+
+    const key = Object.keys(adelPrices).find(
+      (name) => normalize(name) === normalize(med)
+    );
+
+    mrp = mrpValue(adelPrices[key] ?? (key ? 310 : null));
+  } else if (medicineCategory === "Mother Tincture") {
+    mrp = mrpValue(motherPrices[med]);
+  } else if (medicineCategory === "Dilution") {
+    mrp = mrpValue(dilutionPrices[p]);
+  } else if (medicineCategory === "Biochemic") {
+    mrp = mrpValue(
+      med.startsWith("SBL ")
+        ? sblBiochemicPrices[p]
+        : biochemicPrices[p]
+    );
+  } else if (medicineCategory === "BC") {
+    mrp = mrpValue(
+      med.startsWith("SBL BC ")
+        ? sblBcPrices[med]
+        : bcPrices[med]
+    );
+  } else if (medicineCategory === "R Drops") {
+    mrp = mrpValue(rdropPrices[med]);
+  } else if (medicineCategory === "SBL Liquid Specialities") {
+    const value = sblLiquidSpecialityPrices[med];
+    mrp = mrpValue(
+      value && typeof value === "object"
+        ? value[p] ?? Object.values(value)[0]
+        : value
+    );
+  } else if (medicineCategory === "Health") {
+    const value = sblHealthWellnessPrices[med];
+    mrp = mrpValue(
+      value && typeof value === "object"
+        ? value[p] ?? Object.values(value)[0]
+        : value
+    );
+  } else if (medicineCategory === "Bakson") {
+    mrp = mrpValue(BAKSON_MRP[med]);
+  } else if (medicineCategory === "Lords") {
+    mrp = mrpValue(LORDS_MRP[med]);
+  } else if (medicineCategory === "Wheezal") {
+    mrp = mrpValue(WHEEZAL_MRP[med]);
   }
 
-  if (medicineCategory === "Dilution") {
-    return `₹${dilutionPrices[p]}`;
-  }
+  if (mrp === null) return "Price unavailable";
 
-if (medicineCategory === "Biochemic") {
-  if (med.startsWith("SBL ")) {
-    return `₹${sblBiochemicPrices[p]}`;
-  }
-
-  return `₹${biochemicPrices[p]}`;
-}
-
-if (medicineCategory === "BC") {
-  if (med.startsWith("SBL BC ")) {
-    return `₹${sblBcPrices[med]}`;
-  }
-
-  return `₹${bcPrices[med]}`;
-}
-
-  if (medicineCategory === "R Drops") {
-    return `₹${rdropPrices[med]}`;
-  }
-
- if (medicineCategory === "SBL Liquid Specialities") {
-  const priceData = sblLiquidSpecialityPrices[med];
-
-  if (priceData && typeof priceData === "object") {
-    return `₹${priceData[p]}`;
-  }
-
-  return `₹${priceData}`;
-}
-
-if (medicineCategory === "Health") {
-  const priceData = sblHealthWellnessPrices[med];
-
-  if (priceData && typeof priceData === "object") {
-    const price = priceData[p];
-
-    return price != null
-      ? `₹${price}`
-      : "Price unavailable";
-  }
-
-  return priceData != null
-    ? `₹${priceData}`
-    : "Price unavailable";
-}
+  return `₹${Math.round(mrp * 0.7)}`;
 };
+
 const normalizeSearch = (text) =>
   text
     .toLowerCase()
@@ -212,12 +232,55 @@ const allMedicineData = [
     name,
     category: "Health",
   })),
+  ...BAKSON_PRODUCTS.map((name) => ({
+  name,
+  category: "Bakson",
+})),
+...LORDS_PRODUCTS.map((name) => ({
+  name,
+  category: "Lords",
+})),
+...WHEEZAL_PRODUCTS.map((name) => ({
+  name,
+  category: "Wheezal",
+})),
+...ADEL_PRODUCTS.map((name) => ({ name, category: "Adel" })),
 ];
 
+const searchMedicineData = [
+  ...allMedicineData,
+  ...getData().map((name) => ({
+    name,
+    category: tab,
+  })),
+].filter(
+  (item, index, array) =>
+    array.findIndex(
+      (other) =>
+        normalizeSearch(other.name) === normalizeSearch(item.name) &&
+        other.category === item.category
+    ) === index
+);
+
+
+const brandSearchMap = {
+  adel: "Adel",
+  bakson: "Bakson",
+  lords: "Lords",
+  lord: "Lords",
+  wheezal: "Wheezal",
+};
+
+const searchedBrand = brandSearchMap[normalizedSearch];
+
 const filteredData = search.trim()
-  ? allMedicineData.filter((item) =>
-      normalizeSearch(item.name).includes(normalizedSearch)
-    )
+  ? searchMedicineData.filter((item) => {
+      if (searchedBrand) {
+        return item.category === searchedBrand;
+      }
+
+      return normalizeSearch(item.name).includes(normalizedSearch);
+    })
   : getData().map((name) => ({
       name,
       category: tab,
@@ -455,8 +518,9 @@ gridTemplateColumns: isMobile
   const med = item.name;
   const medicineCategory = item.category;
 
-  const selectedPower =
-    power[med] || getPowers(med, medicineCategory)[0];
+const availablePowers = getPowers(med, medicineCategory);
+const safePowers = Array.isArray(availablePowers) ? availablePowers : [];
+const selectedPower = power[med] || safePowers[0] || "Standard";
 
   const price = getPrice(med, selectedPower, medicineCategory);
 
@@ -538,7 +602,7 @@ fontSize: isMobile ? "9px" : "11px",
     marginTop: isMobile ? "10px" : "16px",
   }}
 >
-{getPowers(med, medicineCategory).map((p) => (
+{safePowers.map((p) => (
     <button
       key={p}
       onClick={() =>
@@ -566,58 +630,168 @@ fontSize: isMobile ? "11px" : "14px",
   ))}
 </div>
 
-              <p
-  style={{
-marginTop: isMobile ? "10px" : "16px",
-fontSize: isMobile ? "17px" : "24px",
+{(() => {
+  const sellingPrice =
+    typeof price === "string" && price.startsWith("₹")
+      ? Number(price.replace(/[₹,]/g, ""))
+      : null;
 
-    fontWeight: "800",
+  if (sellingPrice === null || !Number.isFinite(sellingPrice)) {
+    return (
+      <p style={{ marginTop: "16px", color: "#dc2626" }}>
+        Price unavailable
+      </p>
+    );
+  }
 
-    color: "#2e7d32"
-  }}
->
-                <b>Price:</b> {price}
-              </p>
+  const mrp = Math.round(sellingPrice / 0.7);
 
-              <button
-                onClick={() => {
+  return (
+    <div style={{ marginTop: isMobile ? "10px" : "16px" }}>
+      <div
+        style={{
+          color: "#6b7280",
+          textDecoration: "line-through",
+          fontSize: isMobile ? "12px" : "14px",
+        }}
+      >
+        MRP ₹{mrp}
+      </div>
 
-addToCart({
-  name: med,
-  power: selectedPower,
-  price: price,
-  category: medicineCategory,
-});
-  toast.success(
-    "Added to cart"
+      <span
+        style={{
+          display: "inline-block",
+          background: "#dcfce7",
+          color: "#15803d",
+          padding: "4px 10px",
+          borderRadius: "999px",
+          fontSize: "12px",
+          fontWeight: "700",
+          marginTop: "3px",
+        }}
+      >
+        30% OFF
+      </span>
+
+      <div
+        style={{
+          fontSize: isMobile ? "22px" : "26px",
+          fontWeight: "800",
+          color: "#111827",
+          marginTop: "4px",
+        }}
+      >
+        ₹{sellingPrice}
+      </div>
+    </div>
   );
+})()}
 
-}}
-style={{
-  width: "100%",
+{(() => {
+  const currentQuantity = cart.find(
+    (item) => item.name === med && item.power === selectedPower
+  )?.quantity || 0;
 
-  background:
-    "linear-gradient(135deg,#2e7d32,#4caf50)",
+  const updateQuantity = (change) => {
+    if (change > 0) {
+      addToCart({
+        name: med,
+        power: selectedPower,
+        price: price,
+        category: medicineCategory,
+      });
+    } else {
+      setCart((prevCart) =>
+        prevCart
+          .map((item) =>
+            item.name === med && item.power === selectedPower
+              ? { ...item, quantity: item.quantity - 1 }
+              : item
+          )
+          .filter((item) => item.quantity > 0)
+      );
+    }
+  };
 
-  color: "white",
+  const buttonStyle = {
+    width: "100%",
+    background: "linear-gradient(135deg,#2e7d32,#4caf50)",
+    color: "white",
+    border: "none",
+    padding: isMobile ? "10px 4px" : "14px",
+    borderRadius: isMobile ? "12px" : "16px",
+    fontSize: isMobile ? "12px" : "15px",
+    marginTop: isMobile ? "10px" : "18px",
+    fontWeight: "700",
+    cursor: "pointer",
+    boxShadow: "0 10px 20px rgba(46,125,50,0.2)",
+  };
 
-  border: "none",
+  return currentQuantity > 0 ? (
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        width: "100%",
+        marginTop: isMobile ? "10px" : "18px",
+        borderRadius: isMobile ? "12px" : "16px",
+        overflow: "hidden",
+        background: "#2e7d32",
+        color: "white",
+      }}
+    >
+      <button
+        onClick={() => updateQuantity(-1)}
+        style={{
+          border: "none",
+          background: "transparent",
+          color: "white",
+          padding: "10px 16px",
+          fontSize: "20px",
+          fontWeight: "700",
+          cursor: "pointer",
+        }}
+      >
+        −
+      </button>
 
- padding: isMobile ? "10px 4px" : "14px",
-borderRadius: isMobile ? "12px" : "16px",
-fontSize: isMobile ? "12px" : "15px",
-marginTop: isMobile ? "10px" : "18px",
+      <span style={{ fontWeight: "700", fontSize: "15px" }}>
+        {currentQuantity}
+      </span>
 
-  fontWeight: "700",
-  cursor: "pointer",
-
-
-  boxShadow:
-    "0 10px 20px rgba(46,125,50,0.2)"
-}}
-              >
-                Add to Cart
-              </button>
+      <button
+        onClick={() => updateQuantity(1)}
+        style={{
+          border: "none",
+          background: "transparent",
+          color: "white",
+          padding: "10px 16px",
+          fontSize: "20px",
+          fontWeight: "700",
+          cursor: "pointer",
+        }}
+      >
+        +
+      </button>
+    </div>
+  ) : (
+    <button
+      onClick={() => {
+        addToCart({
+          name: med,
+          power: selectedPower,
+          price: price,
+          category: medicineCategory,
+        });
+        toast.success("Added to cart");
+      }}
+      style={buttonStyle}
+    >
+      Add to Cart
+    </button>
+  );
+})()}
             </div>
           );
         })}
