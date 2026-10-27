@@ -264,17 +264,6 @@ const searchMedicineData = [
 );
 
 
-const brandSearchMap = {
-  adel: "Adel",
-  bakson: "Bakson",
-  lords: "Lords",
-  lord: "Lords",
-  wheezal: "Wheezal",
-};
-
-const searchedBrand = brandSearchMap[normalizedSearch];
-
-
 const filteredData = search.trim()
   ? searchMedicineData
       .filter((item) => {
