@@ -72,16 +72,27 @@ const allMedicines = [
   ...sblHealthWellness,
 ];
 
+
+const normalizeSearch = (value) =>
+  String(value || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, "");
+
 const filteredMedicines =
   search.trim() === ""
     ? []
     : allMedicines
-        .filter((medicine) => {
-          return String(medicine)
-            .toLowerCase()
-            .includes(search.toLowerCase());
-        })
+        .filter((medicine) =>
+          normalizeSearch(medicine).includes(normalizeSearch(search))
+        )
+        .filter((medicine, index, array) =>
+          array.findIndex(
+            (item) =>
+              normalizeSearch(item) === normalizeSearch(medicine)
+          ) === index
+        )
         .slice(0, 8);
+
 
 console.log("Search:", search);
 console.log("Total:", allMedicines.length);
