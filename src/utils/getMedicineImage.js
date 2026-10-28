@@ -555,7 +555,7 @@ if (tab === "R Drops") {
       }}
     >
       <img
-src={`/images/rdrops/${med.replace(/\s/g, "")}.jpeg`}
+src={`/images/RDrops/${med.replace(/\s/g, "")}.jpeg`}
         alt={med}
         onError={(event) => {
           event.currentTarget.style.visibility = "hidden";
