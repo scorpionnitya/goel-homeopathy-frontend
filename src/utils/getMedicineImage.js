@@ -314,7 +314,7 @@ if (tab === "R Drops") {
       }}
     >
       <img
-src={`/images/RDrops/${med.replace(/\s/g, "")}.jpeg`}
+src={`/images/rdrops/${med.replace(/\s/g, "")}.jpeg`}
         alt={med}
         style={{
           height: small ? "100px" : "220px",
