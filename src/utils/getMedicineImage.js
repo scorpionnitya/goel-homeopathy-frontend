@@ -557,9 +557,10 @@ if (tab === "R Drops") {
       <img
 src={`/images/rdrops/${med.replace(/\s/g, "")}.jpeg`}
         alt={med}
-        onError={(event) => {
-          event.currentTarget.style.visibility = "hidden";
-        }}
+onError={(event) => {
+  console.log("R Drops image failed:", event.currentTarget.src);
+  console.log("Product name:", med);
+}}
         style={{
           height: small ? "100px" : "220px",
           objectFit: "contain",
