@@ -1,40 +1,3 @@
-const baksonImages = {
-  "Bakson Drops": "BAKSON_BAKSON_DROPS.jpg",
-  "Nail & Hair Aid": "BAKSON_NAIL_HAIR_AID.jpg",
-  "Heena Powder": "BAKSON_HEENA_POWDER.jpg",
-  "Prostate Aid": "BAKSON_PROSTATE_AID.jpg",
-  "Kof Aid": "BAKSON_KOFAID.jpg",
-  "Diab Aid": "BAKSON_DIBAID.jpg",
-  "Antiaging Lotion": "BAKSON_ANTIAGING_LOTION.jpg",
-  "BP Aid": "BAKSON_BP_AID.jpg",
-  "Kof Aid Plus": "BAKSON_KOFAID_PLUS.jpg",
-  "Face Scrub": "BAKSON_FACE_SCRUB.jpg",
-  "Vitamin D Capsule": "BAKSON_VITAMIN_D_CAPSULE.jpg",
-  "Flexicare": "BAKSON_FLEXICARE.png",
-  "Hair Color": "BAKSON_HAIR_COLOR.jpg",
-  "Glamour Men": "BAKSON_GLAMOUR_MEN.jpg",
-  "Antiaging Lotion 80ml": "Bakson_Antiaging_Lotion_80ML.jpg",
-  "B Drops": "BAKSON_B_DROPS.jpg",
-  "Withania Coagulans": "BAKSON_WITHANIA_COAGULANS.jpg",
-  "Lipoma Aid": "BAKSON_LIPOMA_AID.jpg",
-  "Acne Aid": "Bakson_AcneAid.jpg",
-  "Vitamin D": "BAKSON_VITAMIN_D.jpg",
-  "CalciCare": "BAKSON_CALCICARE.jpg",
-  "GastroAid": "BAKSON_GASTROAID.jpg",
-  "Vitamin B12": "BAKSON_VITAMIN_B12.png",
-  "Aloe Vera Calendula": "Bakson_Aloevera_Calendula.jpg",
-  "Antiwrinkle Cream": "BAKSON_ANTIWRINKLE_CREAM.jpg",
-  "Glamour Women": "BAKSON_GLAMOUR_WOMEN.jpg",
-  "Alfalfa": "Bakson_Alfalfa.jpg",
-  "Undereye Cream": "BAKSON_UNDEREYE_CREAM.jpg",
-  "Ferrum Plus Capsules": "BAKSON_FERRUMPLUS_CAPSULES.jpg",
-  "Nasal Aid Spray": "BAKSON_NASAL_AID_SPRAY.jpg",
-  "Hair Reviver": "BAKSON_HAIR_REVIVER.jpg",
-  "DigeAid": "BAKSON_DIGEAID.jpg",
-  "Spondy Aid": "BAKSON_SPONDIAID.jpg",
-  "Baksodent": "BAKSON_BAKSODENT.jpg",
-  "Bakunil": "BAKSON_BAKUNIL.jpg",
-};
 const adelImageMap = {
   "ADEL - 10 Respiratory Drops": "ADEL - 10 Respiratory Drops.jpg",
   "ADEL - 19 MentalPhysical tiredness (General Weakness) Drops":
@@ -138,7 +101,6 @@ const adelImageMap = {
     "ADEL 87 - Infection Drops.png",
   "ADEL 9 - Hair Care Drops":
     "ADEL 9 - Hair Care Drops.jpg",
-  "ADEL 40+86 Warts Combination": "ADEL 40+86 - Warts Combination.png",
 };const schwabe5ImageMap = {
   "Gastrobin": "Gastrobin.webp",
   "Essentia Aurea": "Essentia_Aurea.jpg",
@@ -271,204 +233,7 @@ const adelImageMap = {
   tab,
   small = false
 ) => {
-  
-  if (
-  tab?.toLowerCase().includes("bakson") &&
-  baksonImages[med]
-) 
-{
-  return (
-    <div
-      style={{
-        height: small ? "120px" : "240px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <img
-        src={`/images/Bakson_Products/${baksonImages[med]}`}
-        alt={med}
-        onError={(event) => {
-          event.currentTarget.style.visibility = "hidden";
-        }}
-        style={{
-          height: small ? "100px" : "220px",
-          objectFit: "contain",
-        }}
-      />
-    </div>
-  );
-}
-// ADEL PRODUCTS
-if (
-  (tab?.toLowerCase().includes("adel") ||
-    med?.toLowerCase().startsWith("adel")) &&
-  adelImageMap[med]
-) {
-  return (
-    <div
-      style={{
-        height: small ? "120px" : "240px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <img
-        src={`/images/Adel_Products/${encodeURIComponent(adelImageMap[med])}`}
-        alt={med}
-        onError={(event) => {
-          event.currentTarget.style.visibility = "hidden";
-        }}
-        style={{
-          height: small ? "100px" : "220px",
-          objectFit: "contain",
-        }}
-      />
-    </div>
-  );
-}
-// LORD'S PRODUCTS
-const lordsImages = {
-      "Ointment": "LORDS_OINTMENT.jpg",
-      "Glowcare Face Wash": "LORDS_GLOWCARE_FACE_WASH.jpg",
-      "Eltrim": "LORDS_ELTRIM.jpg",
-      "Sleepin": "LORDS_SLEEPIN.jpg",
-      "L147 Neuralgia": "LORDS_L147_NEURALGIA.jpg",
-      "Hiteup": "LORDS_HITEUP.jpg",
-      "L133 Influenza": "LORDS_L133_INFLUENZA.jpg",
-      "Gastrolin": "LORDS_GASTROLIN.jpg",
-      "Soap": "LORDS_SOAP.jpg",
-      "Elixir Forte": "LORDS_ELIXIRFORTE_FIXED.jpg",
-      "L109": "LORDS_L109.jpg",
-      "Hernil": "LORDS_HERNIL.jpg",
-      "Cholestril Drops": "LORDS_CHOLESTRIL_DROP.jpg",
-      "Black K2 Oil": "LORDS_BLACK_K2_OIL.jpg",
-      "Vitamin D Alfa": "LORDS_VITAMIN_D_ALFA.jpg",
-      "BP Drops": "LORDS_BP_DROPS.jpg",
-      "L130 Hypochondriacal": "LORDS_L130_HYPOCHONDRIACAL.jpg",
-      "Ylo": "LORDS_YLO.jpg",
-      "L131 Herpes": "LORDS_L131_HERPES.jpg",
-      "Tumorex": "LORDS_TUMOREX.jpg",
-      "Alfalfa Tonic": "LORDS_ALFALFA_TONIC.jpg",
-      "Livotone": "LORDS_LIVOTONE.jpg",
-      "Lordent Powder": "LORDS_LORDENT_POWDER.png",
-      "Koughkure": "LORDS_KOUGHKURE.jpg",
-      "L134 Intestinal": "LORDS_L134_INTESTINAL.jpg",
-      "Rheumakoll": "LORDS RHEUMAKOLL.jpg",
-      "Fungirite": "LORDS_FUNGIRITE.jpg",
-      "Cleno Face Wash": "LORDS_CLENO_FACE_WASH.jpg",
-      "Uricid": "LORDS_URICID.jpg",
-      "Leuco R": "LORDS_LEUCO_R.jpg",
-      "Glowcare Drops": "LORDS_GLOWCARE_DROPS.jpg",
-      "Camy Canthaline Shampoo": "LORDS_CAMY_CANTHALINE_SHAMPOO.jpg",
-      "Brenex": "LORDS_BRENEX.jpg",
-      "L129 Hyperhydrosis": "LORDS_L129_HYPERHYDROSIS.jpg",
-      "Camy Powder": "LORDS_CAMY_POWDER.jpg",
-      "Tone Up Regular": "LORDS_TONE_UP_REGULAR.jpg",
-      "Special Tablets": "LORDS_SPECIAL_TABLETS.jpg",
-      "Glowcare Cream": "LORDS_GLOWCARE_CREAM.jpg",
-      "Ferrum Forte": "LORDS_FERRUM_FORTE.jpg",
-      "Lordent Paste": "LORDS_LORDENT_PASTE.jpg",
-      "Hairmont": "LORDS_HAIRMONT.jpg",
-      "Cardiolin": "LORDS_CARDIOLIN.jpg",
-      "L128 Haematinic": "LORDS_L128_HAEMATINIC.jpg",
-      "Arnica Oil": "LORDS_ARNICA_OIL.jpg",
-      "Dengma": "LORDS_DENGMA.jpg",
-      "Toxkure": "LORDS_TOXKURE.jpg",
-      "Mensorite": "LORDS_MENSORITE.jpg",
-      "Cratin": "LORDS_CRATIN.jpg",
-      "Lordent": "LORDS LORDENT.jpg",
-      "L120 Eczema": "LORDS_L120_ECZEMA.jpg",
-      "Asthamin": "LORDS_ASTHAMIN.jpg",
-      "L144 Nerve Sleep": "LORDS_L144_NERVE_SLEEP.jpg",
-      "L132 Inflammation": "LORDS_L132_INFLAMMATION.jpg",
-      "Digetone": "LORDS_DIGETONE.jpg",
-      "L113": "LORDS_L113.jpg",
-      "Arnica Shampoo": "LORDS_ARNICA_SHAMPOO.jpg",
-      "Stonego": "LORDS_STONEGO.jpg",
-      "Glandin": "LORDS_GLANDIN.jpg",
-      "Tone Up 5000": "LORDS_TONE_UP_5000.jpg",
-      "L114": "LORDS_L114.jpg",
-    };
-
-if (tab === "Lords" && lordsImages[med]) {
-  return (
-    <div style={{
-      height: small ? "120px" : "240px",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-    }}>
-      <img
-        src={`/images/Lords_Products/${encodeURIComponent(lordsImages[med])}`}
-        alt={med}
-        onError={(event) => {
-          event.currentTarget.style.visibility = "hidden";
-        }}
-        style={{
-          height: small ? "100px" : "220px",
-          objectFit: "contain",
-        }}
-      />
-    </div>
-  );
-}
-
-// WHEEZAL PRODUCTS
-const wheezalImages = {
-      "Arnica Hair Treatment Oil": "WHEEZAL ARNICA HAIR TREATEMENT.jpg",
-      "Jaborandi Hair Treatment Oil": "WHEEZAL JABORANDI HAIR TREATEMENT.jpg",
-      "Arnica Shampoo": "WHEEZAL ARNICA SHAMPOO.webp",
-      "Baby Bliss": "WHEEZAL BABY BLISS.webp",
-      "Leucorin": "WHEEZAL LEUCORIN .avif",
-      "R C-Care": "WHEEZAL R C- CARE.webp",
-      "Dysento Drops": "WHEEZAL DYSENTO DROPS.jpeg",
-      "Alo-X HD": "WHEEZAL_ALO_X_HD.jpg",
-      "Gautteria": "WHEEZAL GAUTTERIA.webp",
-      "Kalmegh": "WHEEZAL KALMEGH.jpeg",
-      "Tooth Powder": "WHEEZAL TOOTH POWDER.jpg",
-      "Eye Drop": "WHEEZAL EYE DROP.jpeg",
-      "Calendula Powder": "WHEEZAL CALENDULA POWDER.jpeg",
-      "Mel-X Tablets": "WHEEZAL MEL-X 75TABLETS.avif",
-      "Gandolex": "WHEEZAL GANDOLEX.jpg",
-      "Calci-H": "WHEEZAL CALCI-H.jpeg",
-      "Febral Elixir": "WHEEZAL FEBRAL ELIXIR.jpeg",
-      "Mel-X Cream": "WHEEZAL MEL-X CREAM.jpeg",
-      "Gastrolex Drops": "WHEEZAL GASTROLEX DROPS.webp",
-      "Sarsa Liquid": "WHEEZAL SARSA.jpg",
-      "Hymusa": "WHEEZAL HYMUSA.webp",
-      "Mel-X Face Wash": "WHEEZAL MEL-X FACE WASH.avif",
-      "Mixture Cough Syrup": "WHEEZAL MIXTURE.webp",
-      "Renalforte": "WHEEZAL RENALFORTE.jpg",
-      "Livcol Veterinary Liver Tonic": "WHEEZAL LIVCOL SYRUP .avif",
-      "Hekla Lava Tooth Powder": "WHEEZAL HEKLA PASTE.jpg",
-    };
-
-if (tab === "Wheezal" && wheezalImages[med]) {
-  return (
-    <div style={{
-      height: small ? "120px" : "240px",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-    }}>
-      <img
-        src={`/images/Wheezal_Products/${encodeURIComponent(wheezalImages[med])}`}
-        alt={med}
-        onError={(event) => {
-          event.currentTarget.style.visibility = "hidden";
-        }}
-        style={{
-          height: small ? "100px" : "220px",
-          objectFit: "contain",
-        }}
-      />
-    </div>
-  );
-}
-let image = `/images/Dilutions/${med}.jpeg`;
+  let image = `/images/Dilutions/${med}.jpeg`;
 
 
 if (tab === "Biochemic") {
@@ -507,9 +272,6 @@ if (tab === "BC") {
       <img
         src={bcImage}
         alt={med}
-        onError={(event) => {
-          event.currentTarget.style.visibility = "hidden";
-        }}
         style={{
           height: small ? "100px" : "220px",
           objectFit: "contain",
@@ -532,9 +294,6 @@ if (tab === "Mother Tincture") {
       <img
         src={`/images/MotherTincture/${med}.jpeg`}
         alt={med}
-        onError={(event) => {
-          event.currentTarget.style.visibility = "hidden";
-        }}
         style={{
           height: small ? "100px" : "220px",
           objectFit: "contain",
@@ -555,12 +314,8 @@ if (tab === "R Drops") {
       }}
     >
       <img
-src={`/images/rdrops/${med.replace(/\s/g, "")}.jpeg`}
+src={`/images/RDrops/${med.replace(/\s/g, "")}.jpeg`}
         alt={med}
-onError={(event) => {
-  console.log("R Drops image failed:", event.currentTarget.src);
-  console.log("Product name:", med);
-}}
         style={{
           height: small ? "100px" : "220px",
           objectFit: "contain",
@@ -614,7 +369,7 @@ if (tab === "Health") {
         }}
       >
         <img
-          src={`/images/Adel_Products/${encodeURIComponent(adelImage)}`}
+          src={`/images/ADEL_Images/${encodeURIComponent(adelImage)}`}
           alt={med}
           style={{
             height: small ? "100px" : "220px",
@@ -741,9 +496,6 @@ if (tab === "Health") {
       <img
         src={`/images/SBL%20Specialities/${encodeURIComponent(folder)}/${encodeURIComponent(med)}.${extension}`}
         alt={med}
-        onError={(event) => {
-          event.currentTarget.style.visibility = "hidden";
-        }}
         style={{
           height: small ? "100px" : "220px",
           objectFit: "contain",

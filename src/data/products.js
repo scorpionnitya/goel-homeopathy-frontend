@@ -58,7 +58,7 @@ price: bcPrices[name],
   id: id++,
   name,
   category: "R Drops",
-  image: `/images/rdrops/${name.replace(/\s/g, "")}.jpeg`,
+  image: `/images/RDrops/${name.replace(/\s/g, "")}.jpeg`,
 price: rdropPrices[name],
 })),
 ];
