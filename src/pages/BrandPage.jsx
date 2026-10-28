@@ -30,175 +30,13 @@ const RECKEWEG_CATEGORIES = ["All", "Dilution", "Biochemic", "BC", "R Drops", "M
 const ADEL_CATEGORIES = ["All", "Drops", "Biochemic", "Mother Tincture", "Eye Drops", "Tablets", "Ointments", "Tonics", "Syrups"];
 const SBL_CATEGORIES = ["All", "Liquid Specialities", "Biochemic", "BC", "Health & Wellness"];
 const SCHWABE_CATEGORIES = ["All", "Soaps", "Ointments", "Eye Drops", "Liquid Specialities", "Skin Care", "Tablet Specialities", "Hair Care"];
-const BAKSON_CATEGORIES = ["All", "Health & Wellness"];
-const LORDS_CATEGORIES = ["All", "Health & Wellness"];
-const WHEEZAL_CATEGORIES = ["All", "Health & Wellness"];
+
 const DILUTION_POWERS = ["30", "200", "1M", "10M", "CM"];
 const BIOCHEMIC_POWERS = ["3X", "6X", "12X", "30X", "200X"];
 
-export const ADEL_PRODUCTS = Object.keys(adelPrices);
-export const BAKSON_PRODUCTS = [
-  "Bakson Drops",
-  "Nail & Hair Aid",
-  "Heena Powder",
-  "Prostate Aid",
-  "Kof Aid",
-  "Diab Aid",
-  "Antiaging Lotion",
-  "BP Aid",
-  "Kof Aid Plus",
-  "Face Scrub",
-  "Vitamin D Capsule",
-  "Flexicare",
-  "Hair Color",
-  "Glamour Men",
-  "Antiaging Lotion 80ml",
-  "B Drops",
-  "Withania Coagulans",
-  "Lipoma Aid",
-  "Acne Aid",
-  "Vitamin D",
-  "CalciCare",
-  "GastroAid",
-  "Vitamin B12",
-  "Aloe Vera Calendula",
-  "Antiwrinkle Cream",
-  "Glamour Women",
-  "Alfalfa",
-  "Undereye Cream",
-  "Ferrum Plus Capsules",
-  "Nasal Aid Spray",
-  "Hair Reviver",
-  "DigeAid",
-  "Spondy Aid",
-  "Baksodent",
-  "Bakunil"
-];
-export const BAKSON_MRP = {
-  "Nail & Hair Aid": 185,
-  "Prostate Aid": 190,
-  "Kof Aid": 103,
-  "Diab Aid": 190,
-  "BP Aid": 190,
-  "Kof Aid Plus": 108,
-  "Vitamin D Capsule": 285,
-  "Flexicare": 385,
-  "Withania Coagulans": 210,
-  "Acne Aid": 127,
-  "CalciCare": 165,
-  "GastroAid": 127,
-  "Nasal Aid Spray": 98,
-  "Hair Reviver": 499,
-  "S-Cure Cream": 100,
-  "Spondy Aid": 190,
-};
+const ADEL_PRODUCTS = Object.keys(adelPrices);
 
-export const LORDS_PRODUCTS = ["Ointment", "Glowcare Face Wash", "Eltrim", "Sleepin", "L147 Neuralgia", "Hiteup", "L133 Influenza", "Gastrolin", "Soap", "Elixir Forte", "L109", "Hernil", "Cholestril Drops", "Black K2 Oil", "Vitamin D Alfa", "BP Drops", "L130 Hypochondriacal", "Ylo", "L131 Herpes", "Tumorex", "Alfalfa Tonic", "Livotone", "Lordent Powder", "Koughkure", "L134 Intestinal", "Rheumakoll", "Fungirite", "Cleno Face Wash", "Uricid", "Leuco R", "Glowcare Drops", "Camy Canthaline Shampoo", "Brenex", "L129 Hyperhydrosis", "Camy Powder", "Tone Up Regular", "Special Tablets", "Glowcare Cream", "Ferrum Forte", "Lordent Paste", "Hairmont", "Cardiolin", "L128 Haematinic", "Arnica Oil", "Dengma", "Toxkure", "Mensorite", "Cratin", "Lordent", "L120 Eczema", "Asthamin", "L144 Nerve Sleep", "L132 Inflammation", "Digetone", "L113", "Arnica Shampoo", "Stonego", "Glandin", "Tone Up 5000", "L114"];
-export const WHEEZAL_PRODUCTS = ["Arnica Hair Treatment Oil", "Jaborandi Hair Treatment Oil", "Arnica Shampoo", "Baby Bliss", "Leucorin", "R C-Care", "Dysento Drops", "Alo-X HD", "Gautteria", "Kalmegh", "Tooth Powder", "Eye Drop", "Calendula Powder", "Mel-X Tablets", "Gandolex", "Calci-H", "Febral Elixir", "Mel-X Cream", "Gastrolex Drops", "Sarsa Liquid", "Hymusa", "Mel-X Face Wash", "Mixture Cough Syrup", "Renalforte", "Livcol Veterinary Liver Tonic", "Hekla Lava Tooth Powder"];
-
-// Verified MRP values where available. Selling price is 30% off MRP.
-export const LORDS_MRP = {
-  // Confirmed official MRP and pack sizes supplied by the user.
-  // For products with multiple confirmed sizes, the displayed default pack is recorded in LORDS_PACK_SIZE.
-  "Eltrim": 188,
-  "Sleepin": 169,
-  "L147 Neuralgia": 169,
-  "L133 Influenza": 169,
-  "Elixir Forte": 155,
-  "Hernil": 169,
-  "Cholestril Drops": 169,
-  "Vitamin D Alfa": 147,
-  "BP Drops": 169,
-  "L130 Hypochondriacal": 169,
-  "Ylo": 98,
-  "Tumorex": 169,
-  "Alfalfa Tonic": 108,
-  "Livotone": 141,
-  "Koughkure": 122,
-  "L134 Intestinal": 169,
-  "Fungirite": 169,
-  "Uricid": 169,
-  "Leuco R": 150,
-  "Brenex": 169,
-  "L129 Hyperhydrosis": 169,
-  "Glowcare Drops": 113,
-  "Glowcare Cream": 113,
-  "Ferrum Forte": 150,
-  "Hairmont": 244,
-  "L128 Haematinic": 169,
-  "Dengma": 141,
-  "Toxkure": 211,
-  "Mensorite": 150,
-  "Cratin": 169,
-  "L120 Eczema": 169,
-  "Asthamin": 169,
-  "L144 Nerve Sleep": 169,
-  "L132 Inflammation": 169,
-  "Digetone": 141,
-  "L113": 169,
-  "Stonego": 169,
-  "Glandin": 164,
-  "Tone Up 5000": 374,
-  "L114": 169,
-};
-
-const LORDS_PACK_SIZE = {
-  "Eltrim": "30 ml",
-  "Sleepin": "30 ml",
-  "L147 Neuralgia": "30 ml",
-  "L133 Influenza": "30 ml",
-  "Elixir Forte": "180 ml",
-  "Hernil": "30 ml",
-  "Cholestril Drops": "30 ml",
-  "Vitamin D Alfa": "30 tablets",
-  "BP Drops": "30 ml",
-  "L130 Hypochondriacal": "30 ml",
-  "Ylo": "30 tablets",
-  "Tumorex": "30 ml",
-  "Alfalfa Tonic": "115 ml",
-  "Livotone": "180 ml",
-  "Koughkure": "180 ml",
-  "L134 Intestinal": "30 ml",
-  "Fungirite": "30 ml",
-  "Uricid": "30 ml",
-  "Leuco R": "180 ml",
-  "Brenex": "180 ml",
-  "L129 Hyperhydrosis": "30 ml",
-  "Glowcare Drops": "30 ml",
-  "Glowcare Cream": "25 g",
-  "Ferrum Forte": "180 ml",
-  "Hairmont": "30 ml each (twin pack)",
-  "L128 Haematinic": "30 ml",
-  "Dengma": "180 ml",
-  "Toxkure": "30 ml",
-  "Mensorite": "180 ml",
-  "Cratin": "30 ml",
-  "L120 Eczema": "30 ml",
-  "Asthamin": "180 ml",
-  "L144 Nerve Sleep": "30 ml",
-  "L132 Inflammation": "30 ml",
-  "Digetone": "180 ml",
-  "L113": "30 ml",
-  "Stonego": "30 ml",
-  "Glandin": "25 tablets",
-  "Tone Up 5000": "30 ml",
-  "L114": "30 ml",
-};
-export const WHEEZAL_MRP = {
-  "Jaborandi Hair Treatment Oil": 195,
-  "Arnica Hair Treatment Oil": 190,
-  "Kalmegh": 180,
-  "Kalmegh Elixir": 150,
-  "Mel-X Tablets": 160,
-  "Mel-X Cream": 160,
-  "Mel-X Face Wash": 300,
-  "Hekla Lava Tooth Powder": 90,
-  "Mixture Cough Syrup": 80,
-  "Livcol Veterinary Liver Tonic": 250,
-  "Sarsa Liquid": 356,
-};
-
-export const SBL_LIQUID_NAMES = sblLiquidSpecialities.filter((name) =>
+const SBL_LIQUID_NAMES = sblLiquidSpecialities.filter((name) =>
   !name.toLowerCase().startsWith("adel") &&
   !name.toLowerCase().startsWith("gastrobin") &&
   !name.toLowerCase().startsWith("essentia aurea") &&
@@ -207,12 +45,12 @@ export const SBL_LIQUID_NAMES = sblLiquidSpecialities.filter((name) =>
   !name.toLowerCase().startsWith("bryorheum")
 );
 
-export const SBL_HEALTH_NAMES = sblHealthWellness.slice(0, 19);
-export const SBL_BIOCHEMIC_NAMES = biochemic.filter((name) => name.startsWith("SBL "));
-export const SBL_BC_NAMES = bc.filter((name) => name.startsWith("SBL BC "));
+const SBL_HEALTH_NAMES = sblHealthWellness.slice(0, 19);
+const SBL_BIOCHEMIC_NAMES = biochemic.filter((name) => name.startsWith("SBL "));
+const SBL_BC_NAMES = bc.filter((name) => name.startsWith("SBL BC "));
 
-export const SCHWABE_NAMES = sblHealthWellness.slice(19);
-export const SCHWABE_EXTRA_NAMES = ["Gastrobin", "Essentia Aurea", "Diacard", "Biofungin", "Bryorheum"];
+const SCHWABE_NAMES = sblHealthWellness.slice(19);
+const SCHWABE_EXTRA_NAMES = ["Gastrobin", "Essentia Aurea", "Diacard", "Biofungin", "Bryorheum"];
 
 const getAdelCategory = (name) => {
   const lower = name.toLowerCase();
@@ -237,158 +75,14 @@ const getSchwabeCategory = (name) => {
   return "Liquid Specialities";
 };
 
+const getSblCategory = (name) => {
+  if (SBL_BIOCHEMIC_NAMES.includes(name)) return "Biochemic";
+  if (SBL_BC_NAMES.includes(name)) return "BC";
+  if (SBL_HEALTH_NAMES.includes(name)) return "Health & Wellness";
+  return "Liquid Specialities";
+};
 
 const getImage = (brand, name, category) => {
-  // =====================================================
-  // BAKSON
-  // =====================================================
-  if (brand === "Bakson") {
-    const baksonImages = {
-      "Bakson Drops": "/images/Bakson_Products/BAKSON_BAKSON_DROPS.jpg",
-      "Nail & Hair Aid": "/images/Bakson_Products/BAKSON_NAIL_HAIR_AID.jpg",
-      "Heena Powder": "/images/Bakson_Products/BAKSON_HEENA_POWDER.jpg",
-      "Prostate Aid": "/images/Bakson_Products/BAKSON_PROSTATE_AID.jpg",
-      "Kof Aid": "/images/Bakson_Products/BAKSON_KOFAID.jpg",
-      "Diab Aid": "/images/Bakson_Products/BAKSON_DIBAID.jpg",
-      "Antiaging Lotion": "/images/Bakson_Products/BAKSON_ANTIAGING_LOTION.jpg",
-      "BP Aid": "/images/Bakson_Products/BAKSON_BP_AID.jpg",
-      "Kof Aid Plus": "/images/Bakson_Products/BAKSON_KOFAID_PLUS.jpg",
-      "Face Scrub": "/images/Bakson_Products/BAKSON_FACE_SCRUB.jpg",
-      "Vitamin D Capsule": "/images/Bakson_Products/BAKSON_VITAMIN_D_CAPSULE.jpg",
-      "Flexicare": "/images/Bakson_Products/BAKSON_FLEXICARE.png",
-      "Hair Color": "/images/Bakson_Products/BAKSON_HAIR_COLOR.jpg",
-      "Glamour Men": "/images/Bakson_Products/BAKSON_GLAMOUR_MEN.jpg",
-      "Antiaging Lotion 80ml": "/images/Bakson_Products/Bakson_Antiaging_Lotion_80ML.jpg",
-      "B Drops": "/images/Bakson_Products/BAKSON_B_DROPS.jpg",
-      "Withania Coagulans": "/images/Bakson_Products/BAKSON_WITHANIA_COAGULANS.jpg",
-      "Lipoma Aid": "/images/Bakson_Products/BAKSON_LIPOMA_AID.jpg",
-      "Acne Aid": "/images/Bakson_Products/Bakson_AcneAid.jpg",
-      "Vitamin D": "/images/Bakson_Products/BAKSON_VITAMIN_D.jpg",
-      "CalciCare": "/images/Bakson_Products/BAKSON_CALCICARE.jpg",
-      "GastroAid": "/images/Bakson_Products/BAKSON_GASTROAID.jpg",
-      "Vitamin B12": "/images/Bakson_Products/BAKSON_VITAMIN_B12.png",
-      "Aloe Vera Calendula": "/images/Bakson_Products/Bakson_Aloevera_Calendula.jpg",
-      "Antiwrinkle Cream": "/images/Bakson_Products/BAKSON_ANTIWRINKLE_CREAM.jpg",
-      "Glamour Women": "/images/Bakson_Products/BAKSON_GLAMOUR_WOMEN.jpg",
-      "Alfalfa": "/images/Bakson_Products/Bakson_Alfalfa.jpg",
-      "Undereye Cream": "/images/Bakson_Products/BAKSON_UNDEREYE_CREAM.jpg",
-      "Ferrum Plus Capsules": "/images/Bakson_Products/BAKSON_FERRUMPLUS_CAPSULES.jpg",
-      "Nasal Aid Spray": "/images/Bakson_Products/BAKSON_NASAL_AID_SPRAY.jpg",
-      "Hair Reviver": "/images/Bakson_Products/BAKSON_HAIR_REVIVER.jpg",
-      "DigeAid": "/images/Bakson_Products/BAKSON_DIGEAID.jpg",
-      "Spondy Aid": "/images/Bakson_Products/BAKSON_SPONDIAID.jpg",
-      "Baksodent": "/images/Bakson_Products/BAKSON_BAKSODENT.jpg",
-      "Bakunil": "/images/Bakson_Products/BAKSON_BAKUNIL.jpg",
-    };
-    return baksonImages[name] || "";
-  }
-
-  // =====================================================
-  // LORD'S — filenames matched to the supplied Lords_Products folder
-  // =====================================================
-  if (brand === "LORD'S") {
-    const lordsImages = {
-      "Ointment": "LORDS_OINTMENT.jpg",
-      "Glowcare Face Wash": "LORDS_GLOWCARE_FACE_WASH.jpg",
-      "Eltrim": "LORDS_ELTRIM.jpg",
-      "Sleepin": "LORDS_SLEEPIN.jpg",
-      "L147 Neuralgia": "LORDS_L147_NEURALGIA.jpg",
-      "Hiteup": "LORDS_HITEUP.jpg",
-      "L133 Influenza": "LORDS_L133_INFLUENZA.jpg",
-      "Gastrolin": "LORDS_GASTROLIN.jpg",
-      "Soap": "LORDS_SOAP.jpg",
-      "Elixir Forte": "LORDS_ELIXIRFORTE_FIXED.jpg",
-      "L109": "LORDS_L109.jpg",
-      "Hernil": "LORDS_HERNIL.jpg",
-      "Cholestril Drops": "LORDS_CHOLESTRIL_DROP.jpg",
-      "Black K2 Oil": "LORDS_BLACK_K2_OIL.jpg",
-      "Vitamin D Alfa": "LORDS_VITAMIN_D_ALFA.jpg",
-      "BP Drops": "LORDS_BP_DROPS.jpg",
-      "L130 Hypochondriacal": "LORDS_L130_HYPOCHONDRIACAL.jpg",
-      "Ylo": "LORDS_YLO.jpg",
-      "L131 Herpes": "LORDS_L131_HERPES.jpg",
-      "Tumorex": "LORDS_TUMOREX.jpg",
-      "Alfalfa Tonic": "LORDS_ALFALFA_TONIC.jpg",
-      "Livotone": "LORDS_LIVOTONE.jpg",
-      "Lordent Powder": "LORDS_LORDENT_POWDER.png",
-      "Koughkure": "LORDS_KOUGHKURE.jpg",
-      "L134 Intestinal": "LORDS_L134_INTESTINAL.jpg",
-      "Rheumakoll": "LORDS RHEUMAKOLL.jpg",
-      "Fungirite": "LORDS_FUNGIRITE.jpg",
-      "Cleno Face Wash": "LORDS_CLENO_FACE_WASH.jpg",
-      "Uricid": "LORDS_URICID.jpg",
-      "Leuco R": "LORDS_LEUCO_R.jpg",
-      "Glowcare Drops": "LORDS_GLOWCARE_DROPS.jpg",
-      "Camy Canthaline Shampoo": "LORDS_CAMY_CANTHALINE_SHAMPOO.jpg",
-      "Brenex": "LORDS_BRENEX.jpg",
-      "L129 Hyperhydrosis": "LORDS_L129_HYPERHYDROSIS.jpg",
-      "Camy Powder": "LORDS_CAMY_POWDER.jpg",
-      "Tone Up Regular": "LORDS_TONE_UP_REGULAR.jpg",
-      "Special Tablets": "LORDS_SPECIAL_TABLETS.jpg",
-      "Glowcare Cream": "LORDS_GLOWCARE_CREAM.jpg",
-      "Ferrum Forte": "LORDS_FERRUM_FORTE.jpg",
-      "Lordent Paste": "LORDS_LORDENT_PASTE.jpg",
-      "Hairmont": "LORDS_HAIRMONT.jpg",
-      "Cardiolin": "LORDS_CARDIOLIN.jpg",
-      "L128 Haematinic": "LORDS_L128_HAEMATINIC.jpg",
-      "Arnica Oil": "LORDS_ARNICA_OIL.jpg",
-      "Dengma": "LORDS_DENGMA.jpg",
-      "Toxkure": "LORDS_TOXKURE.jpg",
-      "Mensorite": "LORDS_MENSORITE.jpg",
-      "Cratin": "LORDS_CRATIN.jpg",
-      "Lordent": "LORDS LORDENT.jpg",
-      "L120 Eczema": "LORDS_L120_ECZEMA.jpg",
-      "Asthamin": "LORDS_ASTHAMIN.jpg",
-      "L144 Nerve Sleep": "LORDS_L144_NERVE_SLEEP.jpg",
-      "L132 Inflammation": "LORDS_L132_INFLAMMATION.jpg",
-      "Digetone": "LORDS_DIGETONE.jpg",
-      "L113": "LORDS_L113.jpg",
-      "Arnica Shampoo": "LORDS_ARNICA_SHAMPOO.jpg",
-      "Stonego": "LORDS_STONEGO.jpg",
-      "Glandin": "LORDS_GLANDIN.jpg",
-      "Tone Up 5000": "LORDS_TONE_UP_5000.jpg",
-      "L114": "LORDS_L114.jpg",
-    };
-    const file = lordsImages[name];
-    return file ? `/images/Lords_Products/${encodeURIComponent(file).replace(/%20/g, "%20")}` : "";
-  }
-
-  // =====================================================
-  // WHEEZAL — filenames matched to the supplied Wheezal_Products folder
-  // =====================================================
-  if (brand === "Wheezal") {
-    const wheezalImages = {
-      "Arnica Hair Treatment Oil": "WHEEZAL ARNICA HAIR TREATEMENT.jpg",
-      "Jaborandi Hair Treatment Oil": "WHEEZAL JABORANDI HAIR TREATEMENT.jpg",
-      "Arnica Shampoo": "WHEEZAL ARNICA SHAMPOO.webp",
-      "Baby Bliss": "WHEEZAL BABY BLISS.webp",
-      "Leucorin": "WHEEZAL LEUCORIN .avif",
-      "R C-Care": "WHEEZAL R C- CARE.webp",
-      "Dysento Drops": "WHEEZAL DYSENTO DROPS.jpeg",
-      "Alo-X HD": "WHEEZAL_ALO_X_HD.jpg",
-      "Gautteria": "WHEEZAL GAUTTERIA.webp",
-      "Kalmegh": "WHEEZAL KALMEGH.jpeg",
-      "Tooth Powder": "WHEEZAL TOOTH POWDER.jpg",
-      "Eye Drop": "WHEEZAL EYE DROP.jpeg",
-      "Calendula Powder": "WHEEZAL CALENDULA POWDER.jpeg",
-      "Mel-X Tablets": "WHEEZAL MEL-X 75TABLETS.avif",
-      "Gandolex": "WHEEZAL GANDOLEX.jpg",
-      "Calci-H": "WHEEZAL CALCI-H.jpeg",
-      "Febral Elixir": "WHEEZAL FEBRAL ELIXIR.jpeg",
-      "Mel-X Cream": "WHEEZAL MEL-X CREAM.jpeg",
-      "Gastrolex Drops": "WHEEZAL GASTROLEX DROPS.webp",
-      "Sarsa Liquid": "WHEEZAL SARSA.jpg",
-      "Hymusa": "WHEEZAL HYMUSA.webp",
-      "Mel-X Face Wash": "WHEEZAL MEL-X FACE WASH.avif",
-      "Mixture Cough Syrup": "WHEEZAL MIXTURE.webp",
-      "Renalforte": "WHEEZAL RENALFORTE.jpg",
-      "Livcol Veterinary Liver Tonic": "WHEEZAL LIVCOL SYRUP .avif",
-      "Hekla Lava Tooth Powder": "WHEEZAL HEKLA PASTE.jpg",
-    };
-    const file = wheezalImages[name];
-    return file ? `/images/Wheezal_Products/${encodeURIComponent(file).replace(/%20/g, "%20")}` : "";
-  }
-
   // =====================================================
   // ADEL
   // =====================================================
@@ -400,181 +94,181 @@ if (adelNumberMatch) {
   const adelNumber = adelNumberMatch[1];
 
   const adelNumberImages = {
-    "2": "/images/Adel_Products/ADEL 2 - Piles & Hemorrhoids Drops.jpg",
-    "3": "/images/Adel_Products/ADEL 3 - Jaundice & Liver Drops.jpg",
-    "4": "/images/Adel_Products/ADEL 4 - Joint Pain Drops.jpg",
-    "5": "/images/Adel_Products/Adel 5 - Acidity, Gas & Stomach Drops.jpg",
-    "6": "/images/Adel_Products/ADEL 6 - Thyroid Management Drops.jpg",
-    "7": "/images/Adel_Products/ADEL 7 - Cough Drops.jpg",
+    "2": "/images/ADEL_Images/ADEL 2 - Piles & Hemorrhoids Drops.jpg",
+    "3": "/images/ADEL_Images/ADEL 3 - Jaundice & Liver Drops.jpg",
+    "4": "/images/ADEL_Images/ADEL 4 - Joint Pain Drops.jpg",
+    "5": "/images/ADEL_Images/Adel 5 - Acidity, Gas & Stomach Drops.jpg",
+    "6": "/images/ADEL_Images/ADEL 6 - Thyroid Management Drops.jpg",
+    "7": "/images/ADEL_Images/ADEL 7 - Cough Drops.jpg",
   };
 
   return adelNumberImages[adelNumber] || "";
 }
   const adelImages = {
     "ADEL - 10 Respiratory Drops":
-      "/images/Adel_Products/ADEL - 10 Respiratory Drops.jpg",
+      "/images/ADEL_Images/ADEL - 10 Respiratory Drops.jpg",
 
     "ADEL - 19 MentalPhysical tiredness (General Weakness) Drops":
-      "/images/Adel_Products/ADEL - 19 MentalPhysical tiredness (General Weakness) Drops.jpg",
+      "/images/ADEL_Images/ADEL - 19 MentalPhysical tiredness (General Weakness) Drops.jpg",
 
     "Adel 1- Headache & Migraine Drops":
-      "/images/Adel_Products/Adel 1- Headache & Migraine Drops.jpg",
+      "/images/ADEL_Images/Adel 1- Headache & Migraine Drops.jpg",
 
     "Adel 11 - Constipation Drops":
-      "/images/Adel_Products/Adel 11 - Constipation Drops.jpg",
+      "/images/ADEL_Images/Adel 11 - Constipation Drops.jpg",
 
     "ADEL 12 - Skin Drops":
-      "/images/Adel_Products/ADEL 12 - Skin Drops.jpg",
+      "/images/ADEL_Images/ADEL 12 - Skin Drops.jpg",
 
     "ADEL 13 - Weight Management Drops":
-      "/images/Adel_Products/ADEL 13 - Weight Management Drops.jpg",
+      "/images/ADEL_Images/ADEL 13 - Weight Management Drops.jpg",
 
     "ADEL 14 - Iron Deficiency Drops":
-      "/images/Adel_Products/ADEL 14 - Iron Deficiency Drops.png",
+      "/images/ADEL_Images/ADEL 14 - Iron Deficiency Drops.png",
 
     "ADEL 15 - Women’s White Discharge Drops":
-      "/images/Adel_Products/ADEL 15 - Women’s White Discharge Drops.jpg",
+      "/images/ADEL_Images/ADEL 15 - Women’s White Discharge Drops.jpg",
 
     "ADEL 16 - Gastrointestinal Drops":
-      "/images/Adel_Products/ADEL 16 - Gastrointestinal Drops.jpg",
+      "/images/ADEL_Images/ADEL 16 - Gastrointestinal Drops.jpg",
 
     "ADEL 17 - Eye Care Drops":
-      "/images/Adel_Products/ADEL 17 - Eye Care Drops.jpg",
+      "/images/ADEL_Images/ADEL 17 - Eye Care Drops.jpg",
 
     "ADEL 18 - Diabetes Management Drops":
-      "/images/Adel_Products/ADEL 18 - Diabetes Management Drops.jpg",
+      "/images/ADEL_Images/ADEL 18 - Diabetes Management Drops.jpg",
 
     "ADEL 20 - Allergy Drops":
-      "/images/Adel_Products/ADEL 20 - Allergy Drops.jpg",
+      "/images/ADEL_Images/ADEL 20 - Allergy Drops.jpg",
 
     "ADEL 21 - Prostate Drops":
-      "/images/Adel_Products/ADEL 21 - Prostate Drops.jpg",
+      "/images/ADEL_Images/ADEL 21 - Prostate Drops.jpg",
 
     "ADEL 22 - Kidney Drops":
-      "/images/Adel_Products/ADEL 22 - Kidney Drops.jpg",
+      "/images/ADEL_Images/ADEL 22 - Kidney Drops.jpg",
 
     "ADEL 23 - Sinusitis Drops":
-      "/images/Adel_Products/ADEL 23 - Sinusitis Drops.jpg",
+      "/images/ADEL_Images/ADEL 23 - Sinusitis Drops.jpg",
 
     "ADEL 24 - Tonsils Drops":
-      "/images/Adel_Products/ADEL 24 - Tonsils Drops.jpg",
+      "/images/ADEL_Images/ADEL 24 - Tonsils Drops.jpg",
 
     "ADEL 25 - Sleep Disorder Drops":
-      "/images/Adel_Products/ADEL 25 - Sleep Disorder Drops.jpg",
+      "/images/ADEL_Images/ADEL 25 - Sleep Disorder Drops.jpg",
 
     "ADEL 26 - Osteoarthritis Drops":
-      "/images/Adel_Products/ADEL 26 - Osteoarthritis Drops.jpg",
+      "/images/ADEL_Images/ADEL 26 - Osteoarthritis Drops.jpg",
 
     "ADEL 27 - Injury Drops":
-      "/images/Adel_Products/ADEL 27 - Injury Drops.jpg",
+      "/images/ADEL_Images/ADEL 27 - Injury Drops.jpg",
 
     "ADEL 28 - Cholesterol Management Drops":
-      "/images/Adel_Products/ADEL 28 - Cholesterol Management Drops.jpg",
+      "/images/ADEL_Images/ADEL 28 - Cholesterol Management Drops.jpg",
 
     "ADEL 29 - UTI Drops":
-      "/images/Adel_Products/ADEL 29 - UTI Drops.jpg",
+      "/images/ADEL_Images/ADEL 29 - UTI Drops.jpg",
 
     "ADEL 31 - Periods Regulating (PCOS, PCOD)":
-      "/images/Adel_Products/ADEL 31 - Periods Regulating (PCOS, PCOD).png",
+      "/images/ADEL_Images/ADEL 31 - Periods Regulating (PCOS, PCOD).png",
 
     "ADEL 32 - Inflammation Drops":
-      "/images/Adel_Products/ADEL 32 - Inflammation Drops.jpg",
+      "/images/ADEL_Images/ADEL 32 - Inflammation Drops.jpg",
 
     "ADEL 33 - Oedema Drops":
-      "/images/Adel_Products/ADEL 33 - Oedema Drops.jpg",
+      "/images/ADEL_Images/ADEL 33 - Oedema Drops.jpg",
 
     "ADEL 34 - Spleen Drops":
-      "/images/Adel_Products/ADEL 34 - Spleen Drops.jpg",
+      "/images/ADEL_Images/ADEL 34 - Spleen Drops.jpg",
 
     "Adel 36 - Vitality Drops":
-      "/images/Adel_Products/Adel 36 - Vitality Drops.jpg",
+      "/images/ADEL_Images/Adel 36 - Vitality Drops.jpg",
 
     "ADEL 38 - Cramp Pain Drops":
-      "/images/Adel_Products/ADEL 38 - Cramp Pain Drops.jpg",
+      "/images/ADEL_Images/ADEL 38 - Cramp Pain Drops.jpg",
 
     "ADEL 39 - Sciatica Drops":
-      "/images/Adel_Products/ADEL 39 - Sciatica Drops.jpg",
+      "/images/ADEL_Images/ADEL 39 - Sciatica Drops.jpg",
 
     "ADEL 40 - Warts Drops":
-      "/images/Adel_Products/ADEL 40 - Warts Drops.png",
+      "/images/ADEL_Images/ADEL 40 - Warts Drops.png",
 
     "ADEL 40+86 Warts Combination":
-      "/images/Adel_Products/ADEL 40+86 - Warts Combination.png",
+      "/images/ADEL_Images/ADEL 40+86 - Warts Combination.png",
 
     "ADEL 43 - Heart & Cardiovascular Drops":
-      "/images/Adel_Products/ADEL 43 - Heart & Cardiovascular Drops.jpg",
+      "/images/ADEL_Images/ADEL 43 - Heart & Cardiovascular Drops.jpg",
 
     "ADEL 44 - Varicose Veins Drops":
-      "/images/Adel_Products/ADEL 44 - Varicose Veins Drops.jpg",
+      "/images/ADEL_Images/ADEL 44 - Varicose Veins Drops.jpg",
 
     "ADEL 48 - Lymph & Tumour Drops (adjuvant)":
-      "/images/Adel_Products/ADEL 48 - Lymph & Tumour Drops (adjuvant).jpg",
+      "/images/ADEL_Images/ADEL 48 - Lymph & Tumour Drops (adjuvant).jpg",
 
     "ADEL 49 - Diarrhoea Drops":
-      "/images/Adel_Products/ADEL 49 - Diarrhoea Drops.png",
+      "/images/ADEL_Images/ADEL 49 - Diarrhoea Drops.png",
 
     "ADEL 50 - Worms Drops":
-      "/images/Adel_Products/ADEL 50 - Worms Drops.png",
+      "/images/ADEL_Images/ADEL 50 - Worms Drops.png",
 
     "Adel 51 - Anxiety & Stress Drops":
-      "/images/Adel_Products/Adel 51 - Anxiety & Stress Drops.jpg",
+      "/images/ADEL_Images/Adel 51 - Anxiety & Stress Drops.jpg",
 
     "ADEL 54 - Heart Care Drops":
-      "/images/Adel_Products/ADEL 54 - Heart Care Drops.jpg",
+      "/images/ADEL_Images/ADEL 54 - Heart Care Drops.jpg",
 
     "ADEL 55 - Spondylitis Drops":
-      "/images/Adel_Products/ADEL 55 - Spondylitis Drops.png",
+      "/images/ADEL_Images/ADEL 55 - Spondylitis Drops.png",
 
     "ADEL 56 - Immune System Drops":
-      "/images/Adel_Products/ADEL 56 - Immune System Drops.jpg",
+      "/images/ADEL_Images/ADEL 56 - Immune System Drops.jpg",
 
     "ADEL 57 - Digestion Drops":
-      "/images/Adel_Products/ADEL 57 - Digestion Drops.png",
+      "/images/ADEL_Images/ADEL 57 - Digestion Drops.png",
 
     "ADEL 61 - Adrenal Gland Drops":
-      "/images/Adel_Products/ADEL 61 - Adrenal Gland Drops.jpg",
+      "/images/ADEL_Images/ADEL 61 - Adrenal Gland Drops.jpg",
 
     "ADEL 64 - Uric Acid Drops":
-      "/images/Adel_Products/ADEL 64 - Uric Acid Drops.png",
+      "/images/ADEL_Images/ADEL 64 - Uric Acid Drops.png",
 
     "ADEL 65 - Body Temperature Management Drops":
-      "/images/Adel_Products/ADEL 65 - Body Temperature Management Drops.png",
+      "/images/ADEL_Images/ADEL 65 - Body Temperature Management Drops.png",
 
     "ADEL 66 - Detoxification Drops":
-      "/images/Adel_Products/ADEL 66 - Detoxification Drops.jpg",
+      "/images/ADEL_Images/ADEL 66 - Detoxification Drops.jpg",
 
     "ADEL 69 - Circulatory Drops":
-      "/images/Adel_Products/ADEL 69 - Circulatory Drops.jpg",
+      "/images/ADEL_Images/ADEL 69 - Circulatory Drops.jpg",
 
     "ADEL 73 - Anti-fungal Drops":
-      "/images/Adel_Products/ADEL 73 - Anti-fungal Drops.jpg",
+      "/images/ADEL_Images/ADEL 73 - Anti-fungal Drops.jpg",
 
     "ADEL 75 - Pain Relief Ointment":
-      "/images/Adel_Products/ADEL 75 - Pain Relief Ointment.png",
+      "/images/ADEL_Images/ADEL 75 - Pain Relief Ointment.png",
 
     "ADEL 78 - Skin Ointment":
-      "/images/Adel_Products/ADEL 78 - Skin Ointment.png",
+      "/images/ADEL_Images/ADEL 78 - Skin Ointment.png",
 
     "ADEL 79 - Iron Tonic":
-      "/images/Adel_Products/ADEL 79 - Iron Tonic.jpg",
+      "/images/ADEL_Images/ADEL 79 - Iron Tonic.jpg",
 
     "ADEL 82 - Liver Tonic":
-      "/images/Adel_Products/ADEL 82 - Liver Tonic.png",
+      "/images/ADEL_Images/ADEL 82 - Liver Tonic.png",
 
     "ADEL 83 - Cough Syrup":
-      "/images/Adel_Products/ADEL 83 - Cough Syrup.jpg",
+      "/images/ADEL_Images/ADEL 83 - Cough Syrup.jpg",
 
     "ADEL 85 - Energy Drops":
-      "/images/Adel_Products/ADEL 85 - Energy Drops.png",
+      "/images/ADEL_Images/ADEL 85 - Energy Drops.png",
 
     "ADEL 85 - Vitality Tonic":
-      "/images/Adel_Products/ADEL 85 - Vitality Tonic.jpg",
+      "/images/ADEL_Images/ADEL 85 - Vitality Tonic.jpg",
 
     "ADEL 86 - Warts (External)":
-      "/images/Adel_Products/ADEL 86 - Warts (External).jpg",
+      "/images/ADEL_Images/ADEL 86 - Warts (External).jpg",
 
     "ADEL 87 - Infection Drops":
-      "/images/Adel_Products/ADEL 87 - Infection Drops.png",
+      "/images/ADEL_Images/ADEL 87 - Infection Drops.png",
   };
 
   return adelImages[name] || "";
@@ -1005,7 +699,7 @@ if (brand === "Schwabe") {
     // Data says "R 1", "R 2", etc.
     // Files are R1.jpeg, R2.jpeg, etc.
     const rNumber = name.replace(/^R\s*/i, "");
-    return `/images/RDrops/R${rNumber}.jpeg`;
+    return `/images/rdrops/R${rNumber}.jpeg`;
   }
 
   if (category === "Mother Tincture") {
@@ -1040,18 +734,6 @@ const getPowerOptionsFor = (brand, product) => {
 };
 
 function getProductPrice(brand, name, category, power) {
-    if (brand === "Bakson") {
-    const mrp = BAKSON_MRP[name];
-    return mrp ? Math.round(mrp * 0.70) : 0;
-  }
-  if (brand === "LORD'S") {
-    const mrp = LORDS_MRP[name];
-    return mrp ? Math.round(mrp * 0.70) : 0;
-  }
-  if (brand === "Wheezal") {
-    const mrp = WHEEZAL_MRP[name];
-    return mrp ? Math.round(mrp * 0.70) : 0;
-  }
   if (brand === "ADEL") return adelPrices[name] ?? 310;
   if (brand === "Dr. Reckeweg") {
     if (category === "Dilution") return dilutionPrices[power] ?? 180;
@@ -1101,71 +783,23 @@ function BrandPage({
   // BRAND-SPECIFIC PRODUCTS
   // =======================================================
 
-const brandConfig = useMemo(() => {
-  const normalized = brandName.toLowerCase().trim();
-
-  if (normalized.includes("bakson")) {
-    return { brand: "Bakson", categories: BAKSON_CATEGORIES };
-  }
-
-  if (normalized.includes("lord")) {
-    return { brand: "LORD'S", categories: LORDS_CATEGORIES };
-  }
-
-  if (normalized.includes("wheezal")) {
-    return { brand: "Wheezal", categories: WHEEZAL_CATEGORIES };
-  }
-
-  if (normalized.includes("adel")) {
-    return { brand: "ADEL", categories: ADEL_CATEGORIES };
-  }
-
-  if (normalized.includes("sbl")) {
-    return { brand: "SBL", categories: SBL_CATEGORIES };
-  }
-
-  if (normalized.includes("schwabe")) {
-    return { brand: "Schwabe", categories: SCHWABE_CATEGORIES };
-  }
-
-  return {
-    brand: "Dr. Reckeweg",
-    categories: RECKEWEG_CATEGORIES
-  };
-}, [brandName]);
+  const brandConfig = useMemo(() => {
+    const normalized = brandName.toLowerCase().trim();
+    if (normalized.includes("adel")) {
+      return { brand: "ADEL", categories: ADEL_CATEGORIES };
+    }
+    if (normalized.includes("sbl")) {
+      return { brand: "SBL", categories: SBL_CATEGORIES };
+    }
+    if (normalized.includes("schwabe")) {
+      return { brand: "Schwabe", categories: SCHWABE_CATEGORIES };
+    }
+    return { brand: "Dr. Reckeweg", categories: RECKEWEG_CATEGORIES };
+  }, [brandName]);
 
   const currentBrand = brandConfig.brand;
 
   const products = useMemo(() => {
-    if (currentBrand === "Bakson") {
-  return BAKSON_PRODUCTS.map((name) => ({
-    name,
-    category: "Health & Wellness",
-    power: "Standard",
-    price: getProductPrice("Bakson", name, "Health & Wellness", "Standard"),
-    image: getImage("Bakson", name, "Health & Wellness"),
-  }));
-}
-
-if (currentBrand === "LORD'S") {
-  return LORDS_PRODUCTS.map((name) => ({
-    name,
-    category: "Health & Wellness",
-    power: "Standard",
-    price: getProductPrice("LORD'S", name, "Health & Wellness", "Standard"),
-    image: getImage("LORD'S", name, "Health & Wellness"),
-  }));
-}
-
-if (currentBrand === "Wheezal") {
-  return WHEEZAL_PRODUCTS.map((name) => ({
-    name,
-    category: "Health & Wellness",
-    power: "Standard",
-    price: getProductPrice("Wheezal", name, "Health & Wellness", "Standard"),
-    image: getImage("Wheezal", name, "Health & Wellness"),
-  }));
-}
     if (currentBrand === "ADEL") {
       return ADEL_PRODUCTS.map((name) => {
         const category = getAdelCategory(name);
@@ -1198,7 +832,6 @@ if (currentBrand === "Wheezal") {
     Object.entries(motherPrices).forEach(([name, price]) => result.push({ name, category: "Mother Tincture", power: "Q", price, image: getImage("Dr. Reckeweg", name, "Mother Tincture") }));
     return result;
   }, [currentBrand]);
-
 
 // =======================================================
   // FILTER
@@ -1270,21 +903,15 @@ if (currentBrand === "Wheezal") {
     const selectedPower =
       getSelectedPower(product);
 
-    const basePrice = getProductPrice(
-      currentBrand,
-      product.name,
-      product.category,
-      selectedPower
-    );
-
-    // These brands display MRP with a 30% offer on the product card.
-    // Store the discounted selling price in cart so no second discount is needed there.
-    const applyProductDiscount = ["ADEL", "Reckeweg", "Dr. Reckeweg", "SBL", "Schwabe"].includes(currentBrand);
-
     return {
       ...product,
       power: selectedPower,
-      price: applyProductDiscount ? Math.round(basePrice * 0.70) : basePrice,
+      price: getProductPrice(
+        currentBrand,
+        product.name,
+        product.category,
+        selectedPower
+      ),
     };
   };
 
@@ -1302,10 +929,6 @@ if (currentBrand === "Wheezal") {
 
     const selectedProduct =
       getSelectedProduct(product);
-
-    if (!Number.isFinite(selectedProduct.price) || selectedProduct.price <= 0) {
-      return;
-    }
 
     addToCart({
       name: selectedProduct.name,
@@ -1837,29 +1460,17 @@ if (currentBrand === "Wheezal") {
                         "
                       >
 
-                        {["Bakson", "LORD'S", "Wheezal"].includes(currentBrand) ? (
-                          (() => {
-                            const mrpMap = currentBrand === "Bakson" ? BAKSON_MRP : currentBrand === "LORD'S" ? LORDS_MRP : WHEEZAL_MRP;
-                            const mrp = mrpMap[product.name];
-                            const packSize = currentBrand === "LORD'S" ? LORDS_PACK_SIZE[product.name] : "";
-                            return mrp ? (
-                              <div className="flex flex-col items-start">
-                                {packSize && <span className="text-[10px] text-gray-500 mb-1">{packSize}</span>}
-                                <span className="text-xs text-gray-500 line-through">MRP ₹{mrp}</span>
-                                <span className="text-[10px] font-bold text-green-700 bg-green-100 px-2 py-0.5 rounded-full mb-1">30% OFF</span>
-                                <span className="text-base sm:text-lg font-bold text-gray-900 whitespace-nowrap">₹{Math.round(mrp * 0.70)}</span>
-                              </div>
-                            ) : <span className="text-xs sm:text-sm text-gray-500">Price unavailable</span>;
-                          })()
-                        ) : ["ADEL", "Reckeweg", "Dr. Reckeweg", "SBL", "Schwabe"].includes(currentBrand) ? (
-                          <div className="flex flex-col items-start">
-                            <span className="text-xs text-gray-500 line-through">MRP ₹{selectedPrice}</span>
-                            <span className="text-[10px] font-bold text-green-700 bg-green-100 px-2 py-0.5 rounded-full mb-1">30% OFF</span>
-                            <span className="text-base sm:text-lg font-bold text-gray-900 whitespace-nowrap">₹{Math.round(selectedPrice * 0.70)}</span>
-                          </div>
-                        ) : (
-                          <span className="text-base sm:text-lg font-bold text-gray-900 whitespace-nowrap">₹{selectedPrice}</span>
-                        )}
+                        <span
+                          className="
+                            text-base
+                            sm:text-lg
+                            font-bold
+                            text-gray-900
+                            whitespace-nowrap
+                          "
+                        >
+                          ₹{selectedPrice}
+                        </span>
 
                         {/* ADD */}
 
@@ -1870,7 +1481,6 @@ if (currentBrand === "Wheezal") {
                             onClick={() =>
                               handleAdd(product)
                             }
-                            disabled={(["Bakson", "LORD'S", "Wheezal"].includes(currentBrand) && !(currentBrand === "Bakson" ? BAKSON_MRP[product.name] : currentBrand === "LORD'S" ? LORDS_MRP[product.name] : WHEEZAL_MRP[product.name]))}
                             className="
                               bg-green-600
                               text-white
@@ -1882,8 +1492,6 @@ if (currentBrand === "Wheezal") {
                               sm:text-sm
                               font-semibold
                               hover:bg-green-700
-                              disabled:opacity-40
-                              disabled:cursor-not-allowed
                               transition
                               flex-shrink-0
                               cursor-pointer
